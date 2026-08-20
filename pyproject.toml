@@ -23,7 +23,7 @@ dependencies = [
     "sse-starlette>=3.4.6,<4",
     "mistune>=3.3.4,<4",
     "google-cloud-storage>=3.13.0,<4",
-    "tortoise-orm[asyncpg]>=0.25.1,<0.26",
+    "tortoise-orm[asyncpg]>=0.25.1,<1.2",
     "aerich>=0.9.3,<0.10",
     "instructor<1.15.5",
     "tiktoken>=0.13.0,<0.14",
