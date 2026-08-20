@@ -72,7 +72,7 @@
     "jsdom": "^30.0.1",
     "marked": "^18.0.7",
     "prettier": "^3.9.6",
-    "prosemirror-commands": "^1.7.1",
+    "prosemirror-commands": "^1.7.2",
     "prosemirror-dropcursor": "^1.8.3",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-gapcursor": "^1.4.1",
