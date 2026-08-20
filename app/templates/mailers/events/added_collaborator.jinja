@@ -1,0 +1,15 @@
+{% extends "base.jinja" %}
+
+{% block subject %}({{ titleize(event.workspace.resource_type) }}) {{ resource_label(event.workspace.resource) }} — {{ event.creator.display_name }} invited you to collaborate{% endblock %}
+
+{% block body_markdown %}
+{{ event.creator.display_name }} has added you as a collaborator on: {{ resource_label(event.workspace.resource) }}
+
+{% if event.details.reason %}
+They included the following message:
+
+> {{ event.details.reason }}
+{% endif %}
+
+You can find the {{ titleize(event.workspace.resource_type) }} [here]({{ url_for("gid_redirect", gid=event.workspace.resource_gid.to_param) }})
+{% endblock %}

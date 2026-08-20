@@ -1,0 +1,115 @@
+key: emma-rhea-dm
+members: [emma, rhea]
+messages:
+  - key: emma-rhea-dm-msg-001
+    author: emma
+    at: !relative_day {offset: -10, hour: 13, minute: 30}
+    content: |
+      Rhea — I'm running user research sessions on the co-pilot prototype this week and I'd love a second read on my interview guide. You're the closest person on the team to how lawyers actually talk about contract review. Would you be up for a quick review?
+
+  - key: emma-rhea-dm-msg-002
+    author: rhea
+    at: !relative_day {offset: -10, hour: 13, minute: 55}
+    reply_to: emma-rhea-dm-msg-001
+    content: |
+      Happy to. Send it over and I'll have notes by end of day. One thing to watch: lawyers often won't say directly that they don't trust an AI suggestion. They'll say "I'd want to verify that" or "I'd check that against the playbook" — which is the same thing, just more polite.
+    reactions:
+      thumbs_up: [emma]
+
+  - key: emma-rhea-dm-msg-003
+    author: emma
+    at: !relative_day {offset: -10, hour: 14, minute: 10}
+    reply_to: emma-rhea-dm-msg-002
+    content: |
+      That is exactly the kind of thing I'd miss. I'm going to add a question asking them to walk me through what they'd do *after* accepting a suggestion — that should surface the verify-anyway behavior.
+
+  - key: emma-rhea-dm-msg-004
+    author: rhea
+    at: !relative_day {offset: -10, hour: 17, minute: 20}
+    content: |
+      Notes in your interview guide doc. Main additions: (1) ask what contract types they review most often — you'll get much better prototype reactions if you use their actual contract types rather than the MSA example; (2) ask what they do when a redline suggestion is wrong — their answer will tell you more about trust than any question about trust.
+    reactions:
+      heart: [emma]
+
+  - key: emma-rhea-dm-msg-005
+    author: emma
+    at: !relative_day {offset: -7, hour: 18, minute: 0}
+    content: |
+      Interviews one and two done. Your instinct was right — both lawyers walked me through their verify-anyway process in detail once I asked the "what happens after you accept" question. They both have a mental double-check that happens before they'd commit a suggestion to the document. That tells me trust is earned clause-by-clause, not granted to the system overall.
+
+  - key: emma-rhea-dm-msg-006
+    author: rhea
+    at: !relative_day {offset: -7, hour: 18, minute: 22}
+    reply_to: emma-rhea-dm-msg-005
+    content: |
+      "Trust is earned clause-by-clause" is a really precise observation. I'd put that exact phrase in your synthesis — it has implications for how we design the accept/reject UI and for how we prioritize playbook coverage. A lawyer will trust a DPA clause more if they know the DPA playbook is rock-solid.
+
+  - key: emma-rhea-dm-msg-007
+    author: emma
+    at: !relative_day {offset: -7, hour: 18, minute: 35}
+    reply_to: emma-rhea-dm-msg-006
+    content: |
+      Which loops back to your coverage work — if the DPA playbook is at 54%, a lawyer will distrust the suggestion at that rate too, roughly. The coverage number and the UX trust signal are the same thing expressed differently.
+    reactions:
+      rocket: [rhea]
+
+  - key: emma-rhea-dm-msg-008
+    author: rhea
+    at: !relative_day {offset: -7, hour: 18, minute: 45}
+    reply_to: emma-rhea-dm-msg-007
+    content: |
+      That's the insight I've been trying to articulate for weeks. I'm going to write that up for the decision post — I'll credit you.
+    reactions:
+      heart: [emma]
+
+  - key: emma-rhea-dm-msg-009
+    author: emma
+    at: !relative_day {offset: -4, hour: 10, minute: 15}
+    content: |
+      Session four done this morning. The lawyer at the prospect firm said something striking: "If this knew our DPA template the way I know it, I wouldn't hesitate." She's describing coverage as a pre-condition to adoption, not a nice-to-have. That's Maren's argument in one sentence from a prospective customer.
+
+  - key: emma-rhea-dm-msg-010
+    author: rhea
+    at: !relative_day {offset: -4, hour: 10, minute: 35}
+    reply_to: emma-rhea-dm-msg-009
+    content: |
+      That quote needs to be in the decision post verbatim, attributed appropriately. "If this knew our DPA template the way I know it" is exactly the bar we're building toward.
+    reactions:
+      thumbs_up: [emma]
+
+  - key: emma-rhea-dm-msg-011
+    author: emma
+    at: !relative_day {offset: -2, hour: 16, minute: 30}
+    content: |
+      Synthesis first draft is up. I've organized it around three themes: (1) trust is clause-specific, not system-wide; (2) coverage is the prerequisite for trust; (3) the ghost-text interaction pattern tests well when coverage is high, poorly when it's low. Does that framing track with your experience?
+
+  - key: emma-rhea-dm-msg-012
+    author: rhea
+    at: !relative_day {offset: -2, hour: 17, minute: 5}
+    reply_to: emma-rhea-dm-msg-011
+    content: |
+      Completely. I'd add one nuance in theme two: lawyers distinguish between coverage of contract types (do you have DPA playbooks?) and coverage of clauses within a type (do you have the data subject rights section of the DPA?). We're weak on the second one even where we're reasonably strong on the first.
+
+  - key: emma-rhea-dm-msg-013
+    author: emma
+    at: !relative_day {offset: -2, hour: 17, minute: 20}
+    reply_to: emma-rhea-dm-msg-012
+    content: |
+      That's a meaningful distinction. I'll add a sub-point. Can you give me two or three concrete examples of clause-level gaps I can include anonymously? That will make it real for Leo and Maren.
+
+  - key: emma-rhea-dm-msg-014
+    author: rhea
+    at: !relative_day {offset: -2, hour: 17, minute: 45}
+    reply_to: emma-rhea-dm-msg-013
+    content: |
+      Sending three examples in a comment on the doc: DPA data subject rights, MSA IP ownership on custom-developed features, and NDA survival clause duration. All real gaps, all coming up in customer feedback. Use as many as you need.
+    reactions:
+      heart: [emma]
+
+  - key: emma-rhea-dm-msg-015
+    author: emma
+    at: !relative_day {offset: -1, hour: 9, minute: 15}
+    content: |
+      Research synthesis is final. It lands on Darren's desk today. I want you to know that working with you made this a much better document — you gave me the vocabulary to understand what lawyers actually care about, and that shows in every theme.
+    reactions:
+      heart: [rhea]

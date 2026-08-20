@@ -1,0 +1,35 @@
+<goal>
+title: {{ goal.title }}
+description: {{ goal.description }}
+created at: {{ goal.created_at }}
+target date: {{ goal.target_date }}
+status: {% if goal.is_completed %}Completed{% else %}{{ goal.status.value }}{% endif %}
+</goal>
+
+{% if goal.subgoals %}
+Subgoals for this goal:
+<subgoals>
+{% for goal in goal.subgoals %}
+<subgoal>
+title: {{ goal.title }}
+description: {{ goal.description }}
+created at: {{ goal.created_at }}
+target date: {{ goal.target_date }}
+status: {% if goal.is_completed %}Completed{% else %}{{ goal.status.value }}{% endif %}
+</subgoal>
+{% endfor %}
+</subgoals>
+{% endif %}
+
+{%- if goal.comments -%}
+Comments from the team on this goal:
+<user_comments>
+{%- for comment in goal.comments -%}
+<comment>
+<user>{{ comment.user.display_name }}</user>
+<content>{{ comment.content }}</content>
+<created_at>{{ comment.created_at }}</created_at>
+</comment>
+{%- endfor -%}
+</user_comments>
+{% endif %}

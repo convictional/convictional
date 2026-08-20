@@ -1,0 +1,204 @@
+{
+  "id": "19996d5bd2bca94d",
+  "historyId": "6044686",
+  "messages": [
+    {
+      "id": "19996d5bd2bca94d",
+      "threadId": "19996d5bd2bca94d",
+      "labelIds": [
+        "IMPORTANT",
+        "CATEGORY_PERSONAL",
+        "INBOX"
+      ],
+      "snippet": "Here is an email with an inline image",
+      "payload": {
+        "partId": "",
+        "mimeType": "multipart/related",
+        "filename": "",
+        "headers": [
+          {
+            "name": "Delivered-To",
+            "value": "dana.holbrook@example.com"
+          },
+          {
+            "name": "Received",
+            "value": "by 2002:a05:6022:c324:b0:d9:604:2bfa with SMTP id ds36csp2400563lab;        Mon, 29 Sep 2025 11:56:54 -0700 (PDT)"
+          },
+          {
+            "name": "X-Received",
+            "value": "by 2002:a17:902:cec7:b0:27e:f06b:ae43 with SMTP id d9443c01a7336-27ef06bb11dmr131801645ad.53.1759172213866;        Mon, 29 Sep 2025 11:56:53 -0700 (PDT)"
+          },
+          {
+            "name": "ARC-Seal",
+            "value": "i=1; a=rsa-sha256; t=1759172213; cv=none;        d=google.com; s=arc-20240605;        b=l1r0UA2QeNQW1fQM5r1A88kRljmy+jBboh6M7h29KDQvsNY1+5QMSvzVjOllHvgseV         E3wR733jh0LhHxixTgAQIdYM7Nk81vhUq7LwVUz3WVOfd19pag+8p8epSmQ13J0z4lXk         YkfW1v6b73+bSclLAXVMid4EZ5S6BuH+iRRw8yEA5UcJnk+R7EF3l4ss1DCLtmt5GwMs         bqYr1wnrpPjQJcd93SdV9iCj8/2WSeF9HNaGnS3Xb8U8zH5pec7srf/0X++264o5SLP5         xqnH6hylOok5M+BHTpZ3mer/8NUNFPUJnNY4CZHrTWiGAaXLzothw3kZY5vq/Zm/cCl4         M8bA=="
+          },
+          {
+            "name": "ARC-Message-Signature",
+            "value": "i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=to:subject:message-id:date:from:mime-version:dkim-signature;        bh=TM7bdBRVY/G0uHp/xrZz3zSTkwNyKHgFxbCL0ukRgpo=;        fh=dTpjj+Wjs8fayg+QuMou6NSmYT0poI9ZBzosFDGPOm8=;        b=T6xmBwdUTFqJ14RfDscr/VSIdsynMlGx2WEoOQPDn8SOzwMTI3YPp95b+0tbDj0yt2         VAwIbFk6Cul7ExxupQ8d0DUPwtskTfuZk3x6Mx/xE7RT+/5vbM+NLjz17mScvqkPcOos         7wKkWlVNzS1AMdpEZYxwBxtoxeFFK99YI8K4/DyCKR9QqDpS2JffNRY8r/8nB3dCr2xs         95Tddymff7PLrtyZFeVAF9wjtzjtmVVqRkDWnvLUqcHiDVHTwR0ynRBQSHqulHS+OUId         6h3RdTpiwjnw/xmb5hQ6VNvH1Gbx5F7qEiUZcshEh54KQug+o1f2dwExSwpjeQuHf6tB         oV0Q==;        dara=google.com"
+          },
+          {
+            "name": "ARC-Authentication-Results",
+            "value": "i=1; mx.google.com;       dkim=pass header.i=@example-org.20230601.gappssmtp.com header.s=20230601 header.b=GPh4Oxrz;       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by domain of hello@example.org) smtp.mailfrom=hello@example.org;       dara=neutral header.i=@example.com"
+          },
+          {
+            "name": "Return-Path",
+            "value": "<hello@example.org>"
+          },
+          {
+            "name": "Received",
+            "value": "from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])        by mx.google.com with SMTPS id d9443c01a7336-27ed66ee010sor81182245ad.1.2025.09.29.11.56.53        for <dana.holbrook@example.com>        (Google Transport Security);        Mon, 29 Sep 2025 11:56:53 -0700 (PDT)"
+          },
+          {
+            "name": "Received-SPF",
+            "value": "neutral (google.com: 209.85.220.41 is neither permitted nor denied by domain of hello@example.org) client-ip=209.85.220.41;"
+          },
+          {
+            "name": "Authentication-Results",
+            "value": "mx.google.com;       dkim=pass header.i=@example-org.20230601.gappssmtp.com header.s=20230601 header.b=GPh4Oxrz;       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by domain of hello@example.org) smtp.mailfrom=hello@example.org;       dara=neutral header.i=@example.com"
+          },
+          {
+            "name": "DKIM-Signature",
+            "value": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=example-org.20230601.gappssmtp.com; s=20230601; t=1759172213; x=1759777013; darn=example.com;        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject         :date:message-id:reply-to;        bh=TM7bdBRVY/G0uHp/xrZz3zSTkwNyKHgFxbCL0ukRgpo=;        b=GPh4OxrzkRUgVQu7RrL1q0b8A98qKffrLwgZ4ttXFzAkO4OhYrj7sLny2K9LpMJc6l         Y+sjgrxDJumO40QSe9udxtRjnEV0zjPerrYnT6UAY5iR6YDiOwP0xmQzLkFKLQsBkNF9         3CpQsH/e0kYCPBeJ9EkeqeTg3BZQap94Hffkv91pEnohhHHFMDgbZk50admg3LEOWcg2         sZcTjiIlWrAurGNgd2lTLQx7u7/aoINhBgI8Tu9TewYeSCrjFox96sV0lDwd4gdWCvmO         iqaqbsxUKwGSBiNFRpWYQZxpdMRnAELsvqP57glAbYQjgL5UFPviFCjR5bSAxtOFB/KK         g6xw=="
+          },
+          {
+            "name": "X-Google-DKIM-Signature",
+            "value": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20230601; t=1759172213; x=1759777013;        h=to:subject:message-id:date:from:mime-version:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=TM7bdBRVY/G0uHp/xrZz3zSTkwNyKHgFxbCL0ukRgpo=;        b=RrdIHE5hAztlh4dopPLSGbnFzdnc2Hhae24N4kqfQKcQEEf5mpyQ78/iFhlnz2uG5f         J2EdBdpgpqBRDqA2QQ4FNY4K74s0d5X2avyWUQLyuNoCxd1mR7WfydiTnKOg+WF3GtOa         NkdfakMRiqNz4AAHXQENbx0jiezm+wLip40kA7PZD+6HiYElIjOGv/QBxPLBCR5+Uq4D         reBMo7Idmg2ov+TVrLrZluT+fvSyvd0pX8nHR0Rw7y4Ki2/bK7g+Sk14+ZiUD5QRbszv         8edyiF10uitvsbP7WHVBBOxfRcueQ0oCHRNMj2WvvAEKOl5psUjmRIFWy3elWqTuRZY7         O4bA=="
+          },
+          {
+            "name": "X-Gm-Message-State",
+            "value": "AOJu0YxUufLPd01xZRqtO9tmr+kSeFOccnGR1RsSltfBMDZ0N5ZM/k6h DYFdAkR6t3ojg77GE4FIGjz9YntbtmlwQko5lRY5JhmDuiWej0LlogQdZH221mfGCvTIkNiJC7g VdVbyTDrb2HPmZC1/rmh+Dz2633q74QvcYDDL4WfYJGIGZu6lOCm0P5o="
+          },
+          {
+            "name": "X-Gm-Gg",
+            "value": "ASbGncuO5drvGmFQJXU3Qy8wk0GEzZDwQjuReVQh5fcgvMvYqrDgJVSuMwRO3gOuy0W gCuAP6P+hcAZvWda7UYVaP3rqTPopIYchcQg7qBHyJ9BOmMnwbMh0LgCTewlDyaDRWF+iEQqQvK wAKU0GUkaHuP5YZDcg/RF6e5k1hm6KivOuANkznB91uT8sng/CXu6o4sov/L/HmNKIdNYszaI+7 LgmFB6ks8c2xFJ53mWKrDuRjww/lNw4Y14k7JFTiydnGyQYmg=="
+          },
+          {
+            "name": "X-Google-Smtp-Source",
+            "value": "AGHT+IHaKOaqgTXKTTpsxB8D6IUMl2CsWGHu1eMs61sRXVDWBjRNTbB6bYHxhn96GM7MdQZ4czEQ0azh/Il7uAMbfqE="
+          },
+          {
+            "name": "X-Received",
+            "value": "by 2002:a17:903:3bd0:b0:249:f16:f086 with SMTP id d9443c01a7336-27ed4a49b04mr212019865ad.42.1759172212789; Mon, 29 Sep 2025 11:56:52 -0700 (PDT)"
+          },
+          {
+            "name": "MIME-Version",
+            "value": "1.0"
+          },
+          {
+            "name": "From",
+            "value": "Dana Holbrook <hello@example.org>"
+          },
+          {
+            "name": "Date",
+            "value": "Mon, 29 Sep 2025 14:56:41 -0400"
+          },
+          {
+            "name": "X-Gm-Features",
+            "value": "AS18NWDOVbQVZeGOTqI7qHvMSQpr2MdHo-FgzP15m7IoyOMkfJQ3IXxMYWQF1Ns"
+          },
+          {
+            "name": "Message-ID",
+            "value": "<CAMXkfBqcpsacCkby15XTqK3E3DqWeNG+P6QUOp8EehFjMmhS5w@mail.gmail.com>"
+          },
+          {
+            "name": "Subject",
+            "value": "Testing inline images"
+          },
+          {
+            "name": "To",
+            "value": "Dana Holbrook <dana.holbrook@example.com>"
+          },
+          {
+            "name": "Content-Type",
+            "value": "multipart/related; boundary=\"000000000000d81ed2063ff53202\""
+          }
+        ],
+        "body": {
+          "size": 0
+        },
+        "parts": [
+          {
+            "partId": "0",
+            "mimeType": "multipart/alternative",
+            "filename": "",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "multipart/alternative; boundary=\"000000000000d81ed2063ff53201\""
+              }
+            ],
+            "body": {
+              "size": 0
+            },
+            "parts": [
+              {
+                "partId": "0.0",
+                "mimeType": "text/plain",
+                "filename": "",
+                "headers": [
+                  {
+                    "name": "Content-Type",
+                    "value": "text/plain; charset=\"UTF-8\""
+                  }
+                ],
+                "body": {
+                  "size": 61,
+                  "data": "SGVyZSBpcyBhbiBlbWFpbCB3aXRoIGFuIGlubGluZSBpbWFnZQ0KDQpbaW1hZ2U6IGltYWdlLnBuZ10NCg=="
+                }
+              },
+              {
+                "partId": "0.1",
+                "mimeType": "text/html",
+                "filename": "",
+                "headers": [
+                  {
+                    "name": "Content-Type",
+                    "value": "text/html; charset=\"UTF-8\""
+                  }
+                ],
+                "body": {
+                  "size": 170,
+                  "data": "PGRpdiBkaXI9Imx0ciI-PGRpdj5IZXJlIGlzIGFuIGVtYWlsIHdpdGggYW4gaW5saW5lIGltYWdlPC9kaXY-PGRpdj48YnI-PC9kaXY-PGRpdj48aW1nIHNyYz0iY2lkOmlpX21nNWhwZjE4MCIgYWx0PSJpbWFnZS5wbmciIHdpZHRoPSIyNDYiIGhlaWdodD0iMTc1Ij48YnI-PC9kaXY-PC9kaXY-DQo="
+                }
+              }
+            ]
+          },
+          {
+            "partId": "1",
+            "mimeType": "image/png",
+            "filename": "image.png",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "image/png; name=\"image.png\""
+              },
+              {
+                "name": "Content-Disposition",
+                "value": "inline; filename=\"image.png\""
+              },
+              {
+                "name": "Content-Transfer-Encoding",
+                "value": "base64"
+              },
+              {
+                "name": "Content-ID",
+                "value": "<ii_mg5hpf180>"
+              },
+              {
+                "name": "X-Attachment-Id",
+                "value": "ii_mg5hpf180"
+              }
+            ],
+            "body": {
+              "attachmentId": "ANGjdJ-Q8xGBL0Uy_Sg2fz8BLqHTFUpRCqCApMajeTEm2n4Fv0KUeXxRtARg8MGtJaOwP7iTN937-rOwzA2iAhqtiy8UJ5oWKLdXhqdl-68xrvEsKjd7B2cfZzOcJ6pjcKkm3zKTi1tN8AM329KqJGhSnpPu_tS1RxROI1fqlnEUaZ-TWfdK0FBWcJs-BZuguRVY3XTL1vjsBEIe-hH2iCfkZ1n_0JrkxUIWIvKQJebYgc78FlPeokjoJIG8ucwjIQ85MH_y9uZLAUKDQnEz2iYIClZ1oOnKT8gGJoc1m-3cNd-bNtt6_rZDMCrtPryJTaL06mcV-1jxdF2qACxBAe-XAftoB38zGOPsCbqyEy5gOI7yHHuyPDWglGBAgCUiQfg3iGYIryDhpc9JHjP5",
+              "size": 60796
+            }
+          }
+        ]
+      },
+      "sizeEstimate": 89450,
+      "historyId": "6044686",
+      "internalDate": "1759172201000"
+    }
+  ]
+}

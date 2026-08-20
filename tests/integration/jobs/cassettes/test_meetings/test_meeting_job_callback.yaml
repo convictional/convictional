@@ -1,0 +1,971 @@
+interactions:
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"You are tasked
+      with extracting the attendees from a meeting transcript. Your goal is to identify
+      all individuals who participated in the meeting based on the provided transcript.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0: Transcript\n\n</transcript>\n\nTo
+      extract the attendees, follow these guidelines:\n\n1. Look for names mentioned
+      at the beginning of the transcript, which often indicate who is present.\n2.
+      Pay attention to speaker labels throughout the transcript (e.g., \"John:\",
+      \"Sarah:\").\n3. Note any introductions or greetings that mention names.\n4.
+      Consider names mentioned in the context of speaking, asking questions, or being
+      addressed by others.\n5. Be aware that some attendees might be referred to by
+      their role or title rather than their name.\n\nAs you identify attendees, create
+      a list.\n\nIf you encounter unclear cases, such as names that are only partially
+      mentioned or individuals whose attendance is ambiguous, ignore them.\n\nOnce
+      you have finished analyzing the transcript, provide your final list of attendees
+      using the MeetingAttendees tool.\n\nRemember, your goal is to be as comprehensive
+      as possible while also being accurate. If you''re unsure about including someone,
+      it''s better to leave them out."}],"model":"claude-sonnet-4-6","system":"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:34:39.649660+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingAttendees"},"tools":[{"name":"MeetingAttendees","description":"Extracted
+      list of attendees from a meeting transcript.","input_schema":{"description":"Extracted
+      list of attendees from a meeting transcript.","properties":{"attendees":{"description":"The
+      names of the attendees present in the meeting.","items":{"type":"string"},"title":"Attendees","type":"array"}},"required":["attendees"],"title":"MeetingAttendees","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '2770'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SRW0sDMRCF/8s8p9DVesubtIVCVRRUkFLCmEy30WyyTWbrpex/l9SuWsXHnO8c
+        zsxkA1Uw5ECCdtgY6qXgPXFv0DsGAdaAhCqVql8UQ1MtJtdrffM+Og0jm+6qF7sGAfxWU3ZRSlgS
+        CIjBZQFTsonRMwjQwTN5BjnbdH4OwakmUdeS343qF7dPJ+P7B004LK5eI68uxlOcTkCAxyrnLonY
+        +vKcmbwhSjnv64ZBbgC/RDmbtwI0Okcxk12psZE0Q9vOBSQOtYqEKfj9cbYg0aohrwmkb5zbiYYY
+        rUud1mwXlpvPARSHZ/IJZHFQnOVuvSSlIyHb4NW+pd/xSGj+Y102N1C9pIoiOnVU/fV/02L5m7YC
+        QsM/pcOBgERxbTUptvk+kP/JYDTbYy4o5s1VSQEklC48ooO2/QAAAP//AwAFe9W9KgIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:34:41Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:34:41Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:34:40Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:34:41Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ec37ed816a130-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:34:41 GMT
+      request-id:
+      - req_011CdmfHNFA571Qn9Nkw12HU
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-70b25c623c33e190c7f26f600ea9495f-be65a51abe48c0fb-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"In addition to
+      your consultancy background, you started your career with many years as an Executive
+      Assistant. Currently you are being tasked with creating an accurate and concise
+      summary of a meeting transcript; use both skillsets to inform your final output.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0: Transcript\n\n</transcript>\n\nFirst,
+      analyze the transcript to understand:\n1. Every substantive topic with supporting
+      evidence:\n- Direct quotes that capture key points with attribution\n- Context
+      of why each point matters\n- Sequence of how topics evolved\n2. All specific
+      items:\n- Decisions and commitments\n- Numbers and metrics\n- Action items and
+      owners\n3. Participant dynamics:\n- Key contributors per topic\n- Areas of consensus
+      vs discussion\n- Any alternative viewpoints raised\n\nUsing your analysis, create
+      an executive summary that MUST:\n1. Maintain complete accuracy by:\n- Using
+      direct quotes for crucial points\n- Preserving full context of discussions\n-
+      Including all substantive topics\n- Noting who contributed to each point naturally
+      (e.g. \"John mentioned that...\", or \"Jake raised, Ben supported, a concern
+      about...\")\n2. Format precisely as follows:\n\n## Summary\n[Single paragraph
+      overview that captures meeting significance and key outcomes. Must reference
+      specific discussions rather than general statements.]\n\n### Key Points\n- **[Topic
+      Label]:** [Concrete point backed by quote or specific example + why it matters/impact;
+      2-3 sentences maximum]\n[Additional points in chronological order, each with
+      evidence + impact...]\n\n### Challenges & Risks\n- **[Specific Challenge]:**
+      [Evidence from transcript + implications + any proposed solutions or disagreements;
+      2-3 sentences maximum]\n[Additional challenges if discussed...]\n\nNotes:\n1.
+      Do not include a ''Decisions'' section; decisions are extracted separately and
+      must not appear in this summary.\n2. Omit ''Challenges & Risks'' where no relevant
+      content exists in the transcript.\n3. Remember to write at a Flesch-Kincaid
+      Grade Level of 4.0 or lower."}],"model":"claude-sonnet-4-6","system":"You are
+      Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:34:39.649660+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingSummary"},"tools":[{"name":"MeetingSummary","description":"Extracted
+      summary of a meeting from a transcript.","input_schema":{"description":"Extracted
+      summary of a meeting from a transcript.","properties":{"summary":{"description":"The
+      summary of the meeting.","title":"Summary","type":"string"}},"required":["summary"],"title":"MeetingSummary","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3508'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RSXW/bMAz8KwTzFjhB3LVd49euWIBuwb4eAiyDoUmso1WmPJFulwb+74Pyga0d
+        9qi7I4534g7b6ChghTaY3tFEIjPp5HxyiQV6hxW20tSzsrx27d1idVae3fyyq3cfbx62t288Fqjb
+        jrKKRExDWGCKIQNGxIsaVizQRlZixerr7qTXGEPdC51c8ruvZ+X86dOT7y/OF/GHeUuLq3S/nK8a
+        LJBNm+feE6nn5nPftiZt8zR3vWK1QzlCFY5GcOTX/GVDoMmw2OQ7hbyJ8UwOOIJ08Z54jxFrAc6L
+        7UV85AJigs4k9dZ3hlWmsIygsfNWCnBkfVbJXmas+sjglVqBR0oEiWxMjtx0zWsejUZwS1v4ED2r
+        rHkC4/EywvXBtBqP4cWKj0aA2k6308wkAi/AUTeeG9AIh5j+iaY4FGhNCJRy/GOvzieyisPwrUDR
+        2NWJjER+3vieEPrZE1vCivsQjqAjNT7ICev3f1rtDi3XmvsSrMpXV5fZ226otolMLqB+Lpmd+ETG
+        /Y87zWYH6jbUUjKhvmj/1f9hy81Ldigw9vo39HpeoFB68JZq9bkfzKfoTHL7i7mjlJPXDUWssAnx
+        uwk4DL8BAAD//wMAwQVixw0DAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:34:43Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:34:44Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:34:41Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:34:43Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ec3898dc2430c-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:34:44 GMT
+      request-id:
+      - req_011CdmfHVP2TsVwsHewcM739
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-0258f217222f9c5f4658cfef64682112-209d84cd9b6a4034-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are extracting the decisions from a meeting transcript. Decisions are rare and
+      specific \u2014 many meetings contain none at all. Your only job is to find
+      genuine decisions and to return an empty list when there are none. Do not summarize
+      the meeting or list anything that is not a decision.\\n\\nHere is the transcript
+      of the meeting:\\n\\n<transcript>\\n\\nline 0: Transcript\\n\\n</transcript>\\n\\nA
+      \\\"decision\\\" is a choice the group deliberated and reached *during this
+      meeting* \u2014 there was an open question or goal on the table, alternatives
+      or trade-offs were genuinely weighed, and the group settled on one. Apply these
+      rules strictly. Most meetings produce few or no decisions, so do not hunt for
+      one; inventing a decision where the group never weighed options is worse than
+      returning nothing. When in doubt, leave it out:\\n- The decision must be reached
+      in this meeting. Exclude anything a speaker merely reports as already settled:
+      pre-existing facts, standing policies, or how things already work (e.g. \\\"our
+      pricing is token-based, not per-user\\\"), and choices made before or outside
+      this meeting that are only being recounted here (e.g. \\\"we decided last year
+      to use a single account\\\"). If the choice was already made when the meeting
+      started, it is not a decision.\\n- A genuine decision resolves a question that
+      was actually deliberated. If a course of action was simply agreed as the obvious
+      next step \u2014 no goal framed, no alternatives considered \u2014 it is an
+      action item, not a decision, even when no single person is named (e.g. \\\"Convictional
+      will build a custom demo for Aksel's team to share\\\" is a committed next step,
+      not a deliberated choice).\\n- Include a decision reached implicitly only when
+      there is a concrete proposal AND clear affirmative agreement or consensus AND
+      no unresolved pushback. If a thread trails off unresolved, exclude it.\\n- Include
+      explicit decisions NOT to do something (e.g. \\\"decided not to rebrand this
+      year\\\").\\n- Exclude action items and tasks. A decision records WHAT the group
+      resolved; a task records WHO will do work next. Any \\\"<person> will <do something>\\\"
+      or assignment of future work is an action item \u2014 leave it out (e.g. \\\"Aksel
+      will fly to Atlanta\\\", \\\"Marla will set up a call\\\"). Tentative commitments
+      to look into, explore, check, or see if something is possible are action items
+      too (e.g. \\\"Marla will explore importing the data on their behalf\\\"), never
+      decisions. A scope or approach choice is still a decision even when phrased
+      with \\\"will\\\" (e.g. \\\"we will import the existing goals before building
+      status updates\\\"); the test is whether a question was settled or an option
+      chosen, not whether someone committed to a task.\\n- Also exclude: proposals
+      or ideas that were not adopted, opinions and general discussion, unresolved
+      debate, and deferrals or topics parked for later (e.g. \\\"we'll revisit next
+      week\\\").\\n- Attribute each decision to the person who made or drove it; use
+      \\\"the group\\\" when no single owner is clear. Never guess an owner.\\n\\nReturn
+      the list of decisions, each as one plain sentence plus who made or drove it.
+      Return an empty list when no decisions were made. Write at a Flesch-Kincaid
+      Grade Level of 4.0 or lower.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:34:39.649660+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingDecisions\"},\"tools\":[{\"name\":\"MeetingDecisions\",\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"input_schema\":{\"$defs\":{\"MeetingDecision\":{\"properties\":{\"decision\":{\"description\":\"The
+      decision, stated plainly in one sentence.\",\"title\":\"Decision\",\"type\":\"string\"},\"owner\":{\"description\":\"Who
+      made or drove the decision; use \\\"the group\\\" when no single owner is clear.\",\"title\":\"Owner\",\"type\":\"string\"}},\"required\":[\"decision\",\"owner\"],\"title\":\"MeetingDecision\",\"type\":\"object\"}},\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"properties\":{\"decisions\":{\"description\":\"Genuine
+      decisions reached during the meeting. Empty when no decisions were made.\",\"items\":{\"$ref\":\"#/$defs/MeetingDecision\"},\"title\":\"Decisions\",\"type\":\"array\"}},\"title\":\"MeetingDecisions\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5160'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SRQU8CMRCF/8ucS7KrYEhvgBpi1AseVEKa0g67lW67tFOjIfvfTZFV0Xjs+97L
+        m5nuofEaLXBQViaNg+idQxoMBxfAwGjg0MRKFGU5081mvg31dDh9mZR6sRvPdAMM6L3F7MIYZYXA
+        IHibBRmjiSQdAQPlHaEj4Mt97yfvrUgR+5b8TqIoz+bPu4fH++tJdeuGT4upurpZv02AgZNNzt0h
+        knHVJSoTjXcx512bCPge9JfIl6uOgZLWYsjkWKpNQEXQdSsGkXwrAsro3ek4BxBxl9ApBO6StUdR
+        I0ljY6+lw8J8/zmAIL/FXF2Oi1HuVjUKFVCS8U6cWoqeB5T6P9ZncwO2NTYYpBWj5q//m5b1b9ox
+        8Il+SufnDCKGV6NQkMn3gfxPWgZ9OOYGQ95cVOiBQ2X9Wlroug8AAAD//wMAh7C8gSoCAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:34:46Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:34:46Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:34:45Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:34:46Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ec39ea9262909-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:34:46 GMT
+      request-id:
+      - req_011CdmfHjutYWrWYpA4ScWhT
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-f572cdfaf165b22b54edabed1e22ead5-3bf73ba39ec16f83-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input":["Title: Meeting\nDate: No date\nAttendees: No attendees\nAgenda:
+      No agenda\nSummary: ## Summary\nThe transcript contained no spoken content,
+      discussion, or participants. No topics, decisions, or action items were recorded.\n\n###
+      Key Points\n- **No Content:** The transcript was empty. There is nothing to
+      summarize."],"model":"text-embedding-3-small","dimensions":1536,"encoding_format":"base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '407'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        XPkK/4V7+83zTfoh8KJ8Qz42+b6XbE0vUR8S9KTN+0/zYpvHO9MXNh+u8VfCfCF4o551iIc3/TLj
+        Pugnq9dxYPPlBP4eZp3TfOA3nnv739+fAj0Pf9/TL86oF9hbB1bPnqlPfK+SLGce+sI6/DXttcCf
+        fY9iHiKZ8b19n5zTf/K9JhbTbyHzbu6XuCH4uOL8DD6WL/T5+9Kep958Ut+eN8ofo5J4FrnWmzb8
+        MLDvZUPmbZd8T0hz8PFh82zmP575jNj3gPGYfmGq/Z2j35IAfTmwfvOAPrDvxeGeefUVv8GL6QGl
+        o7xgno2eqcDDkH66pee1qO+5rOHLlX3/SdjvDn/eoBdGGf45ch7z/FbMfPn0Pbhh84T/zndljj8H
+        1BfLt7Kv5xf+k/gJ+I5MLzeY763Qh+fkl0O/ytzyz77/LLpnf5y9vj8tvs5+NP7+5x9n6+pp8Xb2
+        42y3+Nr9+d+/E/jz6s/tevb2pg/vt7Nycfbjr7OPTbX+2P1rV60W79uzH+2bP8521W729n//8/ff
+        /wZ+yDVSmiAAAA==
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ec3aa7af870c5-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:34:47 GMT
+      openai-processing-ms:
+      - '85'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=AUF9y_ISqpEn.XNrfSxYJRBD_Yy0mUraQtVMC6KP_ps-1786026886.7961123-1.0.1.1-bLUSaFa.bM5Ba_pvW5wZrrPtlMZXF1Pm6rRC9ByG2Kg0OMTtTWDpYIlK8ZdWPlnlUxgVJPWcBHUn.nwYBOGSBIyQHiMGba4oMAvRL4s.52zlRr72Wiz4wIzY7pmL6SFI;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu,
+        06 Aug 2026 15:04:47 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999924'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 0s
+      x-request-id:
+      - req_dd7fd8af6bfd4c7d8925431821deb545
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input":["Transcript"],"model":"text-embedding-3-small","dimensions":1536,"encoding_format":"base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '102'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ec3b18c90e60c-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:34:48 GMT
+      openai-processing-ms:
+      - '112'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=dczQRNAmm1.4hA8N_wL88pXRlrDQXIP7crmQQoTomXU-1786026887.9239252-1.0.1.1-62qrkK.FMRLJE1FeTETftYuJcPRCFpCtO.nY4IHnznpHA_WWxPXnAiGmiMGRdHnKuKiSfRzz6ushPQ18OFv5LozwwpDi_H.mfMDoQSALW7dW7jq2QWD.eTGrLxUn8X.m;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu,
+        06 Aug 2026 15:04:48 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999998'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 0s
+      x-request-id:
+      - req_11fafc68e074497d93268cefb55f840d
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with suggesting which collection a meeting should be organized into.\\n\\nHere
+      is the meeting information:\\n\\n<meeting>\\nTitle: Meeting\\n\\nSummary: ##
+      Summary\\nThe transcript contained no spoken content, discussion, or participants.
+      No topics, decisions, or action items were recorded.\\n\\n### Key Points\\n-
+      **No Content:** The transcript was empty. There is nothing to summarize.\\n\\n</meeting>\\n\\nThere
+      are no existing collections in this organization yet.\\n\\nYour task is to decide
+      one of the following:\\n\\n1. **existing** \u2014 The meeting fits well into
+      one of the existing collections. Provide the collection's ID.\\n2. **new** \u2014
+      The meeting doesn't fit any existing collection, but it clearly belongs to a
+      category that would benefit from a new collection. Suggest a concise collection
+      title (1-4 words).\\n3. **none** \u2014 The meeting doesn't clearly belong to
+      any collection and doesn't warrant creating a new one (e.g., one-off meetings,
+      unclear topics).\\n\\nGuidelines:\\n- Prefer matching to an existing collection
+      when the meeting's topic aligns reasonably well\\n- Use the recent meetings
+      listed under each collection to understand what kinds of meetings belong there
+      \u2014 match by pattern (similar titles, attendees, or topics), not just the
+      collection title\\n- When the meeting title is a person's name or a 1:1 format
+      (e.g., \\\"Alice / Bob\\\"), look at which collections already contain similar
+      name-pattern meetings\\n- Only suggest a new collection if the meeting represents
+      a recurring theme that other meetings likely share (e.g., \\\"Engineering Standups\\\",
+      \\\"Client Calls\\\", \\\"Board Meetings\\\")\\n- Suggest \\\"none\\\" for one-off
+      or ambiguous meetings rather than forcing a poor fit\\n- When choosing \\\"existing\\\",
+      you MUST use an ID from the list above \u2014 do not invent or guess IDs\\n-
+      New collection titles should be short and descriptive, following the pattern
+      of the existing collections\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:34:48.511629+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingCollectionSuggestion\"},\"tools\":[{\"name\":\"MeetingCollectionSuggestion\",\"description\":\"Correctly
+      extracted `MeetingCollectionSuggestion` with all the required parameters with
+      correct types\",\"input_schema\":{\"$defs\":{\"MeetingCollectionAction\":{\"enum\":[\"existing\",\"new\",\"none\"],\"title\":\"MeetingCollectionAction\",\"type\":\"string\"}},\"properties\":{\"action\":{\"$ref\":\"#/$defs/MeetingCollectionAction\",\"description\":\"One
+      of: 'existing' (suggest an existing collection), 'new' (suggest creating a new
+      collection), or 'none' (no good match).\"},\"collection_id\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      ID of the existing collection to suggest. Required when action is 'existing'.\",\"title\":\"Collection
+      Id\"},\"collection_title\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      title of the new collection to create. Required when action is 'new'. Keep it
+      concise (1-4 words).\",\"title\":\"Collection Title\"}},\"required\":[\"action\"],\"title\":\"MeetingCollectionSuggestion\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4019'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SR3UoDMRCF32WuU+hWq5A7KSiIij8gokiIyXEbmk1qMhFL2XeXrF2sinfJ+c5k
+        zky21EULT5KM18VikmMI4Mnh5IgEOUuSutyqadMsbPd6PuN0PLu9gdPm9vQBGxLEmzWqCznrFiQo
+        RV8FnbPLrAOTIBMDIzDJp+3o5xi9Khljl3ovatocry5maNrm6ux9/nD/uLq8u/440SQo6K7WXQLs
+        QruI3sOwi+GutC1yPdWnwrowyS3pgZGkEAOoF2S090gV7QJYl2CY+v5ZUOa4Vgk6DyV70QaQ8VYQ
+        DEiG4v1OtGDtfB61Mgwvt18JFMcVQibZzI9mtbdZQpkEXUOpn5bpyBO0/Y+NtbUD1kt0SNqreffX
+        /02b5W/aC4qF96WDA0EZ6d0ZKHZ1P1T/zOpkh22+ItXJVYtIklofX7Snvv8EAAD//wMAFgC0NjYC
+        AAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:34:49Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:34:49Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:34:48Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:34:49Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ec3b5ea3e147c-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:34:49 GMT
+      request-id:
+      - req_011CdmfJ1m8h7zGucaumGfGf
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-6edb033c5bee749566be547e3f3c52ee-8a5c259603002620-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

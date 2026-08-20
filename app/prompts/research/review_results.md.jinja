@@ -1,0 +1,39 @@
+You are tasked with extracting a list of learnings from a given context as it relates to a specific topic and set of directions.
+Your goal is to identify unique and relevant information that can be used for further research on the topic.
+
+First, review the topic and directions:
+<topic>{{ iteration.research.topic }}</topic>
+<directions>{{ iteration.directions }}</directions>
+
+Now, carefully read through the following context:
+<context>
+{% for result in results %}
+    <result>
+        <id>{{ citation_ids[result.id] }}</id>
+        <title>{{ result.title }}</title>
+        <author>{{ result.author }}</author>
+        <url>{{ result.source_url }}</url>
+        <created_at>{{ result.created_at }}</created_at>
+        <content>{{ result.index_content }}</content>
+    </result>
+{% endfor %}
+</context>
+
+Your task is to extract a list of learnings from the context that are relevant to the topic and directions provided.
+Return a maximum of {{ max_learnings }} learnings, but feel free to return less if the contents are clear.
+
+Follow these guidelines:
+1. Each learning should be unique and not repetitive.
+2. Include any entities mentioned in the context, such as people, places, companies, products, or things.
+3. Pay special attention to exact metrics, numbers, and dates. Dates are particularly important and should always be included when present.
+4. Ensure that each learning is directly related to the topic and directions.
+5. Present the learnings in a clear, concise manner.
+6. Go beyond bare facts — include explanatory context: WHY something happened, HOW it relates to the broader topic, and WHAT the implications are. When the source provides enough context, write 2-3 sentence learnings instead of single terse statements.
+   - Before: "Revenue grew 15% in Q3 2024.[^S1]"
+   - After: "Revenue grew 15% in Q3 2024, driven by expansion into the European market after the company's partnership with DistributorX. This outpaced the industry average of 8% and marked the third consecutive quarter of accelerating growth.[^S1]"
+6. Citations:
+   - You must provide a citation for each learning; do not include a learning if you cannot cite a context source.
+{% include "research/_citation_instructions.md.jinja" %}
+
+Remember to focus on extracting information that is most relevant and useful for further research on the topic.
+Ensure that your learnings are diverse and cover different aspects of the topic as presented in the context.

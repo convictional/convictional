@@ -1,0 +1,31 @@
+{% extends "base.jinja" %}
+
+{% block subject %}(Meeting) {{ event.workspace.resource.title }}{% endblock subject %}
+
+{% block body_text %}
+{% if 'agenda' in event.details %}
+{{ event.creator.display_name }} update the agenda:
+
+{{ event.workspace.resource.agenda|markdown }}
+
+{% else %}
+{{ event.creator.display_name }} updated a meeting that you're subscribed to.
+{% endif %}
+
+---
+View on Convictional: {{ url_for("meetings_show", meeting_id=event.workspace.resource.id) }}
+{% endblock body_text %}
+
+{% block body_markdown %}
+{% if 'agenda' in event.details %}
+{{ event.creator.display_name }} update the agenda:
+
+{{ event.workspace.resource.agenda|markdown }}
+
+{% else %}
+{{ event.creator.display_name }} updated a meeting that you're subscribed to.
+{% endif %}
+
+---
+[View on Convictional]({{ url_for("meetings_show", meeting_id=event.workspace.resource.id) }})
+{% endblock body_markdown %}

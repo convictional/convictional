@@ -1,0 +1,10 @@
+{% extends application_layout %}
+{% block title %}
+    {{ 'Background Jobs' |format_page_title }}
+{% endblock title %}
+{% block content %}
+    <h2 class="text-2xl font-accent mb-8">Background Jobs</h2>
+    <div id="react-background-jobs"
+         data-props='{{ {"userId": current_user.id|string, "organizationId": current_user.organization_id|string}|tojson }}'>
+    </div>
+{% endblock content %}

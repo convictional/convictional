@@ -1,0 +1,176 @@
+{# djlint:off #}
+{% macro submit_button(class='btn btn-primary', attrs={}) %}
+    <button
+        type="submit"
+        class="{{ class }}"
+        x-data="{
+            isLoading: false,
+            showSpinner: false,
+            spinnerTimeout: null,
+            isFormValid: false,
+            startLoadingState() {
+                this.isLoading = true;
+                this.spinnerTimeout = setTimeout(() => { this.showSpinner = true; }, 250);
+            },
+            resetLoadingState() {
+                this.isLoading = false;
+                this.showSpinner = false;
+                if (this.spinnerTimeout) {
+                    clearTimeout(this.spinnerTimeout);
+                    this.spinnerTimeout = null;
+                }
+            },
+            checkFormValidity() {
+                this.isFormValid = $el.form.checkValidity();
+            }
+        }"
+        x-init="checkFormValidity(); $el.form.addEventListener('input', () => checkFormValidity()); $el.form.addEventListener('change', () => checkFormValidity())"
+        x-on:htmx:after-request.window="resetLoadingState"
+        x-on:reset.window="resetLoadingState"
+        x-on:htmx:before-request.window="if ($event.detail.elt === $el.form) startLoadingState()"
+        x-bind:class="{ 'cursor-not-allowed btn-disabled': isLoading || !isFormValid, 'loading loading-sm loading-spinner': showSpinner }"
+        @click.stop.prevent="
+        if ($el.form.checkValidity()) {
+            $el.form.requestSubmit();
+        } else {
+            $el.form.reportValidity();
+        }"
+        :disabled="isLoading || !isFormValid ? 'disabled' : false"
+        {% for attr_name, attr_value in kwargs.items() %}
+            {{ attr_name }}="{{ attr_value }}"
+        {% endfor %}
+        {% for attr_name, attr_value in attrs.items() %}
+            {{ attr_name }}="{{ attr_value }}"
+        {% endfor %}
+    >
+        {{ caller() }}
+    </button>
+{% endmacro %}
+
+{% macro form_shortcut_keybindings() %}
+    x-data="{ handleEnterShortcut(e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { const submitBtn = this.$el.closest('form')?.querySelector('button[type=\'submit\']') || this.$el.closest('form')?.querySelector('button'); submitBtn?.click(); } } }"
+    @keydown="handleEnterShortcut"
+{% endmacro %}
+
+
+
+{% macro render_breadcrumbs(breadcrumbs) %}
+    <ol id="breadcrumbs" class="flex items-center gap-2 text-sm h-7 min-w-0">
+        {% for breadcrumb in breadcrumbs %}
+            <li class="{% if loop.last %}min-w-0 shrink truncate{% else %}shrink-0{% endif %}">
+                {% if breadcrumb.url %}
+                    <a href="{{ breadcrumb.url }}" class="link no-underline hover:underline"
+                    {% for attr, value in breadcrumb.get('attrs', {}).items() %}{{ attr }}="{{ value }}" {% endfor %}>
+                        {{ breadcrumb.name }}
+                    </a>
+                {% else %}
+                    <span class="font-semibold"
+                        {% for attr, value in breadcrumb.get('attrs', {}).items() %}{{ attr }}="{{ value }}" {% endfor %}>
+                        {{ breadcrumb.name }}
+                    </span>
+                {% endif %}
+            </li>
+            {% if not loop.last %}
+                <span class="text-base-400">/</span>
+            {% endif %}
+        {% endfor %}
+    </ol>
+{% endmacro %}
+
+{% macro empty(title, text) %}
+    <div class="flex flex-col text-center justify-center rounded-md border-2 border-dashed border-base-300 px-6 py-16">
+        {% if title %}
+            <p class="font-semibold text-sm">{{ title }}</p>
+        {% endif %}
+        {% if text %}
+            <p class="text-sm opacity-50 text-pretty {{ 'mb-2' if caller }}">{{ text }}</p>
+        {% endif %}
+        {% if caller %}
+            {{ caller() }}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{#
+  Tooltip macro with optional keyboard shortcut hint
+
+  Usage:
+    {% call tooltip("Archive thread", kbd="e") %}
+        <button data-hotkey="e">Archive</button>
+    {% endcall %}
+
+  Parameters:
+    - text: Tooltip content (required)
+    - placement: Tooltip position (default: "top")
+    - interactive: Allow hovering tooltip content (default: false)
+    - active: Enable/disable tooltip (default: true)
+    - kbd: Keyboard shortcut to display (optional)
+#}
+{% macro tooltip(text, placement="top", interactive=false, active=true, kbd=None) %}
+    {% if not text %}
+        {% if caller %}
+            {{ caller() }}
+        {% endif %}
+    {% else %}
+        {# Build tooltip content with kbd hint if provided #}
+        {% if kbd %}
+            {% set tooltip_content %}
+                <span class="flex items-center gap-2">
+                    <span>{{ text }}</span>
+                    <span class="inline-flex gap-0.5">
+                        {{ format_kbd_hint(kbd) }}
+                    </span>
+                </span>
+            {% endset %}
+        {% else %}
+            {% set tooltip_content = text %}
+        {% endif %}
+
+        <span data-tooltip-content="{{ tooltip_content|tojson }}"
+        x-data="{ tooltip: JSON.parse($el.dataset.tooltipContent) }"
+        @mouseenter="tooltip = JSON.parse($el.dataset.tooltipContent)"
+        {% if active %}
+        x-tooltip="{
+            content: tooltip,
+            delay: [400, 50],
+            placement: '{{ placement }}',
+            allowHTML: true,
+            interactive: {{ interactive|tojson }},
+            appendTo: $root,
+            touch: false,
+        }"
+        {% endif %}
+        {% for key, value in kwargs.items() %}
+                {{ key }}="{{ value }}"
+        {% endfor %}>
+            {% if caller %}
+                {{ caller() }}
+            {% endif %}
+        </span>
+    {% endif %}
+{% endmacro %}
+
+
+
+{% macro dialog(ref="dialog", class="", attrs={}) %}
+    <dialog x-ref="{{ ref }}"
+            class="modal transition-none"
+            @close-dialog="$el.close();"
+            {% for attr_name, attr_value in attrs.items() %}
+                {{ attr_name }}="{{ attr_value }}"
+            {% endfor %}
+            >
+        <div class="floating-card {{ class }}">
+            {% if caller %}
+                {{ caller() }}
+            {% endif %}
+        </div>
+        <div class="modal-backdrop absolute inset-0 -z-10" @click="$refs['{{ ref }}'].close()"></div>
+    </dialog>
+{% endmacro %}
+
+{% macro test_id(value) -%}
+    {% if settings.is_env('test') -%}
+        data-test-id="{{ value }}"
+    {%- endif %}
+{%- endmacro %}

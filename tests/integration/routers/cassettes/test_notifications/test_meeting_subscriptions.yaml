@@ -1,0 +1,1553 @@
+interactions:
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"You are tasked
+      with generating a succinct title for a meeting based on its transcript. Here
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0:\nline 1: William
+      Penn: Don''t break my bell\nline 2: Benjamin Franklin: It''ll look better broken\nline
+      3:\n\n</transcript>\n\nYour goal is to create a brief, informative title that
+      captures the main purpose or key topic of the meeting. This title should give
+      someone who didn''t attend the meeting a quick understanding of what was discussed.\n\nFollow
+      these guidelines when creating the title:\n1. Keep it concise - ideally under
+      10 words\n2. Focus on the main topic or purpose of the meeting\n3. Use clear,
+      straightforward language\n4. Avoid unnecessary details or participant names\n5.
+      Make it specific enough to distinguish this meeting from others\n\nTo complete
+      this task:\n1. Carefully read and analyze the transcript\n2. Identify the central
+      theme or primary objective of the meeting\n3. Consider any key decisions made
+      or important topics discussed\n4. Synthesize this information into a concise
+      title\n\nOnce you have formulated the title, provide your response using the
+      MeetingTitle tool.\n\nRemember, the title should be succinct yet informative,
+      giving a clear idea of the meeting''s purpose at a glance."}],"model":"claude-sonnet-4-6","system":"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:54:03.037431+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingTitle"},"tools":[{"name":"MeetingTitle","description":"Extracted
+      title of a meeting from a transcript.","input_schema":{"description":"Extracted
+      title of a meeting from a transcript.","properties":{"title":{"description":"The
+      title of the meeting.","title":"Title","type":"string"}},"required":["title"],"title":"MeetingTitle","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '2688'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRTU/cMBT8K6t39koboJD6yIfUC3CAailVZT3iIWutYy/2Cw1d5b9XDkQtrTh6
+        PjTzxnvqooUnTY3n3mKZYwiQ5dHymBQ5S5q63JpVVZ3Zru0+D3XNJ1+/De7qy/qmPiFF8rJDUSFn
+        bkGKUvQF4JxdFg5CipoYBEFIf9/PeonRmz5jTinv3qyq9cHP9ePlcG952Np0kX/d3XfDDSkK3BXf
+        JSAutLdO/OQNu15I70kmQNM5HliwuH5GWpwm8NaFdiEbLE7hPY2KGvYeabK8NrEuoREaxx+KssSd
+        SeAcw/uOE5Hx1CM0IB16799AC2Hn84z10wp6/9rMSNwiZNLVwaou2c0GpklgcTGY95LVzCew/Yib
+        vSUBuw06JPbmU/e//g9bbf5lR0Wxl7+hw1pRRnp2DYy4sg+Vz7Oc7LTyI1K53LSIpKn18YE9jeNv
+        AAAA//8DAPh21uI/AgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:05Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:05Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:03Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:05Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edfe59bdf172b-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:05 GMT
+      request-id:
+      - req_011Cdmgm8JuHF4ZrXfJ7fWX7
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-4d491af5ed4acad99d779765e9b1f7cb-7c8a60241a82afb5-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"You are tasked
+      with extracting the attendees from a meeting transcript. Your goal is to identify
+      all individuals who participated in the meeting based on the provided transcript.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0:\nline 1: William
+      Penn: Don''t break my bell\nline 2: Benjamin Franklin: It''ll look better broken\nline
+      3:\n\n</transcript>\n\nTo extract the attendees, follow these guidelines:\n\n1.
+      Look for names mentioned at the beginning of the transcript, which often indicate
+      who is present.\n2. Pay attention to speaker labels throughout the transcript
+      (e.g., \"John:\", \"Sarah:\").\n3. Note any introductions or greetings that
+      mention names.\n4. Consider names mentioned in the context of speaking, asking
+      questions, or being addressed by others.\n5. Be aware that some attendees might
+      be referred to by their role or title rather than their name.\n\nAs you identify
+      attendees, create a list.\n\nIf you encounter unclear cases, such as names that
+      are only partially mentioned or individuals whose attendance is ambiguous, ignore
+      them.\n\nOnce you have finished analyzing the transcript, provide your final
+      list of attendees using the MeetingAttendees tool.\n\nRemember, your goal is
+      to be as comprehensive as possible while also being accurate. If you''re unsure
+      about including someone, it''s better to leave them out."}],"model":"claude-sonnet-4-6","system":"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:54:03.037431+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingAttendees"},"tools":[{"name":"MeetingAttendees","description":"Extracted
+      list of attendees from a meeting transcript.","input_schema":{"description":"Extracted
+      list of attendees from a meeting transcript.","properties":{"attendees":{"description":"The
+      names of the attendees present in the meeting.","items":{"type":"string"},"title":"Attendees","type":"array"}},"required":["attendees"],"title":"MeetingAttendees","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '2864'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRXWsUMRT9K+U+Z2HHroPOmxZEpILVYsVSwnVyOptucrMmN4ou898la0et4mPO
+        B+fckwPF5BBooDFwdViVJAJdbVY9GfKOBoplsuuuO3Nxiq/uLr+f1t35+/4ydZuLD2RIv+3RVCiF
+        J5ChnEIDuBRflEXJ0JhEIUrD9WHRa0rB1oIlpb2rXXf9Fb6+Kx/P+enb3rN/Kbexv5jIkHBsvteA
+        epmeqUIcUJpf9lVpOBD/AodruvIheI4nbyBChp5D7jh6OXmRWXbBC93MhkYOAbl572s5nzEqzfON
+        oaJpbzO4JHlY+EgUfK6QETRIDeEedFD2oSxYPU4yHH5WtJp2kEJD92jzpGWPW9gxg9UnsQ8l64XP
+        YPc/bvG2BOy3iMgc7OP4r/43223/ZmdDqeqf0KYzVJC/+BFWfduH2k86zu449y1yu9xOSDTQFNIn
+        DjTPPwAAAP//AwDxwpapTAIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:06Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:06Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:05Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:06Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edff49873ab5c-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:07 GMT
+      request-id:
+      - req_011CdmgmJ1Jmyj7o553xbF1t
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-f668003d744aa027f5bc7e4dec5cd3bb-d698c1ee322d2650-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"In addition to
+      your consultancy background, you started your career with many years as an Executive
+      Assistant. Currently you are being tasked with creating an accurate and concise
+      summary of a meeting transcript; use both skillsets to inform your final output.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0:\nline 1: William
+      Penn: Don''t break my bell\nline 2: Benjamin Franklin: It''ll look better broken\nline
+      3:\n\n</transcript>\n\nFirst, analyze the transcript to understand:\n1. Every
+      substantive topic with supporting evidence:\n- Direct quotes that capture key
+      points with attribution\n- Context of why each point matters\n- Sequence of
+      how topics evolved\n2. All specific items:\n- Decisions and commitments\n- Numbers
+      and metrics\n- Action items and owners\n3. Participant dynamics:\n- Key contributors
+      per topic\n- Areas of consensus vs discussion\n- Any alternative viewpoints
+      raised\n\nUsing your analysis, create an executive summary that MUST:\n1. Maintain
+      complete accuracy by:\n- Using direct quotes for crucial points\n- Preserving
+      full context of discussions\n- Including all substantive topics\n- Noting who
+      contributed to each point naturally (e.g. \"John mentioned that...\", or \"Jake
+      raised, Ben supported, a concern about...\")\n2. Format precisely as follows:\n\n##
+      Summary\n[Single paragraph overview that captures meeting significance and key
+      outcomes. Must reference specific discussions rather than general statements.]\n\n###
+      Key Points\n- **[Topic Label]:** [Concrete point backed by quote or specific
+      example + why it matters/impact; 2-3 sentences maximum]\n[Additional points
+      in chronological order, each with evidence + impact...]\n\n### Challenges &
+      Risks\n- **[Specific Challenge]:** [Evidence from transcript + implications
+      + any proposed solutions or disagreements; 2-3 sentences maximum]\n[Additional
+      challenges if discussed...]\n\nNotes:\n1. Do not include a ''Decisions'' section;
+      decisions are extracted separately and must not appear in this summary.\n2.
+      Omit ''Challenges & Risks'' where no relevant content exists in the transcript.\n3.
+      Remember to write at a Flesch-Kincaid Grade Level of 4.0 or lower."}],"model":"claude-sonnet-4-6","system":"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:54:03.037431+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingSummary"},"tools":[{"name":"MeetingSummary","description":"Extracted
+      summary of a meeting from a transcript.","input_schema":{"description":"Extracted
+      summary of a meeting from a transcript.","properties":{"summary":{"description":"The
+      summary of the meeting.","title":"Summary","type":"string"}},"required":["summary"],"title":"MeetingSummary","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3602'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4yUbW/bRgzHvwpxBlYgUIwYfcL0rkmxdU9FkBZomnkQ6DtGuvhEakfKrhH4uw/n
+        2HGyB2AvxT//In+kqHvXS6DkaucTjoFOVZjJTl+dvnGVi8HVrte2OZvNLkLf9ld3369e3vDq17vr
+        8+sP8UdXOdsMVLJIFVtylcuSSgBVoxqyucp5YSM2V/9+f8g3kdSMSocq5XlszmZXb2++fmxv3un1
+        5edPs43yu+7n65eucox98f1GZJHbT2PfY94UNw+jufre6T5Uu8kE9vqcv8SUIvZwScyAHOCc+A77
+        yPBDRl6myNBhAIRFjnQL9M13yC0BLmS0EqaUpg/uNbJRABNYEg1gHe1UiGzorQLFTeQW5u698AuD
+        RSZcQr95eMXcHQuGqNhmovDE85O9SAmSyBIWZEYZFlmWxMX4USCQjxqFtQL0FoUhGvVagWQQ6yiD
+        yRC9wpoylQJ+VKUwnfOcJ5MJ/EIbuJTIpnM+hZOT89L4hXCI5WX1yckRUY9kiW4NMAnTFD4QKMZQ
+        /Q++YdSOAizQLx8Jo8FaxhT+DRE+dwS2FggxAIvBbjqPvV90mBJxSwrfwVXU5Z7h/X6MPbGB8K7t
+        wvVIU9b9ZMsrAhkG0WgEq0hrfbJXLWsdshh5e+SfHt3WRV7qA/MeJyogQ+yHLKtdD9OyKJU07vaz
+        RoVM6DsKU7etnC8QuXyo+wsIMZM3t93+UTk1GZpMqMLPb2MnKP05EntyNY8p7YOBDGPSQ2zcXV99
+        /3APjZXBqqtnr2avS23fUeMzYWmteZ5ydtAzYfgv7eAtFWjoqKeMqXnd/zP/qM66v6vbysloz/p7
+        +6ZySnkVPTUWy4Bc+WsEzGF33LeUC3rTkrjatUkWmNx2+xcAAAD//wMAFqlT6LgEAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:08Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:11Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:07Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:08Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edffe9cc8916d-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:11 GMT
+      request-id:
+      - req_011CdmgmQs4m1eQuoDHM6iRG
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-a8b99d9854462d1061688ee8c4608f50-428f401d6aeb226c-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are extracting the decisions from a meeting transcript. Decisions are rare and
+      specific \u2014 many meetings contain none at all. Your only job is to find
+      genuine decisions and to return an empty list when there are none. Do not summarize
+      the meeting or list anything that is not a decision.\\n\\nHere is the transcript
+      of the meeting:\\n\\n<transcript>\\n\\nline 0:\\nline 1: William Penn: Don't
+      break my bell\\nline 2: Benjamin Franklin: It'll look better broken\\nline 3:\\n\\n</transcript>\\n\\nA
+      \\\"decision\\\" is a choice the group deliberated and reached *during this
+      meeting* \u2014 there was an open question or goal on the table, alternatives
+      or trade-offs were genuinely weighed, and the group settled on one. Apply these
+      rules strictly. Most meetings produce few or no decisions, so do not hunt for
+      one; inventing a decision where the group never weighed options is worse than
+      returning nothing. When in doubt, leave it out:\\n- The decision must be reached
+      in this meeting. Exclude anything a speaker merely reports as already settled:
+      pre-existing facts, standing policies, or how things already work (e.g. \\\"our
+      pricing is token-based, not per-user\\\"), and choices made before or outside
+      this meeting that are only being recounted here (e.g. \\\"we decided last year
+      to use a single account\\\"). If the choice was already made when the meeting
+      started, it is not a decision.\\n- A genuine decision resolves a question that
+      was actually deliberated. If a course of action was simply agreed as the obvious
+      next step \u2014 no goal framed, no alternatives considered \u2014 it is an
+      action item, not a decision, even when no single person is named (e.g. \\\"Convictional
+      will build a custom demo for Aksel's team to share\\\" is a committed next step,
+      not a deliberated choice).\\n- Include a decision reached implicitly only when
+      there is a concrete proposal AND clear affirmative agreement or consensus AND
+      no unresolved pushback. If a thread trails off unresolved, exclude it.\\n- Include
+      explicit decisions NOT to do something (e.g. \\\"decided not to rebrand this
+      year\\\").\\n- Exclude action items and tasks. A decision records WHAT the group
+      resolved; a task records WHO will do work next. Any \\\"<person> will <do something>\\\"
+      or assignment of future work is an action item \u2014 leave it out (e.g. \\\"Aksel
+      will fly to Atlanta\\\", \\\"Marla will set up a call\\\"). Tentative commitments
+      to look into, explore, check, or see if something is possible are action items
+      too (e.g. \\\"Marla will explore importing the data on their behalf\\\"), never
+      decisions. A scope or approach choice is still a decision even when phrased
+      with \\\"will\\\" (e.g. \\\"we will import the existing goals before building
+      status updates\\\"); the test is whether a question was settled or an option
+      chosen, not whether someone committed to a task.\\n- Also exclude: proposals
+      or ideas that were not adopted, opinions and general discussion, unresolved
+      debate, and deferrals or topics parked for later (e.g. \\\"we'll revisit next
+      week\\\").\\n- Attribute each decision to the person who made or drove it; use
+      \\\"the group\\\" when no single owner is clear. Never guess an owner.\\n\\n-
+      This meeting includes people from outside the organization. The members of the
+      organization are: Benjamin Franklin, William Penn. Record a decision ONLY when
+      a member of the organization made it or both sides committed to a mutual term.
+      A choice that is the outside party's alone to make about their own affairs is
+      never a decision here \u2014 this covers their tools, budget, and staffing,
+      AND how they adopt, roll out, or configure this product for their own team (e.g.
+      a prospect deciding to add their whole team as individual users instead of one
+      shared login, or deciding to start using a feature). Exclude these even when
+      they concern this product, are encouraged by the organization, or are stated
+      firmly. If the outside party is the only one deciding, omit it.\\n\\nReturn
+      the list of decisions, each as one plain sentence plus who made or drove it.
+      Return an empty list when no decisions were made. Write at a Flesch-Kincaid
+      Grade Level of 4.0 or lower.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:54:03.037431+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingDecisions\"},\"tools\":[{\"name\":\"MeetingDecisions\",\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"input_schema\":{\"$defs\":{\"MeetingDecision\":{\"properties\":{\"decision\":{\"description\":\"The
+      decision, stated plainly in one sentence.\",\"title\":\"Decision\",\"type\":\"string\"},\"owner\":{\"description\":\"Who
+      made or drove the decision; use \\\"the group\\\" when no single owner is clear.\",\"title\":\"Owner\",\"type\":\"string\"}},\"required\":[\"decision\",\"owner\"],\"title\":\"MeetingDecision\",\"type\":\"object\"}},\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"properties\":{\"decisions\":{\"description\":\"Genuine
+      decisions reached during the meeting. Empty when no decisions were made.\",\"items\":{\"$ref\":\"#/$defs/MeetingDecision\"},\"title\":\"Decisions\",\"type\":\"array\"}},\"title\":\"MeetingDecisions\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '6025'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SRQU8CMRCF/8ucS8IG2bi96s2QKBglEtKUdtytdtulnSKG7H83RVZF47Hvey9v
+        ZnqA1mu0wEFZmTSOoncOaXQxKoGB0cChjbUYF8WVbut2Wz0ty5fl4rHcTB/miztgQO8dZhfGKGsE
+        BsHbLMgYTSTpCBgo7wgdAV8dBj95b0WKOLTkdxLjolzc630337q328ummu2kXu7NDTBwss25GSIZ
+        V1+jMtF4F3PedYmAH0B/iXy17hkoaS2GTE6l2gRUBH2/ZhDJdyKgjN6dj3MEEbcJnULgLll7EjWS
+        NDYOWjouzA+fAwjyr5iri6qa5G7VoFABJRnvxLllPPCAUv/HhmxuwK7BFoO0Ytr+9X/TovlNewY+
+        0U9pMmEQMeyMQkEm3wfyP2kZ9PGYzxjy5qJGDxxq6zfSQt9/AAAA//8DAO3kK5oqAgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:13Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:14Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:12Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:13Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ee0199ed6a5d9-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:14 GMT
+      request-id:
+      - req_011CdmgmkoNbDetpqr19cyd6
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-9ac9023bb5767d7ce9df6a0707c8a3e3-14e04617cc7beecc-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with suggesting which collection a meeting should be organized into.\\n\\nHere
+      is the meeting information:\\n\\n<meeting>\\nTitle: Debate Over Breaking the
+      Bell\\n\\nSummary: ## Summary\\nWilliam Penn and Benjamin Franklin had a brief
+      exchange about a bell. Penn wanted to keep the bell intact, saying \\\"Don't
+      break my bell.\\\" Franklin disagreed, saying \\\"It'll look better broken.\\\"
+      No decisions, action items, or other topics were discussed.\\n\\n### Key Points\\n-
+      **Bell Condition:** Penn wants the bell left alone. He said, \\\"Don't break
+      my bell.\\\" Franklin pushed back, saying it would look better broken. The two
+      did not agree.\\n\\n### Challenges & Risks\\n- **Disagreement on the Bell:**
+      Penn and Franklin have opposite views. Penn wants to protect the bell. Franklin
+      thinks breaking it is an improvement. No solution was reached.\\n\\nAttendees:
+      William Penn, William Penn, Benjamin Franklin, Benjamin Franklin\\n\\n</meeting>\\n\\nThere
+      are no existing collections in this organization yet.\\n\\nYour task is to decide
+      one of the following:\\n\\n1. **existing** \u2014 The meeting fits well into
+      one of the existing collections. Provide the collection's ID.\\n2. **new** \u2014
+      The meeting doesn't fit any existing collection, but it clearly belongs to a
+      category that would benefit from a new collection. Suggest a concise collection
+      title (1-4 words).\\n3. **none** \u2014 The meeting doesn't clearly belong to
+      any collection and doesn't warrant creating a new one (e.g., one-off meetings,
+      unclear topics).\\n\\nGuidelines:\\n- Prefer matching to an existing collection
+      when the meeting's topic aligns reasonably well\\n- Use the recent meetings
+      listed under each collection to understand what kinds of meetings belong there
+      \u2014 match by pattern (similar titles, attendees, or topics), not just the
+      collection title\\n- When the meeting title is a person's name or a 1:1 format
+      (e.g., \\\"Alice / Bob\\\"), look at which collections already contain similar
+      name-pattern meetings\\n- Only suggest a new collection if the meeting represents
+      a recurring theme that other meetings likely share (e.g., \\\"Engineering Standups\\\",
+      \\\"Client Calls\\\", \\\"Board Meetings\\\")\\n- Suggest \\\"none\\\" for one-off
+      or ambiguous meetings rather than forcing a poor fit\\n- When choosing \\\"existing\\\",
+      you MUST use an ID from the list above \u2014 do not invent or guess IDs\\n-
+      New collection titles should be short and descriptive, following the pattern
+      of the existing collections\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:54:14.407655+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingCollectionSuggestion\"},\"tools\":[{\"name\":\"MeetingCollectionSuggestion\",\"description\":\"Correctly
+      extracted `MeetingCollectionSuggestion` with all the required parameters with
+      correct types\",\"input_schema\":{\"$defs\":{\"MeetingCollectionAction\":{\"enum\":[\"existing\",\"new\",\"none\"],\"title\":\"MeetingCollectionAction\",\"type\":\"string\"}},\"properties\":{\"action\":{\"$ref\":\"#/$defs/MeetingCollectionAction\",\"description\":\"One
+      of: 'existing' (suggest an existing collection), 'new' (suggest creating a new
+      collection), or 'none' (no good match).\"},\"collection_id\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      ID of the existing collection to suggest. Required when action is 'existing'.\",\"title\":\"Collection
+      Id\"},\"collection_title\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      title of the new collection to create. Required when action is 'new'. Keep it
+      concise (1-4 words).\",\"title\":\"Collection Title\"}},\"required\":[\"action\"],\"title\":\"MeetingCollectionSuggestion\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4546'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SRW0sDMRCF/8s8p9CltbZ50z4IwkKhKlWREJMxmzaXNRehLPvfJaurVfEtOd+Z
+        zJlJB9ZLNEBBGJ4lTqJ3DtNkPlkAAS2Bgo2KTatqLa2yx+1mg6u5a25uV6u5q4FAOrZYXBgjVwgE
+        gjdF4DHqmLhLQEB4l9AloI/d6E/eG5Yjjl3KPbNpVe92h/3+Ll9d3p9f6wdh66U6XgABx22pqxGT
+        dmrtjUGRtHfbrBTGcipPuTYnoB3wgQEF5x1CT0BwYzAU9BlA6oAiQd8/EYjJtywgj0PJSbQBRHzN
+        6AQCddmYT1Fi4trEUcvD8LT7SMCSP6CLQKvFclp6iwaZCMhLKPbT8sUDcvkfG2tLB2wbtBi4YWf2
+        r/+bVs1v2hPwOZ1KsxmBiOFNC2RJl/1A+TPJgxy2+YKhTM4UeqCgjH/mBvr+HQAA//8DAGhdk8I2
+        AgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:16Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:16Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:14Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:16Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ee02cb91ae609-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:16 GMT
+      request-id:
+      - req_011CdmgmxZo5uXW3sXqFL7zb
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-05f84c9fbeacae8e16d8734b8aa45005-5d7c6e5325d67950-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"You are tasked
+      with generating a succinct title for a meeting based on its transcript. Here
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0:\nline 1: William
+      Penn: Don''t break my bell\nline 2: Benjamin Franklin: It''ll look better broken\nline
+      3:\n\n</transcript>\n\nYour goal is to create a brief, informative title that
+      captures the main purpose or key topic of the meeting. This title should give
+      someone who didn''t attend the meeting a quick understanding of what was discussed.\n\nFollow
+      these guidelines when creating the title:\n1. Keep it concise - ideally under
+      10 words\n2. Focus on the main topic or purpose of the meeting\n3. Use clear,
+      straightforward language\n4. Avoid unnecessary details or participant names\n5.
+      Make it specific enough to distinguish this meeting from others\n\nTo complete
+      this task:\n1. Carefully read and analyze the transcript\n2. Identify the central
+      theme or primary objective of the meeting\n3. Consider any key decisions made
+      or important topics discussed\n4. Synthesize this information into a concise
+      title\n\nOnce you have formulated the title, provide your response using the
+      MeetingTitle tool.\n\nRemember, the title should be succinct yet informative,
+      giving a clear idea of the meeting''s purpose at a glance."}],"model":"claude-sonnet-4-6","system":"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:54:16.411842+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingTitle"},"tools":[{"name":"MeetingTitle","description":"Extracted
+      title of a meeting from a transcript.","input_schema":{"description":"Extracted
+      title of a meeting from a transcript.","properties":{"title":{"description":"The
+      title of the meeting.","title":"Title","type":"string"}},"required":["title"],"title":"MeetingTitle","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '2688'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RR20oDMRT8lXKeU+h6aWseraJYixVFQZEQN+M2mE1qcragZf9dsrp4w8fMhZkz
+        2VIdDBxJKp1uDIYpeA8e7g3HJMgaklSnSo2KYmbqyk8PbheVecbZZH79xotzEsSva2QVUtIVSFAM
+        LgM6JZtYeyZBZfAMzyTvt72eQ3CqSehT8rtRo2InpNVy/2ZztrwaT07uTm/ml8ezPRLkdZ19C4Ct
+        r64tu87r1w2T3BJ3gKQjPGrG4GKDODiEc4NlRELcaLbBUyuo1M4hdpaPJsZGlExt+yAocVirCJ2C
+        /9mxIxJeGvgSJH3j3CdowNq61GNNt4LcfjRTHJ7hE8liZzTN2eUKqozo2qifklHPR2jzH9d7cwLW
+        K9SI2qn9+q/+iy1Wv9lWUGj4O7Q7FZRnsiUU27wP5c8zOppu5SfEfLmqEEhS5cKjdtS27wAAAP//
+        AwCmyLGsPwIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:17Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:18Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:16Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:17Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ee0393ea6e5e8-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:18 GMT
+      request-id:
+      - req_011Cdmgn75GDdddGAknuEZb9
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-b36440b445257906cd034352ead9caf3-b57ae71290396502-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"You are tasked
+      with extracting the attendees from a meeting transcript. Your goal is to identify
+      all individuals who participated in the meeting based on the provided transcript.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0:\nline 1: William
+      Penn: Don''t break my bell\nline 2: Benjamin Franklin: It''ll look better broken\nline
+      3:\n\n</transcript>\n\nTo extract the attendees, follow these guidelines:\n\n1.
+      Look for names mentioned at the beginning of the transcript, which often indicate
+      who is present.\n2. Pay attention to speaker labels throughout the transcript
+      (e.g., \"John:\", \"Sarah:\").\n3. Note any introductions or greetings that
+      mention names.\n4. Consider names mentioned in the context of speaking, asking
+      questions, or being addressed by others.\n5. Be aware that some attendees might
+      be referred to by their role or title rather than their name.\n\nAs you identify
+      attendees, create a list.\n\nIf you encounter unclear cases, such as names that
+      are only partially mentioned or individuals whose attendance is ambiguous, ignore
+      them.\n\nOnce you have finished analyzing the transcript, provide your final
+      list of attendees using the MeetingAttendees tool.\n\nRemember, your goal is
+      to be as comprehensive as possible while also being accurate. If you''re unsure
+      about including someone, it''s better to leave them out."}],"model":"claude-sonnet-4-6","system":"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:54:16.411842+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingAttendees"},"tools":[{"name":"MeetingAttendees","description":"Extracted
+      list of attendees from a meeting transcript.","input_schema":{"description":"Extracted
+      list of attendees from a meeting transcript.","properties":{"attendees":{"description":"The
+      names of the attendees present in the meeting.","items":{"type":"string"},"title":"Attendees","type":"array"}},"required":["attendees"],"title":"MeetingAttendees","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '2864'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRTUsDMRD9KzLnFLpSxeamonhQUS8qImFMpttoMlmT2YqU/e+S6vqJx7wP3puX
+        NcTkKIAGG7B3NCmJmWQym+yCAu9AQyytmTbNoYstH+8dXrc3ZWUXz6c7J7cCCuS1o6qiUrAlUJBT
+        qACW4osgV41NLMQC+m496iWlYPpCY0p992banJ/sviyvLi+Punn3OF+9zmUV8QAUMMbqOyMSz+2+
+        CLEjKtXPXS+g14CfoL6Dax+Cx7h1Qcyg4ID4EaPnreOM/BQ8w/2gwGIIlKv3o5bzmazAMNwrKJI6
+        kwlL4p+FN0Sh557YEmjuQ/gAHQn6UEas30yi1+8VjaQn4gK62Z7t1Wy7JGMzofjE5qdkOvKZ0P3H
+        jd6aQN2SImUMZif+1X+xzfI3OyhIvXyHZo2CQnnlLRnxdR+oP+kwu83cC8r1ctNSAg1tSA8YYBje
+        AAAA//8DAD5/kFFMAgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:19Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:19Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:18Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:19Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ee0435be5c95a-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:19 GMT
+      request-id:
+      - req_011CdmgnDxFk7B25EYmKqyZj
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-437c5c67129f5f168ffe4e391ab806c2-fa911a4c1fd0bf68-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"In addition to
+      your consultancy background, you started your career with many years as an Executive
+      Assistant. Currently you are being tasked with creating an accurate and concise
+      summary of a meeting transcript; use both skillsets to inform your final output.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0:\nline 1: William
+      Penn: Don''t break my bell\nline 2: Benjamin Franklin: It''ll look better broken\nline
+      3:\n\n</transcript>\n\nFirst, analyze the transcript to understand:\n1. Every
+      substantive topic with supporting evidence:\n- Direct quotes that capture key
+      points with attribution\n- Context of why each point matters\n- Sequence of
+      how topics evolved\n2. All specific items:\n- Decisions and commitments\n- Numbers
+      and metrics\n- Action items and owners\n3. Participant dynamics:\n- Key contributors
+      per topic\n- Areas of consensus vs discussion\n- Any alternative viewpoints
+      raised\n\nUsing your analysis, create an executive summary that MUST:\n1. Maintain
+      complete accuracy by:\n- Using direct quotes for crucial points\n- Preserving
+      full context of discussions\n- Including all substantive topics\n- Noting who
+      contributed to each point naturally (e.g. \"John mentioned that...\", or \"Jake
+      raised, Ben supported, a concern about...\")\n2. Format precisely as follows:\n\n##
+      Summary\n[Single paragraph overview that captures meeting significance and key
+      outcomes. Must reference specific discussions rather than general statements.]\n\n###
+      Key Points\n- **[Topic Label]:** [Concrete point backed by quote or specific
+      example + why it matters/impact; 2-3 sentences maximum]\n[Additional points
+      in chronological order, each with evidence + impact...]\n\n### Challenges &
+      Risks\n- **[Specific Challenge]:** [Evidence from transcript + implications
+      + any proposed solutions or disagreements; 2-3 sentences maximum]\n[Additional
+      challenges if discussed...]\n\nNotes:\n1. Do not include a ''Decisions'' section;
+      decisions are extracted separately and must not appear in this summary.\n2.
+      Omit ''Challenges & Risks'' where no relevant content exists in the transcript.\n3.
+      Remember to write at a Flesch-Kincaid Grade Level of 4.0 or lower."}],"model":"claude-sonnet-4-6","system":"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:54:16.411842+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingSummary"},"tools":[{"name":"MeetingSummary","description":"Extracted
+      summary of a meeting from a transcript.","input_schema":{"description":"Extracted
+      summary of a meeting from a transcript.","properties":{"summary":{"description":"The
+      summary of the meeting.","title":"Summary","type":"string"}},"required":["summary"],"title":"MeetingSummary","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3602'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4RUbWsbRxD+K8MIajBnYYFi6H2LbYqbkOI2DYZE5Rjdju+22p257s5ZVY3+e1i9
+        RHGb0I87zzz7PPOy+4xRHQessQ00Or7IKsJ2Mb+4wgq9wxpj7prL2ezGxU7e3d09uo9v5vMP97/y
+        3cN7rNA2A5cszpk6xgqThhKgnH02EsMKWxVjMaw/PR/zTTU0Y+ajSjmPzeVsTm2+evtwfWOvb1+P
+        D28+CMXxH6xQKBbeO2bz0r0fY6S0KWwZRsP6GfMhVONkAgd8IQ8+BE8R7lkESBxcs/xJ0Qv8lEhW
+        wQv05IBgmTw/Av/d9iQdAy11tBLmEKZ79prE2IEprJgH8AZejFqrINPGSwcLvFU5M1gmphXEzZ68
+        wJOU85m6xOy+4vxsZyFAUF3Bks04wTLpiqUQf1Fw3PrsVXIF1JpXAW8ccwWaQK3nBKaDbzO0FBnG
+        YbqQhUwmE3jLG7hXL5YXcgHn57/3DNccwlmGGxXny131+fmptgzW884zBH40oKDC05N5672s8r66
+        Yt0brHUMDnwckj4xeJtCUbG1QmQBpyBqsKv4i62bnkJg6TjDD/Cbz6uDvdtDayKLgRa1vd0vFsvw
+        TjPT4ECHQbM3hifP63yYUibvvj2JaoGwHO10ySH1fwaQNYy7vq8pQ2Jqe3ZT3FbYlkJSWb3DTjuf
+        uDXcbv+oMJsOTWLKKi+3fQdk/mtkaRlrGUM4BB0b+ZCPsXH3nurn/YY3VixlrGfz2aui3fbctImp
+        WGteplwe8cTkvocduUWBh54jJwrNq/jf/BM66/+NbivU0V74u/qxwszpybfcmC8NwvIPOEpu91wf
+        OZXSm44Va+yCLingdvsZAAD//wMAdPd3PIoEAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:20Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:23Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:19Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:20Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ee04d09eb2a96-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:23 GMT
+      request-id:
+      - req_011CdmgnLX9WNE2ZEVpSUPNY
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-1ec6e787853193877d61299c64ea1d2f-0eb6a2c0b9dff1eb-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are extracting the decisions from a meeting transcript. Decisions are rare and
+      specific \u2014 many meetings contain none at all. Your only job is to find
+      genuine decisions and to return an empty list when there are none. Do not summarize
+      the meeting or list anything that is not a decision.\\n\\nHere is the transcript
+      of the meeting:\\n\\n<transcript>\\n\\nline 0:\\nline 1: William Penn: Don't
+      break my bell\\nline 2: Benjamin Franklin: It'll look better broken\\nline 3:\\n\\n</transcript>\\n\\nA
+      \\\"decision\\\" is a choice the group deliberated and reached *during this
+      meeting* \u2014 there was an open question or goal on the table, alternatives
+      or trade-offs were genuinely weighed, and the group settled on one. Apply these
+      rules strictly. Most meetings produce few or no decisions, so do not hunt for
+      one; inventing a decision where the group never weighed options is worse than
+      returning nothing. When in doubt, leave it out:\\n- The decision must be reached
+      in this meeting. Exclude anything a speaker merely reports as already settled:
+      pre-existing facts, standing policies, or how things already work (e.g. \\\"our
+      pricing is token-based, not per-user\\\"), and choices made before or outside
+      this meeting that are only being recounted here (e.g. \\\"we decided last year
+      to use a single account\\\"). If the choice was already made when the meeting
+      started, it is not a decision.\\n- A genuine decision resolves a question that
+      was actually deliberated. If a course of action was simply agreed as the obvious
+      next step \u2014 no goal framed, no alternatives considered \u2014 it is an
+      action item, not a decision, even when no single person is named (e.g. \\\"Convictional
+      will build a custom demo for Aksel's team to share\\\" is a committed next step,
+      not a deliberated choice).\\n- Include a decision reached implicitly only when
+      there is a concrete proposal AND clear affirmative agreement or consensus AND
+      no unresolved pushback. If a thread trails off unresolved, exclude it.\\n- Include
+      explicit decisions NOT to do something (e.g. \\\"decided not to rebrand this
+      year\\\").\\n- Exclude action items and tasks. A decision records WHAT the group
+      resolved; a task records WHO will do work next. Any \\\"<person> will <do something>\\\"
+      or assignment of future work is an action item \u2014 leave it out (e.g. \\\"Aksel
+      will fly to Atlanta\\\", \\\"Marla will set up a call\\\"). Tentative commitments
+      to look into, explore, check, or see if something is possible are action items
+      too (e.g. \\\"Marla will explore importing the data on their behalf\\\"), never
+      decisions. A scope or approach choice is still a decision even when phrased
+      with \\\"will\\\" (e.g. \\\"we will import the existing goals before building
+      status updates\\\"); the test is whether a question was settled or an option
+      chosen, not whether someone committed to a task.\\n- Also exclude: proposals
+      or ideas that were not adopted, opinions and general discussion, unresolved
+      debate, and deferrals or topics parked for later (e.g. \\\"we'll revisit next
+      week\\\").\\n- Attribute each decision to the person who made or drove it; use
+      \\\"the group\\\" when no single owner is clear. Never guess an owner.\\n\\n-
+      This meeting includes people from outside the organization. The members of the
+      organization are: Benjamin Franklin, William Penn. Record a decision ONLY when
+      a member of the organization made it or both sides committed to a mutual term.
+      A choice that is the outside party's alone to make about their own affairs is
+      never a decision here \u2014 this covers their tools, budget, and staffing,
+      AND how they adopt, roll out, or configure this product for their own team (e.g.
+      a prospect deciding to add their whole team as individual users instead of one
+      shared login, or deciding to start using a feature). Exclude these even when
+      they concern this product, are encouraged by the organization, or are stated
+      firmly. If the outside party is the only one deciding, omit it.\\n\\nReturn
+      the list of decisions, each as one plain sentence plus who made or drove it.
+      Return an empty list when no decisions were made. Write at a Flesch-Kincaid
+      Grade Level of 4.0 or lower.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:54:16.411842+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingDecisions\"},\"tools\":[{\"name\":\"MeetingDecisions\",\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"input_schema\":{\"$defs\":{\"MeetingDecision\":{\"properties\":{\"decision\":{\"description\":\"The
+      decision, stated plainly in one sentence.\",\"title\":\"Decision\",\"type\":\"string\"},\"owner\":{\"description\":\"Who
+      made or drove the decision; use \\\"the group\\\" when no single owner is clear.\",\"title\":\"Owner\",\"type\":\"string\"}},\"required\":[\"decision\",\"owner\"],\"title\":\"MeetingDecision\",\"type\":\"object\"}},\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"properties\":{\"decisions\":{\"description\":\"Genuine
+      decisions reached during the meeting. Empty when no decisions were made.\",\"items\":{\"$ref\":\"#/$defs/MeetingDecision\"},\"title\":\"Decisions\",\"type\":\"array\"}},\"title\":\"MeetingDecisions\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '6025'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SRTUsDMRCG/8ucU+iyKnZvYpVi7cGih1pKiMm4G8wma2YilrL/XVK7ahWPeT94
+        ZiY7aINBBxVop5LBEQXvkUcnozMQYA1U0FItx0VxadraN/Ob8mJ2/b4oEwVzfg8CeNthTiGRqhEE
+        xOCyoIgssfIMAnTwjJ6hWu+GPIfgZCIcKPmdMmd6tVyu0urx6q7ubqd2u9DzhxkI8KrNvQUiW19P
+        UVuywVPu+y4xVDswX2K13vQCtHIOY3YOUGMjaoa+3wggDp2MqCj443H2BuFrQq8RKp+cO4gGWVlH
+        g5b2C1e7zwEkhxfM6GIyKTNbNyh1RMU2eHkcGQ9+RGX+84ZuJmDXYItROXna/s1/u0Xz2+0FhMQ/
+        pbIUQBjfrEbJNt8H8j8ZFc3+mM8Y8+ayxgAV1C48KQd9/wEAAP//AwA4LSakKgIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:25Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:25Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:24Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:25Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ee0673dbf11cc-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:25 GMT
+      request-id:
+      - req_011CdmgneojdpUAntyh8GMp4
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-5e4ffe18cc6f31be193d35e78ae7b403-45be5e98d8d15616-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with suggesting which collection a meeting should be organized into.\\n\\nHere
+      is the meeting information:\\n\\n<meeting>\\nTitle: Debate Over Bell Preservation\\n\\nSummary:
+      ## Summary\\nWilliam Penn and Benjamin Franklin had a brief exchange about a
+      bell. Penn wanted to keep it intact, saying \\\"Don't break my bell.\\\" Franklin
+      disagreed, saying \\\"It'll look better broken.\\\" No decisions, action items,
+      or other topics came up.\\n\\n### Key Points\\n- **The Bell's Condition:** Penn
+      wants the bell left alone. Franklin thinks breaking it would improve it. The
+      two men do not agree.\\n\\n### Challenges & Risks\\n- **Disagreement on the
+      Bell:** Penn and Franklin hold opposite views. Penn said \\\"Don't break my
+      bell,\\\" but Franklin said \\\"It'll look better broken.\\\" No solution was
+      reached.\\n\\nAttendees: William Penn, William Penn, Benjamin Franklin, Benjamin
+      Franklin\\n\\n</meeting>\\n\\nThere are no existing collections in this organization
+      yet.\\n\\nYour task is to decide one of the following:\\n\\n1. **existing**
+      \u2014 The meeting fits well into one of the existing collections. Provide the
+      collection's ID.\\n2. **new** \u2014 The meeting doesn't fit any existing collection,
+      but it clearly belongs to a category that would benefit from a new collection.
+      Suggest a concise collection title (1-4 words).\\n3. **none** \u2014 The meeting
+      doesn't clearly belong to any collection and doesn't warrant creating a new
+      one (e.g., one-off meetings, unclear topics).\\n\\nGuidelines:\\n- Prefer matching
+      to an existing collection when the meeting's topic aligns reasonably well\\n-
+      Use the recent meetings listed under each collection to understand what kinds
+      of meetings belong there \u2014 match by pattern (similar titles, attendees,
+      or topics), not just the collection title\\n- When the meeting title is a person's
+      name or a 1:1 format (e.g., \\\"Alice / Bob\\\"), look at which collections
+      already contain similar name-pattern meetings\\n- Only suggest a new collection
+      if the meeting represents a recurring theme that other meetings likely share
+      (e.g., \\\"Engineering Standups\\\", \\\"Client Calls\\\", \\\"Board Meetings\\\")\\n-
+      Suggest \\\"none\\\" for one-off or ambiguous meetings rather than forcing a
+      poor fit\\n- When choosing \\\"existing\\\", you MUST use an ID from the list
+      above \u2014 do not invent or guess IDs\\n- New collection titles should be
+      short and descriptive, following the pattern of the existing collections\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:54:26.023134+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingCollectionSuggestion\"},\"tools\":[{\"name\":\"MeetingCollectionSuggestion\",\"description\":\"Correctly
+      extracted `MeetingCollectionSuggestion` with all the required parameters with
+      correct types\",\"input_schema\":{\"$defs\":{\"MeetingCollectionAction\":{\"enum\":[\"existing\",\"new\",\"none\"],\"title\":\"MeetingCollectionAction\",\"type\":\"string\"}},\"properties\":{\"action\":{\"$ref\":\"#/$defs/MeetingCollectionAction\",\"description\":\"One
+      of: 'existing' (suggest an existing collection), 'new' (suggest creating a new
+      collection), or 'none' (no good match).\"},\"collection_id\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      ID of the existing collection to suggest. Required when action is 'existing'.\",\"title\":\"Collection
+      Id\"},\"collection_title\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      title of the new collection to create. Required when action is 'new'. Keep it
+      concise (1-4 words).\",\"title\":\"Collection Title\"}},\"required\":[\"action\"],\"title\":\"MeetingCollectionSuggestion\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4500'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRXYsUMRD8K9LPWdjRu/XI23mIICgnfuyDSMgltdmcmWQm6ajLMv9dEm/wVHxL
+        V1V3V1fONCaLQJJM0NViU1KM4M3FZkeCvCVJY3FqOww3dnRx3l9PH97ef9rX4zy/fnUgQXya0FQo
+        RTuQoJxCA3QpvrCOTIJMiozIJD+fVz2nFFQtWLe0uqrt8PLeHX48/Xh7XWd+d3U67O7y6WpPgqIe
+        W98bgH10NykEGPYpvq/OobRXGxWnyiTPpDtHkiK+dwOrXLHn7u8FQnhym1GQv+kuXgQZHQJyG/Bg
+        0/oMw7QsXwQVTpPK0KUPfnRAJwrmimhAMtYQHkAL1j6UFas9Inn+5VNx+opYSA6758/abnOEMhnd
+        jfpTsl35DG3/x629bQOmI0ZkHdTl+K/+Nzsc/2YXQanyY+jyQlCLyRso9i0faj9rdbY98wNyu1w5
+        JJLkQrrTgZblJwAAAP//AwBUfLjPXAIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:27Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:27Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:26Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:27Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ee0756dacc991-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:27 GMT
+      request-id:
+      - req_011Cdmgnp859y2Ys3yN8Lbny
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-55f090dd347eada094b3b53f0cc5afaf-0b0b25b69d51fe93-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

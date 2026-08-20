@@ -1,0 +1,20 @@
+interactions:
+- request:
+    body: '{"to":"ExponentPushToken[abc123]","title":"Project Team","body":"Alice mentioned you","data":{"url":"https://convictional.com/chats/abc","url_path":"/chats/abc","tag":"mention-xyz"},"sound":"default"}'
+    headers:
+      accept:
+      - application/json
+      content-type:
+      - application/json
+    method: POST
+    uri: https://exp.host/--/api/v2/push/send
+  response:
+    body:
+      string: '{"data":[{"status":"ok","id":"receipt-list-shape-1"}]}'
+    headers:
+      content-type:
+      - application/json; charset=utf-8
+    status:
+      code: 200
+      message: OK
+version: 1

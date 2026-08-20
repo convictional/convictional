@@ -1,0 +1,2197 @@
+interactions:
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Given the
+      following prompt from the user, generate a list of queries to research the topic.\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n\nReturn
+      a maximum of 3 queries, but feel free to return less if the original prompt
+      is clear.\n\n## Source selection\n\n### Internal source query instructions:\n\n-
+      You must return source: internal to indicate these queries are for searching
+      internal organization content.\n- You''ll be searching organization activity
+      and documents to help the user explore and answer this question.\n- Query terms
+      should be short (less than 5 words, ideally 3 or less) for a basic embedding
+      and TD/IDF search.\n- If the text seems like a good search on its own, just
+      return the text as entered.\n- Anything related to time (e.g. \"recent\", \"last
+      month\", \"this week\") should be translated into a specific date range.\n-
+      If you see a specific date, use that date range. If you see a general date (e.g.
+      \"recently\", \"last month\"), use the last 30 days, respecting the current
+      date and time.\n- If you recognize named entities, surround them with double
+      quotes (e.g. \"Hulk Hogan\", \"Apple\"). Consider if an capitalized word is
+      a named entity.\n\n## Date ranges\n\nIn your response, you may include a starts_at
+      and ends_at date range for each query if the topic or directions indicate a
+      specific time period.\n\nIMPORTANT: Today''s date is 2026-08-05. The current
+      year is 2026. Use this as your reference point for all date calculations.\n\n-
+      Reference Point: Calculate all relative dates based on today''s date: 2026-08-05.\n-
+      Format: Return timestamps in ISO 8601 format: YYYY-MM-DDTHH:MM:SS.\n- Boundaries:
+      Start of day is 00:00:00 and End of day is 23:59:59.\n- Default Year: If a month
+      or quarter is specified without a year, use 2026.\n- Absence: If no date range
+      is specified, do not include starts_at or ends_at fields.\n\nRelative Date Logic\n\n-
+      \"today\" \u2192 starts_at: Current Date T00:00:00, ends_at: Current Date T23:59:59\n-
+      \"yesterday\" \u2192 starts_at: Previous Date T00:00:00, ends_at: Previous Date
+      T23:59:59\n- \"this week\" \u2192 starts_at: Monday of current week, ends_at:
+      Sunday of current week\n- \"last week\" \u2192 starts_at: Monday of previous
+      week, ends_at: Sunday of previous week\n- \"this month\" \u2192 starts_at: Day
+      1 of current month, ends_at: Last day of current month\n- \"last month\" \u2192
+      starts_at: Day 1 of previous month, ends_at: Last day of previous month\n- \"this
+      year\" \u2192 starts_at: Jan 1 of current year, ends_at: Dec 31 of current year\n-
+      \"recently\", \"lately\", or vague time \u2192 starts_at: (Current Date - 30
+      days), ends_at: Current Date\n\nBusiness Date Ranges\n- \"Q1\" / \"first quarter\"
+      \u2192 Jan 1 to Mar 31\n- \"Q2\" / \"second quarter\" \u2192 Apr 1 to June 30\n-
+      \"Q3\" / \"third quarter\" \u2192 July 1 to Sept 30\n- \"Q4\" / \"fourth quarter\"
+      \u2192 Oct 1 to Dec 31\n- \"H1\" / \"first half\" \u2192 Jan 1 to June 30\n-
+      \"H2\" / \"second half\" \u2192 July 1 to Dec 31\n\nNote: Apply the current
+      year (2026) unless a specific year is mentioned.\n\nExamples (using today''s
+      date 2026-08-05):\nQuery: \"Q3 sales targets\"\nterms: \"sales targets\", starts_at:
+      \"2026-07-01T00:00:00\", ends_at: \"2026-09-30T23:59:59\"\n\nQuery: \"last month''s
+      revenue\"\nterms: \"revenue\", starts_at: \"2026-07-01T00:00:00\", ends_at:
+      \"2026-07-31T23:59:59\"\n\nQuery: \"Q4 2023 results\"\nterms: \"results\", starts_at:
+      \"2023-10-01T00:00:00\", ends_at: \"2023-12-31T23:59:59\"\n\n## Existing Queries
+      and Learnings\n\nThe following existing queries and learnings are provided to
+      help you avoid duplication and improve the specificity of your generated queries."}],
+      "model": "claude-sonnet-4-6", "system": "The current datetime is 2026-08-05
+      16:19:13.045057+00:00\n\nThe user you are helping is foo-300@example.com whose
+      email address is foo-300@example.com.\n\nYou are an expert researcher. Today
+      is 2026-08-05 16:19:13.045067+00:00. Follow these instructions when responding:\n-
+      You may be asked to research subjects that is after your knowledge cutoff, assume
+      the user is right when presented with news.\n- Be highly organized.\n- Suggest
+      solutions that I didn''t think about.\n- Be proactive and anticipate my needs.\n-
+      Treat me as an expert in all subject matter.\n- Mistakes erode my trust, so
+      be accurate and thorough.\n- Value good arguments over authorities, the source
+      is irrelevant.\n- Consider new technologies and contrarian ideas, not just the
+      conventional wisdom.\n- You may use high levels of speculation or prediction,
+      just flag it for me.", "temperature": 0.0, "tool_choice": {"type": "tool", "name":
+      "IterableGeneratedResearchQuery"}, "tools": [{"name": "IterableGeneratedResearchQuery",
+      "description": "Correct segmentation of `GeneratedResearchQuery` tasks", "input_schema":
+      {"$defs": {"GeneratedResearchQuery": {"properties": {"title": {"description":
+      "A user-facing title for the query, it''ll be prefaced with ''Reading about''
+      in the UI", "title": "Title", "type": "string"}, "terms": {"description": "The
+      search terms", "title": "Terms", "type": "string"}, "starts_at": {"anyOf": [{"format":
+      "date-time", "type": "string"}, {"type": "null"}], "default": null, "description":
+      "The earliest datetime to allow results", "title": "Starts At"}, "ends_at":
+      {"anyOf": [{"format": "date-time", "type": "string"}, {"type": "null"}], "default":
+      null, "description": "The latest datetime to allow results", "title": "Ends
+      At"}, "goals": {"description": "First talk about the goal of the research that
+      this query is meant to accomplish, then go deeper into how to advance the research
+      once the results are found, mention additional research directions. Be as specific
+      as possible, especially for additional research directions.", "title": "Goals",
+      "type": "string"}, "source": {"$ref": "#/$defs/ResearchSource", "default": "internal",
+      "description": "The source to use for this research query"}}, "required": ["title",
+      "terms", "goals"], "title": "GeneratedResearchQuery", "type": "object"}, "ResearchSource":
+      {"enum": ["internal", "slack"], "title": "ResearchSource", "type": "string"}},
+      "description": "Correct segmentation of `GeneratedResearchQuery` tasks", "properties":
+      {"tasks": {"description": "Correctly segmented list of `GeneratedResearchQuery`
+      tasks", "items": {"$ref": "#/$defs/GeneratedResearchQuery"}, "title": "Tasks",
+      "type": "array"}}, "title": "IterableGeneratedResearchQuery", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '6380'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA7yW224bNxCGX4XgVQKsHMmx01p3gXtAirZpErcFUgTCiJzdZc0ltzNDKYohoO/Q
+        N+yTFLM620mLXrSALyxyljOc/+NP3tkue4x2al2E4nHEOSWU0cXoma1s8HZqO25m48nk2v9a3pSf
+        f7wOz8rllzd1H95+NreVlVWPGoXM0KCtLOWoA8AcWCCJrazLSTCJnf5yt4uXnOOsMO6y6O8yG09e
+        fbhwn1/2bws2l92H99+kt9/f/tTayibo9LsXggTziF9jQgJB/xoZgVz7qiCtdLXUF7HTOyvAt7xJ
+        GWQo6Tp3PUqQTOYHCi6kxrwRXaQJyObVhTkfn1/olpA61pYc4vttPO/jbWWbDFHjXnhMEuqVgbQy
+        IQlSgmh8dqXDJFwZwj6T/pPJQIK4YmQjLYhx0Esh9OZvcxlfSEe2JZpHL53kOdKfv//xBTrs5kjD
+        xOMz823Ot6Y+WmWOybUd0C1X+yRhgUOdMYYGk8OTAjUWZVtnYMOl64AC8pl5qbF1LslXxofGeMQe
+        SZfKZtkG1x5tg80SCTfLfEBfmaXud1fVQJ32AFemMHrzCM+as8pIQNLgmhC7ULrKLHIsHY7mwOgf
+        VwaSN21eGmkz43GLNDNoJyWbXMjkZTozz70PErLKQVtOjA+ETgd5avB9HzOhWbYoLao4q32JroXU
+        IJv56mRXIe1lCKmORfvndxn3H3t0gTWHdpQhIptcxOUO+cxWlnMhp0juaNExARKegdip1eVHk/Fo
+        PLkZj6fDn60sJn8yfz56Ork5fzq9vJpeXtl1dSD9u42Gz3caPmT7nspHNL8pVIPDA8j3gdiDbWrK
+        3b4bA88daLeSQEhmThk80vAb34sBUnJOSM88yBNSU+1bJ6T73Ci9Te1XCbrg+MzctGi0UBNYhS7J
+        I6nLeEXphO8IybODHg2wCWKWwAaYkZW23d7iane0hup7pJD9lnNCLlHYAO2Zd5SZR4Q10nBslkHa
+        gZmtwmQIF5gKGg8Cm/ZoXQwdbhfXqsPOL1wmwggDjP8Ma9wdbc24DOlJzMwHWbZnWKtwhSV3SKZG
+        9HNwt5vt7Qvnj9jN/4Hl9ZE+L4795/W29k978H3LOgL2q5AOiv6jxw0Wh13+GL3cowt1cAMYQtq4
+        o0aBk7AIsqpMSC4Wr9jcMwulOHd5EGwwUx/Y5ZJk48QtLEKmBxTPS4jewJCLsMXEWnwfnF4NJteD
+        4T1w1qPDo5B1jHGhEG5MCA9go2lzDB5WTzD5Ua5HKwQ6ZX3Ld0gLZAkNyKkl7vrysIg6QtOg1zMm
+        LSFs+pt7bXVJQYZr49+68OY0CUKnt8+8CyLoTR0w+lNJM5k5iER0QH5/S0obeH/aTrj/2C0rKqv7
+        71z53bqyChTS8CjZvH42u7fr9TvNkPsZIXBOp++iYYLxt+GKsdNUYtwOehQIyv5mrAwvr+nd5u0z
+        k3yLie30/OnVWHO7FmdOtQk5zU5D9vOE4D81t/tWM2DfYocEcXbZPYw/zE7a+7PryuYix0OXV1eV
+        ZaRFcDjTi99Otd3JA/nhIbdVbdZgtlPbxDyHaNfrvwAAAP//AwDKumDFtAoAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:19:14Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:19:24Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:19:13Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:19:14Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2671f482da27c13-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:19:24 GMT
+      request-id:
+      - req_011CdjuStnp5Engt8hYgaech
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-bc0a7d4513c23f01b8f28cca64311834-c40e184df7067a41-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n<directions>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</directions>\n\nThe
+      following search was attempted but found no matching content:\n<query>\n<title>Competitor
+      Pricing Strategies Q4 2024</title>\n<goals>Identify any internal documents,
+      reports, or analyses that captured competitor pricing strategies during Q4 2024
+      (October\u2013December 2024). Look for pricing benchmarks, competitive intelligence
+      reports, or market analysis summaries. Once found, dig deeper into which competitors
+      were analyzed, what pricing models they used (e.g., tiered, freemium, volume-based),
+      and how those strategies compared to our own. Additional research directions:
+      explore whether any pricing changes by competitors in Q4 2024 influenced our
+      own pricing decisions or sales outcomes.</goals>\n<search_terms>competitor pricing
+      strategies</search_terms>\n<source>internal</source>\n</query>\n\nSuggest alternative
+      research directions that might find relevant information:\n1. Consider different
+      terminology, synonyms, or related concepts\n2. Think about adjacent topics that
+      might contain relevant information\n3. Consider whether a different source might
+      be more appropriate\n4. Focus on broader or narrower aspects of the topic\n\nGenerate
+      follow-up questions that could lead to better search results."}], "model": "claude-sonnet-4-6",
+      "system": "The current datetime is 2026-08-05 16:19:24.685091+00:00\n\nThe user
+      you are helping is foo-300@example.com whose email address is foo-300@example.com.\n\nYou
+      are an expert researcher. Today is 2026-08-05 16:19:24.685114+00:00. Follow
+      these instructions when responding:\n- You may be asked to research subjects
+      that is after your knowledge cutoff, assume the user is right when presented
+      with news.\n- Be highly organized.\n- Suggest solutions that I didn''t think
+      about.\n- Be proactive and anticipate my needs.\n- Treat me as an expert in
+      all subject matter.\n- Mistakes erode my trust, so be accurate and thorough.\n-
+      Value good arguments over authorities, the source is irrelevant.\n- Consider
+      new technologies and contrarian ideas, not just the conventional wisdom.\n-
+      You may use high levels of speculation or prediction, just flag it for me.",
+      "temperature": 0.0, "tool_choice": {"type": "tool", "name": "GeneratedResearchQueryNoResultsReview"},
+      "tools": [{"name": "GeneratedResearchQueryNoResultsReview", "description": "Correctly
+      extracted `GeneratedResearchQueryNoResultsReview` with all the required parameters
+      with correct types", "input_schema": {"properties": {"follow_up_questions":
+      {"description": "List of alternative research directions to try, max of 3.",
+      "items": {"type": "string"}, "title": "Follow Up Questions", "type": "array"},
+      "follow_up_title": {"description": "A short user-facing title for the follow-up
+      directions, shown as progress in the UI", "title": "Follow Up Title", "type":
+      "string"}}, "required": ["follow_up_questions", "follow_up_title"], "title":
+      "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3301'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RU224bNxD9lQFflAAr17IUI9VbbSNGi6K1naJoEwQLihytGHM5m5mhjIUhIP+Q
+        fmG+pOBq5ci9vO3O9cyZw3k0LXmMZmlctNnjVCgl1Oliem4qE7xZmlaa+nQ2u/Qf82/t7/OHu9fN
+        xZmdhz9/unhnKqN9hyUKRWyDpjJMsRisSBC1SU1lHCXFpGb5/vEQr0SxzoKHLuU/16ez+fyPt9ff
+        93Sutzerm3cXi9n1m/nCVCbZtuRdY0K2iv4OBS27zW1G7n+hO5QcVe5wG/ChFE1dVrN8NGuKkR7q
+        3NUadED2Q1TkZDVsEQ5V4CowOg2UBNbEcLuAs9OzBVxS26EGJYYbDi6kxlRHJT9llCHJLN+bt/tK
+        IQ3lI4iNKBUwbjFlrIAY1iHZ5BAYO2IVWDO1T71e/OqUVshfP3+5QoftCnlwvBwQMa6RMTkUUAI3
+        4iozdHtg0DGKZMYKHkL6LpII2GRjL0Eq8Ggj+CCOctIh2mrBKQOuUgKBVh8PHERqGvSw6kE3uJ8E
+        FG0LXz//VUyCQGvFBM52mhmfAI3FSodCRIyhKaAhJD8wHPsTU5mfie6HqVrL96jA4xqqEbEeGBrQ
+        6Sawn3aWtYcVJrcpWaWDaPYBBV7gSXNSwbVlTcgVvCFmFC2fP15dDjVC8lmU+6l06MI6OBDK7FBe
+        QpdXMcgGPYQE0Sru10EMaDn25e8V6MYqONrit/mUMXmpnu0i2uTF2W6/7oamStNxRtGi26bgDWmg
+        lTHi1iZ9AgdbZA3OxsLRKKfC0pOkOiafnVYjbyE1Q5+xdL9fkSeXW0wqkKXgtEd6V+Q2JIrU9CDZ
+        bcAKTI4HOF5aNYHJXhnHrBfrOFJHEopeRmsBAc6yHyixHIRSsT/JkYfXWU0K5sl/0nZ4DJOD0EBs
+        i+CtWmhtWT+IEqOHnDwyWPBhPTwMhWhXGAe9oG0nAvSQkGUTuhPzYVcZZ2NELidhPEF7QZrd7kNl
+        RKmrGa1Qen6cBofgp1wIMcuUYxyNHtWGKAdbHs7f8nF/eWqleyxnYTZfnJfeboO1Y7SFrvp5yOnB
+        z2j9//kOuaUDdhtskW2sX7X/jv/mnW3+6d1VhrIem85en1VGkLfBYa2hEGTK2faW/XBGx6tTN0hm
+        aZpIKxvNbvc3AAAA//8DACG7lDg5BgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:19:26Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:19:31Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:19:25Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:19:26Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2671f90fe28fbb3-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:19:31 GMT
+      request-id:
+      - req_011CdjuTkndHhphoKMksqFzZ
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-f831fb3292e67d2d91720a5307a2ed38-793657cb66db4f50-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Given the
+      following prompt from the user, generate a list of queries to research the topic.\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n\nYour
+      specific directions are:\n<prompt>Previous research goal: Identify any internal
+      documents, reports, or analyses that captured competitor pricing strategies
+      during Q4 2024 (October\u2013December 2024). Look for pricing benchmarks, competitive
+      intelligence reports, or market analysis summaries. Once found, dig deeper into
+      which competitors were analyzed, what pricing models they used (e.g., tiered,
+      freemium, volume-based), and how those strategies compared to our own. Additional
+      research directions: explore whether any pricing changes by competitors in Q4
+      2024 influenced our own pricing decisions or sales outcomes.\n\nFollow-up research
+      directions:\n- Search internal sales, revenue, or finance reports from Q4 2024
+      (October\u2013December 2024) for references to competitive pricing pressure,
+      win/loss analysis, deal discounting patterns, or price objections logged by
+      the sales team \u2014 these often capture competitor pricing intelligence indirectly.\n-
+      Look for market research, analyst reports, or third-party benchmarking studies
+      (e.g., Gartner, Forrester, IDC, or industry-specific sources) published in late
+      2024 or early 2025 that cover pricing trends, competitive landscape, or go-to-market
+      strategies in the relevant industry vertical.\n- Search for internal product,
+      marketing, or strategy team documents using alternative terminology such as
+      ''competitive intelligence,'' ''price benchmarking,'' ''market positioning,''
+      ''rate card comparison,'' ''win/loss review,'' or ''competitive landscape Q4
+      2024'' \u2014 the same data may be stored under a different label or team''s
+      ownership.</prompt>\n\nReturn a maximum of 1 queries, but feel free to return
+      less if the original prompt is clear.\n\n## Source selection\n\n### Internal
+      source query instructions:\n\n- You must return source: internal to indicate
+      these queries are for searching internal organization content.\n- You''ll be
+      searching organization activity and documents to help the user explore and answer
+      this question.\n- Query terms should be short (less than 5 words, ideally 3
+      or less) for a basic embedding and TD/IDF search.\n- If the text seems like
+      a good search on its own, just return the text as entered.\n- Anything related
+      to time (e.g. \"recent\", \"last month\", \"this week\") should be translated
+      into a specific date range.\n- If you see a specific date, use that date range.
+      If you see a general date (e.g. \"recently\", \"last month\"), use the last
+      30 days, respecting the current date and time.\n- If you recognize named entities,
+      surround them with double quotes (e.g. \"Hulk Hogan\", \"Apple\"). Consider
+      if an capitalized word is a named entity.\n\n## Date ranges\n\nIn your response,
+      you may include a starts_at and ends_at date range for each query if the topic
+      or directions indicate a specific time period.\n\nIMPORTANT: Today''s date is
+      2026-08-05. The current year is 2026. Use this as your reference point for all
+      date calculations.\n\n- Reference Point: Calculate all relative dates based
+      on today''s date: 2026-08-05.\n- Format: Return timestamps in ISO 8601 format:
+      YYYY-MM-DDTHH:MM:SS.\n- Boundaries: Start of day is 00:00:00 and End of day
+      is 23:59:59.\n- Default Year: If a month or quarter is specified without a year,
+      use 2026.\n- Absence: If no date range is specified, do not include starts_at
+      or ends_at fields.\n\nRelative Date Logic\n\n- \"today\" \u2192 starts_at: Current
+      Date T00:00:00, ends_at: Current Date T23:59:59\n- \"yesterday\" \u2192 starts_at:
+      Previous Date T00:00:00, ends_at: Previous Date T23:59:59\n- \"this week\" \u2192
+      starts_at: Monday of current week, ends_at: Sunday of current week\n- \"last
+      week\" \u2192 starts_at: Monday of previous week, ends_at: Sunday of previous
+      week\n- \"this month\" \u2192 starts_at: Day 1 of current month, ends_at: Last
+      day of current month\n- \"last month\" \u2192 starts_at: Day 1 of previous month,
+      ends_at: Last day of previous month\n- \"this year\" \u2192 starts_at: Jan 1
+      of current year, ends_at: Dec 31 of current year\n- \"recently\", \"lately\",
+      or vague time \u2192 starts_at: (Current Date - 30 days), ends_at: Current Date\n\nBusiness
+      Date Ranges\n- \"Q1\" / \"first quarter\" \u2192 Jan 1 to Mar 31\n- \"Q2\" /
+      \"second quarter\" \u2192 Apr 1 to June 30\n- \"Q3\" / \"third quarter\" \u2192
+      July 1 to Sept 30\n- \"Q4\" / \"fourth quarter\" \u2192 Oct 1 to Dec 31\n- \"H1\"
+      / \"first half\" \u2192 Jan 1 to June 30\n- \"H2\" / \"second half\" \u2192
+      July 1 to Dec 31\n\nNote: Apply the current year (2026) unless a specific year
+      is mentioned.\n\nExamples (using today''s date 2026-08-05):\nQuery: \"Q3 sales
+      targets\"\nterms: \"sales targets\", starts_at: \"2026-07-01T00:00:00\", ends_at:
+      \"2026-09-30T23:59:59\"\n\nQuery: \"last month''s revenue\"\nterms: \"revenue\",
+      starts_at: \"2026-07-01T00:00:00\", ends_at: \"2026-07-31T23:59:59\"\n\nQuery:
+      \"Q4 2023 results\"\nterms: \"results\", starts_at: \"2023-10-01T00:00:00\",
+      ends_at: \"2023-12-31T23:59:59\"\n\n## Existing Queries and Learnings\n\nThe
+      following existing queries and learnings are provided to help you avoid duplication
+      and improve the specificity of your generated queries.\n\nHere are queries that
+      have already been generated, do not repeat them:\n\n- Internal application:
+      competitor pricing strategies"}], "model": "claude-sonnet-4-6", "system": "The
+      current datetime is 2026-08-05 16:19:31.479940+00:00\n\nThe user you are helping
+      is foo-300@example.com whose email address is foo-300@example.com.\n\nYou are
+      an expert researcher. Today is 2026-08-05 16:19:31.479978+00:00. Follow these
+      instructions when responding:\n- You may be asked to research subjects that
+      is after your knowledge cutoff, assume the user is right when presented with
+      news.\n- Be highly organized.\n- Suggest solutions that I didn''t think about.\n-
+      Be proactive and anticipate my needs.\n- Treat me as an expert in all subject
+      matter.\n- Mistakes erode my trust, so be accurate and thorough.\n- Value good
+      arguments over authorities, the source is irrelevant.\n- Consider new technologies
+      and contrarian ideas, not just the conventional wisdom.\n- You may use high
+      levels of speculation or prediction, just flag it for me.", "temperature": 0.0,
+      "tool_choice": {"type": "tool", "name": "IterableGeneratedResearchQuery"}, "tools":
+      [{"name": "IterableGeneratedResearchQuery", "description": "Correct segmentation
+      of `GeneratedResearchQuery` tasks", "input_schema": {"$defs": {"GeneratedResearchQuery":
+      {"properties": {"title": {"description": "A user-facing title for the query,
+      it''ll be prefaced with ''Reading about'' in the UI", "title": "Title", "type":
+      "string"}, "terms": {"description": "The search terms", "title": "Terms", "type":
+      "string"}, "starts_at": {"anyOf": [{"format": "date-time", "type": "string"},
+      {"type": "null"}], "default": null, "description": "The earliest datetime to
+      allow results", "title": "Starts At"}, "ends_at": {"anyOf": [{"format": "date-time",
+      "type": "string"}, {"type": "null"}], "default": null, "description": "The latest
+      datetime to allow results", "title": "Ends At"}, "goals": {"description": "First
+      talk about the goal of the research that this query is meant to accomplish,
+      then go deeper into how to advance the research once the results are found,
+      mention additional research directions. Be as specific as possible, especially
+      for additional research directions.", "title": "Goals", "type": "string"}, "source":
+      {"$ref": "#/$defs/ResearchSource", "default": "internal", "description": "The
+      source to use for this research query"}}, "required": ["title", "terms", "goals"],
+      "title": "GeneratedResearchQuery", "type": "object"}, "ResearchSource": {"enum":
+      ["internal", "slack"], "title": "ResearchSource", "type": "string"}}, "description":
+      "Correct segmentation of `GeneratedResearchQuery` tasks", "properties": {"tasks":
+      {"description": "Correctly segmented list of `GeneratedResearchQuery` tasks",
+      "items": {"$ref": "#/$defs/GeneratedResearchQuery"}, "title": "Tasks", "type":
+      "array"}}, "title": "IterableGeneratedResearchQuery", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '8108'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RU227cNhD9lQEfmhetu+tbYL0lRe0WKFCk2TQIikDgkrMSHYqjzAy9WBj77wG5
+        lh3XCaAXzYXnzDlD3puRPEbTGhdt9rgQSgl1cb64NI0J3rRmlL5brla/+dv84Sas/5Lw6fZjvnj9
+        8fzfK9MY3U9YqlDE9mgawxRLwIoEUZvUNMZRUkxq2v/u53olil0WnFHKf+6Wq+v17vqN/fD7zcV6
+        +8f7q2vqV5/4rWlMsmPp+1OR7SbiDSZkq+j/QUHLbniXkffltDRlNe29UStf5AgZtFJ6dw6ny9Nz
+        cDROqEHDHUJIijGGHpND+AV2If0aSQRssnEvQcqEyKMUhX7W9tg0cXAh9aYxPdlYet5XbrAlri2c
+        bASxEaWBbUg2OWyAGETLLP0ePLk8YlKBLdMIM2MdrALjFrkCfs/kARMmRpHM2IBHG8EHcZST1pTV
+        Ai1NLUagzS06DVQixE/0Ge8C7uQE1kMQ+FoEhSwoYGOlXvGKGiFRpH4PSiCZt9bhd8Qr19HuIZHC
+        BiHaDUb0YAVezcSJZ96vYJMVREOM4OykmX883jPBQ/KB0Wncn8DfJbClnHwDPvTgESesahPshuCG
+        x+OIBXbICIVnoIS+gV0hO2PUq1AGwDq3b8AmD7sBdUAu4fDoVECBkLYxFz4eKDPQLj2e5NEFKQJX
+        c4vfQFkdjbVttvUE3ngfChUbgR/2GI6jleYWHJPI4sl4m/ZPdnmrFnZBh2IcpowF7GGrgHEintdI
+        BwSxI8KEHMgX34IvImz3j8tReL3YHGKIJFoTAlaVwyYr1hNeenliGiOU2ZXLNq97ialllc6qaU2Z
+        e7FaLpar9XLZ1s80BpN/lj9dnK3Wp2ftxVV7cWUOnw+NcTZG5Hqxjy/IUSdzOHwuCDR1jFYoPX9b
+        akLwa/XJtCnH+BD0qDaUO3qM5fp6tffH96NT+oJJTHv6+vKsYLsBO8doiy/d85LlnGe0/me5ubcg
+        4DTgiGxjdzG+rH/Krob/Zw+NoazP+F1eNUaQ74LDTkMRqMidvGVfH8OHzel6JNOaPtLGRnM4fAMA
+        AP//AwCJttmr+AUAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:19:32Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:19:38Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:19:31Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:19:32Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2671fbbaa6ad62d-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:19:38 GMT
+      request-id:
+      - req_011CdjuUFrcXuyhCXbKj2K6n
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-606bb6aa0552ff79c883bc2d9450d451-e963969e0ffeda74-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n<directions>Previous
+      research goal: Identify any internal documents, reports, or analyses that captured
+      competitor pricing strategies during Q4 2024 (October\u2013December 2024). Look
+      for pricing benchmarks, competitive intelligence reports, or market analysis
+      summaries. Once found, dig deeper into which competitors were analyzed, what
+      pricing models they used (e.g., tiered, freemium, volume-based), and how those
+      strategies compared to our own. Additional research directions: explore whether
+      any pricing changes by competitors in Q4 2024 influenced our own pricing decisions
+      or sales outcomes.\n\nFollow-up research directions:\n- Search internal sales,
+      revenue, or finance reports from Q4 2024 (October\u2013December 2024) for references
+      to competitive pricing pressure, win/loss analysis, deal discounting patterns,
+      or price objections logged by the sales team \u2014 these often capture competitor
+      pricing intelligence indirectly.\n- Look for market research, analyst reports,
+      or third-party benchmarking studies (e.g., Gartner, Forrester, IDC, or industry-specific
+      sources) published in late 2024 or early 2025 that cover pricing trends, competitive
+      landscape, or go-to-market strategies in the relevant industry vertical.\n-
+      Search for internal product, marketing, or strategy team documents using alternative
+      terminology such as ''competitive intelligence,'' ''price benchmarking,'' ''market
+      positioning,'' ''rate card comparison,'' ''win/loss review,'' or ''competitive
+      landscape Q4 2024'' \u2014 the same data may be stored under a different label
+      or team''s ownership.</directions>\n\nThe following search was attempted but
+      found no matching content:\n<query>\n<title>Q4 2024 competitive intelligence
+      & win/loss analysis</title>\n<goals>Search for internal sales, finance, or strategy
+      documents from Q4 2024 that reference competitive pricing pressure, deal discounting
+      patterns, price objections, or win/loss reviews. This query uses alternative
+      terminology to surface documents that may not be labeled as ''competitor pricing''
+      but still capture competitive pricing intelligence indirectly. Once found, dig
+      deeper into which competitors were mentioned, what pricing models they used,
+      and whether their strategies influenced our own pricing decisions or sales outcomes
+      in Q4 2024. Additional research directions: cross-reference any win/loss data
+      with revenue or finance reports from the same period to identify patterns in
+      deal discounting or lost deals attributed to competitor pricing.</goals>\n<search_terms>competitive
+      intelligence win/loss pricing</search_terms>\n<source>internal</source>\n</query>\n\nPrevious
+      queries in this research session:\n\n- internal: \"competitor pricing strategies\"
+      (no results)\n\nSuggest alternative research directions that might find relevant
+      information:\n1. Consider different terminology, synonyms, or related concepts\n2.
+      Think about adjacent topics that might contain relevant information\n3. Consider
+      whether a different source might be more appropriate\n4. Focus on broader or
+      narrower aspects of the topic\n\nGenerate follow-up questions that could lead
+      to better search results."}], "model": "claude-sonnet-4-6", "system": "The current
+      datetime is 2026-08-05 16:19:38.150529+00:00\n\nThe user you are helping is
+      foo-300@example.com whose email address is foo-300@example.com.\n\nYou are an
+      expert researcher. Today is 2026-08-05 16:19:38.150562+00:00. Follow these instructions
+      when responding:\n- You may be asked to research subjects that is after your
+      knowledge cutoff, assume the user is right when presented with news.\n- Be highly
+      organized.\n- Suggest solutions that I didn''t think about.\n- Be proactive
+      and anticipate my needs.\n- Treat me as an expert in all subject matter.\n-
+      Mistakes erode my trust, so be accurate and thorough.\n- Value good arguments
+      over authorities, the source is irrelevant.\n- Consider new technologies and
+      contrarian ideas, not just the conventional wisdom.\n- You may use high levels
+      of speculation or prediction, just flag it for me.", "temperature": 0.0, "tool_choice":
+      {"type": "tool", "name": "GeneratedResearchQueryNoResultsReview"}, "tools":
+      [{"name": "GeneratedResearchQueryNoResultsReview", "description": "Correctly
+      extracted `GeneratedResearchQueryNoResultsReview` with all the required parameters
+      with correct types", "input_schema": {"properties": {"follow_up_questions":
+      {"description": "List of alternative research directions to try, max of 3.",
+      "items": {"type": "string"}, "title": "Follow Up Questions", "type": "array"},
+      "follow_up_title": {"description": "A short user-facing title for the follow-up
+      directions, shown as progress in the UI", "title": "Follow Up Title", "type":
+      "string"}}, "required": ["follow_up_questions", "follow_up_title"], "title":
+      "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5088'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SU/24URwzHX8WafwLSJs2lgSj3H5C2EhUtl5QWgdDJN+PbHTI7XmzPXY4oEu/Q
+        PiFPUs1ejgRK/9ud8fjHx1/72vUcKLmp8wlLoH3lnMn2j/cfu8bF4Kau13Z+OJk8C+/Lq/7JT08+
+        XJ6+OHr1+vnsDb5xjbPNQNWKVLEl1zjhVA9QNaphNtc4z9kom5u+vd7ZG3OaF6VdlPpf5oeTs9XR
+        6fNfH8ezH/n10bOTk35mP8c/XOMy9vXdL5RJ0CickxKK72aFZPMbn5OWZHpOq0jr6jQPxdz02i05
+        JV7PyzC3aGNmT5KRZLS4IsDcJlIwhpI9r0hgdgxHh0fH4LkfyKKxwCDRx9xCzEYpxZayr3nfef5Q
+        SC1yVjd96y7GtICuxigJlIt4Uvj86R/Q4jtAhaEsUvRAKDnmVsFjSmCCWb3EwbSBQUgVhBKhkjZw
+        gXjxQ8yhqMnmS0YBDRfVAB7QQXvQwJ+UgzTwEkNI1MBL4WW0vyilhw2wwJoWULOLK1Lg5feKHLAl
+        haVwD7974wXJ509/n5GnfkGyRVMrMQYhz1lNijdYd2j3vCmsSQh8h9JWp5gDdLwG6yjehRqld2u6
+        9VOEAoQi9fa2EQeu2SGt/Eekz85fjNElaAO+qHFPUuH6Ci2zVWIsoFibO8JN3N5WtWtw0RrFSHqF
+        FC8J9hKr1cLu6mj2YK9mS9Cj+a7+hqieSzYQGttezxYltGTAi/fkqw6avTH6QD4uo79Puap4KwXr
+        SGnbcxwfYdrVBLw0ylCnBmOuliDRd6QGrXDJYT/RitJ3dQm0ogzrjjJkhiVLP/odWAzoKqrpPaBL
+        FlgwSoBA/lIbmD09hwezgmIkaQNPK6OKdDtWD0dVUjYcxT4ipivyZRwltTqX7QYC+9JTtm94s8Bs
+        Uj8fgZAJVzz1oYJV8fS4AS19jxI/0hdk1fHAGmvAmNvmTqZ1PorQmESPckkGYZOxj17HCUOxqnCE
+        hTAGEljsihlIRi6VloyF3WvIF/TKKQa0b1K5N3fbtNeokKkuDo/DVr8xA0JdfQETZ7qlf+De3TSu
+        apGk7qXbPRiikDd3c/OucWo8zIVQOX+9IccLrXqrm2eaS0q3h4EMY9LdWRl38PR6u/7mxpdUl9Lk
+        ZHJaY/uO5l5obN/8a5PD3b0Qhv+7272tEWjoqCfBNH/U/9f+7nbSfXt70zgudv/o6PS0cUqyip7m
+        FisgtwUoYdzlS5Ja+rwldlPXJl5gcjc3/wIAAP//AwDfKewHvgYAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:19:39Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:19:45Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:19:38Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:19:39Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2671fe56cb17a4d-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:19:45 GMT
+      request-id:
+      - req_011CdjuUkUJtpAcxxVrxSCAP
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-f73fc230a2a515dd714cf38bf32f40d7-c1ebf75afaf3db12-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 16384, "messages": [{"role": "user", "content": "Here are
+      the key learnings that have been extracted from the research:\n<learnings>\n\n</learnings>"}],
+      "model": "claude-sonnet-4-6", "system": "You are an AI assistant designed to
+      provide answers in a professional context.\nDo not identify yourself. You are
+      a nameless entity here to assist users with their work.\nYour purpose is to
+      provide brief, informative response to the user''s query, grounded in their
+      specific work context.\n\nThe current datetime is 2026-08-05 16:19:45.458624+00:00\n\nThe
+      user you are helping is foo-300@example.com whose email address is foo-300@example.com.\n\nGuidelines
+      for your responses:\n\n1. Response Formulation:\n- Analyze the question and
+      identify key points to address.\n- Incorporate relevant information from the
+      provided context.\n- You must identify and answer any questions directly, thoroughly,
+      and accurately.\n- If you cannot answer a question with the information provided,
+      clearly state that you cannot answer and what additional information is needed.\n-
+      Use a professional, helpful tone.\n- Always speak in the third person.\n- Structure
+      your response with explanatory sections using markdown headings that organize
+      findings thematically.\n- Explain WHY findings matter and HOW they relate to
+      each other \u2014 synthesize a coherent narrative, not just an enumeration of
+      facts.\n- Draw on the provided source content to add depth and context beyond
+      the extracted learnings.\n\n2. Information Boundaries:\n- Clearly state when
+      you need additional context to provide accurate information.\n- Be explicit
+      about what types of information you can and cannot access.\n- Suggest how the
+      user might find additional information if needed.\n\n3. Citations:\n- You must
+      provide citations for any external sources referenced in your responses.\n-
+      When citing sources in your answer, you must use a special footnote format.\n-
+      Citations should be placed inline, at the end of the sentence, bullet point,
+      or paragraph where the information is used. Never place them at the end of the
+      entire response as a reference list.\n- Users find inline citations more readable
+      than citations at the end of the answer.\n- Each source is shown with a short
+      token inside its `<id>` tag (for example `S1`). To cite a source, enclose that
+      exact token in square brackets preceded by a caret symbol (^). The format should
+      look like this: [^S1]\n- Only ever cite the exact token shown in a source''s
+      `<id>`. Never invent a token or cite one that does not appear in a source.\n-
+      Here is a full example of the correct format:\n<citations_example>According
+      to recent studies, climate change is accelerating.[^S1]\nThe data suggests a
+      significant correlation between variables.[^S2]\nMultiple researchers have confirmed
+      these findings.[^S1]</citations_example>\n- Never end your response with a list
+      of references or citations. They must be inline.\n\n4. Formatting:\n- Use markdown
+      formatting to enhance readability (e.g., bold, italics, code blocks, lists).\n-
+      Never include a title or header to begin your response.\n- If a list item is
+      a heading (i.e. it ends with a colon), nest child items in a new list using
+      the header list item as the parent list container.\n- Always ensure child list
+      items include four spaces of indentation.\n- Never end your response with a
+      list of references or citations, they must be inline. For example, DO NOT end
+      with:\n<bad_citations>According to recent studies, climate change is accelerating.[^S1]\nThe
+      data suggests a significant correlation between variables.[^S2]\nMultiple researchers
+      have confirmed these findings.[^S1]\n\n[^S1] Source 1\n[^S2] Source 2\n</bad_citations>\n\nNote:
+      This research report will be sent to the requester and CC''d to: colleague@example.com,
+      manager@example.com, manager2@example.com.\nWhen users submit a research question
+      with others in To or CC, those recipients automatically receive the research
+      report.\nDo not mention this in your response unless specifically asked about
+      it.\n\nThe user''s query is: Market analysis request\n\nPlease research competitor
+      pricing strategies in Q4 2024.", "temperature": 0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4146'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RV224bRwz9FWL80ggr13YuQPXmOGnqFgmSOGnQ1oVAzVCraWaHWw5HthoY6Ef0
+        C/slBVdaWU3Tp5WGHF4OD898ch0HSm7mfMIaaFo4Z9Lpo+kT17gY3Mx1pZ2fnJ5ehN/qj9+/f3PW
+        1Z++a3++4Ld/vPSucbrpybyoFGzJNU442QGWEotiVtc4z1kpq5v98mn0V7o1y/CZuaMjuOCuJ43K
+        Aq8l+phbuFJBpTZSgZjhzSM4Ozl7dJ2v8/u8ZNGaUSltGtAVgVAhFL8CzzlUrxQgxACZFYS0SgbM
+        G6BbFfSKi0SQCCXH3BZggcJVPEGHShIxgTIEwRtYCnfHcF4ALUNN2kBUiGUI3HMp0UIpQy+8joEA
+        IaDiNEhck+XEtCmxAC/B3zfY7xosX2oQUEFXsYDGjo6t3aMj+LBChfMQokbOmODSEOjQ/sFlgVdE
+        gYL5vuMhUSKlbZR9Ceh9lQPElpwS31gZN1xTgAXBilK/rGlmgaYwmVz15OMy+oPay2Ri7S4o+1WH
+        8hGwxZiLwld03B43kLGjMPhjtr5YIOZQi8oGCrUdZS0PttEvx3MWsFCksCbR6DFNJgZI8dzTGPgK
+        8aqxWWJMDXSY6xK9Vom5bWAZM2Zvgysk6+hpzPGCuBXsV9Fvo00mY7xXLLqC844kemzg+cvn5w20
+        iReYdndHGobYUS6R8zDGmJWEik4mDZTqV4Bldp0BAKbwLBbPNevhYDEHI0fHu8l5DJQ9jVfeRRIK
+        sC7HsEyoU7u358ewm2V0fVpzSAS8XJJ1PWBLOUx5Od0QCgTCe2crniBmL4RlOwchW4yhD6GEGtc7
+        5kYW+L2iKEnZ8e2qti0V26JXdKtwpdQPpncMLeqKZKBQJm9rL5uB9J/TCvteGP3KQBDbUM9dRzlQ
+        GAh2erzFuLP74/pOJvD3n3/Bsyjk9XBlbmhRohJgDVFLAwXTsDVKKcXWEAVlTmUc74XghnMDP6RK
+        DTzlbsGCDxrDwdei3JERU40tdFOu85lVc0WmHl+oZ0/V7TaZpvQsus/2AkUzSQPfshg57Ofls4sH
+        4Hk9DGu/3ONoVSiHcp0fWt5LK8TIsZWhssv6IeavE5eDHTaYrYWLty9NgagMArUPvgXFb7x91CSj
+        ww147LUK7dG0uY9lHAJoQ3mdjC73anavOIOG3+qWSMuYKcBOcXsU7MjIA4UBoWMhUJSWjD/G/1IX
+        w1Ngmfe9eMymOYFSXNsOHLu7XxtXlPu5cZazmznKYW7i7XaGQr9XK9XNck1pdxgGTSjjWR3eodkn
+        F3Nfda78kXJxs2/OHjfOGx3nthPW1fzfHiejXQjD/9nGu5aA+hV1JJjmj7v/+t9bT1efW+8ax1UP
+        jx4+OWncTrzmGknczBlmASXYS5yXJNb5vCV2M7cVKnd39w8AAAD//wMAdcWhccEHAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:19:46Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:19:54Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:19:46Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:19:46Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2672012fda7274d-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:19:54 GMT
+      request-id:
+      - req_011CdjuVHcJsZcAdQTxE7u6k
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-72d1eb389b132b241701e80e563eb055-2a22787355a5aab5-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n<directions>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</directions>\n\nThe
+      following search was attempted but found no matching content:\n<query>\n<title>Market
+      Analysis Q4 2024</title>\n<goals>Surface internal market analysis documents
+      from Q4 2024 that may contain broader context around competitor positioning,
+      pricing trends, and market dynamics. The goal is to understand the competitive
+      landscape as it was assessed internally during that period. Once results are
+      found, cross-reference with any sales or revenue data from the same period to
+      identify correlations. Additional research directions: look for any win/loss
+      analysis reports or customer feedback that references competitor pricing.</goals>\n<search_terms>market
+      analysis</search_terms>\n<source>internal</source>\n</query>\n\nPrevious queries
+      in this research session:\n\n- internal: \"competitor pricing strategies\" (no
+      results)\n\n- internal: \"competitive intelligence win/loss pricing\" (no results)\n\nSuggest
+      alternative research directions that might find relevant information:\n1. Consider
+      different terminology, synonyms, or related concepts\n2. Think about adjacent
+      topics that might contain relevant information\n3. Consider whether a different
+      source might be more appropriate\n4. Focus on broader or narrower aspects of
+      the topic\n\nGenerate follow-up questions that could lead to better search results."}],
+      "model": "claude-sonnet-4-6", "system": "The current datetime is 2026-08-05
+      16:19:54.555338+00:00\n\nThe user you are helping is foo-300@example.com whose
+      email address is foo-300@example.com.\n\nYou are an expert researcher. Today
+      is 2026-08-05 16:19:54.555378+00:00. Follow these instructions when responding:\n-
+      You may be asked to research subjects that is after your knowledge cutoff, assume
+      the user is right when presented with news.\n- Be highly organized.\n- Suggest
+      solutions that I didn''t think about.\n- Be proactive and anticipate my needs.\n-
+      Treat me as an expert in all subject matter.\n- Mistakes erode my trust, so
+      be accurate and thorough.\n- Value good arguments over authorities, the source
+      is irrelevant.\n- Consider new technologies and contrarian ideas, not just the
+      conventional wisdom.\n- You may use high levels of speculation or prediction,
+      just flag it for me.", "temperature": 0.0, "tool_choice": {"type": "tool", "name":
+      "GeneratedResearchQueryNoResultsReview"}, "tools": [{"name": "GeneratedResearchQueryNoResultsReview",
+      "description": "Correctly extracted `GeneratedResearchQueryNoResultsReview`
+      with all the required parameters with correct types", "input_schema": {"properties":
+      {"follow_up_questions": {"description": "List of alternative research directions
+      to try, max of 3.", "items": {"type": "string"}, "title": "Follow Up Questions",
+      "type": "array"}, "follow_up_title": {"description": "A short user-facing title
+      for the follow-up directions, shown as progress in the UI", "title": "Follow
+      Up Title", "type": "string"}}, "required": ["follow_up_questions", "follow_up_title"],
+      "title": "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3400'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3xU224cNwz9FUIv2wLj1OvGabpvqVukD02R2EAbwDAGtMSdla2RFJKyvTAW6Ef0
+        C/slhTQ7vqRJHyVSh+ccUrw3Y3IUzMrYgMXRgaQYSQ9eHrwynfHOrMwoQ3+4XJ64q/LH9t12/JW3
+        798mm5fHr7PpjG4z1SwSwYFMZziFeoEiXhSjms7YFJWimtX5/ZyvKYW+CM1V6rn0h8sf1pe3/PHo
+        6s3HY7777XTQP39Z5jvTmYhjffeWIjEquVMSQrabD4V4+3s6JSlB5ZRuPN1W0JiLmtW9WacQ0m1f
+        cq9eG7M3QYkjqr8hmFHgZ89k1acosE4MH17C0eHRSzhJYyb1mhjes7c+DqZ7AvmpkLRHZnVuziYk
+        Hxt8AEmFLT3HEwwkkInXiUeMloApJ1bpwBEG4MZfOkgM2WcKPhJIGUdkTwK6QYURt+Cja4TDFpjW
+        xFSh7CPZPJGFzCRSmDpwXmwqUdstauU4lQlJtBUXsH4Ks7cEKICwRlvh/vnrb1DeghKPAsFfEyye
+        S5qILzpYNB0NtOEsWpHFXB4wZ043GBYvTGd+4oSOIuiGYN8ITUB3nzn4jY+uSCXw4FYTBkyBUEg6
+        IOTo4yBgMQRQxiiWfa6pievZEeRyGbzFfZc5jXNbvm09+oJ94odYjfmS/vMn+XU4Lx5e2Q3GgRpy
+        NeQM8ey781nCY5oyRSczh71PT0AfLBOtEz9sm2Vfm7IiFXPtY5uqpiG5YvUA3RVaitrI+5hCGraP
+        g2Qxa2F65F6/6p0+HbD/a/78rG2RKrYyBYvs6qGCMVoFpki3GCaIKTLJrH9w1rl3YJq+dHk1/ccF
+        +Agnp+8gJq2NzpxyEgzgki0jxX2H92ofvAJH9lpemItdZ+pIENdlsF8+kzSz2110RjTlngklxedr
+        qQWEPpX6t8wqlhD2l44UfZD5rrTFt7qfdk6v6ZrqQlh+f3xUa9sN9ZapjV3/POVwjjOh+1psflsr
+        UN7QSIyhPx7/m/8YXW4+j+46k4o+vTp6/WNnhPjGW+rVV4NMXdgO2bUFul8r/UDJrMwQ0iUGs9v9
+        CwAA//8DAKERChAzBgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:19:55Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:20:01Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:19:55Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:19:55Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a267204bfc4ac105-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:20:01 GMT
+      request-id:
+      - req_011CdjuVxXd2aKRCxUya8Js2
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-4e70f004ca8fcbaf19fa2c1eb66cf268-988160db87307e55-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Given the
+      following prompt from the user, generate a list of queries to research the topic.\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n\nYour
+      specific directions are:\n<prompt>Previous research goal: Surface internal market
+      analysis documents from Q4 2024 that may contain broader context around competitor
+      positioning, pricing trends, and market dynamics. The goal is to understand
+      the competitive landscape as it was assessed internally during that period.
+      Once results are found, cross-reference with any sales or revenue data from
+      the same period to identify correlations. Additional research directions: look
+      for any win/loss analysis reports or customer feedback that references competitor
+      pricing.\n\nFollow-up research directions:\n- Search internal sources for Q4
+      2024 sales performance reports, deal reviews, or pipeline summaries that may
+      indirectly reference competitor pricing pressure, discounting patterns, or lost
+      deals citing price as a factor \u2014 try terms like ''Q4 2024 sales review'',
+      ''deal lost price'', or ''discount approval''.\n- Broaden the search to external
+      sources (industry reports, press releases, earnings call transcripts, or trade
+      publications from Q4 2024) for competitor pricing signals \u2014 try terms like
+      ''[competitor name] pricing change 2024'', ''SaaS/[industry] pricing trends
+      Q4 2024'', or ''competitor discount strategy''.\n- Search internal sources using
+      finance or product-adjacent terminology that may capture pricing context indirectly
+      \u2014 try terms like ''Q4 2024 pricing model'', ''rate card'', ''contract renewal
+      terms'', ''competitive discount'', or ''price objection'' in CRM notes, proposal
+      documents, or product strategy decks.</prompt>\n\nReturn a maximum of 1 queries,
+      but feel free to return less if the original prompt is clear.\n\n## Source selection\n\n###
+      Internal source query instructions:\n\n- You must return source: internal to
+      indicate these queries are for searching internal organization content.\n- You''ll
+      be searching organization activity and documents to help the user explore and
+      answer this question.\n- Query terms should be short (less than 5 words, ideally
+      3 or less) for a basic embedding and TD/IDF search.\n- If the text seems like
+      a good search on its own, just return the text as entered.\n- Anything related
+      to time (e.g. \"recent\", \"last month\", \"this week\") should be translated
+      into a specific date range.\n- If you see a specific date, use that date range.
+      If you see a general date (e.g. \"recently\", \"last month\"), use the last
+      30 days, respecting the current date and time.\n- If you recognize named entities,
+      surround them with double quotes (e.g. \"Hulk Hogan\", \"Apple\"). Consider
+      if an capitalized word is a named entity.\n\n## Date ranges\n\nIn your response,
+      you may include a starts_at and ends_at date range for each query if the topic
+      or directions indicate a specific time period.\n\nIMPORTANT: Today''s date is
+      2026-08-05. The current year is 2026. Use this as your reference point for all
+      date calculations.\n\n- Reference Point: Calculate all relative dates based
+      on today''s date: 2026-08-05.\n- Format: Return timestamps in ISO 8601 format:
+      YYYY-MM-DDTHH:MM:SS.\n- Boundaries: Start of day is 00:00:00 and End of day
+      is 23:59:59.\n- Default Year: If a month or quarter is specified without a year,
+      use 2026.\n- Absence: If no date range is specified, do not include starts_at
+      or ends_at fields.\n\nRelative Date Logic\n\n- \"today\" \u2192 starts_at: Current
+      Date T00:00:00, ends_at: Current Date T23:59:59\n- \"yesterday\" \u2192 starts_at:
+      Previous Date T00:00:00, ends_at: Previous Date T23:59:59\n- \"this week\" \u2192
+      starts_at: Monday of current week, ends_at: Sunday of current week\n- \"last
+      week\" \u2192 starts_at: Monday of previous week, ends_at: Sunday of previous
+      week\n- \"this month\" \u2192 starts_at: Day 1 of current month, ends_at: Last
+      day of current month\n- \"last month\" \u2192 starts_at: Day 1 of previous month,
+      ends_at: Last day of previous month\n- \"this year\" \u2192 starts_at: Jan 1
+      of current year, ends_at: Dec 31 of current year\n- \"recently\", \"lately\",
+      or vague time \u2192 starts_at: (Current Date - 30 days), ends_at: Current Date\n\nBusiness
+      Date Ranges\n- \"Q1\" / \"first quarter\" \u2192 Jan 1 to Mar 31\n- \"Q2\" /
+      \"second quarter\" \u2192 Apr 1 to June 30\n- \"Q3\" / \"third quarter\" \u2192
+      July 1 to Sept 30\n- \"Q4\" / \"fourth quarter\" \u2192 Oct 1 to Dec 31\n- \"H1\"
+      / \"first half\" \u2192 Jan 1 to June 30\n- \"H2\" / \"second half\" \u2192
+      July 1 to Dec 31\n\nNote: Apply the current year (2026) unless a specific year
+      is mentioned.\n\nExamples (using today''s date 2026-08-05):\nQuery: \"Q3 sales
+      targets\"\nterms: \"sales targets\", starts_at: \"2026-07-01T00:00:00\", ends_at:
+      \"2026-09-30T23:59:59\"\n\nQuery: \"last month''s revenue\"\nterms: \"revenue\",
+      starts_at: \"2026-07-01T00:00:00\", ends_at: \"2026-07-31T23:59:59\"\n\nQuery:
+      \"Q4 2023 results\"\nterms: \"results\", starts_at: \"2023-10-01T00:00:00\",
+      ends_at: \"2023-12-31T23:59:59\"\n\n## Existing Queries and Learnings\n\nThe
+      following existing queries and learnings are provided to help you avoid duplication
+      and improve the specificity of your generated queries.\n\nHere are queries that
+      have already been generated, do not repeat them:\n\n- Internal application:
+      competitor pricing strategies\n\n- Internal application: market analysis\n\n-
+      Internal application: competitive intelligence win/loss pricing"}], "model":
+      "claude-sonnet-4-6", "system": "The current datetime is 2026-08-05 16:20:01.452318+00:00\n\nThe
+      user you are helping is foo-300@example.com whose email address is foo-300@example.com.\n\nYou
+      are an expert researcher. Today is 2026-08-05 16:20:01.452331+00:00. Follow
+      these instructions when responding:\n- You may be asked to research subjects
+      that is after your knowledge cutoff, assume the user is right when presented
+      with news.\n- Be highly organized.\n- Suggest solutions that I didn''t think
+      about.\n- Be proactive and anticipate my needs.\n- Treat me as an expert in
+      all subject matter.\n- Mistakes erode my trust, so be accurate and thorough.\n-
+      Value good arguments over authorities, the source is irrelevant.\n- Consider
+      new technologies and contrarian ideas, not just the conventional wisdom.\n-
+      You may use high levels of speculation or prediction, just flag it for me.",
+      "temperature": 0.0, "tool_choice": {"type": "tool", "name": "IterableGeneratedResearchQuery"},
+      "tools": [{"name": "IterableGeneratedResearchQuery", "description": "Correct
+      segmentation of `GeneratedResearchQuery` tasks", "input_schema": {"$defs": {"GeneratedResearchQuery":
+      {"properties": {"title": {"description": "A user-facing title for the query,
+      it''ll be prefaced with ''Reading about'' in the UI", "title": "Title", "type":
+      "string"}, "terms": {"description": "The search terms", "title": "Terms", "type":
+      "string"}, "starts_at": {"anyOf": [{"format": "date-time", "type": "string"},
+      {"type": "null"}], "default": null, "description": "The earliest datetime to
+      allow results", "title": "Starts At"}, "ends_at": {"anyOf": [{"format": "date-time",
+      "type": "string"}, {"type": "null"}], "default": null, "description": "The latest
+      datetime to allow results", "title": "Ends At"}, "goals": {"description": "First
+      talk about the goal of the research that this query is meant to accomplish,
+      then go deeper into how to advance the research once the results are found,
+      mention additional research directions. Be as specific as possible, especially
+      for additional research directions.", "title": "Goals", "type": "string"}, "source":
+      {"$ref": "#/$defs/ResearchSource", "default": "internal", "description": "The
+      source to use for this research query"}}, "required": ["title", "terms", "goals"],
+      "title": "GeneratedResearchQuery", "type": "object"}, "ResearchSource": {"enum":
+      ["internal", "slack"], "title": "ResearchSource", "type": "string"}}, "description":
+      "Correct segmentation of `GeneratedResearchQuery` tasks", "properties": {"tasks":
+      {"description": "Correctly segmented list of `GeneratedResearchQuery` tasks",
+      "items": {"$ref": "#/$defs/GeneratedResearchQuery"}, "title": "Tasks", "type":
+      "array"}}, "title": "IterableGeneratedResearchQuery", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '8159'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RU224bNxD9lQFf/LIyJEV24X0z/BC0jdEkdZ0CRbAYkSOJEZfczAzlCoaAfkS/
+        sF9SkLo4ihFgX3au55yZ4bPpk6NgWmMDZkcjSTGSjmaja9MY70xrell248nkzn3Jnx4fH/5455a3
+        s1u6+XPy9Ggao9uBShSJ4JJMYziFYkARL4pRTWNsikpRTfvX8zFeUwpdFjp2Kf+59Fl8Wr2bPdxt
+        vv56l/Mvy/f36/f9vWlMxL7k/azEOA/0liIxKrmPJIRsVx8y8bZUi0NW0z4bRVnLvqXXCunDDKbj
+        6QwG9tbHJVTqUKqARXZQYDJaBaZITxgKO+JeTGt+lOK82JQryWXCUEJ/z7xAS+CjEkcMsPARo6UG
+        Bk4uW20gMQgGEnDJ5p6iCiw49XAEqCtUsDhoZjqhrSL+reCj80xWwxb+++dfkGxXgPKCSZpXRKDS
+        KPZ+IPXqN3RCDjgMnDYYpOIq3QjS/AtZ9SlCTEoCPsLdx3tgsomd7OPSkAQDOLJruYTfoiVgkhxU
+        AJlgkXJ0DVhOIiOmBTGVkCevK8C4BUcYgGnj6anW8wMFHwkk9z2yJwFN4B1F9YstDKhFzVK61D0x
+        OSAu+gxMIkWwxCdyxT6nFW584ku4dc4XUrXxfmtgr6VPUVoIKa1hsSdXBgWiRdVlAWvXlfZhlt8M
+        rs7qhd/5otgVxiVJA1gxM1MoYyr8L75T+qKUv3g1lYuT6FW5kESrdFWeefbBAYINhExFRFtXJi3O
+        Rn3E5LYRe2/rOA+rdmkaIymzLfdx3NhiU2SVDtW0psSNJuPRePIwHrf1M42h6M7809GbycP0TXt1
+        017dmN3nXWMshkBcb3F/9HuxzW73uXRIQ8eEkuL5c1AdQl9z0dO0MYdwMDpS9OXG9rZcH5z2eX/y
+        naY1RTHt9KfrceltV9RZJiziduchJz8Tuh/5jrmlAw0r6okxdFf96/gX72T1vXfXmJT1DN/1rDFC
+        vPGWOvVFoCJ3dMiuvl+HVeqWlExrliHNMZjd7n8AAAD//wMA0FVdC6sFAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:20:03Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:20:08Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:20:02Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:20:03Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26720772a3a802a-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:20:08 GMT
+      request-id:
+      - req_011CdjuWU6sGBwgo8kmFtyH8
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-75adce9d5fab13e019c90325e767b1ec-d7a52bf317646cd6-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n<directions>Previous
+      research goal: Surface internal market analysis documents from Q4 2024 that
+      may contain broader context around competitor positioning, pricing trends, and
+      market dynamics. The goal is to understand the competitive landscape as it was
+      assessed internally during that period. Once results are found, cross-reference
+      with any sales or revenue data from the same period to identify correlations.
+      Additional research directions: look for any win/loss analysis reports or customer
+      feedback that references competitor pricing.\n\nFollow-up research directions:\n-
+      Search internal sources for Q4 2024 sales performance reports, deal reviews,
+      or pipeline summaries that may indirectly reference competitor pricing pressure,
+      discounting patterns, or lost deals citing price as a factor \u2014 try terms
+      like ''Q4 2024 sales review'', ''deal lost price'', or ''discount approval''.\n-
+      Broaden the search to external sources (industry reports, press releases, earnings
+      call transcripts, or trade publications from Q4 2024) for competitor pricing
+      signals \u2014 try terms like ''[competitor name] pricing change 2024'', ''SaaS/[industry]
+      pricing trends Q4 2024'', or ''competitor discount strategy''.\n- Search internal
+      sources using finance or product-adjacent terminology that may capture pricing
+      context indirectly \u2014 try terms like ''Q4 2024 pricing model'', ''rate card'',
+      ''contract renewal terms'', ''competitive discount'', or ''price objection''
+      in CRM notes, proposal documents, or product strategy decks.</directions>\n\nThe
+      following search was attempted but found no matching content:\n<query>\n<title>Q4
+      2024 pricing model rate card contract renewal</title>\n<goals>Surface internal
+      finance, product, or sales documents from Q4 2024 that capture pricing context
+      indirectly \u2014 such as rate cards, contract renewal terms, competitive discount
+      approvals, or price objection notes in CRM records or proposal decks. Once results
+      are found, cross-reference with any deal review or pipeline summaries to identify
+      patterns around competitor pricing pressure or discounting behavior. Additional
+      research directions: look for product strategy decks or finance documents that
+      reference pricing model changes, and correlate any ''price objection'' or ''discount
+      approval'' records with lost deals to build a clearer picture of competitive
+      pricing dynamics in Q4 2024.</goals>\n<search_terms>pricing model rate card
+      discount</search_terms>\n<source>internal</source>\n</query>\n\nPrevious queries
+      in this research session:\n\n- internal: \"competitor pricing strategies\" (no
+      results)\n\n- internal: \"market analysis\" (no results)\n\n- internal: \"competitive
+      intelligence win/loss pricing\" (no results)\n\nSuggest alternative research
+      directions that might find relevant information:\n1. Consider different terminology,
+      synonyms, or related concepts\n2. Think about adjacent topics that might contain
+      relevant information\n3. Consider whether a different source might be more appropriate\n4.
+      Focus on broader or narrower aspects of the topic\n\nGenerate follow-up questions
+      that could lead to better search results."}], "model": "claude-sonnet-4-6",
+      "system": "The current datetime is 2026-08-05 16:20:08.383772+00:00\n\nThe user
+      you are helping is foo-300@example.com whose email address is foo-300@example.com.\n\nYou
+      are an expert researcher. Today is 2026-08-05 16:20:08.383787+00:00. Follow
+      these instructions when responding:\n- You may be asked to research subjects
+      that is after your knowledge cutoff, assume the user is right when presented
+      with news.\n- Be highly organized.\n- Suggest solutions that I didn''t think
+      about.\n- Be proactive and anticipate my needs.\n- Treat me as an expert in
+      all subject matter.\n- Mistakes erode my trust, so be accurate and thorough.\n-
+      Value good arguments over authorities, the source is irrelevant.\n- Consider
+      new technologies and contrarian ideas, not just the conventional wisdom.\n-
+      You may use high levels of speculation or prediction, just flag it for me.",
+      "temperature": 0.0, "tool_choice": {"type": "tool", "name": "GeneratedResearchQueryNoResultsReview"},
+      "tools": [{"name": "GeneratedResearchQueryNoResultsReview", "description": "Correctly
+      extracted `GeneratedResearchQueryNoResultsReview` with all the required parameters
+      with correct types", "input_schema": {"properties": {"follow_up_questions":
+      {"description": "List of alternative research directions to try, max of 3.",
+      "items": {"type": "string"}, "title": "Follow Up Questions", "type": "array"},
+      "follow_up_title": {"description": "A short user-facing title for the follow-up
+      directions, shown as progress in the UI", "title": "Follow Up Title", "type":
+      "string"}}, "required": ["follow_up_questions", "follow_up_title"], "title":
+      "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5072'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SV224bNxBAf2XAF7XAOrCcNAb0lhruBUHTWg5qoIYhjLijXcbc4Xo4lLQ2BOQj
+        +oX9koKU1pe4fVqQc+HMmcs+mC7U5M3MWI+ppqMYmEmP3h29N5VxtZmZLjaL4+n0rP6Sru7PlxfL
+        z/zxfT//aVrTvamMDj1lLYoRGzKVkeDzBcbooiKrqYwNrMRqZtcPo76G4Bcp0vhKPqfF8fRC/6Tf
+        5u1Vf//xKp3OV7/8dXf+eWoqw9hlu5+JSVCpnlMkFNteJJLhU5hTTF7jnNaONtkp90nN7MGsgvdh
+        s0j9Qp2WyM63vQ/iuIEPXkkY1a0JPnDjKcIqCFy8g5Pjk3dwFrqe1GkQ+EOczRa/spL3riG2OfQn
+        53eJorrA0cyuzWWJDGhb3HuIIYmlCN8RCjtuIlj0HlSQoxXXa6wAGf0QFYT6IPlCBWuCXigWaQ19
+        WnpnYeV8cbGS0I2hfl/itk/x9od4o2sYfYQU80lJugje3RJMrp9pZ7Y3j2mPQU4qmIx+ShhJCC4R
+        L4taliJzQg+5vIJWYY0+EdgWuaFJBUFgcu24TlFluCkxETi2QhgJkDkkttQR694j/PP179fQOhxg
+        SdAFIRBnWz+A45q2VIO2yOD4YBD4UD9tXQQNvbNvTGUuW7dS0AD7fsnZPJqMb+zx2BQ1dCRHKyxJ
+        75F2JNahL/AcBx+aIT+sJTDHtROy6gew2GsmNCKrB8bO2ViyUhle0O8l9CGizxTvUtCMayLEtEEP
+        TE1Qh7md8rVtkzBkaPvzp/k8f2jbI0cXsmhNnEbiy1Q3pBCWX8gWF+AY6mBTBh2hzsMz1roCjKAt
+        RYKwUmKISVZo6bGV8mS86oGN0zYkBdr23lmXk8+pZrBaiO/b/xXlXBvakk3FbRDwhDVJbF1fQCd2
+        tmT9srmfaAutSPLoQYdyS5o7r3Z7i/+ivAwoNaQ+55yRXfxYyN0lFCXxAyxz4SnGjNDRJgvPzn9/
+        ZoHeH7XIdTzAdbymmEdmrzKGOHkGMqauQ3EUR6QDZ4G7f0m1TPS3rYIKCK1rWvC0Jg+5sLBpiaER
+        5ORRxv0AKAS4jMT6xtzsKpM3CkneeIcNu29Ms9vdVCZq6Bf7Dnq5e4sg0l0qC23GyfvDZU2Kzsfx
+        LpXtPnvYL9aFhlvKu256ejLNb9uWFnmucy0WL1WOR7kQ1v8nG23zC9S31JGgX/zQvdZ/kk7bb6W7
+        yoSkz6/evj2tTCRZO0sLdRmQyX+lGqUuf4lDQy0aCmZmGh+W6M1u9y8AAAD//wMAqOjaWBgHAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:20:09Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:20:16Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:20:08Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:20:09Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26720a23fc6d6a4-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:20:16 GMT
+      request-id:
+      - req_011CdjuWyYBAGKtrrUY4Y2om
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-7654172d5ae741ce5d190a9ca3cd7d1c-9079cb181a6a7a6a-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n<directions>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</directions>\n\nThe
+      following search was attempted but found no matching content:\n<query>\n<title>Competitive
+      Intelligence Reports Q4 2024</title>\n<goals>Find internal competitive intelligence
+      reports or memos from Q4 2024 that specifically track competitor activity, including
+      pricing changes, promotions, or discounting behavior. The goal is to build a
+      comprehensive picture of how competitors were positioning themselves on price
+      during the holiday/end-of-year period. Once found, investigate whether any specific
+      competitors were flagged as threats or opportunities. Additional research directions:
+      explore whether sales teams submitted field intelligence or battlecards during
+      this period that reference competitor pricing tactics.</goals>\n<search_terms>competitive
+      intelligence</search_terms>\n<source>internal</source>\n</query>\n\nPrevious
+      queries in this research session:\n\n- internal: \"competitor pricing strategies\"
+      (no results)\n\n- internal: \"market analysis\" (no results)\n\n- internal:
+      \"competitive intelligence win/loss pricing\" (no results)\n\n- internal: \"pricing
+      model rate card discount\" (no results)\n\nSuggest alternative research directions
+      that might find relevant information:\n1. Consider different terminology, synonyms,
+      or related concepts\n2. Think about adjacent topics that might contain relevant
+      information\n3. Consider whether a different source might be more appropriate\n4.
+      Focus on broader or narrower aspects of the topic\n\nGenerate follow-up questions
+      that could lead to better search results."}], "model": "claude-sonnet-4-6",
+      "system": "The current datetime is 2026-08-05 16:20:16.111486+00:00\n\nThe user
+      you are helping is foo-300@example.com whose email address is foo-300@example.com.\n\nYou
+      are an expert researcher. Today is 2026-08-05 16:20:16.111497+00:00. Follow
+      these instructions when responding:\n- You may be asked to research subjects
+      that is after your knowledge cutoff, assume the user is right when presented
+      with news.\n- Be highly organized.\n- Suggest solutions that I didn''t think
+      about.\n- Be proactive and anticipate my needs.\n- Treat me as an expert in
+      all subject matter.\n- Mistakes erode my trust, so be accurate and thorough.\n-
+      Value good arguments over authorities, the source is irrelevant.\n- Consider
+      new technologies and contrarian ideas, not just the conventional wisdom.\n-
+      You may use high levels of speculation or prediction, just flag it for me.",
+      "temperature": 0.0, "tool_choice": {"type": "tool", "name": "GeneratedResearchQueryNoResultsReview"},
+      "tools": [{"name": "GeneratedResearchQueryNoResultsReview", "description": "Correctly
+      extracted `GeneratedResearchQueryNoResultsReview` with all the required parameters
+      with correct types", "input_schema": {"properties": {"follow_up_questions":
+      {"description": "List of alternative research directions to try, max of 3.",
+      "items": {"type": "string"}, "title": "Follow Up Questions", "type": "array"},
+      "follow_up_title": {"description": "A short user-facing title for the follow-up
+      directions, shown as progress in the UI", "title": "Follow Up Title", "type":
+      "string"}}, "required": ["follow_up_questions", "follow_up_title"], "title":
+      "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3617'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RVwW4jNwz9FUIXt8C4jePsNnFPTRbboMAWsdNDsYuFQUu0R7FGmiUlZ43AQD+i
+        X9gvKTjjcZIuehuJ5CP5+MR5Mk1yFMzM2IDF0VhSjJTHF+O3pjLemZlpZLM8m0xu3EP58+MfP/12
+        8eG+ueN0S/dT9cn7ltSLRHBDpjKcgl6giJeMMZvK2BQzxWxmn54G/5xSWBahIYuey/JscvVw/Q4f
+        1ml7eXv+8fJqkm4vN+93pjIRG437lSIxZnILEkK29bwQ739PC5ISsixo5+lRQWNbspk9mXUKIT0u
+        S7vMPneV/RIyccTsdwQDCrzzTDb7FAXWiWF+Aedn5xdwk5qWss+J4Y699XFjqheQXwpJF2Rmn8x9
+        j0RfO/gAkgpbeo3noyuSeQ9tjwaZKTqpoEh3Im4Egt8SjE6uK4q2bpC3pyCFGlUwqlPwDvcghJLi
+        ySxZGdrsB7/EIC1Zv/YW7HND+olxD8qs6GnlIzl49LmG0YCFMaYSLTUU80iROguBrTFuaOhrBP/8
+        9Te0ZRW8hZZJBJgCoZBUQMjRx42AxRAgM0ax7NssFWB0euHoGIv9BBrtqfAaLcFjjRl8PHLKZBM7
+        rbYEBzHlH0xlrjmhowi5pmfP41xzAnQPaClmWCnJWptLtmhDAlnR0zpTBBUp+gjUrMg5cieqVCcD
+        HQ4zViDF1oAyA8FAAi2nNgkGqWDx/g6YpE2xa90WyakhHq+xC/9SUtb7+fUCvpsX5Ewc9nA9FNbL
+        93twZLfSDW7tI0ZLPzLtKBYCpjZxFlhzak6qUoFN9PMNMGVOOm0tW7qxqIZeCmt+AdzlUQlhjAXD
+        0J/eOMIAjmTbK2c0ZF4nJouS+4Er7wtaMzbU8X6kGzmV6E59K4DijQPtKID4TcQgwJhrYiU/An1t
+        g7c+v6JbpxiC31C01PVwGuvN4oOOXUkMSfK4qxYjhn1PeF04DiR19Z9KkWJtL8xeQq8YVMUxrYm7
+        jC8eyTB4H123IcL+528I1UJUaM9hyuNQij5NPffvJq0e+j1zZPfRR21EYK6cfj5URl8Jsa6u46rs
+        E5vD4XNlJKd22WO+XqKdQehL0QbMLJYQjpeOMvogw13p1vTsqd+Qy5y2pOtrMr2aam5b09IydQ9x
+        +drlbLAzofs/2xCrGaitqSHGsHzTfOv/bJ3U/7UeKpNKfnk1nU4rI8Q7b2mZvRJk9PfikF237o+z
+        W24omZnZhLTCYA6HfwEAAP//AwAjgv954QYAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:20:17Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:20:24Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:20:16Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:20:17Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26720d29f64c997-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:20:24 GMT
+      request-id:
+      - req_011CdjuXYamdBi2JJPPrxxbV
+      server:
+      - cloudflare
+      server-timing:
+      - x-originResponse;dur=7816
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-eacf9cadc54283d9717b8224c8e72683-dd19184eb33ea002-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Given the
+      following prompt from the user, generate a list of queries to research the topic.\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n\nYour
+      specific directions are:\n<prompt>Previous research goal: Find internal competitive
+      intelligence reports or memos from Q4 2024 that specifically track competitor
+      activity, including pricing changes, promotions, or discounting behavior. The
+      goal is to build a comprehensive picture of how competitors were positioning
+      themselves on price during the holiday/end-of-year period. Once found, investigate
+      whether any specific competitors were flagged as threats or opportunities. Additional
+      research directions: explore whether sales teams submitted field intelligence
+      or battlecards during this period that reference competitor pricing tactics.\n\nFollow-up
+      research directions:\n- Search external sources for Q4 2024 industry pricing
+      trends, using terms like ''industry benchmark pricing 2024'', ''holiday season
+      pricing strategy 2024'', or specific competitor company names combined with
+      ''pricing announcement'' or ''price change Q4 2024'' \u2014 public press releases,
+      earnings call transcripts, and trade publications may surface what internal
+      records could not.\n- Broaden the internal search to adjacent business documents
+      that often contain embedded competitive pricing data, such as: sales proposals,
+      RFP responses, customer-facing quotes, QBR (Quarterly Business Review) decks,
+      or finance/revenue reports from Q4 2024 or Q1 2025 retrospectives \u2014 try
+      terms like ''Q4 review'', ''annual pricing'', ''deal desk'', or ''revenue forecast
+      2024''.\n- Reframe the search around customer or deal-level signals rather than
+      explicit competitive intelligence \u2014 internal CRM notes, lost-deal analyses,
+      churn reports, or customer success records from Q4 2024 may reference competitor
+      pricing indirectly; try terms like ''lost to competitor'', ''churn reason'',
+      ''price objection'', or ''win loss Q4''.</prompt>\n\nReturn a maximum of 1 queries,
+      but feel free to return less if the original prompt is clear.\n\n## Source selection\n\n###
+      Internal source query instructions:\n\n- You must return source: internal to
+      indicate these queries are for searching internal organization content.\n- You''ll
+      be searching organization activity and documents to help the user explore and
+      answer this question.\n- Query terms should be short (less than 5 words, ideally
+      3 or less) for a basic embedding and TD/IDF search.\n- If the text seems like
+      a good search on its own, just return the text as entered.\n- Anything related
+      to time (e.g. \"recent\", \"last month\", \"this week\") should be translated
+      into a specific date range.\n- If you see a specific date, use that date range.
+      If you see a general date (e.g. \"recently\", \"last month\"), use the last
+      30 days, respecting the current date and time.\n- If you recognize named entities,
+      surround them with double quotes (e.g. \"Hulk Hogan\", \"Apple\"). Consider
+      if an capitalized word is a named entity.\n\n## Date ranges\n\nIn your response,
+      you may include a starts_at and ends_at date range for each query if the topic
+      or directions indicate a specific time period.\n\nIMPORTANT: Today''s date is
+      2026-08-05. The current year is 2026. Use this as your reference point for all
+      date calculations.\n\n- Reference Point: Calculate all relative dates based
+      on today''s date: 2026-08-05.\n- Format: Return timestamps in ISO 8601 format:
+      YYYY-MM-DDTHH:MM:SS.\n- Boundaries: Start of day is 00:00:00 and End of day
+      is 23:59:59.\n- Default Year: If a month or quarter is specified without a year,
+      use 2026.\n- Absence: If no date range is specified, do not include starts_at
+      or ends_at fields.\n\nRelative Date Logic\n\n- \"today\" \u2192 starts_at: Current
+      Date T00:00:00, ends_at: Current Date T23:59:59\n- \"yesterday\" \u2192 starts_at:
+      Previous Date T00:00:00, ends_at: Previous Date T23:59:59\n- \"this week\" \u2192
+      starts_at: Monday of current week, ends_at: Sunday of current week\n- \"last
+      week\" \u2192 starts_at: Monday of previous week, ends_at: Sunday of previous
+      week\n- \"this month\" \u2192 starts_at: Day 1 of current month, ends_at: Last
+      day of current month\n- \"last month\" \u2192 starts_at: Day 1 of previous month,
+      ends_at: Last day of previous month\n- \"this year\" \u2192 starts_at: Jan 1
+      of current year, ends_at: Dec 31 of current year\n- \"recently\", \"lately\",
+      or vague time \u2192 starts_at: (Current Date - 30 days), ends_at: Current Date\n\nBusiness
+      Date Ranges\n- \"Q1\" / \"first quarter\" \u2192 Jan 1 to Mar 31\n- \"Q2\" /
+      \"second quarter\" \u2192 Apr 1 to June 30\n- \"Q3\" / \"third quarter\" \u2192
+      July 1 to Sept 30\n- \"Q4\" / \"fourth quarter\" \u2192 Oct 1 to Dec 31\n- \"H1\"
+      / \"first half\" \u2192 Jan 1 to June 30\n- \"H2\" / \"second half\" \u2192
+      July 1 to Dec 31\n\nNote: Apply the current year (2026) unless a specific year
+      is mentioned.\n\nExamples (using today''s date 2026-08-05):\nQuery: \"Q3 sales
+      targets\"\nterms: \"sales targets\", starts_at: \"2026-07-01T00:00:00\", ends_at:
+      \"2026-09-30T23:59:59\"\n\nQuery: \"last month''s revenue\"\nterms: \"revenue\",
+      starts_at: \"2026-07-01T00:00:00\", ends_at: \"2026-07-31T23:59:59\"\n\nQuery:
+      \"Q4 2023 results\"\nterms: \"results\", starts_at: \"2023-10-01T00:00:00\",
+      ends_at: \"2023-12-31T23:59:59\"\n\n## Existing Queries and Learnings\n\nThe
+      following existing queries and learnings are provided to help you avoid duplication
+      and improve the specificity of your generated queries.\n\nHere are queries that
+      have already been generated, do not repeat them:\n\n- Internal application:
+      competitor pricing strategies\n\n- Internal application: market analysis\n\n-
+      Internal application: competitive intelligence\n\n- Internal application: competitive
+      intelligence win/loss pricing\n\n- Internal application: pricing model rate
+      card discount"}], "model": "claude-sonnet-4-6", "system": "The current datetime
+      is 2026-08-05 16:20:24.108527+00:00\n\nThe user you are helping is foo-300@example.com
+      whose email address is foo-300@example.com.\n\nYou are an expert researcher.
+      Today is 2026-08-05 16:20:24.108537+00:00. Follow these instructions when responding:\n-
+      You may be asked to research subjects that is after your knowledge cutoff, assume
+      the user is right when presented with news.\n- Be highly organized.\n- Suggest
+      solutions that I didn''t think about.\n- Be proactive and anticipate my needs.\n-
+      Treat me as an expert in all subject matter.\n- Mistakes erode my trust, so
+      be accurate and thorough.\n- Value good arguments over authorities, the source
+      is irrelevant.\n- Consider new technologies and contrarian ideas, not just the
+      conventional wisdom.\n- You may use high levels of speculation or prediction,
+      just flag it for me.", "temperature": 0.0, "tool_choice": {"type": "tool", "name":
+      "IterableGeneratedResearchQuery"}, "tools": [{"name": "IterableGeneratedResearchQuery",
+      "description": "Correct segmentation of `GeneratedResearchQuery` tasks", "input_schema":
+      {"$defs": {"GeneratedResearchQuery": {"properties": {"title": {"description":
+      "A user-facing title for the query, it''ll be prefaced with ''Reading about''
+      in the UI", "title": "Title", "type": "string"}, "terms": {"description": "The
+      search terms", "title": "Terms", "type": "string"}, "starts_at": {"anyOf": [{"format":
+      "date-time", "type": "string"}, {"type": "null"}], "default": null, "description":
+      "The earliest datetime to allow results", "title": "Starts At"}, "ends_at":
+      {"anyOf": [{"format": "date-time", "type": "string"}, {"type": "null"}], "default":
+      null, "description": "The latest datetime to allow results", "title": "Ends
+      At"}, "goals": {"description": "First talk about the goal of the research that
+      this query is meant to accomplish, then go deeper into how to advance the research
+      once the results are found, mention additional research directions. Be as specific
+      as possible, especially for additional research directions.", "title": "Goals",
+      "type": "string"}, "source": {"$ref": "#/$defs/ResearchSource", "default": "internal",
+      "description": "The source to use for this research query"}}, "required": ["title",
+      "terms", "goals"], "title": "GeneratedResearchQuery", "type": "object"}, "ResearchSource":
+      {"enum": ["internal", "slack"], "title": "ResearchSource", "type": "string"}},
+      "description": "Correct segmentation of `GeneratedResearchQuery` tasks", "properties":
+      {"tasks": {"description": "Correctly segmented list of `GeneratedResearchQuery`
+      tasks", "items": {"$ref": "#/$defs/GeneratedResearchQuery"}, "title": "Tasks",
+      "type": "array"}}, "title": "IterableGeneratedResearchQuery", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '8523'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RU227bRhD9lcE+9IlyJdlKY/YpyEN6RRvXQJMWgTDeHYprL3fZmVmpqiGgH9Ev
+        7JcUQ1lO7LYAH8i57DlzeHbu3VACJdc6n7AGmknJmXR2MXvhGheDa90gm/V8sXgdbuv7V4vb7uef
+        xqvFgPjuF82ucbofyapIBDfkGsclWQBFoihmdY3zJStlde2v96d6LSWtq9AJxb7rer74ZogX77sv
+        XtL1t1/xMJZ3l29+vFq6xmUcrO9rJcabRG8oE6NSuCIhZN+/rcR7Oy2PVV177xTlTo6QUSdK3xVR
+        CIRJ4DMYOXqCcnNLXmPJAm8vYDlfXthIxIO41iWr1wK+DCNp1MLPu1zjNgWTFV/3BPYOUaxHKnfo
+        aYKbJdpSAombbNgdl+GEBtqjQswhMnlNe2DaEqbnkDFv4IZ63MbC8Peff4GM5GMXPaa0h9dX30Mu
+        StKAUZ4ZJmDGtBeL+b5yBqaxsEoDhWEX8+epiACTLxwEdj0xga+iZSAW8FEp/BcJFEDo0GvhM/gh
+        e4Ku1BwaiHlLonGDSrDro+8/6RbY2fGDydkx/VYp26gDZdOQQgM7U+Go7VhiVjGWIYov1T6mdqaO
+        mLK3eszBOGtPDCOqEmcBGog3BMjG6FEhGLmE6hVSzDSdexoThDbGQc7gVQjRuGACfvATHH+JWaMF
+        z0Vk9sgAMO/BDPmpRgK7qD3Q78YG00fJci41e5qgDH9kmqRPhEJP7fAlpFLuoCsMXUmp7GZ1hLcL
+        y62ASbnYWBq3JEfnDLgHqcOAHP8g0J6EzAN2rmkUGHfgS/apymRyvClVH0nHLT3SnFhVpjPXOCmV
+        vd2YmI/DWEyRVdaornVGdbaYz+aL6/m8nR7XOMrhSX45O19cL8/b1WW7unSHD4fGmV+Jp9t5XANH
+        kd3h8MEQyrhmQin56YKYEjL5xljlmtJDMJBitOt3jNVpBbX3xyWw1nJHWVy7fHm+Mmzf09ozof3U
+        9dOS+SnPhOH/cqdeQ6CxN79hWq+Gf9d/zC7659lD40rVJ/xerBonxNvoaa3RBDK5c0AO00Z7sN16
+        Q8W1bpPKDSZ3OPwDAAD//wMADKGmK70FAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:20:25Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:20:31Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:20:24Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:20:25Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26721049874389c-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:20:31 GMT
+      request-id:
+      - req_011CdjuY8wVgShRLpVn4QiJU
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-e831d82296e4a04185eb5ca95c55f648-bb888577d3ec889e-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>Market
+      analysis request\n\nPlease research competitor pricing strategies in Q4 2024.</topic>\n<directions>Previous
+      research goal: Find internal competitive intelligence reports or memos from
+      Q4 2024 that specifically track competitor activity, including pricing changes,
+      promotions, or discounting behavior. The goal is to build a comprehensive picture
+      of how competitors were positioning themselves on price during the holiday/end-of-year
+      period. Once found, investigate whether any specific competitors were flagged
+      as threats or opportunities. Additional research directions: explore whether
+      sales teams submitted field intelligence or battlecards during this period that
+      reference competitor pricing tactics.\n\nFollow-up research directions:\n- Search
+      external sources for Q4 2024 industry pricing trends, using terms like ''industry
+      benchmark pricing 2024'', ''holiday season pricing strategy 2024'', or specific
+      competitor company names combined with ''pricing announcement'' or ''price change
+      Q4 2024'' \u2014 public press releases, earnings call transcripts, and trade
+      publications may surface what internal records could not.\n- Broaden the internal
+      search to adjacent business documents that often contain embedded competitive
+      pricing data, such as: sales proposals, RFP responses, customer-facing quotes,
+      QBR (Quarterly Business Review) decks, or finance/revenue reports from Q4 2024
+      or Q1 2025 retrospectives \u2014 try terms like ''Q4 review'', ''annual pricing'',
+      ''deal desk'', or ''revenue forecast 2024''.\n- Reframe the search around customer
+      or deal-level signals rather than explicit competitive intelligence \u2014 internal
+      CRM notes, lost-deal analyses, churn reports, or customer success records from
+      Q4 2024 may reference competitor pricing indirectly; try terms like ''lost to
+      competitor'', ''churn reason'', ''price objection'', or ''win loss Q4''.</directions>\n\nThe
+      following search was attempted but found no matching content:\n<query>\n<title>Lost
+      deals & price objections Q4 2024</title>\n<goals>The goal is to surface deal-level
+      signals from Q4 2024 that indirectly reveal competitor pricing behavior \u2014
+      specifically CRM notes, lost-deal analyses, churn reports, or win/loss records
+      where customers cited competitor pricing as a factor. Once found, investigate
+      which competitors were most frequently mentioned, what price points or discounts
+      were referenced, and whether patterns emerge around specific product lines or
+      customer segments. Additional research directions: cross-reference any named
+      competitors with external pricing announcements or press releases from Q4 2024;
+      look for follow-up Q1 2025 retrospectives that may summarize these losses and
+      draw conclusions about competitive pricing pressure.</goals>\n<search_terms>lost
+      to competitor price objection</search_terms>\n<source>internal</source>\n</query>\n\nPrevious
+      queries in this research session:\n\n- internal: \"competitor pricing strategies\"
+      (no results)\n\n- internal: \"market analysis\" (no results)\n\n- internal:
+      \"competitive intelligence\" (no results)\n\n- internal: \"competitive intelligence
+      win/loss pricing\" (no results)\n\n- internal: \"pricing model rate card discount\"
+      (no results)\n\nSuggest alternative research directions that might find relevant
+      information:\n1. Consider different terminology, synonyms, or related concepts\n2.
+      Think about adjacent topics that might contain relevant information\n3. Consider
+      whether a different source might be more appropriate\n4. Focus on broader or
+      narrower aspects of the topic\n\nGenerate follow-up questions that could lead
+      to better search results."}], "model": "claude-sonnet-4-6", "system": "The current
+      datetime is 2026-08-05 16:20:31.022548+00:00\n\nThe user you are helping is
+      foo-300@example.com whose email address is foo-300@example.com.\n\nYou are an
+      expert researcher. Today is 2026-08-05 16:20:31.022572+00:00. Follow these instructions
+      when responding:\n- You may be asked to research subjects that is after your
+      knowledge cutoff, assume the user is right when presented with news.\n- Be highly
+      organized.\n- Suggest solutions that I didn''t think about.\n- Be proactive
+      and anticipate my needs.\n- Treat me as an expert in all subject matter.\n-
+      Mistakes erode my trust, so be accurate and thorough.\n- Value good arguments
+      over authorities, the source is irrelevant.\n- Consider new technologies and
+      contrarian ideas, not just the conventional wisdom.\n- You may use high levels
+      of speculation or prediction, just flag it for me.", "temperature": 0.0, "tool_choice":
+      {"type": "tool", "name": "GeneratedResearchQueryNoResultsReview"}, "tools":
+      [{"name": "GeneratedResearchQueryNoResultsReview", "description": "Correctly
+      extracted `GeneratedResearchQueryNoResultsReview` with all the required parameters
+      with correct types", "input_schema": {"properties": {"follow_up_questions":
+      {"description": "List of alternative research directions to try, max of 3.",
+      "items": {"type": "string"}, "title": "Follow Up Questions", "type": "array"},
+      "follow_up_title": {"description": "A short user-facing title for the follow-up
+      directions, shown as progress in the UI", "title": "Follow Up Title", "type":
+      "string"}}, "required": ["follow_up_questions", "follow_up_title"], "title":
+      "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5464'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RV4W4bNwx+FUJ/sgHnIMnSdvC/oe1SYEWxpFuxtggMWqLvVOukq0jZMYIAe4g9
+        4Z5koO7suF37UyRFffw+kro3fXIUzNzYgMXRjFOMJLPL2VPTGO/M3PTcLs7Oz5+7T+V913367TK9
+        6G/ePf/r4upiaxoju4E0ipixJdOYnIIakNmzYBTTGJuiUBQz/3i/j5eUwqIw7V/Rc1mcnT+7Xr66
+        fl+evnndvvv84XX58Mer8uevpjERe713RZEyCrkbYsJsu+tCefcm3RCXIHxDG08Ky8ehiJnfm1UK
+        IW0XZViIl4rs5d2A0fnYwpgBlrRL0YFN/UDixW8IfBQKwbcULUEmm7Jj0xwl+1yIxafIZv7RvB3z
+        6KUcMQBjIAaMDlY+oqZwyZaeojCsUgYfnc9kBYbsbQXi24iBobCehHLPEPya4MQRBrAhMbmTBk6c
+        Z5tKFMBhyGkzGnvMrY9Ad5YGxaQ2zUzQo9hOj8viWhJIy09kp5CU4SRTpC0GiNQm8Vg98O/f/8D1
+        JVycXVyCKpfRyp6DBiogR7yeIGDgmmtfqZYyS6sVQ4+7eh8VW78k58hBphVlZZVB0oHylCsVBEMm
+        5pIJaEMRtl66VATobgjeegk7iNgrRV4A+buKnZrG/O43SfQNuturkkrWdymKzxR2tdCpBVSVfc2E
+        OfrYMlgMASRjZJv9INyAjxviES0xRamMjfVX5JApEDIxrHLqYR3TNh4V+S2BPx5xoD1+e2gKBfMo
+        pY82a2rAGFOJlrSdqhvtGlu9YDuMLe3rmCTmshzh+xQPqcvgUGiUeggoq3QA9Pblc3j54uqXm6YC
+        x7h7rDpTGCuGAVvipra4ZHSTcPADnbanDVxdNHCFWSJl5cwVlryb8UDWr7yFoSyDt2OmHwEz1ZfD
+        TtXikleojVBjDoD7tNGO6VAep2xqSXDeQUwCFgcpuYr/9UDawpJ6yrMV1nQpQ5tmkmY95jXJ8Xiq
+        bvtOSFmbIezg+lwNT74h3xJFAlnMdRIP8wUdRhd8bNU6roMh4G6Z0lotx407JPZ6ZQredjsoDBue
+        9BMMa+XYrke5pCOmacNQxGWojaCTTtnrDlE+00ooTio78BEy8ZAik1Kc60o5RjCRfBg+lfV4eqUj
+        6BMLYC1OH60xLLlY5dwBl77HvIO0gq2qdNz0W8q6ASvxYw8SuJIrlRo7UPbJnZrbh8bozFHWxT19
+        FOOmNA8Pt41hScNCpyDFL7+Q6mD6XHT6zTyWECajI0EfeG8r9ZOa34//w0LSmnSFn/989kzfth0t
+        dMy0ysWXIWd7fyZ03/Pt7+oLNHTUU8aweNL/P/7Re9597X1oTCpybPrp6UVjmPLGW1qIV4KMfq4O
+        s6uf3bRUFy0lMzdtSEsM5uHhPwAAAP//AwBb5vJk3wcAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:20:35Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:20:42Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:20:31Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:20:35Z'
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26721304a78c768-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:20:42 GMT
+      request-id:
+      - req_011CdjuYehA9kasMfkjKNkfq
+      server:
+      - cloudflare
+      server-timing:
+      - x-originResponse;dur=11354
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-a07b5fd7692882adc0c9695d75b72e00-95ae393fe70e0fa7-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Market analysis
+      request\n\nPlease research competitor pricing strategies in Q4 2024."}], "model":
+      "claude-sonnet-4-6", "system": "The current datetime is 2026-08-05 16:20:42.699048+00:00.\n\nYou
+      have been provided a research request from a user.\n\nCreate a concise, descriptive
+      title for this research request.\n\nDO NOT answer the question or provide any
+      research results.\n\nRequirements:\n- Maximum 5 words\n- No articles (a, an,
+      the) unless essential\n- Capture the essence of what the user wants to research\n-
+      Ensure title is a phrase that describes the research topic, not an answer\n\nBefore
+      finalizing your response, carefully review the title and ensure it is not longer
+      than 5 words.", "temperature": 0.0, "tool_choice": {"type": "tool", "name":
+      "ResearchQuestionTitle"}, "tools": [{"name": "ResearchQuestionTitle", "description":
+      "Correctly extracted `ResearchQuestionTitle` with all the required parameters
+      with correct types", "input_schema": {"properties": {"title": {"description":
+      "The title of the research command.", "title": "Title", "type": "string"}},
+      "required": ["title"], "title": "ResearchQuestionTitle", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '1178'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRyU7DMBD9lWrOrtSWFJCP9MAFVewgELKMPaQGx049Y2hV5d+RAxGbOPotnjdv
+        dtBEix4kGK+zxTHFEJDH1XgfBDgLEhqq1WQ6XdjnfHe7P3u7Pr5Z11yd5MX2CgTwtsWiQiJdIwhI
+        0RdAEzliHRgEmBgYA4O83w16jtGrTDhMKe+sJtPb1838xRxdb9YHy+fldnk12zxVlyAg6Kb4zpFQ
+        J7M6y0jsYrh07PtPQpsZ5A64ByQsYtMiO45pdJqccaEeXXDSjLVDGp1Vo9lkVkEnwGjvMfXWj2jW
+        JTQMXfcggDi2KqGmGH6G7gnCdcZgEGTI3n+CFlk7TwOW+1rk7iOh4viCgUAezqsy2qxQmYS6rKJ+
+        KiYDn1Db/7jBWwZgu8IGk/Zq3vzVf7HT1W+2ExAzf4eqPQGE6dUZVOxKPVCOaXWyfdlPmMriqsYI
+        EmofH7WHrnsHAAD//wMAnZsa4k8CAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:20:43Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:20:44Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:20:43Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:20:43Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2672178e8599c6c-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:20:44 GMT
+      request-id:
+      - req_011CdjuZWYHsJWjQEayHs5zn
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-238d0c9e397050522e99021ed22b5af5-d89d309670c89f0f-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

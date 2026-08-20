@@ -1,0 +1,112 @@
+key: leo-maren-dm
+members: [leo, maren]
+messages:
+  - key: leo-maren-dm-msg-001
+    author: leo
+    at: !relative_day {offset: -14, hour: 9, minute: 35}
+    content: |
+      Maren — just posted the PRD. I know coverage is your concern and I want to talk through it before the thread goes sideways. Can we do a quick sync this week?
+
+  - key: leo-maren-dm-msg-002
+    author: maren
+    at: !relative_day {offset: -14, hour: 9, minute: 50}
+    reply_to: leo-maren-dm-msg-001
+    content: |
+      I'll read the PRD twice before we talk. Always do that. But yes — Thursday afternoon works if your calendar is open. And for what it's worth: I'm not trying to kill the co-pilot. I'm trying to make sure we're not building on sand.
+
+  - key: leo-maren-dm-msg-003
+    author: leo
+    at: !relative_day {offset: -14, hour: 9, minute: 58}
+    reply_to: leo-maren-dm-msg-002
+    content: |
+      I know. And I'd rather have your objections now than from a customer six months after we ship. Thursday works.
+    reactions:
+      thumbs_up: [maren]
+
+  - key: leo-maren-dm-msg-004
+    author: maren
+    at: !relative_day {offset: -11, hour: 8, minute: 15}
+    content: |
+      Leo — heads up that my counter-memo is going up this morning. I tried to write it in a way that says "and" not "instead." Please read the last section carefully — I propose a specific sequencing, not a veto.
+
+  - key: leo-maren-dm-msg-005
+    author: leo
+    at: !relative_day {offset: -11, hour: 8, minute: 30}
+    reply_to: leo-maren-dm-msg-004
+    content: |
+      Read it. The "coverage-floor-first, co-pilot behind a flag" proposal in the last section is actually workable. I don't love the timeline but I understand the logic.
+
+  - key: leo-maren-dm-msg-006
+    author: maren
+    at: !relative_day {offset: -11, hour: 8, minute: 40}
+    reply_to: leo-maren-dm-msg-005
+    content: |
+      I'm glad you can see the proposal clearly. The timeline I wrote is a negotiating position, not a fixed term. I'd rather have the right conversation than the fast one.
+
+  - key: leo-maren-dm-msg-007
+    author: leo
+    at: !relative_day {offset: -11, hour: 11, minute: 20}
+    content: |
+      Thursday sync: I'm going to bring coverage data from Rhea's gap analysis alongside the co-pilot user research. My instinct is that both things are true — the coverage gap is real, and the co-pilot is what customers will pay more for. I think we need to find the order, not pick a side.
+
+  - key: leo-maren-dm-msg-008
+    author: maren
+    at: !relative_day {offset: -11, hour: 11, minute: 35}
+    reply_to: leo-maren-dm-msg-007
+    content: |
+      That framing is almost exactly what I would say. Let's talk Thursday.
+    reactions:
+      heart: [leo]
+
+  - key: leo-maren-dm-msg-009
+    author: leo
+    at: !relative_day {offset: -8, hour: 16, minute: 40}
+    content: |
+      Post-Thursday: I came out of that thinking you're more right about sequencing than I initially wanted to admit. The Alderman situation is a concrete signal I wasn't weighting enough. Still think the co-pilot should be in the plan — but with a tighter pre-condition.
+
+  - key: leo-maren-dm-msg-010
+    author: maren
+    at: !relative_day {offset: -8, hour: 17, minute: 5}
+    reply_to: leo-maren-dm-msg-009
+    content: |
+      That's a big concession and I don't take it lightly. What's your proposed pre-condition?
+
+  - key: leo-maren-dm-msg-011
+    author: leo
+    at: !relative_day {offset: -8, hour: 17, minute: 22}
+    reply_to: leo-maren-dm-msg-010
+    content: |
+      DPA, MSA, and SaaS subscription playbook coverage at 90% of top-30 customer contract types. That's Rhea's metric — she can tell us when we hit it. Once we hit it, co-pilot goes into design partner testing, not general availability.
+
+  - key: leo-maren-dm-msg-012
+    author: maren
+    at: !relative_day {offset: -8, hour: 17, minute: 38}
+    reply_to: leo-maren-dm-msg-011
+    content: |
+      I can work with that. Write it up as a proposal in the decision post and I'll comment in support of the condition. We should close this before the exec offsite — I don't want it open on the table when we're trying to think about a six-month roadmap.
+    reactions:
+      thumbs_up: [leo]
+
+  - key: leo-maren-dm-msg-013
+    author: leo
+    at: !relative_day {offset: -5, hour: 10, minute: 30}
+    content: |
+      Emma's research is going to support your position more than mine on timing. Her interviews are surfacing "coverage first" instincts even when the lawyers love the co-pilot prototype. I want you to know I'll own that publicly rather than spin it.
+    reactions:
+      heart: [maren]
+
+  - key: leo-maren-dm-msg-014
+    author: maren
+    at: !relative_day {offset: -5, hour: 10, minute: 45}
+    reply_to: leo-maren-dm-msg-013
+    content: |
+      That is not easy to do and it means more than you know. The debate we're having in public is good for the team — they're learning that you can disagree well and still move forward together.
+
+  - key: leo-maren-dm-msg-015
+    author: leo
+    at: !relative_day {offset: -5, hour: 10, minute: 52}
+    reply_to: leo-maren-dm-msg-014
+    content: |
+      Darren said the same thing this morning. I think we're both getting slightly better at this.
+    reactions:
+      heart: [maren]

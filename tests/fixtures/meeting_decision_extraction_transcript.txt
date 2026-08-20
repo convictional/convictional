@@ -1,0 +1,72 @@
+# Meet with Elena and Theo (Piotr Kaminski)
+
+*Jun 15 2026, 4:30 PM*
+
+Elena Marchetti: There is a second notetaker trying to join. Is that one yours?
+Piotr Kaminski: Go ahead and admit it. One of them is on my side. The other one I have never seen before.
+Elena Marchetti: I will leave it out then. Before I share my screen, let me confirm what you told us last time. Your stack today is WhatsApp, ClickUp, Zoom and Google Calendar.
+Piotr Kaminski: That is right. Zoom and Google Calendar for scheduling, WhatsApp for everything conversational, ClickUp for the project side.
+Theo Nakamura: Are you using anything to bring the information from those three places together?
+Piotr Kaminski: No, and I doubt anything would. One thing about ClickUp before we go further. We tried to set up a team account so that several of us could be in it, and the price climbs steeply with each person you add. So we settled on one shared account that a single person operates. It is not friendly to the rest of the team.
+Theo Nakamura: Understood.
+Piotr Kaminski: The other thing we struggle with is the Friday meeting. I want a view I can zoom in and out of. Who needs help, who is making progress, who is blocked, whether anything has been dropped.
+Theo Nakamura: And are you using any AI tools day to day?
+Piotr Kaminski: Not much, which surprises people. We use models heavily in the research itself, that is a core ingredient. In our own workflow, almost none. I think we would each have to be trained on it and build a habit, and we are always reacting to the next thing. The return is hard for me to estimate before we spend the time.
+Elena Marchetti: That matches what we hear from research teams before they have a product in market. The gains show up in the difficult milestone work rather than in raw speed. Can you see my screen? This is our own account, so everything on it is real.
+Piotr Kaminski: Can you make it larger?
+Elena Marchetti: Is that better?
+Piotr Kaminski: That works.
+Elena Marchetti: Let me start with goals, because everything else hangs off them. Each area of the company has goals, and over time the rest of the app organises itself around them. Some of yours would be milestone shaped, such as the letter of intent with the hospital group or getting into the next investment committee. Those are outcomes, and most of the daily work points at one of them.
+Piotr Kaminski: That is close to the dashboard I described. May I raise a tangential idea now, or would you rather I hold it?
+Elena Marchetti: Raise it now and I will put it in context.
+Piotr Kaminski: When you play a strategy game, there is a screen that shows your resources and your population at a glance. On Fridays I want the equivalent. How is the home base doing, are we under attack, where are we short. Then I want to click into a department and see whether it is doing well or badly, and whether it needs more money, more time or more people.
+Theo Nakamura: There is a research project of ours that is close to that. Simone, do you have the link for the alignment view?
+Simone Aubert: Posting it in the chat now.
+Elena Marchetti: Thank you. Here it is. Each area of the company appears as a group. Strategy, operations, and a design goal off to the side. This one is off track, this one is at risk, this one is on track. If you open one, it shows the activity in that area and how closely it lines up with the goals over the quarter. Meetings, updates from the team, decisions, proposals, and the work that does not line up with anything.
+Piotr Kaminski: That is interesting. Here is a second idea, and it is a quick one. These tools are tedious to learn, because you are handed every feature at once and most of them matter only in a situation that arrives two months later. Nobody reads a manual. In a game you learn by trial and error. Could there be a training mode where somebody runs a simulated company for an afternoon and comes out the other side having used every feature?
+Theo Nakamura: A colleague of ours is building something close to that. It is a simulation of a technology company, and we are testing which combinations of agents and collaboration tools produce the outcomes people want.
+Elena Marchetti: The hard part is that the most important variable is the world outside the company, and that resists simulation. You can get to reasonable scenario planning and no further. Once the context is joined up the way it is on this screen, an agent can look backwards and make predictions, and that is the piece we are experimenting with.
+Piotr Kaminski: Are you keeping it corporate, or are you going to make it feel closer to an actual game?
+Elena Marchetti: Let me show you where the game feeling already exists. When a group settles something, you record it, and the recording is one button. It is more satisfying than it has any right to be. It makes the work tangible.
+Piotr Kaminski: I can see that.
+Elena Marchetti: Longer term it probably resembles a social network more than a game. The part that feels closest to a game is watching agents work through tasks. What matters to us is the collaboration side, where you need to know your team's state and not only your own.
+Simone Aubert: The other reason it matters is contrast. Most chat software is the opposite of satisfying. It is overstimulating and doing work through it does not feel as though you have accomplished anything.
+Piotr Kaminski: That is fair. Fitness dashboards did the same thing to me for a while, and there was research five years ago showing people became stressed when they missed their step count. So there is a limit to how far you want to push it.
+Elena Marchetti: Agreed. The distinction we care about is what the loop is aligned to. Aligning it to an advertiser produces one thing. Aligning it to the goals of the organisation should let people work fewer hours and finish more.
+Theo Nakamura: Elena, we have about twenty minutes left, and Piotr asked about the collaborative parts.
+Elena Marchetti: Moving on. This is chat. Informal groups here, formal groups here. Then we have posts, which we use for proposals and for the discussion that leads somewhere. A post is a slower medium than chat on purpose.
+Piotr Kaminski: That is a real problem for us. When we design a research protocol we work in a shared document. Several people write sections, we do two or three rounds of review, and the comments pile up. What breaks is that nobody can tell which version is current, and the reason somebody made an edit never survives in the comment. Getting the right people to the document at the right time is its own task, because some of them are very busy professors.
+Elena Marchetti: This is where docs sit. We will never match a full word processor, so if you need to send redlines to a lawyer, do that elsewhere. For an internal proposal where you are breaking down tasks and tracking them, this is the place. The comments are treated as being as important as the document, which is what makes the history worth anything a year later.
+Simone Aubert: The way I describe it to people is that most of the communication in a company happens in meetings, chat and email, and we hold all three. So when you ask the research tool a question, it is not answering from a web page. It can answer a narrow question about why a particular choice was made.
+Piotr Kaminski: An encyclopedia of the company. That is useful for us right now, because we roughly doubled in size over the last month with interns. They are good, but I suspect they are overwhelmed and hiding it.
+Simone Aubert: That is common.
+Piotr Kaminski: The part that worries me is what is confidential and what is not. We are internally transparent to a fault, so almost everything is available to everyone in principle. If somebody joined without the right contracts in place, we would be exposed.
+Elena Marchetti: Two answers. A document can be shared with the whole organisation, in which case anybody who searches will find it. Or it stays private to its collaborators, and then the research tool gives a different answer to different people depending on what they can see. Sharing is always a human action. We will never widen access on your behalf.
+Piotr Kaminski: That is the right default.
+Elena Marchetti: The same rule covers agents. Everything here is exposed over MCP, so an assistant working for you sees exactly what you see and nothing more.
+Theo Nakamura: We should be careful with your time.
+Piotr Kaminski: You may run over. This is the first relaxed week I have had in a long while.
+Theo Nakamura: Then let me ask the question I wanted to ask. Out of everything today, what strikes you as the most useful thing and the least useful thing for your company?
+Piotr Kaminski: It depends who you ask. I am the distractible sort of chief executive, so the visual view of everything is what I want. Without it I spend every Friday worried that a ball has been dropped. I manage my own goals well and the sub goals are where I lose the thread. Most tools are text first, and text is right for the detail, but at our size the picture is what directs attention.
+Elena Marchetti: That is consistent with what we are building next. When we finished that screen we realised it belongs on the home page rather than off to the side, so we are working on merging it with the inbox.
+Piotr Kaminski: There is one more thing, and it is closer to human resources than to software. I am always the one assembling the small team for a task, because I know who has which technique. Two people here have done the assay that sits at the heart of our work. Four can write a grant. I want a profile for each person that grows over time and could even be informed by what they contribute in meetings.
+Elena Marchetti: We hold a light version of that already. A profile shows the goals assigned to somebody and the decisions they have recorded.
+Piotr Kaminski: The ethical line matters to me. It has to serve the person as well as the company.
+Elena Marchetti: We chose not to include private activity in the alignment screen for that reason, so what you saw is only what is shared with the whole organisation. Enabling surveillance is not what we are for.
+Piotr Kaminski: Good. So where does that leave us practically?
+Elena Marchetti: Our pricing is not per user. It is based on token usage, so an account costs nothing to create and ten people cost nothing to add. You pay for the research feature and the meeting summaries, which is where the real cost sits for us.
+Piotr Kaminski: What is the number?
+Elena Marchetti: Ten dollars per million tokens. A token is roughly four characters, so it is not quite words. In practice it lands between ten and twenty dollars a month per active person.
+Theo Nakamura: And at the end of the first month we go through the actual usage with you, so you have a real figure rather than an estimate.
+Piotr Kaminski: That is the answer I hoped for. The ClickUp problem was that two hundred dollars is not a large amount, but it is hard to commit to before you know whether the tool is right, and it did not scale with us.
+Elena Marchetti: Then the last thing. You mentioned two colleagues who would need to see this.
+Piotr Kaminski: Will and Madeline. If there were a recorded walkthrough I could send them, that would carry further than me describing it.
+Elena Marchetti: We will put one together for you. Not the generic tour, but one built around the way you work, using the protocol example you described and your milestone goals. Theo can also take a call with either of them.
+Theo Nakamura: Happy to.
+Piotr Kaminski: Perfect. And are you still at the stage where you take feature requests? Will is inventive with this sort of thing and he would enjoy being involved.
+Elena Marchetti: We are. We use it every day to run the company, and we are early enough that feedback changes what we build. I will send the walkthrough and the integration notes this week.
+Piotr Kaminski: I have just messaged Will. He will get in touch with Theo directly.
+Theo Nakamura: Excellent.
+Elena Marchetti: Thank you for the time, Piotr.
+Piotr Kaminski: Always a pleasure. Have a good evening.
+Theo Nakamura: You too. Goodbye.

@@ -1,0 +1,183 @@
+{
+  "id": "199e39fc26cdd3fa",
+  "historyId": "2614043",
+  "messages": [
+    {
+      "id": "199e39fc26cdd3fa",
+      "threadId": "199e39fc26cdd3fa",
+      "labelIds": [
+        "SENT",
+        "INBOX"
+      ],
+      "snippet": "Inline JPEG below this - Nick",
+      "payload": {
+        "partId": "",
+        "mimeType": "multipart/mixed",
+        "filename": "",
+        "headers": [
+          {
+            "name": "Received",
+            "value": "from 526541229415 named unknown by gmailapi.google.com with HTTPREST; Tue, 14 Oct 2025 11:48:41 -0500"
+          },
+          {
+            "name": "Received",
+            "value": "from 526541229415 named unknown by gmailapi.google.com with HTTPREST; Tue, 14 Oct 2025 11:48:41 -0500"
+          },
+          {
+            "name": "Content-Type",
+            "value": "multipart/mixed; boundary=\"===============5240661977986702933==\""
+          },
+          {
+            "name": "MIME-Version",
+            "value": "1.0"
+          },
+          {
+            "name": "From",
+            "value": "Marcus Larkin <marcus.larkin@example.com>"
+          },
+          {
+            "name": "To",
+            "value": "marcus.larkin@example.com"
+          },
+          {
+            "name": "Subject",
+            "value": "Testing with image added via Convictional"
+          },
+          {
+            "name": "Date",
+            "value": "Tue, 14 Oct 2025 11:48:41 -0500"
+          },
+          {
+            "name": "Message-Id",
+            "value": "<CAJ7Ufi-krt512R_zvaV5NqUVVRGSrBN0BRPPeLivtA7Q85xHXg@mail.gmail.com>"
+          }
+        ],
+        "body": {
+          "size": 0
+        },
+        "parts": [
+          {
+            "partId": "0",
+            "mimeType": "multipart/related",
+            "filename": "",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "multipart/related; boundary=\"===============5729745212756646089==\""
+              },
+              {
+                "name": "MIME-Version",
+                "value": "1.0"
+              }
+            ],
+            "body": {
+              "size": 0
+            },
+            "parts": [
+              {
+                "partId": "0.0",
+                "mimeType": "multipart/alternative",
+                "filename": "",
+                "headers": [
+                  {
+                    "name": "Content-Type",
+                    "value": "multipart/alternative; boundary=\"===============7862908855325984039==\""
+                  },
+                  {
+                    "name": "MIME-Version",
+                    "value": "1.0"
+                  }
+                ],
+                "body": {
+                  "size": 0
+                },
+                "parts": [
+                  {
+                    "partId": "0.0.0",
+                    "mimeType": "text/plain",
+                    "filename": "",
+                    "headers": [
+                      {
+                        "name": "Content-Type",
+                        "value": "text/plain; charset=\"utf-8\""
+                      },
+                      {
+                        "name": "MIME-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "name": "Content-Transfer-Encoding",
+                        "value": "base64"
+                      }
+                    ],
+                    "body": {
+                      "size": 29,
+                      "data": "SW5saW5lIEpQRUcgYmVsb3cgdGhpcyAtIE5pY2s="
+                    }
+                  },
+                  {
+                    "partId": "0.0.1",
+                    "mimeType": "text/html",
+                    "filename": "",
+                    "headers": [
+                      {
+                        "name": "Content-Type",
+                        "value": "text/html; charset=\"utf-8\""
+                      },
+                      {
+                        "name": "MIME-Version",
+                        "value": "1.0"
+                      },
+                      {
+                        "name": "Content-Transfer-Encoding",
+                        "value": "base64"
+                      }
+                    ],
+                    "body": {
+                      "size": 157,
+                      "data": "PHAgc3R5bGU9Im1hcmdpbjogMWVtIDA7Ij5JbmxpbmUgSlBFRyBiZWxvdyB0aGlzIDxpbWcgYWx0PSIiIHNyYz0iY2lkOjMyYTRkOTM4LTE2NTktNGY4My1hZmVlLWQzZjQ0OTFlM2IyZiIgc3R5bGU9Im1heC13aWR0aDogMTAwJTsgaGVpZ2h0OiBhdXRvOyI-LSBOaWNrPC9wPg=="
+                    }
+                  }
+                ]
+              },
+              {
+                "partId": "0.1",
+                "mimeType": "image/jpeg",
+                "filename": "IMG_2860.jpeg",
+                "headers": [
+                  {
+                    "name": "Content-Type",
+                    "value": "image/jpeg"
+                  },
+                  {
+                    "name": "MIME-Version",
+                    "value": "1.0"
+                  },
+                  {
+                    "name": "Content-Transfer-Encoding",
+                    "value": "base64"
+                  },
+                  {
+                    "name": "Content-ID",
+                    "value": "<32a4d938-1659-4f83-afee-d3f4491e3b2f>"
+                  },
+                  {
+                    "name": "Content-Disposition",
+                    "value": "inline; filename=\"IMG_2860.jpeg\""
+                  }
+                ],
+                "body": {
+                  "attachmentId": "ANGjdJ_kqThQU0APvX1TzmyPeeb7cnxB7_n13WD8oditFC7jV1EJGnHEyDhYKiySV-7N2-AbNFdIJ84Fm2Ax_ZlC_x-vrgIlE9JeVe1iVaGXwlHGLBwt_gb7fYs4xt2kWLWQMZZGC9BOLVYb-xh3dLbHb6FPyy8OUgsaW81SrCZ_vMCNeLErR_PRvs7ime0SDN92550m5HobxEZnvgg9hckTb_CqNmQbS3c7oWV7L4Ij-9X9PXzAo-_y7U2QIpnA7r1isoF7YLrQZ1NDvSLnFiJkxQBJsEl_UL7gNlk61er24obAqSGJ8PPXHiW6M1BfbyEfqBgpM5zLX98BEOXAkD5AvWIdbQvsDRZa67FtYOBBzHvaD8D1qcSeHwrPn0xsSt6CnzqmwPfkhOslhGoh",
+                  "size": 2097506
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "sizeEstimate": 2835230,
+      "historyId": "2614043",
+      "internalDate": "1760460521000"
+    }
+  ]
+}

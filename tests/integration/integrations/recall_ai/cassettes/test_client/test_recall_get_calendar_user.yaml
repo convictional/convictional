@@ -1,0 +1,72 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json
+      accept:
+      - application/json
+    method: GET
+    uri: https://us-east-1.recall.ai/api/v1/calendar/user/
+  response:
+    body:
+      string: '{"id":"d563b97a-1206-4e6f-914b-451409c1f740","external_id":"65e8cc1e-a789-4af6-a287-1908d927ff67","connections":[{"platform":"google","connected":true,"email":"dana.holbrook@example.com","id":"fb7c8326-4a2a-4520-ac87-f143b530c591"},{"platform":"microsoft","connected":false,"email":null,"id":null}],"preferences":{"id":"706fbbfd-9712-44a7-a464-ac7301ca013a","record_non_host":false,"record_recurring":false,"record_external":false,"record_internal":false,"record_confirmed":false,"record_only_host":false,"bot_name":"Convictional
+        Bot"}}'
+    headers:
+      Allow:
+      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '536'
+      Content-Security-Policy:
+      - 'img-src ''self'' data: https://cdn.usefathom.com https://upload.wikimedia.org
+        https://rp.liadm.com https://*.stripe.com *.s3.amazonaws.com *.s3.us-west-1.amazonaws.com
+        https://avatars.slack-edge.com; connect-src ''self'' ws: wss: www.google-analytics.com
+        us.i.posthog.com opps-api.getwarmly.com pro.ip-api.com alocdn.com opps-api.getwarmly.com
+        *.liadm.com 9xgnrndqve.execute-api.us-west-2.amazonaws.com tag.clearbitscripts.com
+        *.termly.io *.usepylon.com *.posthog.com *.pusher.com; script-src ''self''
+        ''unsafe-inline'' ''unsafe-eval'' www.googletagmanager.com www.google-analytics.com
+        webpack://meeting-api us-assets.i.posthog.com cdn.usefathom.com tag.clearbitscripts.com
+        s3-us-west-2.amazonaws.com/b2bjsstore/b/Y4O7Z0H983NX/reb2b.js.gz opps-widget.getwarmly.com
+        us.i.posthog.com b-code.liadm.com *.liadm.com a.usbrowserspeed.com a.remarketstats.com
+        *.clickcertain.com *.stripe.com *.termly.io *.usepylon.com *.posthog.com *.pusher.com;
+        style-src ''self'' ''unsafe-inline'' *.usepylon.com *.posthog.com *.pusher.com;
+        media-src *.s3.amazonaws.com; font-src ''self'' *.usepylon.com *.posthog.com
+        *.pusher.com; default-src ''self''; frame-src ''self'' https://app.svix.com
+        https://www.googletagmanager.com https://embedded-dashboards.metronome.com
+        https://*.stripe.com'
+      Content-Type:
+      - application/json
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Date:
+      - Thu, 19 Sep 2024 17:41:37 GMT
+      Permissions-Policy:
+      - accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), usb=()
+      Referrer-Policy:
+      - same-origin
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      Vary:
+      - Origin
+      Via:
+      - 1.1 fe705b44d5a5a2d7d6e73595ceeca2e2.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - bDD5KjzfhyNv03iXa3vrKnA0x1GuOgxeqxsMA6fsxsMfFDCkEY8leQ==
+      X-Amz-Cf-Pop:
+      - JFK50-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1

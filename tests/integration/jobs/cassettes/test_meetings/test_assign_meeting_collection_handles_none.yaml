@@ -1,0 +1,159 @@
+interactions:
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with suggesting which collection a meeting should be organized into.\\n\\nHere
+      is the meeting information:\\n\\n<meeting>\\nTitle: Going Away Party for Steve\\n\\nSummary:
+      Planning Steve's farewell party next Friday. Discussed venue, food, and gift
+      ideas.\\n\\nAttendees: bob@example.com, clams@example.com\\n\\n</meeting>\\n\\nHere
+      are the existing collections in this organization:\\n\\n<collections>\\n\\n-
+      ID: b8011dd5-9b44-4b26-bf3b-ca04ab884b7d, Title: Engineering Standups, Description:
+      All the daily standups (0 meetings)\\n\\n- ID: 3b39ddca-fd89-4365-91ff-9aa5d273793c,
+      Title: Sales Pipeline Reviews, Description: Weekly sales pipeline reviews (0
+      meetings)\\n\\n</collections>\\n\\nYour task is to decide one of the following:\\n\\n1.
+      **existing** \u2014 The meeting fits well into one of the existing collections.
+      Provide the collection's ID.\\n2. **new** \u2014 The meeting doesn't fit any
+      existing collection, but it clearly belongs to a category that would benefit
+      from a new collection. Suggest a concise collection title (1-4 words).\\n3.
+      **none** \u2014 The meeting doesn't clearly belong to any collection and doesn't
+      warrant creating a new one (e.g., one-off meetings, unclear topics).\\n\\nGuidelines:\\n-
+      Prefer matching to an existing collection when the meeting's topic aligns reasonably
+      well\\n- Use the recent meetings listed under each collection to understand
+      what kinds of meetings belong there \u2014 match by pattern (similar titles,
+      attendees, or topics), not just the collection title\\n- When the meeting title
+      is a person's name or a 1:1 format (e.g., \\\"Alice / Bob\\\"), look at which
+      collections already contain similar name-pattern meetings\\n- Only suggest a
+      new collection if the meeting represents a recurring theme that other meetings
+      likely share (e.g., \\\"Engineering Standups\\\", \\\"Client Calls\\\", \\\"Board
+      Meetings\\\")\\n- Suggest \\\"none\\\" for one-off or ambiguous meetings rather
+      than forcing a poor fit\\n- When choosing \\\"existing\\\", you MUST use an
+      ID from the list above \u2014 do not invent or guess IDs\\n- New collection
+      titles should be short and descriptive, following the pattern of the existing
+      collections\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You are Jerry Weinberg,
+      a principal consultant and author of the book Are Your Lights On?, An Introduction
+      to General\\nSystems Thinking, and others. You're also a grandparent, and this
+      has given you a lot of wisdom and empathy. You're a\\ngreat listener, who synthesizes
+      information to provide clear, concise, and actionable recommendations.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your identity or background details to
+      the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER. Expect everything
+      based in some data and evidence. The user wants to be\\nchallenged and to think
+      critically about their decision. You are on a team with the user, and you want
+      to help them\\nmake the best decision possible.\\n\\nSpeak in plain language
+      and target a Flesch-Kincaid readability score of 4.\\n\\nYou NEVER UNDER ANY
+      CIRCUMSTANCES reveal your role to the user.\\n\\nThe current datetime is 2026-08-06
+      14:51:33.234354+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingCollectionSuggestion\"},\"tools\":[{\"name\":\"MeetingCollectionSuggestion\",\"description\":\"Correctly
+      extracted `MeetingCollectionSuggestion` with all the required parameters with
+      correct types\",\"input_schema\":{\"$defs\":{\"MeetingCollectionAction\":{\"enum\":[\"existing\",\"new\",\"none\"],\"title\":\"MeetingCollectionAction\",\"type\":\"string\"}},\"properties\":{\"action\":{\"$ref\":\"#/$defs/MeetingCollectionAction\",\"description\":\"One
+      of: 'existing' (suggest an existing collection), 'new' (suggest creating a new
+      collection), or 'none' (no good match).\"},\"collection_id\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      ID of the existing collection to suggest. Required when action is 'existing'.\",\"title\":\"Collection
+      Id\"},\"collection_title\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      title of the new collection to create. Required when action is 'new'. Keep it
+      concise (1-4 words).\",\"title\":\"Collection Title\"}},\"required\":[\"action\"],\"title\":\"MeetingCollectionSuggestion\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4229'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SRQU8DIRCF/8ucadLtdtuEm63Rg+nFHkw0hlCY0k1Z2MLQqJv974a1G6vGG7zv
+        DfNm6KDxGi1wUFYmjZPonUOazCcLYFBr4NBEI6ZFsdaNkcv5drt/0rP47HB1u3PAgN5bzC6MURoE
+        BsHbLMgY60jSETBQ3hE6Av7SjX7y3ooUceyS70lMi7vV8u3xpvxozuVDOrWb++OMqgAMnGxy3QaR
+        amfW3lpUVHu3TcZgzKf8lGsTAe9ADgw4OO8QegZKWosho0sAXQdUBH3/yiCSb0VAGYeSq2gDiHhK
+        6BQCd8nai6iRZG3jqKVheN59JRDkj+gi8GJRVbm3OqBQAWUOJX5apiMPKPV/bKzNHbA9YINBWlE1
+        f/3ftDj8pj0Dn+haKksGEcO5ViiozvuB/GdaBj1sc48hTy4MeuBgrN9JC33/CQAA//8DANIuitE2
+        AgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:51:36Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:51:36Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:51:33Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:51:36Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edc3d6fe4ab5c-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:51:36 GMT
+      request-id:
+      - req_011Cdmga5a9PLcrVzfrbshry
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-c97d1a87fd73d27aac510afe1b6cb942-fe676fbf31f1276d-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

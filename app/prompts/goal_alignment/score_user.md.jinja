@@ -1,0 +1,32 @@
+<goal>
+{{ goal_context }}
+</goal>
+{% if examples %}
+
+<examples>
+These are examples of content that users have confirmed as aligned or not aligned with this goal. Use them to calibrate your judgment.
+{% for example in examples %}
+
+<example>
+<type>{{ example.content_type }}</type>
+<title>{{ example.content_title }}</title>
+<body>{{ example.content_body }}</body>
+{% if example.is_aligned %}
+<judgment>aligned — signal: {{ example.signal }}, description: {{ example.description }}</judgment>
+{% else %}
+<judgment>not aligned</judgment>
+{% endif %}
+</example>
+{% endfor %}
+</examples>
+{% endif %}
+
+<content>
+<type>{{ content_type }}</type>
+<title>{{ content_title }}</title>
+<body>{{ content_body }}</body>
+</content>
+
+<similarity_score>{{ similarity_score }}</similarity_score>
+
+Is this content aligned with the goal?

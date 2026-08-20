@@ -1,0 +1,14 @@
+{% extends application_layout %}
+{% block title %}
+    {{ "User Profile" |format_page_title }}
+{% endblock title %}
+{% block content %}
+    {# Single React island composing the profile fields and every integration
+       section. data-props carries only server-controlled config the island can't
+       discover from the API (whether Google OAuth is configured, which gates the
+       Gmail section; the Slack workspace install URL); everything else is fetched
+       from the /api/ endpoints. #}
+    <div id="react-user-settings"
+         data-props="{{ {'hasGoogleOauth': settings.has_google_oauth, 'slackAppInstallUrl': settings.slack_app_install_url} | tojson }}">
+    </div>
+{% endblock content %}

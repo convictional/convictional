@@ -1,0 +1,30 @@
+{
+  "languages": {
+    "Jinja2": {
+      // Enable tailwind support for Jinja2 files
+      "language_servers": ["tailwindcss-language-server"]
+    }
+  },
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python": {
+          // Zed's venv selector is broken:
+          // https://github.com/zed-industries/zed/issues/29807
+          // To move your venv to `.venv`, run:
+          // 1. `make clean`
+          // 2. `mkdir .venv`
+          // 3. `make install`
+          "pythonPath": ".venv/bin/python"
+        }
+      }
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "jinja2": "html"
+        }
+      }
+    }
+  }
+}

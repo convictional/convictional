@@ -1,0 +1,209 @@
+key: engineering-chat
+name: "Engineering"
+group: engineering
+members: [priya, arjun, jordan, theo]
+messages:
+  - key: engineering-chat-msg-001
+    author: priya
+    at: !relative_day {offset: -18, hour: 9, minute: 30}
+    content: |
+      Engineering hiring plan draft is posted. Top three: SRE, 2nd ML engineer, integrations engineer. Feedback welcome, especially on the SRE profile. I'd rather we over-index on incident-response chops than cloud-provider trivia.
+    reactions:
+      thumbs_up: [arjun, jordan]
+
+  - key: engineering-chat-msg-002
+    author: arjun
+    at: !relative_day {offset: -18, hour: 9, minute: 42}
+    reply_to: engineering-chat-msg-001
+    content: |
+      Strongly agree on SRE-first. Our on-call is a volunteer rotation and it is showing. The latency regression last week took two hours longer than it should have because no one owns the alerting config.
+    reactions:
+      thumbs_up: [priya, theo]
+
+  - key: engineering-chat-msg-003
+    author: jordan
+    at: !relative_day {offset: -18, hour: 10, minute: 5}
+    reply_to: engineering-chat-msg-001
+    content: |
+      One note on the ML hire — I'd value someone who has shipped an eval harness more than someone who has fine-tuned a frontier model. The muscle we're missing is measurement, not modeling.
+
+  - key: engineering-chat-msg-004
+    author: priya
+    at: !relative_day {offset: -18, hour: 10, minute: 11}
+    reply_to: engineering-chat-msg-003
+    content: |
+      Yes. That's going in the profile doc. Thank you.
+
+  - key: engineering-chat-msg-005
+    author: theo
+    at: !relative_day {offset: -15, hour: 14, minute: 20}
+    content: |
+      PR #2401 is up — reviewer panel redesign behind a flag for Alderman. Thanks to Emma for the three rounds of design pairing. Would love a second pair of eyes from @arjun on the websocket change.
+    reactions:
+      eyes: [arjun]
+
+  - key: engineering-chat-msg-006
+    author: arjun
+    at: !relative_day {offset: -15, hour: 14, minute: 55}
+    reply_to: engineering-chat-msg-005
+    content: |
+      Taking a look now.
+
+  - key: engineering-chat-msg-007
+    author: arjun
+    at: !relative_day {offset: -15, hour: 16, minute: 12}
+    reply_to: engineering-chat-msg-005
+    content: |
+      Left a few comments. The reconnection logic needs a jitter on the backoff or we will hammer the gateway when a whole tenant drops. Otherwise solid.
+
+  - key: engineering-chat-msg-008
+    author: theo
+    at: !relative_day {offset: -15, hour: 16, minute: 20}
+    reply_to: engineering-chat-msg-007
+    content: |
+      Good catch. Will add jitter and re-run the soak test.
+    reactions:
+      thumbs_up: [arjun]
+
+  - key: engineering-chat-msg-009
+    author: jordan
+    at: !relative_day {offset: -12, hour: 11, minute: 0}
+    content: |
+      Co-pilot prototype is behind a flag and working for the MSA playbook. Demo link is in the #redline-copilot doc. Known issue: the suggestion card flickers when the retrieval returns fewer than 3 passages. I know why. Fixing tonight.
+    reactions:
+      rocket: [priya, theo, arjun]
+
+  - key: engineering-chat-msg-010
+    author: priya
+    at: !relative_day {offset: -12, hour: 11, minute: 14}
+    reply_to: engineering-chat-msg-009
+    content: |
+      Nice. For the eval harness — what's the shape you want by end of next week? Benchmark set plus a dashboard? Or benchmark set only?
+
+  - key: engineering-chat-msg-011
+    author: jordan
+    at: !relative_day {offset: -12, hour: 11, minute: 22}
+    reply_to: engineering-chat-msg-010
+    content: |
+      Benchmark set plus a minimal CLI summary — dashboard is a stretch. Rhea and I have 85 labeled examples across DPA, MSA, and NDA. We need 120-150 to claim the 0.75 playbook-compliance number with confidence.
+
+  - key: engineering-chat-msg-012
+    author: priya
+    at: !relative_day {offset: -12, hour: 11, minute: 28}
+    reply_to: engineering-chat-msg-011
+    content: |
+      Good. Let's not ship the number until we have the examples.
+    reactions:
+      heart: [jordan]
+
+  - key: engineering-chat-msg-013
+    author: arjun
+    at: !relative_day {offset: -9, hour: 13, minute: 45}
+    content: |
+      Region-scoped storage spike design is in the ADR doc. Short version: tenant-tagged buckets, region-aware routing at the ingestion layer, separate KMS keys per region. I'd love a second set of eyes before the Residency ADR Review meeting.
+
+  - key: engineering-chat-msg-014
+    author: priya
+    at: !relative_day {offset: -9, hour: 14, minute: 30}
+    reply_to: engineering-chat-msg-013
+    content: |
+      Reading tonight. One question I already have: how do we handle the tenant that has EU users but hasn't explicitly opted into EU residency? Default?
+
+  - key: engineering-chat-msg-015
+    author: arjun
+    at: !relative_day {offset: -9, hour: 14, minute: 37}
+    reply_to: engineering-chat-msg-014
+    content: |
+      Default is US region with an explicit opt-in to EU. The alternative (auto-detect) is too magical and too easy to get wrong. Covered in the alternatives section.
+
+  - key: engineering-chat-msg-016
+    author: theo
+    at: !relative_day {offset: -9, hour: 16, minute: 10}
+    content: |
+      Deploy #1143 is green. Reviewer redesign is on the Alderman flag. Moving Keating onto the same flag tonight pending Tessa's go.
+    reactions:
+      rocket: [priya, arjun]
+      thumbs_up: [jordan]
+
+  - key: engineering-chat-msg-017
+    author: jordan
+    at: !relative_day {offset: -7, hour: 10, minute: 5}
+    content: |
+      Quick runbook question — when PagerDuty pages on `contract-ingest-queue-depth-warn`, what's the expected first action? I ended up just eyeballing the queue graph and waiting. Felt sketchy.
+
+  - key: engineering-chat-msg-018
+    author: arjun
+    at: !relative_day {offset: -7, hour: 10, minute: 16}
+    reply_to: engineering-chat-msg-017
+    content: |
+      There is no runbook yet. That's on me. The right first action is to check the per-tenant enqueue rate — if one tenant is driving it, we throttle at the edge. If it's organic, we scale the worker pool. Writing this up today so the next person doesn't have to eyeball.
+    reactions:
+      heart: [jordan, priya]
+
+  - key: engineering-chat-msg-019
+    author: arjun
+    at: !relative_day {offset: -7, hour: 11, minute: 40}
+    reply_to: engineering-chat-msg-017
+    content: |
+      Runbook is in the engineering wiki. Short. Will expand when we have an SRE.
+
+  - key: engineering-chat-msg-020
+    author: priya
+    at: !relative_day {offset: -5, hour: 9, minute: 20}
+    content: |
+      SOC 2 Type I scope meeting with Brandt is Thursday. Arjun and I will be there. Jordan, I'll probably want your voice on the eval-harness control section later — but not Thursday.
+    reactions:
+      thumbs_up: [arjun, jordan]
+
+  - key: engineering-chat-msg-021
+    author: jordan
+    at: !relative_day {offset: -4, hour: 15, minute: 10}
+    content: |
+      Here's the retrieval config that's working best on the MSA benchmark:
+      ```
+      retriever:
+        top_k: 8
+        rerank_top_k: 3
+        passage_size: 512
+        overlap: 64
+      ```
+      Top_k below 6 hurts recall noticeably. 8 is the sweet spot.
+
+  - key: engineering-chat-msg-022
+    author: arjun
+    at: !relative_day {offset: -4, hour: 15, minute: 22}
+    reply_to: engineering-chat-msg-021
+    content: |
+      Any cost signal on top_k 8 vs 6? The rerank isn't free.
+
+  - key: engineering-chat-msg-023
+    author: jordan
+    at: !relative_day {offset: -4, hour: 15, minute: 30}
+    reply_to: engineering-chat-msg-022
+    content: |
+      ~18% more compute per call but the quality delta is worth it. I'll add the cost curve to the eval doc.
+    reactions:
+      eyes: [arjun, priya]
+
+  - key: engineering-chat-msg-024
+    author: theo
+    at: !relative_day {offset: -2, hour: 17, minute: 5}
+    content: |
+      Reviewer UI polish pass is done. Turning the flag on for two more design partners tomorrow. Keating demo build is clean.
+    reactions:
+      rocket: [priya, arjun, jordan]
+
+  - key: engineering-chat-msg-025
+    author: priya
+    at: !relative_day {offset: -1, hour: 16, minute: 45}
+    content: |
+      Friendly reminder — SOC 2 questionnaire split is posted. Arjun owns security architecture, I own data handling, Jordan owns model controls. Return date is in 1 week. Ask me if a question feels ambiguous.
+    reactions:
+      thumbs_up: [arjun, jordan]
+
+  - key: engineering-chat-msg-026
+    author: arjun
+    at: !relative_day {offset: -1, hour: 16, minute: 52}
+    reply_to: engineering-chat-msg-025
+    content: |
+      On it. A couple of CISO questions will probably benefit from a Priya sign-off — I'll flag them as I hit them.

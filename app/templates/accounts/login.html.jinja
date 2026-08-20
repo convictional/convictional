@@ -1,0 +1,73 @@
+{% extends public_layout %}
+{% block body %}
+    <div class="relative min-h-screen w-full overflow-hidden bg-base-100"
+         hx-history="false">
+        <div class="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 py-12 gap-10">
+            <div class="w-44 mx-auto absolute top-[5vh] left-1/2 -translate-x-1/2">
+                <a href="{{ settings.marketing_site_url }}" hx-boost="false">
+                    <div>{% include "shared/_logo_type.html.jinja" %}</div>
+                </a>
+            </div>
+            <div class="flex flex-col items-center text-center pt-12 pb-8 px-2 gap-8">
+                <h1 class="font-accent font-light text-4xl text-base-800 tracking-tight leading-tight max-w-2xl mx-auto [text-wrap:balance] pt-4">
+                    Collaboration tools to keep teams <span class="block">mission-aligned by design</span>
+                </h1>
+            </div>
+            <div class="w-full max-w-md pb-[10vh]">
+                {# /signup is the URL the marketing site points at, so during a signup freeze it
+                explains the pause instead of offering buttons that would refuse after a round
+                trip through the identity provider. /login keeps its buttons — existing users
+                and invitees still need them. #}
+                {% set signups_paused = intent == "signup" and not settings.signups_enabled %}
+                <div class="flex flex-col bg-base-200/95 rounded-xl text-center shadow-sm py-8 px-6 gap-8">
+                    {% if signups_paused %}
+                        <h2 class="text-xl font-medium">We've paused new signups</h2>
+                        <div class="px-4 w-full flex flex-col gap-4 text-sm text-base-600">
+                            <p class="text-center leading-relaxed">
+                                Already have an account? <a href="{{ url_for('login') }}" class="link">Log in</a>.
+                            </p>
+                        </div>
+                    {% else %}
+                        <h2 class="text-xl font-medium">
+                            {% if settings.signups_enabled %}
+                                Login or Create a free account
+                            {% else %}
+                                Log in
+                            {% endif %}
+                        </h2>
+                        <div class="px-4 w-full flex flex-col gap-4">
+                            {% if settings.enable_fake_auth %}
+                                {% include "accounts/_login_fake.html.jinja" %}
+                            {% endif %}
+                            {% if settings.has_google_oauth %}
+                                {% if is_embedded_browser %}
+                                    <div class="px-4">{% include "accounts/_embedded_browser_notice.html.jinja" %}</div>
+                                {% else %}
+                                    <div class="px-4">{% include "accounts/_google_sign_in_button.html.jinja" %}</div>
+                                {% endif %}
+                            {% endif %}
+                            {% if settings.has_microsoft_oauth %}
+                                {% if is_embedded_browser %}
+                                    <div class="px-4">{% include "accounts/_embedded_browser_notice.html.jinja" %}</div>
+                                {% else %}
+                                    <div class="px-4">{% include "accounts/_microsoft_sign_in_button.html.jinja" %}</div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% set policy_links = [("Terms of Service", settings.terms_of_service_url), ("Privacy", settings.privacy_policy_url), ("Security", settings.security_policy_url)] %}
+                    <div class="flex justify-center gap-2 text-xs pt-2">
+                        {% for label, url in policy_links if url %}
+                            {% if not loop.first %}<span class="text-base-500">|</span>{% endif %}
+                            <a href="{{ url }}"
+                               class="link"
+                               target="_blank"
+                               rel="noopener noreferrer">{{ label }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="toast toast-center toast-top z-50" id="flashes">{% include "shared/_flashes.html.jinja" %}</div>
+        </div>
+    </div>
+{% endblock body %}

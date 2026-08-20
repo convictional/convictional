@@ -1,0 +1,101 @@
+key: legal-product-chat
+name: "Legal Product"
+group: legal-product
+members: [maren, rhea]
+messages:
+  - key: legal-product-chat-msg-001
+    author: maren
+    at: !relative_day {offset: -16, hour: 9, minute: 40}
+    content: |
+      Going to start outlining the coverage memo this weekend. Can you pull the current coverage stats by contract type across our top 5 segments? I need a clean picture of where we're thinnest.
+    reactions:
+      thumbs_up: [rhea]
+
+  - key: legal-product-chat-msg-002
+    author: rhea
+    at: !relative_day {offset: -16, hour: 10, minute: 5}
+    reply_to: legal-product-chat-msg-001
+    content: |
+      On it. I already have the DPA and MSA numbers from last month's audit. Will refresh and add NDA + industry-MSA. Monday?
+
+  - key: legal-product-chat-msg-003
+    author: maren
+    at: !relative_day {offset: -16, hour: 10, minute: 8}
+    reply_to: legal-product-chat-msg-002
+    content: |
+      Monday is perfect.
+
+  - key: legal-product-chat-msg-004
+    author: rhea
+    at: !relative_day {offset: -13, hour: 13, minute: 20}
+    content: |
+      Numbers are in the gap-analysis doc. Short version: DPA coverage on top-5 segments is at 41%. MSA is at 62%. Industry-MSA (healthcare, financial services, manufacturing) is the weakest at 28% weighted.
+    reactions:
+      eyes: [maren]
+
+  - key: legal-product-chat-msg-005
+    author: maren
+    at: !relative_day {offset: -13, hour: 13, minute: 35}
+    reply_to: legal-product-chat-msg-004
+    content: |
+      28% is worse than I thought. That's the number I'll lead with in the memo.
+
+  - key: legal-product-chat-msg-006
+    author: maren
+    at: !relative_day {offset: -11, hour: 18, minute: 10}
+    content: |
+      Amira at Keating sent the DPA draft. Their language on sub-processor notification is more conservative than our default. I'd like your read before I respond.
+
+  - key: legal-product-chat-msg-007
+    author: rhea
+    at: !relative_day {offset: -11, hour: 19, minute: 22}
+    reply_to: legal-product-chat-msg-006
+    content: |
+      Read it. Two observations: (1) their notification window is 30 days instead of 10 — common for AmLaw but we can offer 15 as a middle ground; (2) their audit-rights clause is unusually strong. I'd push back on the on-site audit language.
+    reactions:
+      heart: [maren]
+
+  - key: legal-product-chat-msg-008
+    author: maren
+    at: !relative_day {offset: -11, hour: 19, minute: 30}
+    reply_to: legal-product-chat-msg-007
+    content: |
+      Thank you. That's exactly the framing I'll use with Amira.
+
+  - key: legal-product-chat-msg-009
+    author: rhea
+    at: !relative_day {offset: -8, hour: 11, minute: 15}
+    content: |
+      Quick aside — Tina Werner at Corvus is open to being a Keating reference call. I can make the intro if Tessa wants.
+
+  - key: legal-product-chat-msg-010
+    author: maren
+    at: !relative_day {offset: -8, hour: 11, minute: 22}
+    reply_to: legal-product-chat-msg-009
+    content: |
+      Yes — please. Tina is exactly the kind of reference that will land with Amira.
+    reactions:
+      eyes: [rhea]
+
+  - key: legal-product-chat-msg-011
+    author: maren
+    at: !relative_day {offset: -6, hour: 20, minute: 5}
+    content: |
+      Memo is almost done. I'm framing it as "coverage-first" not "co-pilot-no" — I want Leo to read it and recognize himself in the argument.
+
+  - key: legal-product-chat-msg-012
+    author: rhea
+    at: !relative_day {offset: -6, hour: 20, minute: 18}
+    reply_to: legal-product-chat-msg-011
+    content: |
+      That's the right voice. The memo is strongest when the data does the pointed part, not the prose.
+    reactions:
+      heart: [maren]
+
+  - key: legal-product-chat-msg-013
+    author: maren
+    at: !relative_day {offset: -1, hour: 8, minute: 30}
+    content: |
+      Thursday walk-through with Leo, Priya, Darren went better than I expected. The memo is landing. Rhea — your numbers carried the room.
+    reactions:
+      heart: [rhea]

@@ -1,0 +1,14 @@
+{% set mobile_nav_hidden = true %}
+{% extends application_layout %}
+{% block title %}
+    {{ meeting.title ~ " Meeting Details" | format_page_title }}
+{% endblock title %}
+{% block meta %}
+    {% set og_url = absolute_url(url_for('meetings_show', meeting_id=meeting.id)) %}
+    <meta property="og:title" content="{{ meeting.title }}" />
+    <meta property="og:url" content="{{ og_url }}" />
+{% endblock meta %}
+{% block content %}
+    <div id="react-meeting-show"
+         data-props="{{ {'meetingId': meeting.id | string, 'back': back} | tojson }}"></div>
+{% endblock content %}

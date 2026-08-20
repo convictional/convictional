@@ -1,0 +1,9 @@
+{# Markdown content renderer with prose styling
+
+Required context:
+- content: str - Markdown content to render
+
+Optional context:
+- class: str = "" - Additional CSS classes for the container
+#}
+<div class="markdown-content {{ class }}">{{ content|markdown }}</div>

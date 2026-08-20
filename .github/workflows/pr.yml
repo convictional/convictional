@@ -1,0 +1,462 @@
+name: Pull Request CI
+on:
+  pull_request:
+  merge_group:
+concurrency:
+  group: pr-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      should_run: ${{ steps.filter.outputs.app }}
+    steps:
+      # fetch-depth: 0 (full history) is required on merge_group events:
+      # dorny/paths-filter falls back to local git there, and the comparison
+      # base can be more than one commit behind when the merge queue batches
+      # multiple PRs. Full history lets us keep persist-credentials: false.
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+  linting:
+    needs: changes
+    if: needs.changes.outputs.should_run == 'true'
+    name: Linting
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@acb598e5ddbc6f68a970c5da0688d2f3a9f04d05 # v1.6.0
+        with:
+          packages: libmagic-dev
+          version: 1.0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          enable-cache: true
+
+      - name: Set up Python environment
+        run: uv python install 3.13
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Check linting
+        run: make lint
+
+      - name: Complete
+        run: echo "Code linting check complete."
+
+  type-checking:
+    needs: changes
+    if: needs.changes.outputs.should_run == 'true'
+    name: Check types
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@acb598e5ddbc6f68a970c5da0688d2f3a9f04d05 # v1.6.0
+        with:
+          packages: libmagic-dev
+          version: 1.0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          enable-cache: true
+
+      - name: Set up Python environment
+        run: uv python install 3.13
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Check types
+        run: make types
+
+      - name: Check types (Typescript)
+        run: make typescript
+
+      - name: Complete
+        run: echo "Type check complete."
+
+  tests:
+    needs: changes
+    if: needs.changes.outputs.should_run == 'true'
+    name: Tests
+    # xdist scales workers to nproc, so 2-core runners run ~4x fewer than the old 8-core pool.
+    timeout-minutes: 35
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    services:
+      postgres:
+        image: pgvector/pgvector:pg18
+        env:
+          POSTGRES_DB: convictional_test
+          POSTGRES_USER: convictional
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      ENV: test
+      POSTGRES_URL: asyncpg://convictional:password@localhost:5432/convictional_test
+      ADMIN_POSTGRES_USER: convictional
+      ADMIN_POSTGRES_PASSWORD: password
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@acb598e5ddbc6f68a970c5da0688d2f3a9f04d05 # v1.6.0
+        with:
+          packages: libmagic-dev
+          version: 1.0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          enable-cache: true
+
+      - name: Set up Python environment
+        run: uv python install 3.13
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Set up databases
+        run: make db_create_parallel_tests
+
+      - name: Run tests
+        run: |
+          set -o pipefail
+          make test_parallel ARGS="--junitxml=test-results/parallel.xml" 2>&1 | tee test_output.log
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 180
+
+      - name: Check for unawaited coroutines
+        run: |
+          if grep -q 'RuntimeWarning: coroutine .\+ was never awaited' test_output.log; then
+            echo 'Error: Unawaited coroutine found';
+            exit 1;
+          else
+            echo 'No unawaited coroutines found.';
+          fi
+
+  javascript-tests:
+    needs: changes
+    if: needs.changes.outputs.should_run == 'true'
+    name: JavaScript tests
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Javascript tests
+        run: make test_javascript
+
+  seeds:
+    needs: changes
+    if: needs.changes.outputs.should_run == 'true'
+    name: Seeds
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg18
+        env:
+          POSTGRES_DB: convictional_test
+          POSTGRES_USER: convictional
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      ENV: test
+      POSTGRES_URL: asyncpg://convictional:password@localhost:5432/convictional_test
+      ADMIN_POSTGRES_USER: convictional
+      ADMIN_POSTGRES_PASSWORD: password
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@acb598e5ddbc6f68a970c5da0688d2f3a9f04d05 # v1.6.0
+        with:
+          packages: libmagic-dev
+          version: 1.0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          enable-cache: true
+
+      - name: Set up Python environment
+        run: uv python install 3.13
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Create database
+        run: make db_create
+
+      - name: Seed database
+        run: make db_seed
+
+      - name: Complete
+        run: echo "Seeding complete."
+  migrations:
+    needs: changes
+    if: needs.changes.outputs.should_run == 'true'
+    permissions:
+      id-token: "write"
+      contents: "read"
+      pull-requests: "write"
+    name: Check Migrations
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg18
+        env:
+          POSTGRES_DB: convictional_test
+          POSTGRES_USER: convictional
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      ENV: test
+      POSTGRES_URL: asyncpg://convictional:password@localhost:5432/convictional_test
+      ADMIN_POSTGRES_USER: convictional
+      ADMIN_POSTGRES_PASSWORD: password
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@acb598e5ddbc6f68a970c5da0688d2f3a9f04d05 # v1.6.0
+        with:
+          packages: libmagic-dev
+          version: 1.0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          enable-cache: true
+
+      - name: Set up Python environment
+        run: uv python install 3.13
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Create database
+        run: make db_create
+
+      - name: Generate migrations
+        run: make db_migrate
+
+      - name: Check for uncommitted migrations
+        run: |
+          if [ -z "$(git status --porcelain migrations/)" ]; then
+            echo "No new migrations created - models are in sync."
+          else
+            echo "Error: New migrations were generated. Please regenerate your migrations locally."
+            echo "Changed files:"
+            git status --porcelain migrations/
+            exit 1
+          fi
+
+      - name: Comment on PR (failure)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { execSync } = require('child_process');
+
+            // Get migration diff
+            execSync('git add migrations/');
+            const migrationDiff = execSync('git diff --cached migrations/').toString();
+
+            // 1. Retrieve existing bot comments for the PR
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            })
+            const botComment = comments.find(comment => {
+              return comment.user.type === 'Bot' && comment.body.includes('Migration Check Failed')
+            })
+
+            // 2. Prepare format of the comment
+            const output = `## Migration Check Failed
+
+            New migrations were generated during CI! This happens when the model state stored in migrations is out of sync with the current schema.
+
+            **If your PR has migrations:** Please regenerate them.
+            **If your PR does not:** \`aerich\` is telling you that it should.
+
+              1. Check out your branch. Make sure you merge in origin/main.
+              2. If you have new migrations, delete them. Run \`make db_reset\`.
+              3. If you don't have new migrations, just run \`make db_upgrade\` to get your schema up to date.
+              4. Run \`make db_migrate\` to generate new migrations.
+
+            <details>
+            <summary>Generated migration diff</summary>
+
+            \`\`\`diff
+            ${migrationDiff}
+            \`\`\`
+            </details>`;
+
+            // 3. If we have a comment, update it, otherwise create a new one
+            if (botComment) {
+              github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: output
+              })
+            } else {
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: output
+              })
+            }
+
+      - name: Delete migration failure comment (success)
+        if: success() && github.event_name == 'pull_request'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // Retrieve existing bot comments for the PR
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            })
+            const botComment = comments.find(comment => {
+              return comment.user.type === 'Bot' && comment.body.includes('Migration Check Failed')
+            })
+
+            // Delete the comment if it exists
+            if (botComment) {
+              github.rest.issues.deleteComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+              })
+            }
+
+      - name: Complete
+        run: echo "Migration check complete."

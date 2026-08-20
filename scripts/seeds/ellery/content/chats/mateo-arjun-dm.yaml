@@ -1,0 +1,112 @@
+key: mateo-arjun-dm
+members: [mateo, arjun]
+messages:
+  - key: mateo-arjun-dm-msg-001
+    author: mateo
+    at: !relative_day {offset: -13, hour: 10, minute: 30}
+    content: |
+      Arjun — Keating's security questionnaire is 147 questions long. Section 5 (infrastructure controls) and section 7 (data isolation) are the ones Doug's team will actually read carefully. Can I loop you in on those two sections specifically?
+
+  - key: mateo-arjun-dm-msg-002
+    author: arjun
+    at: !relative_day {offset: -13, hour: 11, minute: 0}
+    reply_to: mateo-arjun-dm-msg-001
+    content: |
+      Yes. Priya and I are splitting the questionnaire — she's taking data classification and incident response, I'm taking infrastructure and access control. Section 7 is mine anyway so it's a natural fit.
+
+  - key: mateo-arjun-dm-msg-003
+    author: mateo
+    at: !relative_day {offset: -13, hour: 11, minute: 15}
+    reply_to: mateo-arjun-dm-msg-002
+    content: |
+      Perfect. One thing I want to flag before you write the answers: Doug is a former security architect, not just a CISO who manages people. He'll notice if an answer is technically vague. I'd rather have a short honest answer than a long comfortable one.
+
+  - key: mateo-arjun-dm-msg-004
+    author: arjun
+    at: !relative_day {offset: -13, hour: 11, minute: 25}
+    reply_to: mateo-arjun-dm-msg-003
+    content: |
+      Understood. I always write answers I'd be comfortable defending in a whiteboard session. That's the only way I know how to do it.
+    reactions:
+      thumbs_up: [mateo]
+
+  - key: mateo-arjun-dm-msg-005
+    author: mateo
+    at: !relative_day {offset: -11, hour: 14, minute: 20}
+    content: |
+      Quick Q on question 89 — "describe your data residency implementation for EU-based customers." We don't have full implementation yet. How should I characterize it in the cover letter without misrepresenting?
+
+  - key: mateo-arjun-dm-msg-006
+    author: arjun
+    at: !relative_day {offset: -11, hour: 14, minute: 38}
+    reply_to: mateo-arjun-dm-msg-005
+    content: |
+      Don't characterize it in the cover letter — let the questionnaire answer speak. I'm writing Q89 as: "In implementation; region-scoped storage with logical isolation completed, key management and routing in progress; target completion [date]." That's true, specific, and shows progress.
+
+  - key: mateo-arjun-dm-msg-007
+    author: mateo
+    at: !relative_day {offset: -11, hour: 14, minute: 50}
+    reply_to: mateo-arjun-dm-msg-006
+    content: |
+      Good. I'll use that framing in the demo when Amira asks — "in implementation with a specific timeline" reads very differently than "coming soon." Doug will appreciate the specificity.
+    reactions:
+      thumbs_up: [arjun]
+
+  - key: mateo-arjun-dm-msg-008
+    author: arjun
+    at: !relative_day {offset: -8, hour: 9, minute: 15}
+    content: |
+      Region-scoped storage is done — the design isolates EU customer data at the bucket and key level. If Doug asks for a technical diagram during his review, I have one ready. Should I put it in the proposal package or hold it in reserve?
+
+  - key: mateo-arjun-dm-msg-009
+    author: mateo
+    at: !relative_day {offset: -8, hour: 9, minute: 32}
+    reply_to: mateo-arjun-dm-msg-008
+    content: |
+      Hold it in reserve. Don't include a diagram in the proposal unless they ask — it signals you're overselling the technical story. But knowing it's ready is exactly the kind of thing that makes me confident going into the call.
+    reactions:
+      thumbs_up: [arjun]
+
+  - key: mateo-arjun-dm-msg-010
+    author: mateo
+    at: !relative_day {offset: -6, hour: 18, minute: 5}
+    content: |
+      Demo went well today. Doug's proxy question came up — he framed it as "how do you prevent one customer's training data from influencing another's?" I answered it using your model isolation architecture. I think I got it right but I want you to sanity check my answer before the follow-up.
+
+  - key: mateo-arjun-dm-msg-011
+    author: arjun
+    at: !relative_day {offset: -6, hour: 18, minute: 22}
+    reply_to: mateo-arjun-dm-msg-010
+    content: |
+      Tell me what you said.
+
+  - key: mateo-arjun-dm-msg-012
+    author: mateo
+    at: !relative_day {offset: -6, hour: 18, minute: 30}
+    reply_to: mateo-arjun-dm-msg-011
+    content: |
+      I said: customer playbooks are logically isolated per workspace, model fine-tuning is not shared across customers, and retrieval context is scoped to the customer's own documents. Is that accurate?
+
+  - key: mateo-arjun-dm-msg-013
+    author: arjun
+    at: !relative_day {offset: -6, hour: 18, minute: 42}
+    reply_to: mateo-arjun-dm-msg-012
+    content: |
+      Accurate on playbooks and retrieval. On fine-tuning: we don't currently fine-tune per customer — we use the base model plus retrieval. I'd correct that to "we use customer-specific retrieval context, not shared training." Small but important difference.
+    reactions:
+      thumbs_up: [mateo]
+
+  - key: mateo-arjun-dm-msg-014
+    author: mateo
+    at: !relative_day {offset: -6, hour: 18, minute: 50}
+    reply_to: mateo-arjun-dm-msg-013
+    content: |
+      Got it. Will send a brief clarifying note to Amira tomorrow before Doug reviews the questionnaire. This is exactly why I wanted to check with you.
+
+  - key: mateo-arjun-dm-msg-015
+    author: arjun
+    at: !relative_day {offset: -3, hour: 10, minute: 5}
+    content: |
+      One thing I want you to know — I don't usually say this, but I think you handled that demo well. The security section is hard to navigate without a technical background and you did it without either overselling or getting in over your head.
+    reactions:
+      heart: [mateo]

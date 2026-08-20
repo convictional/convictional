@@ -1,0 +1,335 @@
+.prosemirror-mention-node {
+  @apply text-info-content;
+}
+
+/* A clicked mention becomes a NodeSelection (selectable: true); show it like a
+   text selection rather than the default hard outline. */
+.ProseMirror .prosemirror-mention-node.ProseMirror-selectednode {
+  @apply rounded-sm;
+  background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  outline: none;
+}
+
+.suggestion-item-active {
+  @apply bg-base-100;
+}
+
+/* y-prosemirror collaborative cursor styling */
+.ProseMirror .ProseMirror-yjs-cursor {
+  position: relative;
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 2px solid var(--color-primary);
+  border-right: 1px solid var(--color-primary);
+  word-break: normal;
+  pointer-events: auto;
+  transition: opacity 0.3s ease-out;
+  /* Remove explicit height - let it flow naturally */
+}
+
+.ProseMirror .ProseMirror-yjs-cursor.fading {
+  opacity: 0.3;
+}
+
+.ProseMirror .ProseMirror-yjs-cursor:hover {
+  opacity: 1;
+}
+
+/* y-prosemirror collaborative selection styling */
+.ProseMirror .ProseMirror-yjs-selection {
+  pointer-events: auto;
+  background-color: color-mix(in srgb, var(--color-primary) 30%, transparent) !important;
+}
+
+/* Show cursor labels when hovering over selections */
+.ProseMirror .ProseMirror-yjs-selection:hover ~ .ProseMirror-yjs-cursor .cursor-label.faded,
+.ProseMirror .ProseMirror-yjs-selection:hover + .ProseMirror-yjs-cursor .cursor-label.faded {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: opacity 0.15s ease-out !important;
+}
+
+/* Style the user name label div inside the cursor */
+.ProseMirror .cursor-label {
+  position: absolute;
+  top: -1.05em;
+  left: -1px;
+  font-size: 12px;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 2px 2px 2px 0;
+  white-space: nowrap;
+  color: white;
+  user-select: none;
+  pointer-events: none;
+  opacity: 1;
+  transition:
+    opacity 1s ease-out,
+    visibility 1s ease-out;
+  /* background-color is set inline by our cursor builder */
+}
+
+.ProseMirror .cursor-label.faded {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.ProseMirror .ProseMirror-yjs-cursor:hover .cursor-label.faded {
+  visibility: visible !important;
+  opacity: 1 !important;
+  transition: opacity 0.15s ease-out !important;
+}
+
+.ProseMirror[data-placeholder]::before {
+  color: var(--color-base-500);
+  position: absolute;
+  content: attr(data-placeholder);
+  margin-top: 4px;
+  pointer-events: none;
+}
+
+.ProseMirror a {
+  overflow-wrap: anywhere;
+}
+
+.ProseMirror {
+  /* Editor-only: cursor styling. The base prose tweaks live in markdown-content.css. */
+  @apply cursor-text;
+}
+
+/* Task list checkbox styling */
+.ProseMirror li.task-list-item {
+  position: relative;
+  list-style: none;
+  padding-left: 0.375em;
+}
+
+.ProseMirror .task-checkbox-wrap {
+  position: absolute;
+  left: -1.5em;
+  top: 0.125rem;
+  line-height: 0;
+}
+
+/* Collapsible heading sections */
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  position: relative;
+}
+
+.ProseMirror .heading-collapse-toggle {
+  @apply text-base-500;
+  position: absolute;
+  /* rem (not em) so the gutter offset is font-size-independent: an em offset scales
+     with the heading and pushes the H1 chevron off the left edge on narrow viewports. */
+  left: -1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* rem (not em) so the chevron is the same size on H1–H6 and its box stays
+     within the 1.25rem gutter, keeping the right edge off the heading text. */
+  width: 1.25rem;
+  height: 1.25rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.ProseMirror .heading-collapse-toggle .material-symbols-outlined {
+  font-size: 1.125rem;
+  line-height: 1;
+  transition: transform 0.15s ease;
+  transform: rotate(90deg);
+}
+
+.ProseMirror h1:hover .heading-collapse-toggle,
+.ProseMirror h2:hover .heading-collapse-toggle,
+.ProseMirror h3:hover .heading-collapse-toggle,
+.ProseMirror h4:hover .heading-collapse-toggle,
+.ProseMirror h5:hover .heading-collapse-toggle,
+.ProseMirror h6:hover .heading-collapse-toggle {
+  opacity: 1;
+}
+
+.ProseMirror .heading-collapse-toggle[aria-expanded="false"] {
+  opacity: 1;
+}
+
+.ProseMirror .heading-collapse-toggle[aria-expanded="false"] .material-symbols-outlined {
+  transform: rotate(0deg);
+}
+
+.ProseMirror .heading-section-collapsed {
+  display: none;
+}
+
+.task-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1.5px solid var(--color-base-400);
+  border-radius: 0.25rem;
+  background: transparent;
+  cursor: pointer;
+  vertical-align: middle;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.task-checkbox:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3.5 8.5 6.5 11.5 12.5 5'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ProseMirror .inline-comment-highlight {
+  background-color: color-mix(in srgb, var(--color-warning-content) 15%, transparent);
+  border-bottom: 2px solid color-mix(in srgb, var(--color-warning-content) 40%, transparent);
+  cursor: text;
+  transition: background-color 0.15s ease;
+}
+
+.ProseMirror .inline-comment-highlight .inline-comment-highlight {
+  background-color: transparent;
+  border-bottom-color: transparent;
+}
+
+#comment-gutter [data-avatar-for],
+#comment-gutter-actions [data-gutter-cursor] {
+  transition: top 0.15s ease;
+}
+
+[data-comment-cards] {
+  overflow-anchor: none;
+}
+
+#comment-gutter [data-avatar-for] img {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+#comment-gutter [data-avatar-for]:hover img {
+  transform: scale(1.1);
+}
+
+.ProseMirror img[src*=".gif"],
+.prose img[src*=".gif"] {
+  max-height: 320px;
+  width: auto;
+}
+
+/* Table editing — editor-only concerns. Border/padding/vertical-align/font-weight come from
+   .markdown-content (the editor wrapper carries that class). position: relative is required
+   for the column-resize handle and for the .selectedCell ::after overlay below. */
+.ProseMirror table {
+  border-collapse: collapse;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ProseMirror td,
+.ProseMirror th {
+  position: relative;
+}
+
+.ProseMirror .selectedCell {
+  background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.ProseMirror .selectedCell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 40%, transparent);
+}
+
+/* Suppress column resize handle — not supported in v1 */
+.ProseMirror .column-resize-handle {
+  display: none;
+}
+
+/* Zen mode */
+.zen-mode {
+  @apply fixed inset-0 z-50 bg-base-100 flex flex-col;
+}
+
+.zen-mode .zen-scroll {
+  @apply h-full overflow-y-auto;
+}
+
+.zen-mode .zen-content {
+  @apply max-w-3xl mx-auto w-full px-8 py-12;
+}
+
+.zen-mode .zen-close {
+  @apply fixed top-3 right-3 z-50 opacity-40 hover:opacity-100 transition-opacity;
+}
+
+@keyframes zen-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes zen-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.zen-mode.zen-enter {
+  animation: zen-fade-in 150ms ease-out;
+}
+
+.zen-mode.zen-exit {
+  animation: zen-fade-out 150ms ease-out forwards;
+}
+
+.zen-mode .inline-comment-highlight {
+  background-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.zen-mode #comment-gutter,
+.zen-mode #comment-gutter-actions,
+.zen-mode [data-comment-cards] {
+  display: none;
+}
+
+/* iOS Safari auto-zooms when a focused input/contenteditable has font-size
+   < 16px. The zoom widens the layout viewport relative to the visual viewport,
+   which makes `position: fixed left-0 right-0` and `position: sticky` bars
+   (bottom nav, ComposeBar) render past the right edge of the visible area.
+   The chained `.markdown-content` selector outranks the @apply'd text-sm from
+   markdown-content.css, which is loaded after this file and would otherwise
+   win the (0,1,0) cascade tie. */
+@media (pointer: coarse) {
+  .ProseMirror,
+  .ProseMirror.markdown-content {
+    font-size: 16px;
+  }
+}

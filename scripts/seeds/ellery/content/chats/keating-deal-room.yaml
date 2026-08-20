@@ -1,0 +1,131 @@
+key: keating-deal-room
+name: "Keating Deal Room"
+members: [darren, tessa, mateo, maren]
+messages:
+  - key: keating-deal-room-msg-001
+    author: tessa
+    at: !relative_day {offset: -17, hour: 9, minute: 5}
+    content: |
+      Opening this room so Keating coordination has a home. Ground rules: no sensitive commercial terms in writing outside of the proposal doc — we're still in early-stage diligence. Everything here is internal strategy and logistics only.
+    reactions:
+      thumbs_up: [darren, mateo, maren]
+
+  - key: keating-deal-room-msg-002
+    author: tessa
+    at: !relative_day {offset: -17, hour: 9, minute: 8}
+    content: |
+      Status as of this morning: Amira has expanded the buying committee to include their legal-ops director and CISO. This is good news — it means they're serious, and it means security and compliance answers need to be rock solid. Mateo owns the day-to-day relationship with Amira. Darren will be on standby for Peter-level conversations.
+
+  - key: keating-deal-room-msg-003
+    author: darren
+    at: !relative_day {offset: -17, hour: 9, minute: 22}
+    reply_to: keating-deal-room-msg-002
+    content: |
+      I sent a personal note to Peter this morning. Short, warm, no sales language. Just that we take enterprise diligence seriously and we look forward to Doug's questions.
+    reactions:
+      thumbs_up: [tessa, mateo]
+
+  - key: keating-deal-room-msg-004
+    author: maren
+    at: !relative_day {offset: -17, hour: 9, minute: 35}
+    content: |
+      Maren here. On the legal side: if they're sending a security questionnaire, expect a data processing addendum ask to follow. Amira will want to see something she can put in front of their General Counsel. I'll draft a DPA template that pre-empts their request. Better for us to lead than to respond.
+    reactions:
+      heart: [tessa]
+      thumbs_up: [darren, mateo]
+
+  - key: keating-deal-room-msg-005
+    author: mateo
+    at: !relative_day {offset: -12, hour: 8, minute: 55}
+    content: |
+      Security questionnaire arrived last night. 147 questions. I flagged the infrastructure and EU residency sections to Arjun and Priya. Timeline: Amira said she'd like responses in 10 business days. That's tight but doable.
+
+  - key: keating-deal-room-msg-006
+    author: tessa
+    at: !relative_day {offset: -12, hour: 9, minute: 15}
+    reply_to: keating-deal-room-msg-005
+    content: |
+      10 days is fine. Key thing: every answer we give needs to be true. If we can't answer something fully today, mark it "in progress" with a target date. Amira will respect that more than a vague "yes."
+    reactions:
+      thumbs_up: [mateo, maren, darren]
+
+  - key: keating-deal-room-msg-007
+    author: maren
+    at: !relative_day {offset: -12, hour: 9, minute: 28}
+    content: |
+      I'll take the data protection and contractual liability questions myself. I want to make sure the legal framing is accurate, not just the technical framing.
+
+  - key: keating-deal-room-msg-008
+    author: mateo
+    at: !relative_day {offset: -8, hour: 11, minute: 40}
+    content: |
+      Good news from today's demo — Amira said "I want Peter to see this" at the end. That's the champion signal we needed. Doug's proxy question on model isolation came up; I handled it and sent a follow-up note with Arjun's clarification. No concerns raised.
+    reactions:
+      rocket: [tessa, darren, maren]
+
+  - key: keating-deal-room-msg-009
+    author: darren
+    at: !relative_day {offset: -8, hour: 11, minute: 55}
+    reply_to: keating-deal-room-msg-008
+    content: |
+      That's a big moment. Mateo — excellent work. What's the next step with Peter?
+
+  - key: keating-deal-room-msg-010
+    author: tessa
+    at: !relative_day {offset: -8, hour: 12, minute: 5}
+    reply_to: keating-deal-room-msg-009
+    content: |
+      Amira is scheduling a 30-minute intro with Peter and Darren — probably next week. I'll prep a brief for you, Darren. Keep it short, confident, enterprise-ready. Peter is an economic buyer, not a technical buyer.
+
+  - key: keating-deal-room-msg-011
+    author: maren
+    at: !relative_day {offset: -5, hour: 14, minute: 10}
+    content: |
+      DPA draft is done and in the deal room doc. I modeled it on the EU standard contractual clauses with some Ellery-specific carve-outs on model training and data retention. Mateo — review for anything that might surprise Amira before I send it over.
+
+  - key: keating-deal-room-msg-012
+    author: mateo
+    at: !relative_day {offset: -5, hour: 15, minute: 0}
+    reply_to: keating-deal-room-msg-011
+    content: |
+      Read it. One flag: the data retention section says "12 months after contract termination" — Amira mentioned in passing that their internal policy is 90 days. Worth a note acknowledging we can match their policy.
+
+  - key: keating-deal-room-msg-013
+    author: maren
+    at: !relative_day {offset: -5, hour: 15, minute: 18}
+    reply_to: keating-deal-room-msg-012
+    content: |
+      Good catch. I'll make it "90 days or as mutually agreed in writing." That's more flexible and signals we're a sophisticated counterparty.
+    reactions:
+      thumbs_up: [mateo, tessa]
+
+  - key: keating-deal-room-msg-014
+    author: tessa
+    at: !relative_day {offset: -4, hour: 13, minute: 35}
+    content: |
+      Pricing revision: Amira is asking for unlimited playbooks during the 90-day pilot, stepped rate after graduation. Darren greenlit it in principle — I'll have numbers tonight. Proposal revision goes out Friday. Mateo, please sync with Amira's assistant to confirm they'll have review time before end of week.
+
+  - key: keating-deal-room-msg-015
+    author: mateo
+    at: !relative_day {offset: -4, hour: 13, minute: 50}
+    reply_to: keating-deal-room-msg-014
+    content: |
+      On it. I'll also confirm that Peter has the revised proposal on his radar — Amira said he wants to see the commercial terms before Doug's security review is complete, which is unusual but good for us.
+
+  - key: keating-deal-room-msg-016
+    author: darren
+    at: !relative_day {offset: -3, hour: 16, minute: 20}
+    content: |
+      One thing I want to say before the proposal goes out: we win this deal with transparency, not salesmanship. Every answer we've given Doug is honest. The pricing is fair. If Keating signs, it's because we're genuinely ready for them — not because we told them what they wanted to hear.
+    reactions:
+      heart: [maren, tessa]
+      thumbs_up: [mateo]
+
+  - key: keating-deal-room-msg-017
+    author: tessa
+    at: !relative_day {offset: -1, hour: 8, minute: 45}
+    content: |
+      Proposal revision is done and queued. Going out at 9am. Fingers crossed, but more importantly: we've done the work. Whatever happens next, I'm proud of how this team has operated on this deal.
+    reactions:
+      heart: [darren, maren, mateo]
+      rocket: [mateo]

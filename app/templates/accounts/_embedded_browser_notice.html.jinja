@@ -1,0 +1,14 @@
+<div class="flex flex-col items-center gap-4 text-sm text-base-600">
+    <p class="text-center leading-relaxed">
+        Single sign-on doesn't work in this browser.
+        Open this page in your main browser to continue.
+    </p>
+    <button type="button"
+            class="btn btn-primary w-full"
+            x-data="{ copied: false }"
+            @click="navigator.clipboard.writeText(window.location.href).then(() => { copied = true; setTimeout(() => copied = false, 2000) }).catch(() => {})">
+        <span class="material-symbols-outlined text-lg"
+              x-text="copied ? 'check' : 'content_copy'">content_copy</span>
+        <span x-text="copied ? 'Copied!' : 'Copy link to open in browser'">Copy link to open in browser</span>
+    </button>
+</div>

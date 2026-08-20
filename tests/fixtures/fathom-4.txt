@@ -1,0 +1,38 @@
+Fake Transcript - Alternative Format - September 18
+
+
+VIEW RECORDING - 89 mins (No highlights)
+
+
+
+
+@0:34 - Person McPersonFace
+Hey
+
+
+@0:41 - My Name Has a - In It
+Hey
+
+
+@0:44 - Person McPersonFace
+This is some text.
+
+
+@0:46 - My Name Has a - In It
+Woah, cool text.
+
+
+@0:49 - Person McPersonFace
+I know right? Now I'm going to say some stuff.
+The stuff spans multiple lines, and should get picked up accordingly.
+ACTION ITEM: Remember that text spans multiple lines - WATCH
+
+
+@1:10 - guy@example.com
+Neat.
+
+
+@1:52 - Person McPersonFace
+Now I'm going to say some more adversarial stuff.
+ACTION ITEM: Action items can interject text from the same speaker - WATCH
+Hey, My Name Has a - In It, I hope the parser doesn't do anything weird with a random dash.

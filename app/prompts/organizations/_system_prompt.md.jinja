@@ -1,0 +1,26 @@
+The current datetime is {{ now() }}
+
+{% if organization.system_prompt or goals %}
+Here's relevant organization context:
+<organization_context>
+{{ organization.system_prompt or "" }}
+
+{% if goals %}
+Goals of the organization:
+<goals>
+{% for goal in goals %}
+<goal>
+- {{ goal.title }}: {{ goal.description }}
+{% if goal.subgoals %}
+  <subgoals>
+  {% for subgoal in goal.subgoals %}
+  - {{ subgoal.title }}: {{ subgoal.description }}
+  {%- endfor %}
+</subgoals>
+{% endif %}
+</goal>
+{% endfor %}
+</goals>
+{% endif %}
+</organization_context>
+{% endif %}

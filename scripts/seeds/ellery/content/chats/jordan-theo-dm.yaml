@@ -1,0 +1,114 @@
+key: jordan-theo-dm
+members: [jordan, theo]
+messages:
+  - key: jordan-theo-dm-msg-001
+    author: jordan
+    at: !relative_day {offset: -12, hour: 11, minute: 20}
+    content: |
+      Theo — I need your help with something weird in the retrieval pipeline. When the reviewer UI sends a context request for a highlighted clause, I'm getting the right playbook chunks about 80% of the time, but 20% of the time it returns chunks from a completely different contract section. The highlight coordinates are right so the bug is on my side, not yours. But can you tell me what's in the request payload you're sending?
+
+  - key: jordan-theo-dm-msg-002
+    author: theo
+    at: !relative_day {offset: -12, hour: 11, minute: 45}
+    reply_to: jordan-theo-dm-msg-001
+    content: |
+      Sure — I'm sending the selected text, the clause position (character offset from document start), and the contract type tag. Is the contract type tag the right field, or do you need the section header?
+
+  - key: jordan-theo-dm-msg-003
+    author: jordan
+    at: !relative_day {offset: -12, hour: 11, minute: 58}
+    reply_to: jordan-theo-dm-msg-002
+    content: |
+      I think the section header might be the issue — if the contract type tag says "MSA" but the clause is in the "data processing" addendum, my query goes to the MSA playbook instead of the DPA playbook. Can you also send the section header from the document tree?
+
+  - key: jordan-theo-dm-msg-004
+    author: theo
+    at: !relative_day {offset: -12, hour: 12, minute: 15}
+    reply_to: jordan-theo-dm-msg-003
+    content: |
+      I have the section headers in the document tree — I just wasn't passing them through because I didn't know you needed them. I'll add `section_header` to the payload now. Should I also send the parent section if there's a nested structure?
+
+  - key: jordan-theo-dm-msg-005
+    author: jordan
+    at: !relative_day {offset: -12, hour: 12, minute: 28}
+    reply_to: jordan-theo-dm-msg-004
+    content: |
+      Yes, parent section too if it exists. The DPA addendum case is exactly where this matters — "Data Processing Addendum > Processor Obligations" is a very different retrieval target than "MSA > Obligations."
+    reactions:
+      thumbs_up: [theo]
+
+  - key: jordan-theo-dm-msg-006
+    author: theo
+    at: !relative_day {offset: -11, hour: 9, minute: 30}
+    content: |
+      Section header change is deployed to the test environment. Also found a bug in the document parser — mixed-indent headings (some PDFs use spaces, some tabs) were causing the tree to miss nested sections. Fixed that too while I was in there.
+
+  - key: jordan-theo-dm-msg-007
+    author: jordan
+    at: !relative_day {offset: -11, hour: 10, minute: 5}
+    reply_to: jordan-theo-dm-msg-006
+    content: |
+      Running the eval harness against the test environment now. Give me about 30 minutes.
+
+  - key: jordan-theo-dm-msg-008
+    author: jordan
+    at: !relative_day {offset: -11, hour: 10, minute: 40}
+    content: |
+      That fixed it. Retrieval accuracy on addendum-scoped clauses jumped from 62% to 81%. The mixed-indent bug was actually a larger contributor than the section header change — probably explains other edge cases I'd written off as model noise.
+    reactions:
+      rocket: [theo]
+      thumbs_up: [theo]
+
+  - key: jordan-theo-dm-msg-009
+    author: theo
+    at: !relative_day {offset: -11, hour: 10, minute: 52}
+    reply_to: jordan-theo-dm-msg-008
+    content: |
+      Nice. I'll write up the PDF parsing fix in the changelog so Arjun sees it — it might affect the ingestion pipeline too.
+
+  - key: jordan-theo-dm-msg-010
+    author: jordan
+    at: !relative_day {offset: -8, hour: 15, minute: 10}
+    content: |
+      New question — the ghost-text suggestion Emma prototyped in the UI. When the user accepts a suggestion, does the accepted text go back into my context for the next suggestion in the same session, or does each suggestion start fresh?
+
+  - key: jordan-theo-dm-msg-011
+    author: theo
+    at: !relative_day {offset: -8, hour: 15, minute: 28}
+    reply_to: jordan-theo-dm-msg-010
+    content: |
+      Right now each suggestion is stateless — starts fresh. I can pass accepted edits back as context if you want, but I'd need to know the format. Are you thinking about it as prior edits from this session, or accumulated across all sessions?
+
+  - key: jordan-theo-dm-msg-012
+    author: jordan
+    at: !relative_day {offset: -8, hour: 15, minute: 42}
+    reply_to: jordan-theo-dm-msg-011
+    content: |
+      Session-level context only for now — accumulated across sessions is a bigger feature I don't want to promise before we know the co-pilot is actually shipping. For session context: if the user accepts a redline, append it to a `prior_edits` list in the session state, and send me the last five. I'll use them to improve coherence in the next suggestion.
+
+  - key: jordan-theo-dm-msg-013
+    author: theo
+    at: !relative_day {offset: -8, hour: 15, minute: 55}
+    reply_to: jordan-theo-dm-msg-012
+    content: |
+      Last five accepted edits — I can do that. Will have it in the test environment tomorrow.
+    reactions:
+      thumbs_up: [jordan]
+
+  - key: jordan-theo-dm-msg-014
+    author: jordan
+    at: !relative_day {offset: -4, hour: 16, minute: 15}
+    content: |
+      Session context is making the suggestions noticeably more coherent on the second and third clause in a sequence. Emma noticed it in the customer interview today — the lawyer called it "it learns what I mean," which is about the best possible user reaction.
+    reactions:
+      rocket: [theo]
+      heart: [theo]
+
+  - key: jordan-theo-dm-msg-015
+    author: theo
+    at: !relative_day {offset: -4, hour: 16, minute: 28}
+    reply_to: jordan-theo-dm-msg-014
+    content: |
+      "It learns what I mean" is going in my bio. Good debugging session, Jordan.
+    reactions:
+      tears_of_joy: [jordan]

@@ -1,0 +1,1430 @@
+interactions:
+- request:
+    body: '{"input":["Team discussed project timeline"],"model":"text-embedding-3-small","dimensions":1536,"encoding_format":"base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '123'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.28.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        2fN//+Hff/8DXu2LHJggAAA=
+    headers:
+      Access-Control-Expose-Headers:
+      - CF-Ray
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-Ray:
+      - 9fe3ce290cb7ed69-IAD
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 May 2026 14:31:27 GMT
+      Server:
+      - cloudflare
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      openai-processing-ms:
+      - '193'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      set-cookie:
+      - __cf_bm=8213jo4AtSR.qb7.C9cVKRQLhJwIMRt4gGvFrAyyoD8-1779201086.8814547-1.0.1.1-8I3f9h60IZ4A_sRu8LTtpJAIUJSlccK0sOfBohvU9L4ctHRf8.2H6DSP9PPLI5fOdWUgZsWWMUXBmXjfVrryUstUzekyWX90Omi462ceRSNWhsJpfmDPDhvr3NhUQnS8;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Tue,
+        19 May 2026 15:01:27 GMT
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999993'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 0s
+      x-request-id:
+      - req_6de1a9501fe14b44a291ccd35c079c95
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"Given
+      the following prompt from the user, generate a list of queries to research the
+      topic.\\n<topic>Search slack for 'resolving users, and expanding context'</topic>\\n\\nReturn
+      a maximum of 3 queries, but feel free to return less if the original prompt
+      is clear.\\n\\n## Source selection\\n\\n### Internal source query instructions:\\n\\n-
+      You must return source: internal to indicate these queries are for searching
+      internal organization content.\\n- You'll be searching organization activity
+      and documents to help the user explore and answer this question.\\n- Query terms
+      should be short (less than 5 words, ideally 3 or less) for a basic embedding
+      and TD/IDF search.\\n- If the text seems like a good search on its own, just
+      return the text as entered.\\n- Anything related to time (e.g. \\\"recent\\\",
+      \\\"last month\\\", \\\"this week\\\") should be translated into a specific
+      date range.\\n- If you see a specific date, use that date range. If you see
+      a general date (e.g. \\\"recently\\\", \\\"last month\\\"), use the last 30
+      days, respecting the current date and time.\\n- If you recognize named entities,
+      surround them with double quotes (e.g. \\\"Hulk Hogan\\\", \\\"Apple\\\"). Consider
+      if an capitalized word is a named entity.\\n\\n### Slack source query instructions:\\n\\n-
+      You must return source: slack to indicate these queries are for searching Slack
+      messages.\\n- You have access to search Slack messages across the organization
+      to help the user explore and answer this question.\\n- Keep slack queries concise
+      but specific to get the best results.\\n- The starts_at and ends_at date range
+      will be applied automatically, so do not include any date operators in your
+      queries.\\n- Anything related to time (e.g. \\\"today\\\", \\\"last month\\\",
+      \\\"this week\\\") should be translated into starts_at and ends_at field values.\\n-
+      If you see a specific date, use that date range. If you see a general date (e.g.
+      \\\"recently\\\", \\\"last month\\\"), use the last 30 days, respecting the
+      current date and time.\\n\\n#### Slack query rules:\\n\\n- If the topic is clearly
+      about Slack conversations, you may generate up to 3 Slack queries.\\n- For other
+      topics do not generate more than 1 Slack query unless there is a very clear
+      reason to do so.\\n- Prioritize internal application queries over Slack queries.\\n\\n##
+      Date ranges\\n\\nIn your response, you may include a starts_at and ends_at date
+      range for each query if the topic or directions indicate a specific time period.\\n\\nIMPORTANT:
+      Today's date is 2025-12-09. The current year is 2025. Use this as your reference
+      point for all date calculations.\\n\\n- Reference Point: Calculate all relative
+      dates based on today's date: 2025-12-09.\\n- Format: Return timestamps in ISO
+      8601 format: YYYY-MM-DDTHH:MM:SS.\\n- Boundaries: Start of day is 00:00:00 and
+      End of day is 23:59:59.\\n- Default Year: If a month or quarter is specified
+      without a year, use 2025.\\n- Absence: If no date range is specified, do not
+      include starts_at or ends_at fields.\\n\\nRelative Date Logic\\n\\n- \\\"today\\\"
+      \u2192 starts_at: Current Date T00:00:00, ends_at: Current Date T23:59:59\\n-
+      \\\"yesterday\\\" \u2192 starts_at: Previous Date T00:00:00, ends_at: Previous
+      Date T23:59:59\\n- \\\"this week\\\" \u2192 starts_at: Monday of current week,
+      ends_at: Sunday of current week\\n- \\\"last week\\\" \u2192 starts_at: Monday
+      of previous week, ends_at: Sunday of previous week\\n- \\\"this month\\\" \u2192
+      starts_at: Day 1 of current month, ends_at: Last day of current month\\n- \\\"last
+      month\\\" \u2192 starts_at: Day 1 of previous month, ends_at: Last day of previous
+      month\\n- \\\"this year\\\" \u2192 starts_at: Jan 1 of current year, ends_at:
+      Dec 31 of current year\\n- \\\"recently\\\", \\\"lately\\\", or vague time \u2192
+      starts_at: (Current Date - 30 days), ends_at: Current Date\\n\\nBusiness Date
+      Ranges\\n- \\\"Q1\\\" / \\\"first quarter\\\" \u2192 Jan 1 to Mar 31\\n- \\\"Q2\\\"
+      / \\\"second quarter\\\" \u2192 Apr 1 to June 30\\n- \\\"Q3\\\" / \\\"third
+      quarter\\\" \u2192 July 1 to Sept 30\\n- \\\"Q4\\\" / \\\"fourth quarter\\\"
+      \u2192 Oct 1 to Dec 31\\n- \\\"H1\\\" / \\\"first half\\\" \u2192 Jan 1 to June
+      30\\n- \\\"H2\\\" / \\\"second half\\\" \u2192 July 1 to Dec 31\\n\\nNote: Apply
+      the current year (2025) unless a specific year is mentioned.\\n\\nExamples (using
+      today's date 2025-12-09):\\nQuery: \\\"Q3 sales targets\\\"\\nterms: \\\"sales
+      targets\\\", starts_at: \\\"2025-07-01T00:00:00\\\", ends_at: \\\"2025-09-30T23:59:59\\\"\\n\\nQuery:
+      \\\"last month's revenue\\\"\\nterms: \\\"revenue\\\", starts_at: \\\"2025-11-01T00:00:00\\\",
+      ends_at: \\\"2025-11-30T23:59:59\\\"\\n\\nQuery: \\\"Q4 2023 results\\\"\\nterms:
+      \\\"results\\\", starts_at: \\\"2023-10-01T00:00:00\\\", ends_at: \\\"2023-12-31T23:59:59\\\"\\n\\n##
+      Existing Queries and Learnings\\n\\nThe following existing queries and learnings
+      are provided to help you avoid duplication and improve the specificity of your
+      generated queries.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"The current
+      datetime is 2025-12-09 20:32:25+00:00\\n\\nThe user you are helping is foo-1@example.com
+      whose email address is foo-1@example.com.\\n\\nYou are an expert researcher.
+      Today is 2025-12-09 20:32:25+00:00. Follow these instructions when responding:\\n-
+      You may be asked to research subjects that is after your knowledge cutoff, assume
+      the user is right when presented with news.\\n- Be highly organized.\\n- Suggest
+      solutions that I didn't think about.\\n- Be proactive and anticipate my needs.\\n-
+      Treat me as an expert in all subject matter.\\n- Mistakes erode my trust, so
+      be accurate and thorough.\\n- Value good arguments over authorities, the source
+      is irrelevant.\\n- Consider new technologies and contrarian ideas, not just
+      the conventional wisdom.\\n- You may use high levels of speculation or prediction,
+      just flag it for me.\",\"tool_choice\":{\"type\":\"tool\",\"name\":\"IterableGeneratedResearchQuery\"},\"tools\":[{\"name\":\"IterableGeneratedResearchQuery\",\"description\":\"Correct
+      segmentation of `GeneratedResearchQuery` tasks\",\"input_schema\":{\"$defs\":{\"GeneratedResearchQuery\":{\"properties\":{\"title\":{\"description\":\"A
+      user-facing title for the query, it'll be prefaced with 'Reading about' in the
+      UI\",\"title\":\"Title\",\"type\":\"string\"},\"terms\":{\"description\":\"The
+      search terms\",\"title\":\"Terms\",\"type\":\"string\"},\"starts_at\":{\"anyOf\":[{\"format\":\"date-time\",\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      earliest datetime to allow results\",\"title\":\"Starts At\"},\"ends_at\":{\"anyOf\":[{\"format\":\"date-time\",\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      latest datetime to allow results\",\"title\":\"Ends At\"},\"goals\":{\"description\":\"First
+      talk about the goal of the research that this query is meant to accomplish,
+      then go deeper into how to advance the research once the results are found,
+      mention additional research directions. Be as specific as possible, especially
+      for additional research directions.\",\"title\":\"Goals\",\"type\":\"string\"},\"source\":{\"$ref\":\"#/$defs/ResearchSource\",\"default\":\"internal\",\"description\":\"The
+      source to use for this research query\"}},\"required\":[\"title\",\"terms\",\"goals\"],\"title\":\"GeneratedResearchQuery\",\"type\":\"object\"},\"ResearchSource\":{\"enum\":[\"internal\",\"slack\"],\"title\":\"ResearchSource\",\"type\":\"string\"}},\"description\":\"Correct
+      segmentation of `GeneratedResearchQuery` tasks\",\"properties\":{\"tasks\":{\"description\":\"Correctly
+      segmented list of `GeneratedResearchQuery` tasks\",\"items\":{\"$ref\":\"#/$defs/GeneratedResearchQuery\"},\"title\":\"Tasks\",\"type\":\"array\"}},\"title\":\"IterableGeneratedResearchQuery\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '7369'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.85.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3xV247bNhD9FUIvedFusk2yDfLWJN1gkzTNDUiAIhBociwRpkiVF3u1wQL9iH5h
+        v6RnKCvedey82BLJmXPmnBnqW9V7TbZ6Wikrs6aT6J2jdPLo5LyqK6Ox0ce2eXB20b4Y3y2evHq+
+        +azOny/d9dtHV+drnEnjQHyKYpQtYSF4ywsyRhOTdAlLyrtEeHr617f5fPLeNjnSjMLvGThf3PWi
+        8/0nad6+fnP9/sXnZ8++BObiZM9xl4mCXFh6SQ4PifQHiiSD6t5nCiNnc0MGEoBkXMUJ0qRCCUe9
+        XRvXCgCHKKTTgq4G/PFaIXnFdAHRI7IKe+cPnW29tHz2wiDZRyvVijfXOC6T8S4KbaLK0AJRqSOR
+        /GCU8Etxbz/7QTb3TsWnzkS8ZqtFIIuSkaOECKMhqkmjKKky49VzoNiAkN9MGWPZ8WGbADiuNY4o
+        AOn+ELzOKn0nCtKn4k+niNNmm8AskFj67HQtrPcrPAexolEMMiSjDABSrIUmZUq06KWmGvWMwhq3
+        Apz2KvfgGplD6gJJHetS8NJbC5Z5EN6ViEBLCgR0LZB7RVPMuw+Rq24pCSmW2VpUDx1TBjNoycLu
+        6J/CluhzUOx5ZEuqm/p4Fxg3+Xbc+Fs2fyy9VhSYzN72fRRxQP1Lo6S1o5ALn5PYd/i/f/4FVcMC
+        QTwKSQJ7NpOVzUN92FTA9TKp7la3qOAjUMeYqIdhlyVsORYt5h5A+k1nwLegcnUC/wvapoGfm87z
+        knFrMOUFNmXTySRm8KK/HNAlUnWocwN7ZrFJn4qLfQcTqc6xDrPTnADhg4/QUHAfIC1Cf27T7/uj
+        cMion03kcasmd36I3fmzP23kgpnE1zLJWiwgBvSeZzoqP5Q+lOJvvoWKX0hId9NPE1ka7rfL+3+8
+        OWIejBFK4mfy6bvU00TtpgwYKEN5lHVgluZJv+XBPIXlYip95zRaKXFsh8Bt6Zi9Ie36BNZbg0Tc
+        qmDnQyuduS45Djn49QbXveQBLXfwdNlrE0il6ubmKwJwAzbghA/N3c9A2YgEBR0ndJjy7aImTAp7
+        Oq3l8qFB9nLVN8mvyGHzl/OHZ4yNLm0UAJhhc/fIg3mfNTm2N8cyAg0d9fjO2OZx/+P53e5Zt78L
+        GeDO7aWHv4IeZndtFDXJsEBVEV8GXb5b24uvacljq7V+IS00+x8AAP//AwBwQNoHowcAAA==
+    headers:
+      CF-RAY:
+      - 9fe3ce2fcd3a1980-IAD
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - default-src 'none'; frame-ancestors 'none'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 May 2026 14:31:35 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '1999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-05-19T14:31:29Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-05-19T14:31:35Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-05-19T14:31:28Z'
+      anthropic-ratelimit-tokens-limit:
+      - '2400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '2399000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-05-19T14:31:29Z'
+      cf-cache-status:
+      - DYNAMIC
+      request-id:
+      - req_011CbC68tBKSmEtViAXPCkTC
+      set-cookie:
+      - _cfuvid=7ykwNhKy0jPdAzgTHV_luxFwm1aEZdqv3V0SbBNu0PQ-1779201087.9708657-1.0.1.1-aP0I_ZmrpRVmXcORX1zuH97YPRlkU1bcgK9_Hn8KfAE;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.anthropic.com
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-4ac0581d47eb49bc6be6750c3659848d-7e86d8713fae9bdb-01
+      vary:
+      - Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '7519'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+    method: GET
+    uri: https://slack.com/api/search.messages?query=resolving+users+expanding+context&count=10&page=1&sort=timestamp&sort_dir=desc
+  response:
+    body:
+      string: '{"ok":true,"query":"resolving users expanding context","messages":{"total":1,"pagination":{"total_count":1,"page":1,"per_page":10,"page_count":1,"first":1,"last":1},"paging":{"count":10,"total":1,"page":1,"pages":1},"matches":[{"db_message":{},"iid":"571d56e6-19ff-48b9-b59b-290ce9abc0be","team":"T076JEXPWTZ","score":0,"channel":{"id":"C0AD9M4S77S","is_channel":true,"is_group":false,"is_im":false,"is_mpim":false,"is_shared":false,"is_org_shared":false,"is_ext_shared":false,"is_private":false,"is_archived":false,"name":"test-cassette","pending_shared":[],"is_pending_ext_shared":false},"type":"message","user":"U0AVC717QTV","username":"matt","ts":"1777312012.909229","blocks":[{"type":"rich_text","block_id":"fdUS+","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"The
+        hardest parts are resolving users, and expanding context"}]}]}],"text":"The
+        hardest parts are resolving users, and expanding context","permalink":"https:\/\/devsandboxspace.slack.com\/archives\/C0AD9M4S77S\/p1777312012909229?thread_ts=1777311545.633819","no_reactions":true}]}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags, x-background
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '533'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 19 May 2026 14:31:36 GMT
+      Expires:
+      - Sat, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Via:
+      - 1.1 slack-prod.tinyspeck.com, envoy-www-iad-zmutbwlb,envoy-edge-cmh-tlibfeue
+      alt-svc:
+      - h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000
+      referrer-policy:
+      - no-referrer
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      timing-allow-origin:
+      - '*'
+      x-accepted-oauth-scopes:
+      - search:read
+      x-backend:
+      - api_canary_with_overflow
+      x-content-type-options:
+      - nosniff
+      x-edge-backend:
+      - envoy-www
+      x-envoy-upstream-service-time:
+      - '322'
+      x-oauth-scopes:
+      - identify,channels:history,groups:history,channels:read,groups:read,search:read,team:read,users:read,users:read.email
+      x-server:
+      - slack-www-hhvm-canary-api-iad-dru685exadhb
+      x-slack-backend:
+      - r
+      x-slack-edge-shared-secret-outcome:
+      - no-match
+      x-slack-req-id:
+      - a4dd23f9cc536ef157c11852e97cbc34
+      x-slack-shared-secret-outcome:
+      - no-match
+      x-slack-unique-id:
+      - agx0R2vfVWLEcJP4qzYrkQAAEBw
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+    method: GET
+    uri: https://slack.com/api/conversations.replies?channel=C0AD9M4S77S&ts=1777311545.633819&limit=21
+  response:
+    body:
+      string: '{"ok":true,"messages":[{"user":"U0AVC717QTV","type":"message","ts":"1777311545.633819","client_msg_id":"a7e04250-4660-4e50-9b9e-10ce34e2e187","text":"The
+        project is progressing, we should be able to re-record the cassette once Slack
+        indexes these comments","team":"T076JEXPWTZ","thread_ts":"1777311545.633819","reply_count":1,"reply_users_count":1,"latest_reply":"1777312012.909229","reply_users":["U0AVC717QTV"],"is_locked":false,"subscribed":false,"blocks":[{"type":"rich_text","block_id":"ekhf0","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"The
+        project is progressing, we should be able to re-record the cassette once Slack
+        indexes these comments"}]}]}]},{"user":"U0AVC717QTV","type":"message","ts":"1777312012.909229","client_msg_id":"ca8caafa-540e-4164-99e9-ab350029b185","text":"The
+        hardest parts are resolving users, and expanding context","team":"T076JEXPWTZ","thread_ts":"1777311545.633819","parent_user_id":"U0AVC717QTV","blocks":[{"type":"rich_text","block_id":"fdUS+","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"The
+        hardest parts are resolving users, and expanding context"}]}]}]}],"has_more":false}'
+    headers:
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags, x-background
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '469'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 19 May 2026 14:31:36 GMT
+      Expires:
+      - Sat, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Via:
+      - 1.1 slack-prod.tinyspeck.com, envoy-www-iad-nsijjjos,envoy-edge-cmh-zwnbvzzk
+      alt-svc:
+      - h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000
+      referrer-policy:
+      - no-referrer
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      timing-allow-origin:
+      - '*'
+      x-accepted-oauth-scopes:
+      - channels:history,groups:history,mpim:history,im:history,read
+      x-backend:
+      - api_normal
+      x-content-type-options:
+      - nosniff
+      x-edge-backend:
+      - envoy-www
+      x-envoy-upstream-service-time:
+      - '63'
+      x-oauth-scopes:
+      - identify,channels:history,groups:history,channels:read,groups:read,search:read,team:read,users:read,users:read.email
+      x-server:
+      - slack-www-hhvm-api-iad-i0setxn4v4v7
+      x-slack-backend:
+      - r
+      x-slack-edge-shared-secret-outcome:
+      - no-match
+      x-slack-req-id:
+      - 3c106ac3a716ebeb07f77d07e6e4e6b1
+      x-slack-shared-secret-outcome:
+      - no-match
+      x-slack-unique-id:
+      - agx0SI4u5QwjIdnACYGMMwAAEB4
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with extracting a list of learnings from a given context as it relates
+      to a specific topic and set of directions.\\nYour goal is to identify unique
+      and relevant information that can be used for further research on the topic.\\n\\nFirst,
+      review the topic and directions:\\n<topic>Search slack for 'resolving users,
+      and expanding context'</topic>\\n<directions>Search slack for 'resolving users,
+      and expanding context'</directions>\\n\\nNow, carefully read through the following
+      context:\\n<context>\\n\\n<result>\\n<id>290ae5c9-f919-49de-be31-839ee4302360</id>\\n<title>Slack
+      Message from matt in #test-cassette (2026-04-27 17:46:52)</title>\\n<author>matt</author>\\n<url>https://devsandboxspace.slack.com/archives/C0AD9M4S77S/p1777312012909229?thread_ts=1777311545.633819</url>\\n<created_at>2025-12-09
+      20:32:25+00:00</created_at>\\n<content>Channel: #test-cassette\\n\\nThis is
+      a thread conversation. The search matched a reply within this thread.\\n\\nU0AVC717QTV:
+      The project is progressing, we should be able to re-record the cassette once
+      Slack indexes these comments\\n[MATCHED] U0AVC717QTV: The hardest parts are
+      resolving users, and expanding context</content>\\n</result>\\n\\n</context>\\n\\nYour
+      task is to extract a list of learnings from the context that are relevant to
+      the topic and directions provided.\\nReturn a maximum of 10 learnings, but feel
+      free to return less if the contents are clear.\\n\\nFollow these guidelines:\\n1.
+      Each learning should be unique and not repetitive.\\n2. Include any entities
+      mentioned in the context, such as people, places, companies, products, or things.\\n3.
+      Pay special attention to exact metrics, numbers, and dates. Dates are particularly
+      important and should always be included when present.\\n4. Ensure that each
+      learning is directly related to the topic and directions.\\n5. Present the learnings
+      in a clear, concise manner.\\n6. Go beyond bare facts \u2014 include explanatory
+      context: WHY something happened, HOW it relates to the broader topic, and WHAT
+      the implications are. When the source provides enough context, write 2-3 sentence
+      learnings instead of single terse statements.\\n- Before: \\\"Revenue grew 15%
+      in Q3 2024.[^content:UUID]\\\"\\n- After: \\\"Revenue grew 15% in Q3 2024, driven
+      by expansion into the European market after the company's partnership with DistributorX.
+      This outpaced the industry average of 8% and marked the third consecutive quarter
+      of accelerating growth.[^content:UUID]\\\"\\n6. Citations:\\n- You must provide
+      citations for each learning, do not include a learning if you cannot cite a
+      context source.\\n- Citations should be placed at the end of the the learning,
+      and you must use a special footnote format.\\n- Instead of using standard footnote
+      numbers, you will use the UUID of the source enclosed in square brackets and
+      preceded by a caret symbol (^). The format should look like this: [^content:UUID]\\n-
+      For example, if you're citing a source with the UUID \\\"71f478a2-23a8-40fa-8edf-4b5d8820fdcf\\\",
+      you would insert the footnote as follows: [^content:71f478a2-23a8-40fa-8edf-4b5d8820fdcf]\\n-
+      Here is a full example of the correct format:\\n<citations_example>According
+      to recent studies, climate change is accelerating.[^content:47c97fb7-f734-482b-8385-9cd3df1d622e]\\nThe
+      data suggests a significant correlation between variables.[^content:9feb3ba5-4aba-4667-aedc-eaa57fa62d84]\\nMultiple
+      researchers have confirmed these findings.[^content:47c97fb7-f734-482b-8385-9cd3df1d622e]</citations_example>\\n\\nRemember
+      to focus on extracting information that is most relevant and useful for further
+      research on the topic.\\nEnsure that your learnings are diverse and cover different
+      aspects of the topic as presented in the context.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"The
+      current datetime is 2025-12-09 20:32:25+00:00\\n\\nThe user you are helping
+      is foo-1@example.com whose email address is foo-1@example.com.\\n\\nYou are
+      an expert researcher. Today is 2025-12-09 20:32:25+00:00. Follow these instructions
+      when responding:\\n- You may be asked to research subjects that is after your
+      knowledge cutoff, assume the user is right when presented with news.\\n- Be
+      highly organized.\\n- Suggest solutions that I didn't think about.\\n- Be proactive
+      and anticipate my needs.\\n- Treat me as an expert in all subject matter.\\n-
+      Mistakes erode my trust, so be accurate and thorough.\\n- Value good arguments
+      over authorities, the source is irrelevant.\\n- Consider new technologies and
+      contrarian ideas, not just the conventional wisdom.\\n- You may use high levels
+      of speculation or prediction, just flag it for me.\",\"tool_choice\":{\"type\":\"tool\",\"name\":\"GeneratedResearchQueryReview\"},\"tools\":[{\"name\":\"GeneratedResearchQueryReview\",\"description\":\"Correctly
+      extracted `GeneratedResearchQueryReview` with all the required parameters with
+      correct types\",\"input_schema\":{\"properties\":{\"learnings\":{\"description\":\"List
+      of learnings\",\"items\":{\"type\":\"string\"},\"title\":\"Learnings\",\"type\":\"array\"},\"follow_up_questions\":{\"description\":\"List
+      of follow-up questions to research the topic further, max of 3.\",\"items\":{\"type\":\"string\"},\"title\":\"Follow
+      Up Questions\",\"type\":\"array\"},\"follow_up_title\":{\"description\":\"A
+      one or two word user-facing title for the follow-up questions, shown as progress
+      in the UI\",\"title\":\"Follow Up Title\",\"type\":\"string\"}},\"required\":[\"learnings\",\"follow_up_questions\",\"follow_up_title\"],\"title\":\"GeneratedResearchQueryReview\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5469'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.85.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA5xW7Y4TNxR9FSuVGlZKliT71eQPilIKFAkBXaAqopEzc2fixmMb25MQEFIfok/Y
+        J+m5nplsFqhK+ZVd+9r33HPOveMPvcrmpHuzXqZlndMwWGMoDs+Hl71BT+XYqEK5HI2vLuT9s4v7
+        v+0vX8yf/PT48avyyfvFe8TEvSOOohBkSVjwVvOCDEGFKE3EUmZNJPw1e/2hi4/W6mUdqMvC/9fI
+        8/P0qlg8eDp/ohbTX9f71Xz3sNxtEWVkxecekCEvI+XPKZD02fpZTX7/nLaKdnyXcTXyfOhpbBpl
+        yoCkvbn4RctsI1qQovC2EkjuxYvR/OXianz17PqluKNygFSFolzIIPqVjLF/IpQRcU3iu0ghDjOU
+        RTGSyNYSRGns5ioDnoAgGVNk3Fmxlj5HvHDSxyBsIaQR1pQWiITz9g/KopCeRN9TsHrLy4wn9BGY
+        iz69c/jl1UTdu3jaF9drVJwOFVqWZQMys/g/UrY2QKEZldZkSgoDEWoEhciXJGip3qbEuBcpbx2V
+        NSljm0bsUI/d3Q2ZdSQSipBCkMVYM4xebRXyrGyMyEPZJnT8tFX1g2BVFDDF2tPp699b8WeT6UjS
+        RTYdFtPxdHg+hdlWdDYe/nA2JTo/G03OLkdvICHqZDhbsCETPlhjIxwEJM4lkc2TzAE1rr+sTSN2
+        pxBumIwml8PR+XByNUjH0iHIm63Boien9yIqmCPKyjGvUYyvZueXs4vJqUhw2qvYg6J/K1m/45kN
+        oMAG6hc5bUlbV6FsYb14Nhdktspbk1Y8aTYw6kJo/+YiT1CTRb/LkORehH2IVA2EVhsCxAJXxVZR
+        V3tnA4Vv5PdgQefQJ4GhKLOFEQkohgcgx/gGjTVxsoR3UqGcGVGpStOyDv/Qu8ZzLGPFFQdRKB8i
+        c8kMVU6r1C/UVihqHPK3WANHHHO4NpdRijtt/8LcqVkGrRXCCbeCQh7nVSX9XqQxIIKtfUaDhDvB
+        6QxyU2BFrK0KFTYdGzak6EaAVtKU+4j8b+Q8r281KA+Fr+3+fmrA1gYKS7710Ex8cgMKQsvC287x
+        WkNe6vxHPwZxh07L08Hx0Dth6cGh7iZDYt2zzIXSzPRujV/xGaQOjaeCGgOR8QqNjxCcX3krcWFn
+        hERhyzD6y1soDnN187jF1TY2OI/W7weHtqsoSr6hkR0+iVLpcAI/2ZJwveejPBwhG/hg/xySNqiS
+        p5xycJXBJCPKAWNFRZqex87IMKdXmLJZVvNXJhXY9gPl/1v4N4NeYbW2u2Xtlm9rto816Yv0iidy
+        cJThc5NxgWubJ+LnTx+FpPaKWlHzRqKQuvPrBC1qrZugGx3ZWTvOKtuaN8buDGSsVExzNtyDUROu
+        3MIEX3IhKgfzzcRX4TBF/v7zr+aMio0fGMN/iwktNqjupqlRfrDMBSclHeiASDXj4mhYtpOjYSkl
+        JZPhNsaiEhIpXi6eD0Pcw74Pr6+ftl3fDVd+cAggcTyKubsTtUc84VuHwe55nh88cO+2pOiX9NZZ
+        dPb5Xiwarnof8erhVvf8GGnfPLnCLdj6iEvAiluCIby3br+G0kYguAX19GYGUraLre+7tTq9t3B7
+        GnbLaDfE3pqMLiacG9+2ZYYELO3ydsio22eF/m2vO8sZyK2pwrNLLy+qz+NvdsfrT3dBg63j8dLl
+        2Rj1kN+qjEAgE9Tjd2KOF1N6wLVSLkuy2Cq1XUkNzv4BAAD//wMA5gfiDKoKAAA=
+    headers:
+      CF-RAY:
+      - 9fe3ce64ab15b25d-IAD
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - default-src 'none'; frame-ancestors 'none'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 May 2026 14:31:47 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '1999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-05-19T14:31:37Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '399000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-05-19T14:31:47Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-05-19T14:31:36Z'
+      anthropic-ratelimit-tokens-limit:
+      - '2400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '2398000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-05-19T14:31:37Z'
+      cf-cache-status:
+      - DYNAMIC
+      request-id:
+      - req_011CbC69WKhXdWM8Yn6bZmGB
+      set-cookie:
+      - _cfuvid=7tT.gcvaL8ca4.CMZoxDMv8a6CcEyzqDGgPOnnkWzLU-1779201096.4233572-1.0.1.1-g8Fh0LCSoNwZcnQB6y0xQcjA2gO0Cx2o7ukgskbvTpE;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.anthropic.com
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-63c9e9bac7eed0772641841d7ee368b6-b85d6f02d99dc8cd-01
+      vary:
+      - Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '11148'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+    method: GET
+    uri: https://slack.com/api/search.messages?query=resolving+users&count=10&page=1&sort=timestamp&sort_dir=desc
+  response:
+    body:
+      string: '{"ok":true,"query":"resolving users","messages":{"total":1,"pagination":{"total_count":1,"page":1,"per_page":10,"page_count":1,"first":1,"last":1},"paging":{"count":10,"total":1,"page":1,"pages":1},"matches":[{"db_message":{},"iid":"6f94b89a-3910-4d02-b3c2-496ea43bdb91","team":"T076JEXPWTZ","score":0,"channel":{"id":"C0AD9M4S77S","is_channel":true,"is_group":false,"is_im":false,"is_mpim":false,"is_shared":false,"is_org_shared":false,"is_ext_shared":false,"is_private":false,"is_archived":false,"name":"test-cassette","pending_shared":[],"is_pending_ext_shared":false},"type":"message","user":"U0AVC717QTV","username":"matt","ts":"1777312012.909229","blocks":[{"type":"rich_text","block_id":"fdUS+","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"The
+        hardest parts are resolving users, and expanding context"}]}]}],"text":"The
+        hardest parts are resolving users, and expanding context","permalink":"https:\/\/devsandboxspace.slack.com\/archives\/C0AD9M4S77S\/p1777312012909229?thread_ts=1777311545.633819","no_reactions":true}]}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags, x-background
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '531'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 19 May 2026 14:31:47 GMT
+      Expires:
+      - Sat, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Via:
+      - 1.1 slack-prod.tinyspeck.com, envoy-www-iad-ahxcevbl,envoy-edge-cmh-zufjxiyh
+      alt-svc:
+      - h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000
+      referrer-policy:
+      - no-referrer
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      timing-allow-origin:
+      - '*'
+      x-accepted-oauth-scopes:
+      - search:read
+      x-backend:
+      - api_normal
+      x-content-type-options:
+      - nosniff
+      x-edge-backend:
+      - envoy-www
+      x-envoy-upstream-service-time:
+      - '102'
+      x-oauth-scopes:
+      - identify,channels:history,groups:history,channels:read,groups:read,search:read,team:read,users:read,users:read.email
+      x-server:
+      - slack-www-hhvm-api-iad-i1oqipumhhqi
+      x-slack-backend:
+      - r
+      x-slack-edge-shared-secret-outcome:
+      - no-match
+      x-slack-req-id:
+      - 200fa276621c443c027808e6efcf5b31
+      x-slack-shared-secret-outcome:
+      - no-match
+      x-slack-unique-id:
+      - agx0U_wqWW3wbPjYiBtrmwAAAAo
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+    method: GET
+    uri: https://slack.com/api/conversations.replies?channel=C0AD9M4S77S&ts=1777311545.633819&limit=21
+  response:
+    body:
+      string: '{"ok":true,"messages":[{"user":"U0AVC717QTV","type":"message","ts":"1777311545.633819","client_msg_id":"a7e04250-4660-4e50-9b9e-10ce34e2e187","text":"The
+        project is progressing, we should be able to re-record the cassette once Slack
+        indexes these comments","team":"T076JEXPWTZ","thread_ts":"1777311545.633819","reply_count":1,"reply_users_count":1,"latest_reply":"1777312012.909229","reply_users":["U0AVC717QTV"],"is_locked":false,"subscribed":false,"blocks":[{"type":"rich_text","block_id":"ekhf0","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"The
+        project is progressing, we should be able to re-record the cassette once Slack
+        indexes these comments"}]}]}]},{"user":"U0AVC717QTV","type":"message","ts":"1777312012.909229","client_msg_id":"ca8caafa-540e-4164-99e9-ab350029b185","text":"The
+        hardest parts are resolving users, and expanding context","team":"T076JEXPWTZ","thread_ts":"1777311545.633819","parent_user_id":"U0AVC717QTV","blocks":[{"type":"rich_text","block_id":"fdUS+","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"The
+        hardest parts are resolving users, and expanding context"}]}]}]}],"has_more":false}'
+    headers:
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags, x-background
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '469'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 19 May 2026 14:31:48 GMT
+      Expires:
+      - Sat, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Via:
+      - 1.1 slack-prod.tinyspeck.com, envoy-www-iad-iqkasgom,envoy-edge-cmh-oehnmuec
+      alt-svc:
+      - h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000
+      referrer-policy:
+      - no-referrer
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      timing-allow-origin:
+      - '*'
+      x-accepted-oauth-scopes:
+      - channels:history,groups:history,mpim:history,im:history,read
+      x-backend:
+      - api_normal
+      x-content-type-options:
+      - nosniff
+      x-edge-backend:
+      - envoy-www
+      x-envoy-upstream-service-time:
+      - '69'
+      x-oauth-scopes:
+      - identify,channels:history,groups:history,channels:read,groups:read,search:read,team:read,users:read,users:read.email
+      x-server:
+      - slack-www-hhvm-api-iad-0sc82p68fjdj
+      x-slack-backend:
+      - r
+      x-slack-edge-shared-secret-outcome:
+      - no-match
+      x-slack-req-id:
+      - 5d703e068a080ecbc7b14b047c66dfcb
+      x-slack-shared-secret-outcome:
+      - no-match
+      x-slack-unique-id:
+      - agx0VGStvfIj3ee_B6DGcgAAECI
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with extracting a list of learnings from a given context as it relates
+      to a specific topic and set of directions.\\nYour goal is to identify unique
+      and relevant information that can be used for further research on the topic.\\n\\nFirst,
+      review the topic and directions:\\n<topic>Search slack for 'resolving users,
+      and expanding context'</topic>\\n<directions>Search slack for 'resolving users,
+      and expanding context'</directions>\\n\\nNow, carefully read through the following
+      context:\\n<context>\\n\\n<result>\\n<id>bf45978a-a085-4f1b-a825-47a921a72f07</id>\\n<title>Slack
+      Message from matt in #test-cassette (2026-04-27 17:46:52)</title>\\n<author>matt</author>\\n<url>https://devsandboxspace.slack.com/archives/C0AD9M4S77S/p1777312012909229?thread_ts=1777311545.633819</url>\\n<created_at>2025-12-09
+      20:32:25+00:00</created_at>\\n<content>Channel: #test-cassette\\n\\nThis is
+      a thread conversation. The search matched a reply within this thread.\\n\\nU0AVC717QTV:
+      The project is progressing, we should be able to re-record the cassette once
+      Slack indexes these comments\\n[MATCHED] U0AVC717QTV: The hardest parts are
+      resolving users, and expanding context</content>\\n</result>\\n\\n</context>\\n\\nYour
+      task is to extract a list of learnings from the context that are relevant to
+      the topic and directions provided.\\nReturn a maximum of 10 learnings, but feel
+      free to return less if the contents are clear.\\n\\nFollow these guidelines:\\n1.
+      Each learning should be unique and not repetitive.\\n2. Include any entities
+      mentioned in the context, such as people, places, companies, products, or things.\\n3.
+      Pay special attention to exact metrics, numbers, and dates. Dates are particularly
+      important and should always be included when present.\\n4. Ensure that each
+      learning is directly related to the topic and directions.\\n5. Present the learnings
+      in a clear, concise manner.\\n6. Go beyond bare facts \u2014 include explanatory
+      context: WHY something happened, HOW it relates to the broader topic, and WHAT
+      the implications are. When the source provides enough context, write 2-3 sentence
+      learnings instead of single terse statements.\\n- Before: \\\"Revenue grew 15%
+      in Q3 2024.[^content:UUID]\\\"\\n- After: \\\"Revenue grew 15% in Q3 2024, driven
+      by expansion into the European market after the company's partnership with DistributorX.
+      This outpaced the industry average of 8% and marked the third consecutive quarter
+      of accelerating growth.[^content:UUID]\\\"\\n6. Citations:\\n- You must provide
+      citations for each learning, do not include a learning if you cannot cite a
+      context source.\\n- Citations should be placed at the end of the the learning,
+      and you must use a special footnote format.\\n- Instead of using standard footnote
+      numbers, you will use the UUID of the source enclosed in square brackets and
+      preceded by a caret symbol (^). The format should look like this: [^content:UUID]\\n-
+      For example, if you're citing a source with the UUID \\\"71f478a2-23a8-40fa-8edf-4b5d8820fdcf\\\",
+      you would insert the footnote as follows: [^content:71f478a2-23a8-40fa-8edf-4b5d8820fdcf]\\n-
+      Here is a full example of the correct format:\\n<citations_example>According
+      to recent studies, climate change is accelerating.[^content:47c97fb7-f734-482b-8385-9cd3df1d622e]\\nThe
+      data suggests a significant correlation between variables.[^content:9feb3ba5-4aba-4667-aedc-eaa57fa62d84]\\nMultiple
+      researchers have confirmed these findings.[^content:47c97fb7-f734-482b-8385-9cd3df1d622e]</citations_example>\\n\\nRemember
+      to focus on extracting information that is most relevant and useful for further
+      research on the topic.\\nEnsure that your learnings are diverse and cover different
+      aspects of the topic as presented in the context.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"The
+      current datetime is 2025-12-09 20:32:25+00:00\\n\\nThe user you are helping
+      is foo-1@example.com whose email address is foo-1@example.com.\\n\\nYou are
+      an expert researcher. Today is 2025-12-09 20:32:25+00:00. Follow these instructions
+      when responding:\\n- You may be asked to research subjects that is after your
+      knowledge cutoff, assume the user is right when presented with news.\\n- Be
+      highly organized.\\n- Suggest solutions that I didn't think about.\\n- Be proactive
+      and anticipate my needs.\\n- Treat me as an expert in all subject matter.\\n-
+      Mistakes erode my trust, so be accurate and thorough.\\n- Value good arguments
+      over authorities, the source is irrelevant.\\n- Consider new technologies and
+      contrarian ideas, not just the conventional wisdom.\\n- You may use high levels
+      of speculation or prediction, just flag it for me.\",\"tool_choice\":{\"type\":\"tool\",\"name\":\"GeneratedResearchQueryReview\"},\"tools\":[{\"name\":\"GeneratedResearchQueryReview\",\"description\":\"Correctly
+      extracted `GeneratedResearchQueryReview` with all the required parameters with
+      correct types\",\"input_schema\":{\"properties\":{\"learnings\":{\"description\":\"List
+      of learnings\",\"items\":{\"type\":\"string\"},\"title\":\"Learnings\",\"type\":\"array\"},\"follow_up_questions\":{\"description\":\"List
+      of follow-up questions to research the topic further, max of 3.\",\"items\":{\"type\":\"string\"},\"title\":\"Follow
+      Up Questions\",\"type\":\"array\"},\"follow_up_title\":{\"description\":\"A
+      one or two word user-facing title for the follow-up questions, shown as progress
+      in the UI\",\"title\":\"Follow Up Title\",\"type\":\"string\"}},\"required\":[\"learnings\",\"follow_up_questions\",\"follow_up_title\"],\"title\":\"GeneratedResearchQueryReview\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5469'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.85.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA5xWwW4bNxD9FUI9KAEkQ5IlS/YliJ2gSdEAieM4bYNUoHZntbS45IbkSl4YAfoR
+        /cJ+Sd9wd23LTnvwSVqSM/Pmzbwhb3qFTUn3TnqJllVKQ2+NoTCcDo96g55KsVH49XI0Pnt9ujg7
+        V/73XNp35pfTekEf17/iTKhL4lPkvVwTFpzVvCC9Vz5IE7CUWBMI/06+3HTng7V6WXnqovB3hTiv
+        P3+arw8n01NSrz6+Ozy6evXbH+MUp4ws2O5nMuRkoPScPEmX5B8qcvU5bRXt2JcpK8S56WlsGmXW
+        HkF7b42Q4qOWyUaE3JFMxU6FXBl8kfgpkA/DBHgpBBJJLsGAHgiAc+LT6OXl2Xw8/3BxKVSKHFSm
+        KIWdDNE47KzIpUvhQpTSBS9sxhvKiaRyDgaidPaKkiCkI9F35K3eAld07/tCmlT06brEL69Gpq7D
+        QV9c5MoLX63XcO3ZpafoQiZBbRGYktyoRGoGrDUZnBMrYh876zYRo7PVOh8IrTaka9Gm20ZgnFLc
+        Zu1o6CixLoKwTqQySFikdN15zLTdHXz5sy3lySqbzo7nCzmUo8VsOM3Gq6FcTPBvLo8nYzmfZKP5
+        VxTkAiE7Bhp4qfJJhbApI3pAPlIOkV+7j0iKfnemL/75628sBHIFkgAYpjI68/jcMUfslM2e0cH6
+        YCAuz86HPtSaxJuLi/f3k279Pz8QjFOulFah3osuUirJpKiraTvolpWGzaIAHV5kyvkw4E0UJdxu
+        33aVLEOF4jO3jkota9+6a4UTGX8iv7DZopkQFiAhpI1AgIQY8mQ0ORqOpsPJXPxvu/NZ3k1p69GK
+        K3vtS3bRYOT6x+9B7Ned9EJWIbcOvK9q0S9kCH3xrDkcdfP21cl97bQEd+KDvTIqKNaxYCUpsBBk
+        UYrxfD4/HI9n09nB0eHhYnw8iFKN2BAlyWHA/NVs1hyejMaT49HxZHL8RPq4gMwcFPEDfSLVqHDu
+        4pWmQqii1Ip8MwMKWZZ8ei913zXefQa4q/KqkGbIHEi4agdKYGdofGPNMDi1VdB0rBXrv/YBIbnj
+        WxWvKJEIs99dPljuLSd3LZCX79+CJl9a47EeGbSl/FbRHUQM0Rx/kYVhSXJLCp6x/gks9l8/HGB9
+        zihRsb5e0LcKM6q+HVU4OOhmWyOVdpy2+RoiKC7KEIwQxl2BBGHhMNKaOMpk1hVNy7dsZ5XWXYuB
+        PHBSD+BBxy5rZeYHrECtzCY2kreVS8g/B621RWdfVT7s9VqnzmbmsNot05VlKqk0RsUux/xZVUpH
+        UM2N1Gg8Akcpm5Ti/Ai25CZrSvQkvX8d9DKrMYmXVblEOT3nH6+4z0yhLynBBZUANtSZMhDuBNXd
+        DHFQRlq5y+lh12JnrxNatbPnOFXBy8bYnQF/hQqR+/a+4xMlBCKT/AX64Y3dcdDH91q/BcIaItYd
+        8DC1qWUNBFR1G4FlBPr5IO5UvkObqjKg9ApjCCs/qicCkDN8JTakMpTIy+OJD5OVk65m68whWR5x
+        D4i6uz0G4pQwnuT184aSHPndQUZQXMp3c+pOgiC0HfzRrBn8t9Bf7JcTkyA+nBrzsxZy7zueT6wa
+        x6+a9vGUKiQSet+/wwH6vFyCHTzc9p9VccNDemQSGBmoo11MkYzSvlur4sMN3uPjaRnshrinJqPZ
+        jGNDB8sEAbjcy/0jo26fq/Nfe50tR6AyR9md1MtZ8fj83e44f7gLGmwV7i8dLabIh9xWJQTymKAe
+        PzhTDOv4EszIcerLNVlsrbVdSQ3O/gUAAP//AwAl5+A78woAAA==
+    headers:
+      CF-RAY:
+      - 9fe3ceaefe0e3725-IAD
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - default-src 'none'; frame-ancestors 'none'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 May 2026 14:32:01 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '1999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-05-19T14:31:49Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-05-19T14:32:01Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-05-19T14:31:48Z'
+      anthropic-ratelimit-tokens-limit:
+      - '2400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '2399000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-05-19T14:31:49Z'
+      cf-cache-status:
+      - DYNAMIC
+      request-id:
+      - req_011CbC6APDM4zoNakSHjpVt3
+      set-cookie:
+      - _cfuvid=hGhGtPiJ1rezexKiVAlQPhGPl3uqukTpoIFBBune8Sg-1779201108.3174806-1.0.1.1-J2Cszu45JGy2jyk0GJMLZd6sUm6FxJoqEETrRg9LYog;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.anthropic.com
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-c28229accdaffdf76e1d19c12fccee12-10c2f1ed73aee82a-01
+      vary:
+      - Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '13206'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+    method: GET
+    uri: https://slack.com/api/search.messages?query=expanding+context&count=10&page=1&sort=timestamp&sort_dir=desc
+  response:
+    body:
+      string: '{"ok":true,"query":"expanding context","messages":{"total":1,"pagination":{"total_count":1,"page":1,"per_page":10,"page_count":1,"first":1,"last":1},"paging":{"count":10,"total":1,"page":1,"pages":1},"matches":[{"db_message":{},"iid":"67877f7c-f6af-4df3-ae6c-a71c832050ee","team":"T076JEXPWTZ","score":0,"channel":{"id":"C0AD9M4S77S","is_channel":true,"is_group":false,"is_im":false,"is_mpim":false,"is_shared":false,"is_org_shared":false,"is_ext_shared":false,"is_private":false,"is_archived":false,"name":"test-cassette","pending_shared":[],"is_pending_ext_shared":false},"type":"message","user":"U0AVC717QTV","username":"matt","ts":"1777312012.909229","blocks":[{"type":"rich_text","block_id":"fdUS+","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"The
+        hardest parts are resolving users, and expanding context"}]}]}],"text":"The
+        hardest parts are resolving users, and expanding context","permalink":"https:\/\/devsandboxspace.slack.com\/archives\/C0AD9M4S77S\/p1777312012909229?thread_ts=1777311545.633819","no_reactions":true}]}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags, x-background
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '530'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 19 May 2026 14:32:01 GMT
+      Expires:
+      - Sat, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Via:
+      - 1.1 slack-prod.tinyspeck.com, envoy-www-iad-lwwzhrdy,envoy-edge-cmh-zajizcyd
+      alt-svc:
+      - h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000
+      referrer-policy:
+      - no-referrer
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      timing-allow-origin:
+      - '*'
+      x-accepted-oauth-scopes:
+      - search:read
+      x-backend:
+      - api_normal
+      x-content-type-options:
+      - nosniff
+      x-edge-backend:
+      - envoy-www
+      x-envoy-upstream-service-time:
+      - '102'
+      x-oauth-scopes:
+      - identify,channels:history,groups:history,channels:read,groups:read,search:read,team:read,users:read,users:read.email
+      x-server:
+      - slack-www-hhvm-api-iad-ba7b872ybymq
+      x-slack-backend:
+      - r
+      x-slack-edge-shared-secret-outcome:
+      - no-match
+      x-slack-req-id:
+      - 1aa5a684bd026d0f6130f0b1fef056f8
+      x-slack-shared-secret-outcome:
+      - no-match
+      x-slack-unique-id:
+      - agx0YUTBQPA9eDdjDb88DAAAACo
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+    method: GET
+    uri: https://slack.com/api/conversations.replies?channel=C0AD9M4S77S&ts=1777311545.633819&limit=21
+  response:
+    body:
+      string: '{"ok":true,"messages":[{"user":"U0AVC717QTV","type":"message","ts":"1777311545.633819","client_msg_id":"a7e04250-4660-4e50-9b9e-10ce34e2e187","text":"The
+        project is progressing, we should be able to re-record the cassette once Slack
+        indexes these comments","team":"T076JEXPWTZ","thread_ts":"1777311545.633819","reply_count":1,"reply_users_count":1,"latest_reply":"1777312012.909229","reply_users":["U0AVC717QTV"],"is_locked":false,"subscribed":false,"blocks":[{"type":"rich_text","block_id":"ekhf0","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"The
+        project is progressing, we should be able to re-record the cassette once Slack
+        indexes these comments"}]}]}]},{"user":"U0AVC717QTV","type":"message","ts":"1777312012.909229","client_msg_id":"ca8caafa-540e-4164-99e9-ab350029b185","text":"The
+        hardest parts are resolving users, and expanding context","team":"T076JEXPWTZ","thread_ts":"1777311545.633819","parent_user_id":"U0AVC717QTV","blocks":[{"type":"rich_text","block_id":"fdUS+","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"The
+        hardest parts are resolving users, and expanding context"}]}]}]}],"has_more":false}'
+    headers:
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags, x-background
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '469'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 19 May 2026 14:32:02 GMT
+      Expires:
+      - Sat, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Via:
+      - 1.1 slack-prod.tinyspeck.com, envoy-www-iad-dalpmndl,envoy-edge-cmh-mkjshzpy
+      alt-svc:
+      - h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000
+      referrer-policy:
+      - no-referrer
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      timing-allow-origin:
+      - '*'
+      x-accepted-oauth-scopes:
+      - channels:history,groups:history,mpim:history,im:history,read
+      x-backend:
+      - api_normal
+      x-content-type-options:
+      - nosniff
+      x-edge-backend:
+      - envoy-www
+      x-envoy-upstream-service-time:
+      - '60'
+      x-oauth-scopes:
+      - identify,channels:history,groups:history,channels:read,groups:read,search:read,team:read,users:read,users:read.email
+      x-server:
+      - slack-www-hhvm-api-iad-wv5r3atn7lwk
+      x-slack-backend:
+      - r
+      x-slack-edge-shared-secret-outcome:
+      - no-match
+      x-slack-req-id:
+      - 17661073f799245ed8c9c216f7c80c68
+      x-slack-shared-secret-outcome:
+      - no-match
+      x-slack-unique-id:
+      - agx0YsYh-m_lslt71HLLTAAAEDo
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with extracting a list of learnings from a given context as it relates
+      to a specific topic and set of directions.\\nYour goal is to identify unique
+      and relevant information that can be used for further research on the topic.\\n\\nFirst,
+      review the topic and directions:\\n<topic>Search slack for 'resolving users,
+      and expanding context'</topic>\\n<directions>Search slack for 'resolving users,
+      and expanding context'</directions>\\n\\nNow, carefully read through the following
+      context:\\n<context>\\n\\n<result>\\n<id>6de01769-d232-4272-8202-961e7ad2372c</id>\\n<title>Slack
+      Message from matt in #test-cassette (2026-04-27 17:46:52)</title>\\n<author>matt</author>\\n<url>https://devsandboxspace.slack.com/archives/C0AD9M4S77S/p1777312012909229?thread_ts=1777311545.633819</url>\\n<created_at>2025-12-09
+      20:32:25+00:00</created_at>\\n<content>Channel: #test-cassette\\n\\nThis is
+      a thread conversation. The search matched a reply within this thread.\\n\\nU0AVC717QTV:
+      The project is progressing, we should be able to re-record the cassette once
+      Slack indexes these comments\\n[MATCHED] U0AVC717QTV: The hardest parts are
+      resolving users, and expanding context</content>\\n</result>\\n\\n</context>\\n\\nYour
+      task is to extract a list of learnings from the context that are relevant to
+      the topic and directions provided.\\nReturn a maximum of 10 learnings, but feel
+      free to return less if the contents are clear.\\n\\nFollow these guidelines:\\n1.
+      Each learning should be unique and not repetitive.\\n2. Include any entities
+      mentioned in the context, such as people, places, companies, products, or things.\\n3.
+      Pay special attention to exact metrics, numbers, and dates. Dates are particularly
+      important and should always be included when present.\\n4. Ensure that each
+      learning is directly related to the topic and directions.\\n5. Present the learnings
+      in a clear, concise manner.\\n6. Go beyond bare facts \u2014 include explanatory
+      context: WHY something happened, HOW it relates to the broader topic, and WHAT
+      the implications are. When the source provides enough context, write 2-3 sentence
+      learnings instead of single terse statements.\\n- Before: \\\"Revenue grew 15%
+      in Q3 2024.[^content:UUID]\\\"\\n- After: \\\"Revenue grew 15% in Q3 2024, driven
+      by expansion into the European market after the company's partnership with DistributorX.
+      This outpaced the industry average of 8% and marked the third consecutive quarter
+      of accelerating growth.[^content:UUID]\\\"\\n6. Citations:\\n- You must provide
+      citations for each learning, do not include a learning if you cannot cite a
+      context source.\\n- Citations should be placed at the end of the the learning,
+      and you must use a special footnote format.\\n- Instead of using standard footnote
+      numbers, you will use the UUID of the source enclosed in square brackets and
+      preceded by a caret symbol (^). The format should look like this: [^content:UUID]\\n-
+      For example, if you're citing a source with the UUID \\\"71f478a2-23a8-40fa-8edf-4b5d8820fdcf\\\",
+      you would insert the footnote as follows: [^content:71f478a2-23a8-40fa-8edf-4b5d8820fdcf]\\n-
+      Here is a full example of the correct format:\\n<citations_example>According
+      to recent studies, climate change is accelerating.[^content:47c97fb7-f734-482b-8385-9cd3df1d622e]\\nThe
+      data suggests a significant correlation between variables.[^content:9feb3ba5-4aba-4667-aedc-eaa57fa62d84]\\nMultiple
+      researchers have confirmed these findings.[^content:47c97fb7-f734-482b-8385-9cd3df1d622e]</citations_example>\\n\\nRemember
+      to focus on extracting information that is most relevant and useful for further
+      research on the topic.\\nEnsure that your learnings are diverse and cover different
+      aspects of the topic as presented in the context.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"The
+      current datetime is 2025-12-09 20:32:25+00:00\\n\\nThe user you are helping
+      is foo-1@example.com whose email address is foo-1@example.com.\\n\\nYou are
+      an expert researcher. Today is 2025-12-09 20:32:25+00:00. Follow these instructions
+      when responding:\\n- You may be asked to research subjects that is after your
+      knowledge cutoff, assume the user is right when presented with news.\\n- Be
+      highly organized.\\n- Suggest solutions that I didn't think about.\\n- Be proactive
+      and anticipate my needs.\\n- Treat me as an expert in all subject matter.\\n-
+      Mistakes erode my trust, so be accurate and thorough.\\n- Value good arguments
+      over authorities, the source is irrelevant.\\n- Consider new technologies and
+      contrarian ideas, not just the conventional wisdom.\\n- You may use high levels
+      of speculation or prediction, just flag it for me.\",\"tool_choice\":{\"type\":\"tool\",\"name\":\"GeneratedResearchQueryReview\"},\"tools\":[{\"name\":\"GeneratedResearchQueryReview\",\"description\":\"Correctly
+      extracted `GeneratedResearchQueryReview` with all the required parameters with
+      correct types\",\"input_schema\":{\"properties\":{\"learnings\":{\"description\":\"List
+      of learnings\",\"items\":{\"type\":\"string\"},\"title\":\"Learnings\",\"type\":\"array\"},\"follow_up_questions\":{\"description\":\"List
+      of follow-up questions to research the topic further, max of 3.\",\"items\":{\"type\":\"string\"},\"title\":\"Follow
+      Up Questions\",\"type\":\"array\"},\"follow_up_title\":{\"description\":\"A
+      one or two word user-facing title for the follow-up questions, shown as progress
+      in the UI\",\"title\":\"Follow Up Title\",\"type\":\"string\"}},\"required\":[\"learnings\",\"follow_up_questions\",\"follow_up_title\"],\"title\":\"GeneratedResearchQueryReview\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5469'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.85.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA5xW224bNxD9FUJ9WBvQGrJiW7VfAiP3pggS13FSBKlALUdaRlxyTXJ1QRCgH9Ev
+        7Jf0DHc3km3koQEsWOJlLmfOmeHXQeUUmcHFoDCyUZQHZy3F/CQ/GwwHWmGjCovp6Pjy9dPnL+Tx
+        byfvr55//NN/rCa/f5htcCZua+JTFIJcEBa8M7wgQ9AhShuxVDgbCd8uPn3tz0fnzLQJ1Hvh3w38
+        nJdvZm+Wq2f+9e3rt6F4V96cnr5nG1ZWfO8FWfIykrqiQNIX5buG/PaKVprWbMvWDfx8HRhsWm0X
+        AU4Hl+IPI4ul6IIUc+8qAedevB9d3jyZHE/eXd8IbUUsSfwSKcS8QPwUI4milEDEiIPaBbgV49H4
+        LB+d5OPJodAKWem5ppBuxrUTpfQK90UtfQzCzYW0wtmFQyii9u4LFVHIIDJPwZkVr3IcIcM5JTLa
+        1PjPqwmyTTzKxHWpgwjNYgGzyU8gIT0+RdQrOKWitLqQRjgv1s4v58atOWpjyOKOmBHb4x1EH0vv
+        mkU5FMCwRP4R2QmOBHsIb2aoCkef/uoKdnGmaHQ8OTvP1fjROD8ZT8b5rwAgPz87ponE4mRcfAbs
+        18i+z87TnDzZAha1XbHpgLXcU+F8Sk2KrEd3mIl1qYuSsQ9uHtecmKIVGVdXCECALZyb2bZmkb/D
+        /dYWHLy8vn6LuxGUABrOirnexAY2DuhocTQUN0+u8hC3BmXs6xlljYAAukoFB6iI6fBIcAqRZCWA
+        9lpqXhVzQNoyB261VbQRlgCuqzg4hhYniGuyhQO7S3ModFWbLdtgYuzIJGsOL3RWL9++wp1QOxuw
+        xgyompAQNIxk0XjPICgZ5U8WBXdWgE0mcKJcwk0N18S5S2YDSSXWOpb4fZf4w7Scwq9kLErg1cun
+        ZRSXATm2yMkmlgDrYE9PQ2H0klA5NpHElsFQzMRMMviIp5dWx/VDYV3spNSTCcXI8H0BlAKcgi8o
+        AxjRlweEQVyOy9FUYE6odUwF2WlT7YsBgkyhJPk1CRWGvYtAJP0FrP4E3NnVfUl3+e+Ym7jQB8Ox
+        VLKu+UJLhxTZq6dBHIQGmkCb2IPzkA2UTSVtzkWTkKrgnhhY94BorrGQmNJ2DPxJsbRubZmvtaGN
+        jlsue+uLRbPwiRdhyK44tpaPYKgNu2DQIpiSt43mpqOU5jtoN3yYpZkya9sZ0wo/lA4g2XYXHlVS
+        m5/pK9mz+w0x41jlHooPQEYCXlOqA5dWWwiydr6lTICkXPPd4k4bzvdq6Lkwo62zquUS9K40pg4c
+        3RfDv3//k/oEbSSjPBRzwoHU7mVSb2e2O89gqy9QoI1JP5pXcN1ou2ypmiSBCkbnt5wPWc8dMgmR
+        JM+0NFbEAt2fW05oTPzf0H4eDubOYFJMm3p623AXBBF4Vn7gcoeaCmingEfoWqUiot4hDZ5W/qmD
+        7lX+HoUfkrUVZORhmSYtCNqp/DEq/RJDi8X+YAJmnT9uqMQ6h1vGnCP5EcL3UEwAuzTvWCCYNI0v
+        vk/GHUFIcSQJAN0KYuadVLhWNzgRkmTvjDI+0ya+a5tMujXb4HaKpwZEwMM3MQyPnOQy7IH4+G4x
+        AFF6P7VmX+1kOviGhxSz3vP7pntGKYiyiINv32ADudZTIIEn3N0HVtoIUDBP5cGFbYzpFhVFVma/
+        1qQnHKynZ9Q0uiUxKcaj00fsG7yfFnDA0UzvHhn1+1yJH+31d9kD1SWq6aWZnlYPz+92j8v7u4DB
+        NXF/6Wx8jnzIr3RBwI8BGvDTU2E4pDdh9yCZLshha2HcTBpg9h8AAAD//wMAWShhvf0KAAA=
+    headers:
+      CF-RAY:
+      - 9fe3cf060847e604-IAD
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - default-src 'none'; frame-ancestors 'none'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 19 May 2026 14:32:13 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '1999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-05-19T14:32:03Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '399000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-05-19T14:32:13Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-05-19T14:32:02Z'
+      anthropic-ratelimit-tokens-limit:
+      - '2400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '2398000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-05-19T14:32:03Z'
+      cf-cache-status:
+      - DYNAMIC
+      request-id:
+      - req_011CbC6BQpMpUAswNQQDwsAw
+      set-cookie:
+      - _cfuvid=Z1OWfnLlX8JdeEzJ6cOu8dp6NtI4mTIRQUu_zygUK.A-1779201122.2427678-1.0.1.1-SJMYD270zDRg2UllmLun91_tvX4ZT9ja_yotmi2u45g;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.anthropic.com
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-f0d076a17d373db78b399d7ccbd25c89-6e4ec19ac33b2024-01
+      vary:
+      - Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '11138'
+    status:
+      code: 200
+      message: OK
+version: 1

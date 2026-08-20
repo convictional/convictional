@@ -1,0 +1,476 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200")
+layer(base); /* Let tailwind override styles */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "./daisyui.css";
+@import "./prosemirror.css";
+@import "./markdown-content.css";
+@import "tippy.js/dist/tippy.css";
+@import "prosemirror-gapcursor/style/gapcursor.css";
+@import "prosemirror-tables/style/tables.css";
+@import "prosemirror-view/style/prosemirror.css";
+@source "..";
+
+@theme {
+  --font-accent: "loretta", "serif";
+
+  /* Shared width for the message composers (chat + post comment) so they stay
+     in lockstep. Sits between max-w-3xl (48rem) and max-w-4xl (56rem). */
+  --container-composer: 50rem;
+
+  /* Smooth, drifty easings — gentle deceleration, floaty feel */
+  --ease-drift: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Fast, snappy easings — punchy with overshoot */
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Entrance easing:
+  modals sliding in, drawers sliding in, hero animations */
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Lean easing:
+  micro-interactions, toggles */
+  --ease-lean: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Premium easing:
+  premium animations, smooth transitions */
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Snappy easing:
+  snappy hover / active states */
+  --ease-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --shadow-badge:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* `@mobile:`/`@desktop:` follow the server's user-agent decision
+   (`data-is-mobile` on the html element) rather than a viewport media query
+   because the server renders different markup per device; styles must match
+   the markup they were rendered with, not the window size. Plain attribute
+   selectors rather than an `@container mobile` flag because container-type
+   implies layout containment, which would make body the containing block for
+   every `fixed` descendant and anchor the bottom tab bar to the bottom of
+   the document instead of the viewport. :where() adds no specificity, so
+   variant utilities keep overriding exactly like unprefixed ones. */
+@variant @mobile (&:where([data-is-mobile='true'] *));
+@variant @desktop (&:where([data-is-mobile='false'] *));
+
+/* EmptyStateSurface top edge: none on light (the base wash alone defines it — any line just muddies
+   the crisp edge), a whisper light-catch on dark where the surface otherwise has no defined top. */
+:root {
+  --empty-state-edge: transparent;
+}
+[data-theme="convictional-dark"] {
+  --empty-state-edge: color-mix(in srgb, #fff 10%, transparent);
+}
+
+/* Onboarding demo screenshots (e.g. the goals first-run inbox clip) are authored on the light
+   theme. In dark mode, invert + 180deg hue-rotate flips them to a dark-themed look while keeping
+   hues roughly true, so a light screenshot doesn't glare on a dark surface. */
+[data-theme="convictional-dark"] .dark-media-invert {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+@keyframes chat-message-highlight {
+  0% {
+    background-color: transparent;
+  }
+  20% {
+    background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.chat-message-highlight {
+  animation: chat-message-highlight 1.5s ease-out forwards;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: -0.5rem;
+}
+
+@keyframes goal-highlight {
+  0% {
+    background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.goal-highlight {
+  animation: goal-highlight 3s ease-out forwards;
+}
+
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes fillToNinetyFive {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 95%;
+  }
+}
+
+@keyframes login-blur-fade-in {
+  from {
+    opacity: 0;
+    filter: blur(2rem);
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .login-blur-fade-in {
+    animation: login-blur-fade-in 1.6s var(--ease-entrance) var(--login-reveal-delay, 0s) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-blur-fade-in {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  :root {
+    --safe-area-inset-top: env(safe-area-inset-top, 0px);
+    --safe-area-inset-right: env(safe-area-inset-right, 0px);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-inset-left: env(safe-area-inset-left, 0px);
+
+    /* Mobile bottom tab bar (MobileBottomNav). --mobile-nav-height is the pill
+       height; --mobile-nav-gap is its clearance above and below, a fixed 20px on
+       purpose; it does not add the iOS bottom safe-area inset, which would push the
+       pill too high. --mobile-nav-offset is the vertical space content reserves for
+       it: the pill plus a gap above and below. */
+    --mobile-nav-height: 58px;
+    --mobile-nav-gap: 20px;
+    --mobile-nav-offset: calc(var(--mobile-nav-height) + var(--mobile-nav-gap) * 2);
+
+    /* Reveal-on-scroll-up nav (desktop). useRevealNavOnScroll publishes the
+       nav's visible height here: its full height while shown, 0 while hidden.
+       Every .sticky-header offsets its own sticky `top` off this so it slides
+       flush below the nav when shown and flush to the viewport top when hidden. */
+    --nav-reveal-offset: 0px;
+  }
+
+  /* Show pages opt out of the mobile nav chrome via `mobile_nav_hidden`
+     (layouts/application.html.jinja emits this attribute on #container), so
+     the space normally reserved for the bottom tabs must be released or every
+     such page ends with dead padding. A CSS rule rather than a JS effect so
+     there is no lifecycle to get wrong across boost navigations. */
+  [data-mobile-nav="hidden"] {
+    --mobile-nav-height: 0px;
+    --mobile-nav-gap: 0px;
+    --mobile-nav-offset: 0px;
+  }
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+/* Sticky page headers used on both index and show pages.
+   Defaults to z-30; callers can override with a z-* utility (e.g. meetings show uses z-20). */
+@layer components {
+  .sticky-header {
+    position: sticky;
+    /* Offsets its `top` below the reveal nav via --nav-reveal-offset (see :root).
+       Mobile overrides `top` below and has no reveal nav, so this collapses to the
+       safe-area inset there. No transition by default: while hiding, the offset
+       tracks the scroll gesture 1:1 and a transition would lag; .nav-reveal-animating
+       (set by the hook for the quick snap-open) turns it on. */
+    top: calc(var(--safe-area-inset-top) + var(--nav-reveal-offset));
+    z-index: 30;
+  }
+
+  :root.nav-reveal-animating .sticky-header {
+    transition: top 200ms ease;
+  }
+
+  /* In-flow strip above the header, painted base-100. With the .page-content
+     :has() rule zeroing the wrapper's top padding on sticky-header pages, this
+     strip is the sole resting gap below the nav; being in-flow it also masks
+     content scrolling up before it reaches the flat header band. */
+  .sticky-header-spacer {
+    @apply w-full h-6 bg-base-100;
+  }
+
+  /* Flat header: a solid page-colored band behind the content, with a short
+     gradient just below it (::after) so content appears to fade out as it
+     scrolls under the header instead of meeting a card edge. No border, fill,
+     or shadow. Uniform bottom margin across pages; mobile overrides it below. */
+  .sticky-header-card {
+    /* mb matches the ::after fade height so content starts exactly where the
+       taper hits zero coverage — tight to the header, but never pre-faded. */
+    @apply relative mb-6 bg-base-100;
+  }
+
+  /* Content dissolves into the header instead of meeting a hard card edge: a
+     page-color fade and a progressive blur ramp together up toward the header.
+     Both are plain linear ramps; because the mask multiplies the background, the
+     page-color paint ends up back-loaded (≈quadratic) while the blur coverage
+     stays linear — so the blur stays visible through the mid-band and the fade
+     only finishes the dissolve at the header, with no hard phase boundary. */
+  .sticky-header-card::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    height: 1.5rem;
+    background: linear-gradient(to top, transparent 0%, var(--color-base-100) 100%);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 100%);
+    mask-image: linear-gradient(to top, transparent 0%, black 100%);
+    pointer-events: none;
+  }
+
+  /* Shared modal backdrop: dim + blur only. Positioning and z-index stay at the call site. */
+  .overlay-backdrop {
+    @apply bg-black/40 backdrop-blur-sm;
+  }
+
+  /* Top gap below the nav for narrow/medium pages. Sticky-header pages opt out
+     via :has() — their .sticky-header-spacer is the gap instead, so the two don't
+     stack into a double gap. Keeping it on the (background-less) wrapper rather
+     than each page root keeps it outside padded page cards and immune to
+     margin-collapse. Desktop-only; full-width pages get no gap. */
+  .page-content {
+    @apply pt-6;
+  }
+  .page-content:has(.sticky-header) {
+    @apply pt-0;
+  }
+  :where([data-is-mobile="true"]) .page-content {
+    @apply pt-0;
+  }
+}
+
+@layer utilities {
+  .toolbar-joined > * .btn {
+    border-radius: 0;
+    margin-inline-start: -1px;
+  }
+  .toolbar-joined > * .btn:hover {
+    position: relative;
+    z-index: 1;
+  }
+  .toolbar-joined > :first-child .btn {
+    margin-inline-start: 0;
+  }
+  .toolbar-joined > :first-child .btn {
+    border-start-start-radius: 9999px;
+    border-end-start-radius: 9999px;
+  }
+  .toolbar-joined > :last-child .btn {
+    border-start-end-radius: 9999px;
+    border-end-end-radius: 9999px;
+  }
+  .toolbar-joined .floating-card .btn {
+    border-radius: var(--radius-field);
+  }
+}
+
+/* Mobile overrides: desktop keeps the rounded card look; mobile goes edge-to-edge
+   with a bottom border, stronger blur, and no spacer/margin to feel native.
+   :where() so these win over the desktop rules above by source order alone,
+   without out-specificity-ing utilities the way a bare attribute prefix would. */
+:where([data-is-mobile="true"]) {
+  .sticky-header {
+    /* In PWA mode (no URL bar) the status bar overlays the viewport.
+       Stick below the safe area so content isn't behind the status bar.
+       The ::before pseudo-element fills the gap above to mask scrolling
+       content. Hidden in normal flow because the nav wrapper is z-40. */
+    top: var(--safe-area-inset-top);
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: -0.5rem;
+      right: -0.5rem;
+      height: var(--safe-area-inset-top);
+      background: var(--color-base-100);
+    }
+
+    /* Remove the scroll-effect spacer on mobile */
+    > .sticky-header-spacer {
+      display: none;
+    }
+
+    > .sticky-header-card {
+      border-radius: 0;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      /* Pull the band edge-to-edge past the parent px-2 */
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      background: var(--color-base-100);
+    }
+
+    /* Enlarge tap targets for mobile; the pill shape and flat style now come
+       from the base .btn. */
+    > .sticky-header-card .btn {
+      font-size: 0.8125rem;
+      min-height: 2.5rem;
+      padding-left: 0.875rem;
+      padding-right: 0.875rem;
+    }
+
+    > .sticky-header-card .btn-square {
+      min-width: 2.5rem;
+      min-height: 2.5rem;
+      padding: 0;
+    }
+
+    /* Touch has no hover, so give ghost buttons a resting fill to stay visible. */
+    > .sticky-header-card .btn-ghost {
+      background: var(--color-base-200);
+    }
+
+    /* Themed border so the outline matches the fill, not the neutral .btn border. */
+    > .sticky-header-card .btn-primary {
+      border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+    }
+
+    /* Soften internal dividers in show page headers */
+    > .sticky-header-card .border-neutral {
+      border-color: var(--color-base-300);
+    }
+
+    /* Hide localized search on mobile */
+    .sticky-header-search {
+      display: none;
+    }
+  }
+}
+
+/* Disable tippy.js (Alpine x-tooltip) and DaisyUI's CSS-only .tooltip
+   pseudo-elements on mobile. The React Tooltip handles this itself via
+   `@mobile:hidden` on its portaled card. */
+:where([data-is-mobile="true"]) {
+  .tippy-box,
+  .tooltip::before,
+  .tooltip::after {
+    display: none !important;
+  }
+}
+
+/* Mobile bottom sheet animations */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@utility animate-slide-up {
+  animation: slide-up 0.3s var(--ease-entrance) forwards;
+}
+
+@utility animate-slide-down {
+  animation: slide-down 0.3s var(--ease-snappy) forwards;
+}
+
+/* Mobile top bar — stretch buttons to fill half-width with larger tap targets.
+   The Tooltip component wraps children in an inline <span>, so we need to
+   stretch both the span and the button inside it. */
+.mobile-top-btn > span {
+  display: flex;
+  width: 100%;
+}
+.mobile-top-btn button {
+  width: 100%;
+  justify-content: center;
+  padding: 0.625rem 0;
+  border-radius: 0.75rem;
+}
+
+/* Mobile more menu item styling */
+.more-menu-item {
+  @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-base-content transition-colors;
+}
+.more-menu-item:active {
+  @apply bg-base-300;
+}
+
+/* Default variable styling for icons. Lives here (not inline in _head) so both
+   the server layouts and the SPA shell pick it up via main.css. */
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+/* Override DaisyUI's default tooltip */
+.tooltip:before {
+  max-width: 14rem; /* Default is 20rem */
+  padding: 0.25rem 0.3rem; /* Default is 0.25rem 0.5rem */
+}
+.tooltip:hover::before,
+.tooltip:hover::after {
+  transition-delay: 0.4s; /* Default is 75ms */
+}

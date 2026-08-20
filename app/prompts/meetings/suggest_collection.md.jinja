@@ -1,0 +1,42 @@
+You are tasked with suggesting which collection a meeting should be organized into.
+
+Here is the meeting information:
+
+<meeting>
+Title: {{ meeting.title }}
+{% if meeting.summary %}
+Summary: {{ meeting.summary }}
+{% endif %}
+{% if meeting.attendees %}
+Attendees: {{ meeting.attendees | map(attribute='display_name') | join(', ') }}
+{% endif %}
+</meeting>
+
+{% if collections %}
+Here are the existing collections in this organization:
+
+<collections>
+{% for collection in collections %}
+- ID: {{ collection.id }}, Title: {{ collection.title }}{% if collection.description %}, Description: {{ collection.description }}{% endif %} ({{ collection.meeting_count }} meetings)
+{% if collection.sample_meeting_titles %}  Recent meetings: {{ collection.sample_meeting_titles | join(', ') }}
+{% endif %}
+{% endfor %}
+</collections>
+{% else %}
+There are no existing collections in this organization yet.
+{% endif %}
+
+Your task is to decide one of the following:
+
+1. **{{ actions.EXISTING }}** — The meeting fits well into one of the existing collections. Provide the collection's ID.
+2. **{{ actions.NEW }}** — The meeting doesn't fit any existing collection, but it clearly belongs to a category that would benefit from a new collection. Suggest a concise collection title (1-4 words).
+3. **{{ actions.NONE }}** — The meeting doesn't clearly belong to any collection and doesn't warrant creating a new one (e.g., one-off meetings, unclear topics).
+
+Guidelines:
+- Prefer matching to an existing collection when the meeting's topic aligns reasonably well
+- Use the recent meetings listed under each collection to understand what kinds of meetings belong there — match by pattern (similar titles, attendees, or topics), not just the collection title
+- When the meeting title is a person's name or a 1:1 format (e.g., "Alice / Bob"), look at which collections already contain similar name-pattern meetings
+- Only suggest a new collection if the meeting represents a recurring theme that other meetings likely share (e.g., "Engineering Standups", "Client Calls", "Board Meetings")
+- Suggest "{{ actions.NONE }}" for one-off or ambiguous meetings rather than forcing a poor fit
+- When choosing "{{ actions.EXISTING }}", you MUST use an ID from the list above — do not invent or guess IDs
+- New collection titles should be short and descriptive, following the pattern of the existing collections

@@ -1,0 +1,32 @@
+╔═══════════════════════════════════════╗
+║           DEBUG {{ details.status_code }} DETAILS           ║
+╚═══════════════════════════════════════╝
+ • Timestamp     : {{ details.now }}
+ • Platform      : {{ details.platform }}
+ • Python        : {{ details.python }}
+─────────────────────────────────────────
+{{ details.formatted_exception|safe }}
+
+
+╔═══════════════════════════════════════╗
+║            REQUEST DETAILS            ║
+╚═══════════════════════════════════════╝
+ • Method        : {{ details.request.method }}
+ • URL           : {{ details.request.url }}
+─────────────────────────────────────────
+Path Params:
+{{ pformat(details.path_params, indent=4)|safe }}
+
+Query Params:
+{{ pformat(details.query_params, indent=4)|safe }}
+
+Headers:
+{{ pformat(details.headers, indent=4)|safe }}
+
+Cookies:
+{{ pformat(details.cookies, indent=4)|safe }}
+
+{% if details.session %}
+Session:
+{{ pformat(details.session, indent=4)|safe }}
+{% endif %}

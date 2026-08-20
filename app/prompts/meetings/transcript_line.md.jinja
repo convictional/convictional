@@ -1,0 +1,5 @@
+{% if line.speaker -%}
+    line {{ line.line_number }}: {{ line.speaker }}: {{ line.content }}
+{%- else -%}
+    line {{ line.line_number }}: {{ line.content }}
+{%- endif %}

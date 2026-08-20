@@ -1,0 +1,134 @@
+key: tessa-mateo-dm
+members: [tessa, mateo]
+messages:
+  - key: tessa-mateo-dm-msg-001
+    author: tessa
+    at: !relative_day {offset: -16, hour: 8, minute: 45}
+    content: |
+      How do you feel about running the exec demo solo? I'll be in the room but I want this to be your moment.
+
+  - key: tessa-mateo-dm-msg-002
+    author: mateo
+    at: !relative_day {offset: -16, hour: 8, minute: 58}
+    reply_to: tessa-mateo-dm-msg-001
+    content: |
+      Honestly? Ready. Nervous. Both.
+
+  - key: tessa-mateo-dm-msg-003
+    author: tessa
+    at: !relative_day {offset: -16, hour: 9, minute: 1}
+    reply_to: tessa-mateo-dm-msg-002
+    content: |
+      Both is the right answer. You've got this.
+    reactions:
+      heart: [mateo]
+
+  - key: tessa-mateo-dm-msg-004
+    author: mateo
+    at: !relative_day {offset: -12, hour: 15, minute: 20}
+    content: |
+      Doug on the pre-call felt different today. Less combative. I think he's been told by Peter to find a way to yes, not a way to no.
+
+  - key: tessa-mateo-dm-msg-005
+    author: tessa
+    at: !relative_day {offset: -12, hour: 15, minute: 30}
+    reply_to: tessa-mateo-dm-msg-004
+    content: |
+      Huge if true. Don't over-read it but don't under-read it either. Stay curious, not celebratory.
+
+  - key: tessa-mateo-dm-msg-006
+    author: mateo
+    at: !relative_day {offset: -10, hour: 18, minute: 10}
+    content: |
+      Peter just said "I have not seen an enterprise demo from a Series A company this polished in three years." I almost walked into a door on the way out.
+    reactions:
+      tears_of_joy: [tessa]
+      rocket: [tessa]
+
+  - key: tessa-mateo-dm-msg-007
+    author: tessa
+    at: !relative_day {offset: -10, hour: 18, minute: 16}
+    reply_to: tessa-mateo-dm-msg-006
+    content: |
+      I'm so proud of you. Go home. Eat something. We'll dissect tomorrow.
+
+  - key: tessa-mateo-dm-msg-008
+    author: mateo
+    at: !relative_day {offset: -7, hour: 10, minute: 30}
+    content: |
+      Coaching ask — Amira pushed back on the volume commit language. She wants the phrase "good-faith estimate" instead of a floor. How do I hold the line without getting hard?
+
+  - key: tessa-mateo-dm-msg-009
+    author: tessa
+    at: !relative_day {offset: -7, hour: 10, minute: 42}
+    reply_to: tessa-mateo-dm-msg-008
+    content: |
+      Name it as a shared problem. "Amira, our pricing needs to match the commitment. If we move to good-faith, the per-unit goes up by X. Would you rather a soft floor at the current rate, or the flexibility at the higher rate?" Give her the choice. The choice is the magic.
+
+  - key: tessa-mateo-dm-msg-010
+    author: mateo
+    at: !relative_day {offset: -7, hour: 10, minute: 50}
+    reply_to: tessa-mateo-dm-msg-009
+    content: |
+      Got it. Using this tomorrow. Thank you.
+    reactions:
+      heart: [tessa]
+
+  - key: tessa-mateo-dm-msg-011
+    author: mateo
+    at: !relative_day {offset: -5, hour: 16, minute: 30}
+    content: |
+      Do I bring Maren into the next Amira call? Amira's three DPA questions are the reason she's reaching back out, and Maren's voice lands harder than mine on that stuff.
+
+  - key: tessa-mateo-dm-msg-012
+    author: tessa
+    at: !relative_day {offset: -5, hour: 16, minute: 40}
+    reply_to: tessa-mateo-dm-msg-011
+    content: |
+      Yes. Frame it as "I want to make sure you're talking to the right person on this specific set of questions." Never apologize for bringing in the expert.
+    reactions:
+      thumbs_up: [mateo]
+
+  - key: tessa-mateo-dm-msg-013
+    author: mateo
+    at: !relative_day {offset: -3, hour: 11, minute: 15}
+    content: |
+      Amira came back on pricing — wants the stepped rate. Tessa, how do I posture before you get exec approval?
+
+  - key: tessa-mateo-dm-msg-014
+    author: tessa
+    at: !relative_day {offset: -3, hour: 11, minute: 25}
+    reply_to: tessa-mateo-dm-msg-013
+    content: |
+      "That's a reasonable ask, and I want to give you a real answer by end of day Thursday. Let me run numbers with Darren tonight." Buys you 36 hours without selling anything away.
+
+  - key: tessa-mateo-dm-msg-015
+    author: mateo
+    at: !relative_day {offset: -3, hour: 11, minute: 28}
+    reply_to: tessa-mateo-dm-msg-014
+    content: |
+      Perfect.
+    reactions:
+      heart: [tessa]
+
+  - key: tessa-mateo-dm-msg-016
+    author: tessa
+    at: !relative_day {offset: -1, hour: 9, minute: 45}
+    content: |
+      Friday proposal walk-through — want me on the call or out of the room?
+
+  - key: tessa-mateo-dm-msg-017
+    author: mateo
+    at: !relative_day {offset: -1, hour: 9, minute: 52}
+    reply_to: tessa-mateo-dm-msg-016
+    content: |
+      Out of the room. I want Amira to feel like she's negotiating with me, not with my boss and me. But on standby.
+
+  - key: tessa-mateo-dm-msg-018
+    author: tessa
+    at: !relative_day {offset: -1, hour: 9, minute: 55}
+    reply_to: tessa-mateo-dm-msg-017
+    content: |
+      Exactly right. On standby. Go close it.
+    reactions:
+      rocket: [mateo]

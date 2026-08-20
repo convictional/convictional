@@ -1,0 +1,21 @@
+<div class="overflow-hidden">
+    <h2 class="text-xl py-2 text-left">{{ organization.display_name }}</h2>
+    <div class="py-2 px-0 max-h-56 overflow-y-auto">
+        <ul class="flex flex-col gap-1 flex-nowrap">
+            {% for user in organization.users %}
+                <li>
+                    <form action="{{ url_for('login_fake_post') }}"
+                          method="post"
+                          hx-boost="false">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="email" value="{{ user.email }}" />
+                        {% if return_to %}<input type="hidden" name="return_to" value="{{ return_to }}">{% endif %}
+                        {% call submit_button(class="btn w-full btn-ghost h-auto p-0 text-align-left") %}
+                            {% include "accounts/_login_member_row.html.jinja" %}
+                        {% endcall %}
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

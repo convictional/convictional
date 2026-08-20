@@ -1,0 +1,319 @@
+interactions:
+- request:
+    body: '{"max_tokens": 16384, "messages": [{"role": "user", "content": "Here are
+      the key learnings that have been extracted from the research:\n<learnings>\n\n-
+      Apples are red\n\n</learnings>"}], "model": "claude-sonnet-4-6", "system": "You
+      are an AI assistant designed to provide answers in a professional context.\nDo
+      not identify yourself. You are a nameless entity here to assist users with their
+      work.\nYour purpose is to provide brief, informative response to the user''s
+      query, grounded in their specific work context.\n\nThe current datetime is 2026-08-05
+      16:49:34.558558+00:00\n\nThe user you are helping is foo-1868@example.com whose
+      email address is foo-1868@example.com.\n\nGuidelines for your responses:\n\n1.
+      Response Formulation:\n- Analyze the question and identify key points to address.\n-
+      Incorporate relevant information from the provided context.\n- You must identify
+      and answer any questions directly, thoroughly, and accurately.\n- If you cannot
+      answer a question with the information provided, clearly state that you cannot
+      answer and what additional information is needed.\n- Use a professional, helpful
+      tone.\n- Always speak in the third person.\n- Structure your response with explanatory
+      sections using markdown headings that organize findings thematically.\n- Explain
+      WHY findings matter and HOW they relate to each other \u2014 synthesize a coherent
+      narrative, not just an enumeration of facts.\n- Draw on the provided source
+      content to add depth and context beyond the extracted learnings.\n\n2. Information
+      Boundaries:\n- Clearly state when you need additional context to provide accurate
+      information.\n- Be explicit about what types of information you can and cannot
+      access.\n- Suggest how the user might find additional information if needed.\n\n3.
+      Citations:\n- You must provide citations for any external sources referenced
+      in your responses.\n- When citing sources in your answer, you must use a special
+      footnote format.\n- Citations should be placed inline, at the end of the sentence,
+      bullet point, or paragraph where the information is used. Never place them at
+      the end of the entire response as a reference list.\n- Users find inline citations
+      more readable than citations at the end of the answer.\n- Each source is shown
+      with a short token inside its `<id>` tag (for example `S1`). To cite a source,
+      enclose that exact token in square brackets preceded by a caret symbol (^).
+      The format should look like this: [^S1]\n- Only ever cite the exact token shown
+      in a source''s `<id>`. Never invent a token or cite one that does not appear
+      in a source.\n- Here is a full example of the correct format:\n<citations_example>According
+      to recent studies, climate change is accelerating.[^S1]\nThe data suggests a
+      significant correlation between variables.[^S2]\nMultiple researchers have confirmed
+      these findings.[^S1]</citations_example>\n- Never end your response with a list
+      of references or citations. They must be inline.\n\n4. Formatting:\n- Use markdown
+      formatting to enhance readability (e.g., bold, italics, code blocks, lists).\n-
+      Never include a title or header to begin your response.\n- If a list item is
+      a heading (i.e. it ends with a colon), nest child items in a new list using
+      the header list item as the parent list container.\n- Always ensure child list
+      items include four spaces of indentation.\n- Never end your response with a
+      list of references or citations, they must be inline. For example, DO NOT end
+      with:\n<bad_citations>According to recent studies, climate change is accelerating.[^S1]\nThe
+      data suggests a significant correlation between variables.[^S2]\nMultiple researchers
+      have confirmed these findings.[^S1]\n\n[^S1] Source 1\n[^S2] Source 2\n</bad_citations>\n\nThe
+      user''s query is: Test research question", "temperature": 0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3769'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RSy24UMRD8lVbnOosSFKJobiQICXGDI0Gjjl0zY/DYs932sqto/x15leURxMlS
+        PdxV6n7iJXtE7tlFqR4byymhbK43N9xx8NzzYtNweXV177/9WO7Ckqfrj5/fje6t3t/tueNyWNFU
+        MJMJ3LHm2AAxC1YkFe7Y5VSQCvdfns76gn1jTk/PFxf0CQZRN9P7kHxIkz2kh3QnBk85UZlBspMQ
+        5TGC9FnbkaxrhJFoA/2r5vkwntTVoDSLkdCSFWQrXBiD+2WmbYWVkBNlJcW2BoWRB1YoSZJ4sGBt
+        ttAqWoKrUZRKXoPraI0QA41ApFEBKplWzbvgQeJ9aP9KpFPxfWkTXBQN4+GUbVuhB7J8zlbmrLlO
+        M0nyVEQnFPgWdM3JQE4SPYI8Ytih1eTj146t5HVQiOXEPSP5oVRN/EwYthXJgftUY3wGPYqEaGes
+        njbWP3FIay1Dyd+RjPvb69uOnbgZg1NIqzL8rbg88wrx/+PO3jYA64wFKnF4s/yr/81ezS/ZY8e5
+        lj+hm9cdG3QXHIYSoNxzuzMv6tvJphHaig8TMvc8xfwokY/HnwAAAP//AwDhKmfV6gIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:49:36Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:49:37Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:49:35Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:49:36Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2674bc16b73824a-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:49:37 GMT
+      request-id:
+      - req_011CdjwmB9oCp7aCYXXN6aqw
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-95e69f48f5802931b8cb826974e9e366-5dbacf60281afa66-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 16384, "messages": [{"role": "user", "content": "Here are
+      the key learnings that have been extracted from the research:\n<learnings>\n\n-
+      Apples are red\n\n</learnings>"}], "model": "claude-sonnet-4-6", "system": "You
+      are an AI assistant designed to provide answers in a professional context.\nDo
+      not identify yourself. You are a nameless entity here to assist users with their
+      work.\nYour purpose is to provide brief, informative response to the user''s
+      query, grounded in their specific work context.\n\nThe current datetime is 2026-08-05
+      16:49:34.573410+00:00\n\nThe user you are helping is foo-1868@example.com whose
+      email address is foo-1868@example.com.\n\nGuidelines for your responses:\n\n1.
+      Response Formulation:\n- Analyze the question and identify key points to address.\n-
+      Incorporate relevant information from the provided context.\n- You must identify
+      and answer any questions directly, thoroughly, and accurately.\n- If you cannot
+      answer a question with the information provided, clearly state that you cannot
+      answer and what additional information is needed.\n- Use a professional, helpful
+      tone.\n- Always speak in the third person.\n- Structure your response with explanatory
+      sections using markdown headings that organize findings thematically.\n- Explain
+      WHY findings matter and HOW they relate to each other \u2014 synthesize a coherent
+      narrative, not just an enumeration of facts.\n- Draw on the provided source
+      content to add depth and context beyond the extracted learnings.\n\n2. Information
+      Boundaries:\n- Clearly state when you need additional context to provide accurate
+      information.\n- Be explicit about what types of information you can and cannot
+      access.\n- Suggest how the user might find additional information if needed.\n\n3.
+      Citations:\n- You must provide citations for any external sources referenced
+      in your responses.\n- When citing sources in your answer, you must use a special
+      footnote format.\n- Citations should be placed inline, at the end of the sentence,
+      bullet point, or paragraph where the information is used. Never place them at
+      the end of the entire response as a reference list.\n- Users find inline citations
+      more readable than citations at the end of the answer.\n- Each source is shown
+      with a short token inside its `<id>` tag (for example `S1`). To cite a source,
+      enclose that exact token in square brackets preceded by a caret symbol (^).
+      The format should look like this: [^S1]\n- Only ever cite the exact token shown
+      in a source''s `<id>`. Never invent a token or cite one that does not appear
+      in a source.\n- Here is a full example of the correct format:\n<citations_example>According
+      to recent studies, climate change is accelerating.[^S1]\nThe data suggests a
+      significant correlation between variables.[^S2]\nMultiple researchers have confirmed
+      these findings.[^S1]</citations_example>\n- Never end your response with a list
+      of references or citations. They must be inline.\n\n4. Formatting:\n- Use markdown
+      formatting to enhance readability (e.g., bold, italics, code blocks, lists).\n-
+      Never include a title or header to begin your response.\n- If a list item is
+      a heading (i.e. it ends with a colon), nest child items in a new list using
+      the header list item as the parent list container.\n- Always ensure child list
+      items include four spaces of indentation.\n- Never end your response with a
+      list of references or citations, they must be inline. For example, DO NOT end
+      with:\n<bad_citations>According to recent studies, climate change is accelerating.[^S1]\nThe
+      data suggests a significant correlation between variables.[^S2]\nMultiple researchers
+      have confirmed these findings.[^S1]\n\n[^S1] Source 1\n[^S2] Source 2\n</bad_citations>\n\nThe
+      user''s query is: Test research question", "temperature": 0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3769'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RT24ocRwz9FVF+CCy9iwec4PSbHQj2a/LgQBwaTZW6W3G1qldSTXuyLOQj8oX5
+        klA9O74k5KngnKPbkeohLCVRDn2IGWuiWysi5Lcvbr8LXeAU+rDYNDw/HH5Iv2/L63f2ywnv7V2d
+        X51+1vvQBT+v1FRkhhOFLmjJDUAzNkfx0IVYxEk89L8+XPVOHxuzP3149gx+IiPUOMOPLIllsvfy
+        Xl6jUYIi4DMBnpAzHjOBPmm7Hf9AZxgvQcAG5oo8zT4W3VBTDzc3uK6ZDFBbaLq5uWu53/o3BltR
+        n0GKt2Cf0cFntpYGwXhZM49MCeKMitFJ+Q90LgJ///kXsIASZvZzB3sFiCUXvQhOqEwGxpPwyBHF
+        8xmO5wveIpRXEjLrACXBpGVrLcQiiVsCu4M3ZaMTaQcb+1yqA6YLh7npmnVQFKxUjWSwajlxotRM
+        YQOltdkkbrtJ9LFtAMoIW5syosCxNSwj60IJRi3LVbiPmj65fHFr3NlqpKB0X1nJYClKkGj1+bIj
+        NvCyctz3coYFz7ChOHhplazmr2a4Nm41zoAGc1HnWLNXxQwJHY9oZG3GlUhvlU5MGyXAST/rMjsp
+        elWCsSjgpSmpKJESVEmk7QzbddyFx9+6YF7WQQmtSOgDSRq8qoQnwui+kkQKvdScn8BEjpztitX9
+        0vuHwLJWH7x8ILHQv3zxsgsR40xDVNrPYPha8fzKK2H6P+4a2wrQOtNCinn4dvmv/jN7mP/NPnah
+        VP8SOhy+74KRnjjS4Ewa+rA7g5raX5eRtE0+TFRCH6ZcjpjD4+M/AAAA//8DAM0lDFIjBAAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:49:35Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:49:38Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:49:35Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:49:35Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2674bc178b14f8b-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:49:38 GMT
+      request-id:
+      - req_011CdjwmB6Kh4MKHJaQZvFUw
+      server:
+      - cloudflare
+      server-timing:
+      - x-originResponse;dur=3404
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-b36af661edc949d82107d9233736867b-5fe3ad2431fd87a4-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

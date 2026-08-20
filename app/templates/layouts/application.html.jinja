@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{# `data-theme` is owned by app/javascript/shared/themeApplicator.ts — it runs
+   at module load and sets the attribute before Alpine boots, which avoids a
+   theme flash on cold loads. The Alpine `$store.theme` wrapper survives for
+   non-migrated consumers. #}
+<html lang="en"
+      x-data
+      x-cloak
+      data-is-mobile="{{ 'true' if is_mobile else 'false' }}">
+    <head x-data="assetVersionReloader({ stream: 'version_refresh', currentVersion: {{ asset_version_hash() | tojson }} })">
+        <title>
+            {% block title %}
+                {{ "Convictional" | format_page_title }}
+            {% endblock title %}
+        </title>
+        <meta property="og:site_name" content="Convictional" />
+        {% block meta %}
+        {% endblock meta %}
+        {% include "layouts/_head.html.jinja" %}
+        {% if settings.sentry_dsn and current_user %}
+            {# Bundled Sentry (initialized in main.ts) reads this to attribute errors
+               to the signed-in user. tojson | safe, not quoted interpolation:
+               autoescape turns tojson's quotes into &#34;, and a quoted literal
+               would mangle an apostrophe in the value. The current_user guard is
+               required because error pages (errors/4xx.html.jinja) render this
+               authenticated layout for anonymous requests where current_user is
+               None; without it current_user.email is a Jinja Undefined and tojson
+               raises TypeError. #}
+            <script nonce="{{ csp_nonce }}" data-head-persist>
+                window.SENTRY_USER = {{ {"id": current_user.id | string, "email": current_user.email} | tojson | safe }};
+            </script>
+        {% endif %}
+        {% block head %}
+        {% endblock head %}
+    </head>
+    <body hx-boost="true"
+          hx-ext="loading-states, alpine-morph, head-support, channels, preload"
+          data-authenticated="true"
+          class="min-h-dvh safe-area">
+        {% set should_render_nav = should_render_nav|default(true) %}
+        {# Individual-resource (show) pages opt out of the mobile nav chrome with
+           `{% set mobile_nav_hidden = true %}` so they can use the full viewport.
+           Desktop is never affected. The wrapper stays in the DOM (display:none)
+           because the hx-preserve'd React nav island inside it must survive
+           boost navigations; React separately skips rendering the bars. #}
+        {% set mobile_nav_hidden = is_mobile and mobile_nav_hidden|default(false) %}
+        {% if should_render_nav %}
+            <div class="px-2 relative z-40 bg-base-100 {% if mobile_nav_hidden %}hidden{% endif %}"
+                 data-nav-sticky-wrapper>
+                <div class="w-full max-w-4xl mx-auto py-2">{% include "navigation/_navigation.html.jinja" %}</div>
+            </div>
+        {% endif %}
+        {# top-14 clears the top nav (~52px tall); pt-[safe-area-inset-top] avoids the iOS notch #}
+        <div class="toast toast-center toast-top top-14! z-50 pt-[var(--safe-area-inset-top)]"
+             id="flashes">{% include "shared/_flashes.html.jinja" %}</div>
+        {# Command palette modal: mounted once at layout level so the React
+           SearchButton (in the nav) can dispatch `command-palette:toggle` on
+           the window and have a single listener handle it. #}
+        {% if should_render_nav %}
+            <div id="react-command-palette"></div>
+            {# Research dialog mount: lifted out of `_research_button.html.jinja` (deleted in PR 4)
+               so the existing #react-research-dialog island stays mounted while the trigger button migrates. #}
+            <div id="react-research-dialog"></div>
+        {% endif %}
+        {# `data-mobile-nav` lives on #container, not on body: hx-boost swaps body
+           innerHTML, so a body attribute would go stale after the first boost
+           navigation, while #container is re-rendered by every boost swap and
+           history restore. useMobileNavHidden() re-reads it on navigation, and
+           main.css zeroes the --mobile-nav-* vars off this attribute. #}
+        <main id="container"
+              data-mobile-nav="{{ 'hidden' if mobile_nav_hidden else 'visible' }}"
+              class="px-2 {% if is_mobile %}pb-[var(--mobile-nav-offset)]{% endif %}">
+            {# The `page-content` marker opts narrow/medium pages into the top gap
+               below the nav (main.css owns the rule); full-width pages carry no
+               marker and no gap. Mirrored in react/app/shellWidth.ts. #}
+            {% set wrapper_classes = {
+                "full": "w-full",
+                "medium": "page-content w-full max-w-screen-xl mx-auto pb-12",
+                "narrow": "page-content w-full max-w-4xl mx-auto pb-12"
+            } %}
+            <div class="{{ wrapper_classes[wrapper|default('narrow') ] }}">
+                {% block header %}
+                {% endblock header %}
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </main>
+        {# hx-preserved mount target for floating-ui portals — see
+           app/javascript/react/shared/floatingPortalRoot.ts. Without
+           hx-preserve, every boost body swap wipes the portal node and
+           Tooltips silently break on every navigation after the first.
+           Must sit after #container: portaled overlays carry z-50 and only
+           paint above the page's own z-50 panels (e.g. the goal comments
+           panel) when they follow that content in the DOM. #}
+        <div id="react-floating-portal-root" hx-preserve></div>
+        {% if not is_mobile %}
+            <div id="react-chat-panel"></div>
+        {% endif %}
+        {% set feedback_upload_url = url_for('attachments_upload_global') | string %}
+        <div id="react-feedback-dialog"
+             data-props="{{ {"uploadUrl": feedback_upload_url} | tojson }}"></div>
+        {# Confirmation dialog: receives requests via a Zustand store from both
+           htmx (via the htmx:confirm bridge) and React callsites (via the
+           imperative `confirm()` helper). One global mount keeps the dialog
+           lifecycle independent of which page or island triggered it. #}
+        <div id="react-confirmation-dialog"></div>
+        {# Toast island: receives `showFlash()` calls via a Zustand store from
+           both React callsites and vanilla modules (csrf.ts). Independent of the
+           Alpine-driven #flashes container above, which still renders
+           server-side flashes until the Jinja teardown. #}
+        <div id="react-toaster"></div>
+        <div x-data="pwaInstallPrompt({ 'isMobile': {{ is_mobile | tojson }}, 'isIOS': {{ is_ios | tojson }} })"
+             x-show="showPrompt"
+             x-transition
+             class="fixed bottom-[var(--safe-area-inset-bottom)] left-0 right-0 pl-[var(--safe-area-inset-left)] pr-[var(--safe-area-inset-right)] z-50 border-t border-neutral bg-base-100 shadow-lg">
+            <div class="max-w-2xl mx-auto p-4 md:p-6 md:text-center">
+                <div class="flex items-center justify-center gap-2 mb-3 md:mb-4">
+                    <span class="material-symbols-outlined text-primary">download</span>
+                    <span class="text-sm font-semibold">Install Convictional as an app</span>
+                </div>
+                <template x-if="isIOS">
+                    <div class="text-sm space-y-2 md:inline-block md:text-left">
+                        <p>To install this app on your iPhone or iPad:</p>
+                        <ol class="pl-5 space-y-1 list-decimal md:space-y-2">
+                            <li>
+                                Tap the Share button
+                                <span class="inline-flex items-center justify-center w-5 h-5 bg-primary/10 rounded">
+                                    <span class="material-symbols-outlined text-xs text-primary">ios_share</span>
+                                </span>
+                                at the bottom of your screen
+                            </li>
+                            <li>
+                                Scroll down and tap <strong>"Add to Home Screen"</strong>
+                            </li>
+                            <li>
+                                Tap <strong>"Add"</strong> to confirm
+                            </li>
+                        </ol>
+                    </div>
+                </template>
+                <div class="flex gap-2 mt-3 md:mt-4 md:justify-center">
+                    <template x-if="!isIOS && canInstall">
+                        <button @click="install()" class="btn btn-primary btn-sm">Install now</button>
+                    </template>
+                    <button @click="dismiss()" class="btn btn-ghost btn-sm">
+                        <span x-text="isIOS ? 'Got it' : 'Not now'"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

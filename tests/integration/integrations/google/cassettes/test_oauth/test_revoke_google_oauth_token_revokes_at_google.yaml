@@ -1,0 +1,30 @@
+interactions:
+- request:
+    body: token=tok-123
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '13'
+      content-type:
+      - application/x-www-form-urlencoded
+      host:
+      - oauth2.googleapis.com
+    method: POST
+    uri: https://oauth2.googleapis.com/revoke
+  response:
+    body:
+      string: ''
+    headers:
+      Content-Type:
+      - text/html; charset=UTF-8
+      content-length:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

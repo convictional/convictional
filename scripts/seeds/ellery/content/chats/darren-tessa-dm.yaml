@@ -1,0 +1,114 @@
+key: darren-tessa-dm
+members: [darren, tessa]
+messages:
+  - key: darren-tessa-dm-msg-001
+    author: tessa
+    at: !relative_day {offset: -17, hour: 11, minute: 20}
+    content: |
+      Darren — Keating update. Amira responded this morning. They're expanding the buying committee to include their legal-ops director and their CISO. This is a signal that the deal is getting real, not that it's getting harder.
+    reactions:
+      eyes: [darren]
+
+  - key: darren-tessa-dm-msg-002
+    author: darren
+    at: !relative_day {offset: -17, hour: 11, minute: 35}
+    reply_to: darren-tessa-dm-msg-001
+    content: |
+      Agreed — CISO in the loop means they're thinking about actually doing this, not kicking tires. What do we need to do to get ahead of Doug's concerns before the security questionnaire arrives?
+
+  - key: darren-tessa-dm-msg-003
+    author: tessa
+    at: !relative_day {offset: -17, hour: 11, minute: 50}
+    reply_to: darren-tessa-dm-msg-002
+    content: |
+      Two things: Priya and Arjun need to be fully briefed on what's coming, and I'd like you to send a short personal note to Peter Nakagawa — the economic buyer — this week. Nothing salesy. Just "we take enterprise security seriously and we're delighted to answer whatever Doug needs." Sets the tone.
+
+  - key: darren-tessa-dm-msg-004
+    author: darren
+    at: !relative_day {offset: -17, hour: 12, minute: 2}
+    reply_to: darren-tessa-dm-msg-003
+    content: |
+      Sending that note today. Draft anything you want me to include and I'll adapt it to my voice.
+    reactions:
+      thumbs_up: [tessa]
+
+  - key: darren-tessa-dm-msg-005
+    author: tessa
+    at: !relative_day {offset: -13, hour: 8, minute: 40}
+    content: |
+      Security questionnaire dropped last night. 147 questions. Priya and Arjun are on it. What I need from you: the executive-level incident response sign-off, and standby for a CISO-to-CISO style call with Doug if he asks for one. Priya called it the "two CISOs in a room" ask.
+
+  - key: darren-tessa-dm-msg-006
+    author: darren
+    at: !relative_day {offset: -13, hour: 9, minute: 5}
+    reply_to: darren-tessa-dm-msg-005
+    content: |
+      Both yes. I'll be honest — I'm not a CISO, but I can talk thoughtfully about our security posture and I know when to say "good question, let me bring Priya in." That's usually what they actually want.
+
+  - key: darren-tessa-dm-msg-007
+    author: tessa
+    at: !relative_day {offset: -13, hour: 9, minute: 15}
+    reply_to: darren-tessa-dm-msg-006
+    content: |
+      Exactly. Doug wants to see a CEO who takes security seriously, not one who can answer technical questions. You'll be fine.
+    reactions:
+      heart: [darren]
+
+  - key: darren-tessa-dm-msg-008
+    author: tessa
+    at: !relative_day {offset: -6, hour: 17, minute: 45}
+    content: |
+      Mateo did his first solo demo today. I watched on mute. He was excellent — didn't over-promise on EU residency, handled Doug's proxy security question naturally, and got Amira to say "I want Peter to see this." That's a huge step.
+    reactions:
+      rocket: [darren]
+
+  - key: darren-tessa-dm-msg-009
+    author: darren
+    at: !relative_day {offset: -6, hour: 18, minute: 0}
+    reply_to: darren-tessa-dm-msg-008
+    content: |
+      That's the best Keating news yet. Tell Mateo from me. He's going to be a remarkable AE.
+
+  - key: darren-tessa-dm-msg-010
+    author: tessa
+    at: !relative_day {offset: -4, hour: 13, minute: 45}
+    content: |
+      Pricing revision request from Amira — she wants unlimited playbooks during the 90-day pilot, then a stepped rate after they graduate. I think we should give her this. Long-term the volume commit more than covers the pilot margin hit.
+
+  - key: darren-tessa-dm-msg-011
+    author: darren
+    at: !relative_day {offset: -4, hour: 14, minute: 0}
+    reply_to: darren-tessa-dm-msg-010
+    content: |
+      Walk me through the gross margin on the stepped rate. I'm not saying no, I just need to understand the number before I greenlight.
+
+  - key: darren-tessa-dm-msg-012
+    author: tessa
+    at: !relative_day {offset: -4, hour: 14, minute: 15}
+    reply_to: darren-tessa-dm-msg-011
+    content: |
+      Year 1 at stepped rate: 62% gross. Year 2 with volume commit: 71%. Both within our target bar. I'll send the full model tonight.
+    reactions:
+      thumbs_up: [darren]
+
+  - key: darren-tessa-dm-msg-013
+    author: darren
+    at: !relative_day {offset: -4, hour: 14, minute: 22}
+    reply_to: darren-tessa-dm-msg-012
+    content: |
+      Green-lit in principle. Get the revision out by Friday. This deal matters but not enough to kill our unit economics.
+
+  - key: darren-tessa-dm-msg-014
+    author: tessa
+    at: !relative_day {offset: -2, hour: 9, minute: 30}
+    content: |
+      One thing I want to say before Friday: this deal doesn't close without Priya and Arjun. The SOC 2 work is the actual blocker, not the commercial terms. Can you make sure they feel that from you, not just from me?
+
+  - key: darren-tessa-dm-msg-015
+    author: darren
+    at: !relative_day {offset: -2, hour: 9, minute: 44}
+    reply_to: darren-tessa-dm-msg-014
+    content: |
+      I'll send them a note today. You're right — they're carrying the deal as much as you and Mateo are.
+    reactions:
+      heart: [tessa]

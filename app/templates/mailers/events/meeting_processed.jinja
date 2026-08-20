@@ -1,0 +1,12 @@
+{% extends "base.jinja" %}
+
+{% block subject %}(Meeting) {{ event.workspace.resource.title }}{% endblock subject %}
+
+{% block body_markdown %}
+We've finished processing your meeting, {{ event.workspace.resource.title }}.
+
+{{ event.workspace.resource.summary }}
+
+---
+[View on Convictional]({{ url_for("meetings_show", meeting_id=event.workspace.resource.id) }})
+{% endblock body_markdown %}

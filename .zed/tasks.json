@@ -1,0 +1,7 @@
+[
+  {
+    "label": "pytest runner",
+    "command": "make test ARGS=\"$ZED_CUSTOM_PYTHON_TEST_TARGET\"",
+    "tags": ["python-pytest-class", "python-pytest-method"]
+  }
+]

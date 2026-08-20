@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{# SPA shell for client-routed paths (see docs/react-migration.md → Client-Side
+   Router ADR). A near-empty document: <div id="root"> plus only the head
+   essentials. It boots TanStack Router via the dedicated spa.tsx entry and
+   never loads Alpine/htmx — so it deliberately omits the htmx-config meta, the
+   htmx head-support workaround, and the htmx-indicator/Alpine [x-cloak] styles.
+   Layout auto-selection (application_layout/public_layout) is bypassed: this is
+   always served as a full document, regardless of HX-Request. #}
+{# data-is-mobile is the source of truth for the React useIsMobile() hook and
+   QuotedHtmlNodeView (both read document.documentElement.dataset.isMobile).
+   Without it every SPA route would treat the device as desktop. #}
+<html lang="en" data-is-mobile="{{ 'true' if is_mobile else 'false' }}">
+    <head>
+        {# Loading-state title only; the client useDocumentTitle hook sets the real
+           per-route title once the SPA boots. Bare brand (with the env prefix) avoids
+           the "Convictional - Convictional" doubling that format_page_title would add. #}
+        <title>{{ page_title_prefix }}{{ settings.product_name }}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="csrf-token"
+              content="{{ csrf_token }}"
+              data-session-created-at="{{ session_created_at }}">
+        {# Lets the client useDocumentTitle hook reproduce format_page_title
+           without re-deriving the environment. #}
+        <meta name="page-title-prefix" content="{{ page_title_prefix }}">
+        {# Asset hash baked into this document at serve time. useAssetVersionReloader
+           compares it against the version the `version_refresh` channel reports
+           and hard-reloads on a mismatch, so a stale cached shell (or a deploy
+           that lands while the SPA is running) recovers fresh JS+CSS. #}
+        <meta name="asset-version" content="{{ asset_version_hash() }}">
+        <!-- Progressive Web App behavior -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style"
+              content="black-translucent">
+        {% if settings.dev_color %}
+            <link rel="icon"
+                  type="image/svg+xml"
+                  href="data:image/svg+xml,{{ dev_favicon_svg() }}">
+        {% else %}
+            <link rel="icon"
+                  type="image/x-icon"
+                  href="{{ url_for_static_file('icons/favicon.png') }}">
+        {% endif %}
+        <link rel="apple-touch-icon"
+              href="{{ url_for_static_file('icons/apple-touch-icon.png') }}">
+        {% if not settings.asset_building_enabled %}
+            <link href='{{ url_for_bundled_file("styles/main.css") }}' rel="stylesheet">
+        {% else %}
+            <script type="module"
+                    src="{{ url_for_bundled_file('@vite/client') }}"
+                    nonce="{{ csp_nonce }}"></script>
+            <script type="module" nonce="{{ csp_nonce }}">
+                import RefreshRuntime from "{{ url_for_bundled_file('@react-refresh') }}"
+                RefreshRuntime.injectIntoGlobalHook(window)
+                window.$RefreshReg$ = () => {}
+                window.$RefreshSig$ = () => (type) => type
+                window.__vite_plugin_react_preamble_installed__ = true
+            </script>
+            <script type="module"
+                    src="{{ url_for_bundled_file('javascript/styles/main.ts') }}"
+                    nonce="{{ csp_nonce }}"></script>
+        {% endif %}
+        <link rel="manifest" href="{{ url_for('manifest') }}">
+        <!-- SPA bundle -->
+        <script type="module"
+                src="{{ url_for_bundled_file('javascript/spa.tsx') }}"
+                nonce="{{ csp_nonce }}"></script>
+        {# Read by React when rendering email HTML (QuotedHtmlNodeView, EmailMessageBody);
+           without it migrated email routes render the body unstyled. #}
+        <script nonce="{{ csp_nonce }}">window.EMAIL_CSS_URL = {{ url_for_bundled_file("styles/email.css") | tojson | safe }};</script>
+        {% if settings.sentry_dsn %}
+            {# Sentry is bundled (@sentry/browser) and initialized in spa.tsx; the
+               server only hands it the DSN, release, and (when signed in) the user
+               identity so the same bundle targets whichever Sentry project this
+               environment is configured for. tojson | safe, not quoted
+               interpolation: autoescape turns tojson's quotes into &#34;, and a
+               quoted literal would mangle an apostrophe in the email. #}
+            <script nonce="{{ csp_nonce }}">
+                window.SENTRY_DSN = {{ (settings.sentry_dsn | string) | tojson | safe }};
+                window.SENTRY_RELEASE = {{ settings.github_sha | tojson | safe }};
+                {% if current_user %}
+                    window.SENTRY_USER = {{ {"id": current_user.id | string, "email": current_user.email} | tojson | safe }};
+                {% endif %}
+            </script>
+        {% endif %}
+        <!-- Typekit -->
+        <link rel="stylesheet" href="https://use.typekit.net/lbl4dtu.css">
+        {# Dev live-reload on server/template restart. Vite's @vite/client already
+           HMRs JS/CSS, but not Python/Jinja changes; this reloads the page then. #}
+        {% if settings.is_hot_reload %}
+            {% include "shared/_reloader.html.jinja" %}
+        {% endif %}
+    </head>
+    <body class="min-h-dvh safe-area"
+          data-authenticated="{{ 'true' if current_user else 'false' }}">
+        <div id="root"></div>
+    </body>
+</html>

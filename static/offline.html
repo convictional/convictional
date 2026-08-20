@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f3ea" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Offline · Convictional</title>
+  <link rel="icon" type="image/x-icon" href="/static/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="/static/icons/apple-touch-icon.png" />
+  <style>
+    :root {
+      --base-100: #fffdf5;
+      --base-200: #f7f3ea;
+      --base-300: #efebe2;
+      --base-600: #514e4a;
+      --base-800: #28201d;
+      --primary: #2b7fff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--base-200);
+      color: var(--base-800);
+      font-family:
+        ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: max(1.5rem, env(safe-area-inset-top)) 1.5rem max(1.5rem, env(safe-area-inset-bottom));
+    }
+
+    main {
+      max-width: 28rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    .mark {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0 auto 2rem;
+      border-radius: 9999px;
+      background-color: var(--base-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--base-600);
+    }
+
+    h1 {
+      font-family: "loretta", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      font-weight: 300;
+      font-size: 2.25rem;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin: 0 0 1rem;
+      text-wrap: balance;
+    }
+
+    p {
+      color: var(--base-600);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0 0 2rem;
+      text-wrap: pretty;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 500;
+      padding: 0.625rem 1.25rem;
+      border-radius: 0.5rem;
+      background-color: var(--base-800);
+      color: var(--base-100);
+      transition: background-color 120ms ease;
+    }
+
+    button:hover {
+      background-color: #000;
+    }
+
+    button:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --base-100: #1c1917;
+        --base-200: #1c1917;
+        --base-300: hsl(30, 6%, 20%);
+        --base-600: hsl(30, 6%, 65%);
+        --base-800: #f0ece2;
+      }
+
+      button:hover {
+        background-color: #fff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="mark" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 8.5a17 17 0 0 1 20 0" />
+        <path d="M5 12.5a12 12 0 0 1 14 0" />
+        <path d="M8.5 16a7 7 0 0 1 7 0" />
+        <line x1="3" y1="3" x2="21" y2="21" />
+      </svg>
+    </div>
+    <h1>You're offline</h1>
+    <p>We can't reach the network from here. Check your connection, and try again.</p>
+    <button type="button" id="retry">Try again</button>
+  </main>
+  <!-- Inlined (not external) so a sha256 hash source in script-src can match it.
+       The page is served from the service worker cache, so a per-request CSP
+       nonce can't be injected. The hash is recomputed from this file at app
+       boot — see `_compute_offline_inline_script_sha256` in security.py. -->
+  <script>
+document.getElementById("retry").addEventListener("click", () => location.reload());
+window.addEventListener("online", () => location.reload());
+</script>
+</body>
+
+</html>

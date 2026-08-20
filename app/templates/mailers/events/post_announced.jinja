@@ -1,0 +1,10 @@
+{% extends "base.jinja" %}
+
+{% block subject %}(Announcement) {{ event.workspace.resource.title }}{% endblock %}
+
+{% block body_markdown %}
+{{ event.details["content"] }}
+
+---
+[View on Convictional]({{ url_for("posts_show", post_id=event.workspace.resource.id) }})
+{% endblock %}

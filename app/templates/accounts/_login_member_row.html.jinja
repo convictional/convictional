@@ -1,0 +1,9 @@
+<div class="flex-1 py-1 px-2 flex items-center gap-2 rounded-box bg-base-200 hover:bg-base-300 border border-neutral text-left">
+    {% with user=user, disable_tooltip=true, size="medium" %}
+        {% include "users/_avatar.html.jinja" %}
+    {% endwith %}
+    <div class="flex items-center gap-2">
+        <span class="text-sm">{{ user.display_name }}</span>
+        {% if user.is_admin %}<span class="material-symbols-outlined text-sm text-base-content/70">shield</span>{% endif %}
+    </div>
+</div>

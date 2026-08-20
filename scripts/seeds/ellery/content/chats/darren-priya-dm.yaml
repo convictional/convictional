@@ -1,0 +1,108 @@
+key: darren-priya-dm
+members: [darren, priya]
+messages:
+  - key: darren-priya-dm-msg-001
+    author: darren
+    at: !relative_day {offset: -19, hour: 7, minute: 45}
+    content: |
+      Priya — before the first post-close exec sync I want your honest read. What's the single thing you'd do differently if you had the Series A money and full autonomy?
+
+  - key: darren-priya-dm-msg-002
+    author: priya
+    at: !relative_day {offset: -19, hour: 8, minute: 10}
+    reply_to: darren-priya-dm-msg-001
+    content: |
+      Hire an SRE before we hire anyone else. We are one bad deploy away from a customer-visible incident that would cost us Keating. I've been absorbing that risk personally and that is not sustainable.
+    reactions:
+      eyes: [darren]
+
+  - key: darren-priya-dm-msg-003
+    author: darren
+    at: !relative_day {offset: -19, hour: 8, minute: 18}
+    reply_to: darren-priya-dm-msg-002
+    content: |
+      That's what I needed to hear. I'll make sure the hiring discussion doesn't get hijacked by the product side before we've settled engineering. You have my backing on the SRE.
+
+  - key: darren-priya-dm-msg-004
+    author: priya
+    at: !relative_day {offset: -15, hour: 15, minute: 50}
+    content: |
+      Quick note on the board conversation — Lyndon asked me after the call about our observability stack. He used to work with a company that had a bad Q3 because they couldn't explain a latency spike to their biggest customer. I told him we're building it. He seemed reassured but it's a real question.
+
+  - key: darren-priya-dm-msg-005
+    author: darren
+    at: !relative_day {offset: -15, hour: 16, minute: 5}
+    reply_to: darren-priya-dm-msg-004
+    content: |
+      Good to know. That's the kind of thing I'd rather hear from you than from Lyndon on a board call. What do we need to actually answer it honestly?
+
+  - key: darren-priya-dm-msg-006
+    author: priya
+    at: !relative_day {offset: -15, hour: 16, minute: 20}
+    reply_to: darren-priya-dm-msg-005
+    content: |
+      Structured logging with request tracing across the ingestion pipeline. Arjun and I can have a basic version in two weeks without the SRE. It won't be pretty but it'll answer Lyndon's question.
+
+  - key: darren-priya-dm-msg-007
+    author: darren
+    at: !relative_day {offset: -12, hour: 19, minute: 30}
+    content: |
+      Keating questionnaire is real now. 147 questions. Tessa is handling the relationship but the technical answers are yours and Arjun's. What do you need from me?
+
+  - key: darren-priya-dm-msg-008
+    author: priya
+    at: !relative_day {offset: -12, hour: 19, minute: 45}
+    reply_to: darren-priya-dm-msg-007
+    content: |
+      Two things: (1) executive sign-off language for the incident response section — they want to see that the CEO owns the escalation path. (2) a 20-minute window with you later this week to walk through the EU residency design so you can talk to it intelligently if Peter or Doug asks.
+
+  - key: darren-priya-dm-msg-009
+    author: darren
+    at: !relative_day {offset: -12, hour: 19, minute: 52}
+    reply_to: darren-priya-dm-msg-008
+    content: |
+      Both yes. Send me the incident response language draft and I'll wordsmith it tonight. For the design walkthrough — Wednesday at 6pm?
+    reactions:
+      thumbs_up: [priya]
+
+  - key: darren-priya-dm-msg-010
+    author: priya
+    at: !relative_day {offset: -9, hour: 10, minute: 15}
+    content: |
+      Wednesday walkthrough was useful. One thing I realized I didn't say clearly enough: Arjun's region-scoped storage design *is* the right answer technically, but it adds three to four weeks to the Keating timeline if they require us to demonstrate it with their own data before signing. Does Tessa know that?
+
+  - key: darren-priya-dm-msg-011
+    author: darren
+    at: !relative_day {offset: -9, hour: 10, minute: 28}
+    reply_to: darren-priya-dm-msg-010
+    content: |
+      She knows there's a timeline dependency but not the weeks. I'll loop her in today — she needs to set Amira's expectations before Amira sets ours.
+
+  - key: darren-priya-dm-msg-012
+    author: priya
+    at: !relative_day {offset: -4, hour: 8, minute: 30}
+    content: |
+      Engineering hiring plan doc is up. I'd appreciate your eyes on the SRE JD specifically — I want the "what you'll own" section to be honest about the current state of things, not a fantasy about what we'll have in a year.
+
+  - key: darren-priya-dm-msg-013
+    author: darren
+    at: !relative_day {offset: -4, hour: 9, minute: 10}
+    reply_to: darren-priya-dm-msg-012
+    content: |
+      Read it. I'd soften one line — "currently no on-call rotation" makes it sound chaotic. How about "building the first formal on-call rotation"? Same truth, better signal about the opportunity.
+
+  - key: darren-priya-dm-msg-014
+    author: priya
+    at: !relative_day {offset: -4, hour: 9, minute: 22}
+    reply_to: darren-priya-dm-msg-013
+    content: |
+      Good edit. Updating. Also — I want to be on the record: the hiring order is SRE, then ML engineer two, then integrations engineer. I'll hold that position in the exec conversation, but I want your backing if Leo or Tessa push for a different sequence.
+
+  - key: darren-priya-dm-msg-015
+    author: darren
+    at: !relative_day {offset: -4, hour: 9, minute: 30}
+    reply_to: darren-priya-dm-msg-014
+    content: |
+      You have it. Engineering infrastructure first. This is not negotiable given where Keating is.
+    reactions:
+      thumbs_up: [priya]

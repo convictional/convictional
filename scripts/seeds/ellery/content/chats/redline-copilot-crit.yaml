@@ -1,0 +1,124 @@
+key: redline-copilot-crit
+name: "Redline Co-pilot Design Crit"
+members: [leo, emma, jordan, priya]
+messages:
+  - key: redline-copilot-crit-msg-001
+    author: leo
+    at: !relative_day {offset: -5, hour: 9, minute: 0}
+    content: |
+      Design crit for the redline co-pilot prototype — this Friday at 2pm. Emma will present the ghost-text prototype and the research readout. Jordan, please come prepared to talk about the retrieval quality numbers and what the eval harness can and can't say by day four of a demo. Priya — your role is to be the honest voice on what we can actually ship and when.
+
+  - key: redline-copilot-crit-msg-002
+    author: emma
+    at: !relative_day {offset: -5, hour: 9, minute: 18}
+    reply_to: redline-copilot-crit-msg-001
+    content: |
+      I'll have the prototype and a 5-minute research readout ready. The main finding I want everyone to react to: every lawyer I interviewed described trust as clause-specific, not system-wide. That has big implications for both the UX design and the coverage sequencing question.
+    reactions:
+      eyes: [leo, jordan, priya]
+
+  - key: redline-copilot-crit-msg-003
+    author: jordan
+    at: !relative_day {offset: -5, hour: 9, minute: 32}
+    content: |
+      I'll have the eval harness report ready. Current state: 74.5% playbook coverage on MSA and NDA. DPA is at 71% and rising. I want to talk honestly about what those numbers mean in a live demo scenario — specifically what contract types I'm confident about and which ones I'd be nervous about.
+    reactions:
+      thumbs_up: [priya]
+
+  - key: redline-copilot-crit-msg-004
+    author: priya
+    at: !relative_day {offset: -5, hour: 9, minute: 45}
+    content: |
+      For my part: I'll bring a short list of the three things that would need to be true before I'd sign off on shipping this to a general audience, not just design partners. It's not a veto list — it's a conditions list.
+    reactions:
+      thumbs_up: [leo, emma, jordan]
+
+  - key: redline-copilot-crit-msg-005
+    author: emma
+    at: !relative_day {offset: -3, hour: 16, minute: 15}
+    content: |
+      Prototype crit debrief — I'll capture what I heard before I lose it. Summary: (1) ghost-text interaction pattern was universally well-received; (2) the citation tooltip needs to be faster to appear — three of the four people who saw it in research hesitated because they thought the hover wasn't working; (3) the accept/reject keyboard shortcuts are right, but the visual affordance isn't obvious enough yet.
+    reactions:
+      thumbs_up: [leo, jordan, priya]
+
+  - key: redline-copilot-crit-msg-006
+    author: jordan
+    at: !relative_day {offset: -3, hour: 16, minute: 32}
+    content: |
+      From the ML side: the crit helped me understand which contract types we'd demo with. Amira's likely use case is vendor agreements and SaaS subscriptions — those are both in our stronger coverage range. I'd be comfortable with a demo scoped to those types.
+
+  - key: redline-copilot-crit-msg-007
+    author: leo
+    at: !relative_day {offset: -3, hour: 16, minute: 45}
+    reply_to: redline-copilot-crit-msg-006
+    content: |
+      That's useful scope to have confirmed. Tessa needs to know that before she promises a demo to Amira. I'll loop her in.
+
+  - key: redline-copilot-crit-msg-008
+    author: priya
+    at: !relative_day {offset: -3, hour: 17, minute: 0}
+    content: |
+      My three conditions from the crit, written down: (1) playbook coverage at 75%+ for the contract types in the demo; (2) retrieval latency under 800ms at the 95th percentile — the ghost text feels broken if it takes too long; (3) a clear opt-out path in the UI — the lawyer must be able to dismiss the suggestion without any friction. Jordan, the latency number is yours. Emma, the opt-out UX is yours.
+    reactions:
+      thumbs_up: [emma, jordan, leo]
+
+  - key: redline-copilot-crit-msg-009
+    author: emma
+    at: !relative_day {offset: -3, hour: 17, minute: 12}
+    reply_to: redline-copilot-crit-msg-008
+    content: |
+      Opt-out path: I have two designs to choose from. Option A is an Escape key dismiss with a small undo toast. Option B is a right-click context menu. I'm leaning Option A — it matches what lawyers already do when they don't want a feature. I'll test it Thursday.
+
+  - key: redline-copilot-crit-msg-010
+    author: jordan
+    at: !relative_day {offset: -3, hour: 17, minute: 22}
+    reply_to: redline-copilot-crit-msg-008
+    content: |
+      Latency at 95th percentile today: 1.2 seconds. The bottleneck is the reranking step. I have a plan to reduce it by doing a lightweight first-pass retrieval that shows the ghost text quickly, then refines it asynchronously. That should get us under 800ms for the initial display.
+    reactions:
+      thumbs_up: [priya]
+
+  - key: redline-copilot-crit-msg-011
+    author: leo
+    at: !relative_day {offset: -3, hour: 17, minute: 35}
+    reply_to: redline-copilot-crit-msg-010
+    content: |
+      Progressive enhancement for the suggestion — show fast, refine quietly — is actually the right product behavior too, not just a latency workaround. The lawyer can start reading while the model refines.
+    reactions:
+      rocket: [jordan, emma]
+      thumbs_up: [priya]
+
+  - key: redline-copilot-crit-msg-012
+    author: emma
+    at: !relative_day {offset: -1, hour: 14, minute: 30}
+    content: |
+      Opt-out update: tested Escape-key dismiss in session six today. The lawyer used it immediately when a suggestion was wrong — didn't hesitate, no friction. Then came back to the suggestion UI voluntarily on the next clause. That's exactly the relationship with the tool we want to build.
+    reactions:
+      heart: [leo]
+      rocket: [jordan, priya]
+
+  - key: redline-copilot-crit-msg-013
+    author: jordan
+    at: !relative_day {offset: -1, hour: 15, minute: 5}
+    content: |
+      Progressive retrieval is working in staging. Initial display: 480ms. Refined suggestion: 1.1 seconds total. The ghost text shows at 480ms and updates in place when the refinement lands. You can't see the update unless you're watching for it — which is the right behavior.
+    reactions:
+      rocket: [leo, priya, emma]
+
+  - key: redline-copilot-crit-msg-014
+    author: priya
+    at: !relative_day {offset: -1, hour: 15, minute: 22}
+    reply_to: redline-copilot-crit-msg-013
+    content: |
+      480ms initial display is well under 800ms. Conditions 1 and 3 are green (coverage at 74.5%, opt-out in Emma's hands). Condition 2 is met. I'm comfortable calling this design-partner ready for the right contract types.
+    reactions:
+      thumbs_up: [leo, jordan, emma]
+
+  - key: redline-copilot-crit-msg-015
+    author: leo
+    at: !relative_day {offset: -1, hour: 15, minute: 38}
+    content: |
+      This is where we land before the decision post closes: the co-pilot prototype is technically ready for design partner testing, scoped to high-coverage contract types. Coverage-first sequencing remains the right call for general availability. I think Maren and I finally agree on the shape of it. Good crit, everyone.
+    reactions:
+      heart: [emma, jordan, priya]
+      thumbs_up: [priya]

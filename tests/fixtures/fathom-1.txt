@@ -1,0 +1,90 @@
+Fathom Demo - September 16
+VIEW RECORDING - 8 mins (4 mins of highlights): https://fathom.video/share/example-recording-1
+
+---
+
+0:00 - Marcus Webb (Fathom)
+  All right. Hello. And welcome to Fathom. I'm Marcus Webb, founder of Fathom. And this call here is designed to be just a quick sample recording.  We're actually gonna do a demo of Fathom, but we figure we give you a demo. So you'd have a sample recording that's already in your Fathom account.  So even if you haven't done a call with Fathom yet, you have something to play around with and see.  What do you get out of fathom after using it on a call? Joining me today is Priya from our growth and success team.  Hi Priya. How are you?
+
+0:26 - Priya Raman (Convictional)
+  Hey, doing great. How are you?
+
+0:28 - Marcus Webb (Fathom)
+  Cool. So let me go ahead and share my screen here so we can kind of start the demo. I just share my desktop now.
+  BOOKMARK: Demo: Using Fathom while on Zoom - WATCH: https://fathom.video/share/example-recording-1?timestamp=41.889  I'm using the Zoom app version of Fathom. We also have a desktop. That version has a few more features in it and kind of see at the top here.  But when you're on the call, whether you're using a desktop app or the Zoom map, you'll see what we call the Fathom panel right here.  And the whole concept of Fathom is I built Fathom because I always tired of being on a bunch of calls with people and trying to hurt.  We take notes while. On the call, having clean up those notes after the call is over and then showing my team or my manager a week later and then being like this or whatever.  Right. And so the whole goal of Fathom is we don't want you to take notes. We want you just to stay present the conversation.  When you hear something interesting or noteworthy, you click one of these buttons, so we'll show them how this works.  Why don't I just go ahead and and us what's, like a top question you get from our users and what's the answer to it?
+
+1:26 - Priya Raman (Convictional)
+  Yeah. I think that one of the main questions that I get is actually how that highlights works. So when you're on a call, then attend and you hear something important that you're wanting to note, you can actually just click one of those highlights and it'll start marking that moment for you.
+  HIGHLIGHT: How Fathom Highlights Work - WATCH: https://fathom.video/share/example-recording-1?timestamp=98.5
+    The cool thing here is it is actually going to detect when that attendee started talking and retroactively start recording, so you can be sure you'll get that entire monologue.
+
+    Another thing to note is that when you start talking again, that highlight is going to automatically stop. However, if you're wanting to manually end it, you have that choice as well.
+
+    Cool. Yeah.
+
+
+1:56 - Marcus Webb (Fathom)
+  I think that's one of the unique things you can see here, like, as soon as I started talking again.  And it said, cool, that highlight is ended. If you notice, you don't have to know. Obviously, I'm not going to immediately know that this thing you're saying, it's noteworthy.  It's often like, oh, you're 30 seconds in. I'm like, wow, this is really interesting. Some great feedback he would like to see.  Or this is a really interesting objection or something like that. You click that button. But Fat won't go back in time and figure out, as Sus mentioned.  So that's basically what you do. It very straightforward. You can type notes. I think when I'm collecting accidents on call, I might write a one word note just so if I need to refer back to within the call, but our best path just don't write any notes.  We have the option, too. But we really say, like, keep your hands off your keyboard on the call. Just focus on the conversation.
+  BOOKMARK: Demo: Using Fathom after a Zoom call - WATCH: https://fathom.video/share/example-recording-1?timestamp=157.15  Now, after the call is over, one of the things we get to is the call recording. And so if I open up the call recording here, I open up an example one.  So when the call is over, you get something that kind of looks like this. Right. So we've got your entire recording.  You've got the entire transcript. But most importantly, we have the moments that you highlighted. And you can kind of jump right directly back to them.  So the workflow for Fathom typically is, you know, a push button hole on the call. The call is over.  I come in here. I jumped to my thing. I'm, like, scan the transcript or what's in the club and say, oh, yes.  I remember that she was explaining that her should a use case that was for internal. Right. So you kind of just do that, walking down in the rest of action, trans and insights.  You could still take your notes. But now you're doing it with the benefit of the recording. You're not live on a conversation, and you can kind of do it pretty briefly.
+  HIGHLIGHT: Killer Feature: CRM sync / Call Summary - WATCH: https://fathom.video/share/example-recording-1?timestamp=213.16
+    Priya, quick question for you. What would you say is, like, the top feature or the top like, the killer feature of kind of like this kind of post call recording piece.
+
+    Good question.
+
+
+3:47 - Priya Raman (Convictional)
+
+    I think one that I like a lot and we've seen a lot of our users, like, a lot so far is going to be that CRM sync.
+
+    So most folks I talked to, in fact, Fathom is able to actually directly sync all of your call notes right into your CRM.
+
+    Your CRM. So that you don't manually have to, which is a post admin saving that time. That is a game changer.
+
+
+4:06 - Marcus Webb (Fathom)
+
+    That's great. Yeah. So what things we do is once you do fill this in, we can create these auto generate summaries and you can get a summary that you can copy and paste in Google Docs into notion into an email to a prospect somewhere for action is actually is.
+
+    We want to specifically send into our Asana copy and paste in there. We've got that. But certain you're using Salesforce, you're using HubSpot, we can automatically connect to that.
+
+    And basically these are kind of auto generated based upon the moments I selected. One thing to also note that I think people can always know if you miss something after the call, you can come back in here and you know, oh, I miss this insight, right?
+
+    I can immediately flag it afterwards, or I can flag an action item. And the other thing that's cool is if I type as you update anything, if you come back later and update it, it's going to immediately sync and re update that thing you share.
+
+    So Fathom is kind of. Always in sync with what's happening in your serum. You updated the blah, blah, cool.
+  Let's see. Is there anything else on this page that I didn't cover that I probably should have, Priya?
+
+5:12 - Priya Raman (Convictional)
+  I think the one thing another question that we typically get is how people can actually get to this page and find their call recordings.  So one way you can do that is when the call is over, you'll see the live panel itself actually transition to a screen that will say view recording.  Clicking on that button will pop up this call recording screen that you see here. But one other way that you can get those recordings is simply go to Fathom video.  So a couple of options there for you.
+
+5:36 - Marcus Webb (Fathom)
+
+  HIGHLIGHT: Killer Features: Real-Time Recording + Team View + Slack Integration - WATCH: https://fathom.video/share/example-recording-1?timestamp=336.62
+    Cool. Yeah. One of the killer features of Fathom is how quickly you will get this. You will get your call recording if you're familiar with using Zoom Cloud Recording or any other app.
+
+    It also takes 510 something, 20 or 30 minutes to get that recording. As soon as your call is over, usually within 5 seconds.
+
+    We will have the recording ready for you. And that's really killer because we found. I don't want to wait 30 minutes later to review what happened and get it all to the right places.
+
+    One, two. Asking I want to highlight is that you have the ability to share this. You can either share just the recording and the transcript, or you can share basically your view with all the things you highlighted.
+
+    So you want to send this to internal your manager or something or share with your team. We also have a team view.
+
+    If you are working on a team and you'll see each other's calls, if your manager does just picking Priya or or just go up here and hit help message us, we'll get you set that something we're beta testing, but the last thing is, not only can you share the I call, you can also share individual clips, so I can take a copy of this clip and even open this up in an Incog needle.
+
+    And if I sent this into one of my team members, hey, check this part out. I got some interesting feedback.
+
+    Or this is an interesting mention of a competitor. You can watch just that portion of the call that we pull out and probably the like, the sexiest, technological things.
+
+    We can also wire up the slack. So one of the things that you might have seen is I got these old Slack icons here.
+
+    The inside one is a Slack icon. And that's because I have basically connected this button to a channel. And so when Priya earlier was giving that answer about what's the tough question within about 30 seconds of her finishing that we had this video in the Slack channel.
+
+    And this is pretty powerful stuff. If you can get busy, a live stream of product feedback that's happening on your customer calls were one of my favorites is I have a button here for tech questions.
+
+    So if I get tech question on a call, I don't know the answer to. Rather than doing a follow, my team, get back to you later.
+
+    I push that button within 30 seconds. It's in an engineering channel. My engineers are looking at it. They're listing to the question in the customers on the words, they're slacking me back the answer.
+
+    And so it helps me look really smart on these calls. Cool as everything I think you want to cover.
+  Thank you so much for trying out our products. If you have any feedback, there's just great feedback button in the corner of.  The app. Please send us feedback. We love it. We read all of it. We're trying to get some product that every day.  So thanks so much.

@@ -1,0 +1,4 @@
+app: BASE_URL=https://${NGROK_HOST} VITE_URL=https://${NGROK_HOST}/vite/ make app_watch
+assets: VITE_BASE_PATH=/vite make assets_watch
+ngrok: sh -c 'ngrok http --url=${NGROK_HOST} --traffic-policy-file ./ngrok-traffic-policy.yml ${APP_PORT:-$(python -c "from config.settings import settings; print(settings.app_port)")}'
+ngrok-vite: sh -c 'VITE_HOST=${NGROK_HOST}; ngrok http --url=${VITE_HOST%%.*}.vite.internal ${VITE_PORT:-$(python -c "from config.settings import settings; print(settings.vite_port)")}'

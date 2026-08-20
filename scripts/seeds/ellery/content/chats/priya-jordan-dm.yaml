@@ -1,0 +1,113 @@
+key: priya-jordan-dm
+members: [priya, jordan]
+messages:
+  - key: priya-jordan-dm-msg-001
+    author: priya
+    at: !relative_day {offset: -16, hour: 14, minute: 10}
+    content: |
+      Jordan — I want to be upfront about something before the next hiring conversation in the exec team. I'm advocating for ML engineer #2 as hire two (after SRE). That means you'd have a peer-level collaborator within about eight weeks of the SRE starting. How does that land?
+
+  - key: priya-jordan-dm-msg-002
+    author: jordan
+    at: !relative_day {offset: -16, hour: 14, minute: 28}
+    reply_to: priya-jordan-dm-msg-001
+    content: |
+      Honestly, it's a relief to hear. I've been trying not to say out loud that I'm stretched. The eval harness, the co-pilot prototype, and the playbook retrieval improvements are all real work and they're all in flight at the same time.
+    reactions:
+      heart: [priya]
+
+  - key: priya-jordan-dm-msg-003
+    author: priya
+    at: !relative_day {offset: -16, hour: 14, minute: 35}
+    reply_to: priya-jordan-dm-msg-002
+    content: |
+      That's why I'm fighting for it. What profile would you want in a second ML engineer? Generalist applied-ML, or someone with a specific retrieval or evals background?
+
+  - key: priya-jordan-dm-msg-004
+    author: jordan
+    at: !relative_day {offset: -16, hour: 15, minute: 5}
+    reply_to: priya-jordan-dm-msg-003
+    content: |
+      Retrieval background, hands down. The hardest problems right now are in the retrieval layer — chunk sizing, query expansion, reranking against playbook structure. A generalist will be useful but they'll spend months learning the domain. A retrieval specialist can contribute in week two.
+
+  - key: priya-jordan-dm-msg-005
+    author: priya
+    at: !relative_day {offset: -16, hour: 15, minute: 12}
+    reply_to: priya-jordan-dm-msg-004
+    content: |
+      Write that up in a half-page doc and drop it in the hiring documents folder. I want to reference it when the sequencing decision is made. Concrete framing helps.
+
+  - key: priya-jordan-dm-msg-006
+    author: jordan
+    at: !relative_day {offset: -14, hour: 9, minute: 40}
+    content: |
+      Eval harness update — I added a new "playbook coverage" metric that measures whether the model cites the right clause for a given redline suggestion. Current baseline is 61%. Maren looked at it yesterday and said anything below 75% would be "professionally embarrassing." So we have a bar now.
+    reactions:
+      tears_of_joy: [priya]
+
+  - key: priya-jordan-dm-msg-007
+    author: priya
+    at: !relative_day {offset: -14, hour: 9, minute: 52}
+    reply_to: priya-jordan-dm-msg-006
+    content: |
+      That's exactly the kind of anchor we needed. What's the path to 75%?
+
+  - key: priya-jordan-dm-msg-008
+    author: jordan
+    at: !relative_day {offset: -14, hour: 10, minute: 15}
+    reply_to: priya-jordan-dm-msg-007
+    content: |
+      Two levers: better chunk sizing (I can test this week) and reranking with BM25 before the dense pass. The second one is a week of work but I think it's the bigger gain. I want to run both experiments before I promise the number in the PRD comment.
+
+  - key: priya-jordan-dm-msg-009
+    author: priya
+    at: !relative_day {offset: -14, hour: 10, minute: 22}
+    reply_to: priya-jordan-dm-msg-008
+    content: |
+      Do not promise a number you don't have the experiment for. I'll back you up if Leo asks for timelines before you're ready. This is exactly the kind of thing we need to be honest with him about.
+    reactions:
+      thumbs_up: [jordan]
+
+  - key: priya-jordan-dm-msg-010
+    author: jordan
+    at: !relative_day {offset: -9, hour: 16, minute: 30}
+    content: |
+      Chunk sizing experiment done. Smaller chunks (256 tokens) with 20% overlap bumped playbook coverage from 61% to 68%. Reranking experiment starts tomorrow. Looking good.
+    reactions:
+      rocket: [priya]
+
+  - key: priya-jordan-dm-msg-011
+    author: priya
+    at: !relative_day {offset: -9, hour: 16, minute: 48}
+    reply_to: priya-jordan-dm-msg-010
+    content: |
+      Seven points in a week is meaningful. Nice. Drop the methodology in the eval report doc so Emma can reference it in her research synthesis.
+
+  - key: priya-jordan-dm-msg-012
+    author: jordan
+    at: !relative_day {offset: -4, hour: 11, minute: 20}
+    content: |
+      Reranking result: 74.5% playbook coverage. We're one small improvement from Maren's threshold. I think with better query expansion we can hit 77% — but that's a month of work, not a week.
+
+  - key: priya-jordan-dm-msg-013
+    author: priya
+    at: !relative_day {offset: -4, hour: 11, minute: 38}
+    reply_to: priya-jordan-dm-msg-012
+    content: |
+      74.5% is honestly within rounding error of 75. What's your honest opinion — is this good enough to demo to Keating if they ask to see the co-pilot prototype?
+
+  - key: priya-jordan-dm-msg-014
+    author: jordan
+    at: !relative_day {offset: -4, hour: 12, minute: 0}
+    reply_to: priya-jordan-dm-msg-013
+    content: |
+      In a controlled demo with their own contract types? Yes, I'm comfortable with it. In an open-ended session where they paste in a random NDA? I'd be nervous. I'd want to know what contract types Keating actually works with most before committing to a demo.
+
+  - key: priya-jordan-dm-msg-015
+    author: priya
+    at: !relative_day {offset: -4, hour: 12, minute: 8}
+    reply_to: priya-jordan-dm-msg-014
+    content: |
+      Reasonable. Loop in Tessa — she knows what Amira will bring. And write the caveat into the eval report now so we're not making it up the night before.
+    reactions:
+      thumbs_up: [jordan]

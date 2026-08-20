@@ -1,0 +1,483 @@
+@plugin "daisyui" {
+  exclude: button, properties, rootscrollgutter;
+}
+
+/* Expose custom colors as tailwind classes */
+@theme {
+  --color-base-50: var(--color-base-50);
+  --color-base-400: var(--color-base-400);
+  --color-base-500: var(--color-base-500);
+  --color-base-600: var(--color-base-600);
+  --color-base-700: var(--color-base-700);
+  --color-base-800: var(--color-base-800);
+  --color-base-900: var(--color-base-900);
+  --color-decision: var(--color-decision);
+  --color-decision-content: var(--color-decision-content);
+}
+
+@keyframes tooltip-pop {
+  0% { scale: 0.92; }
+  60% { scale: 1.05; }
+  100% { scale: 1; }
+}
+
+@utility animate-tooltip-pop {
+  animation: tooltip-pop 150ms ease-out;
+}
+
+@keyframes panel-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@utility animate-panel-in {
+  animation: panel-in 0.3s var(--ease-entrance) forwards;
+}
+
+@keyframes panel-out {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@utility animate-panel-out {
+  animation: panel-out 0.3s var(--ease-snappy) forwards;
+}
+
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@utility animate-sheet-up {
+  animation: sheet-up 240ms ease-out;
+}
+
+@utility font-accent {
+  font-variant-numeric: "lining-nums";
+}
+
+/* Convictional's custom styles */
+@layer components {
+  .btn {
+    @apply cursor-pointer transition-colors rounded-full px-3 h-9 inline-flex items-center justify-center gap-1.5 text-xs font-normal
+    bg-base-200 text-base-600 border shadow-xs flex-shrink-0;
+    border-color: var(--color-border-neutral);
+    &:hover {
+      @apply bg-base-300 text-base-content shadow-sm;
+    }
+    &:active {
+      @apply !shadow-none pt-[2px] bg-base-400/50;
+    }
+  }
+
+  .btn-sm {
+    @apply h-7 px-2 text-[.7rem];
+  }
+
+  .btn-lg {
+    @apply h-10 px-4 text-sm;
+  }
+
+  /* Icon buttons are round to match the pill button language. */
+  .btn-square {
+    @apply aspect-square rounded-full p-0;
+  }
+
+  .btn-circle {
+    @apply aspect-square rounded-full p-0;
+  }
+
+  .btn-ghost {
+    @apply text-base-600 bg-transparent border-transparent !shadow-none inset-shadow-none;
+    &:hover {
+      @apply border border-base-400 bg-base-200 text-base-content;
+    }
+    &:active {
+      @apply inset-shadow-none bg-base-400/50;
+    }
+  }
+
+  .btn-primary {
+    @apply bg-info border border-primary/30;
+    &:hover {
+      @apply bg-info border-primary/80 text-primary;
+    }
+    &:active {
+      @apply shadow-none pt-[2px] border-primary/80 bg-primary/15;
+    }
+  }
+
+  .btn-decision {
+    @apply bg-decision text-decision-content border-decision-content/25 inset-shadow-xs inset-shadow-base-50 rounded-full pr-1;
+    &:hover {
+      @apply border-decision-content/40 inset-shadow-none;
+    }
+    &:active {
+      @apply inset-shadow-xs inset-shadow-decision-content/20
+      shadow-none pt-[2px] border-decision-content/40;
+    }
+  }
+
+  /* A decision pill that isn't clickable: pin :hover and :active to the resting
+     look so neither hovering nor clicking an inert badge animates a state change.
+     The two-class selector outranks the .btn / .btn-decision interaction rules. */
+  .btn-decision.btn-static {
+    &:hover,
+    &:active {
+      @apply pt-0 bg-decision text-decision-content border-decision-content/25 shadow-none inset-shadow-xs inset-shadow-base-50;
+    }
+  }
+
+  .kbd-primary {
+    @apply !bg-info !border-primary/30;
+    color: var(--color-primary);
+  }
+
+  .text-primary-themed {
+    @apply text-primary;
+  }
+
+  .btn-active {
+    @apply inset-shadow-xs inset-shadow-base-400/30 !shadow-none pt-[2px] border-base-500 bg-base-400/50 text-base-content;
+  }
+
+  .btn-disabled {
+    @apply cursor-default opacity-70;
+    &:active {
+      @apply pt-0 !shadow-xs;
+    }
+  }
+
+  .dropdown-card {
+    @apply shadow-lg overflow-hidden bg-base-300 border border-base-400 rounded-2xl w-max p-1;
+  }
+  .dropdown-item {
+    @apply hover:bg-base-400 hover:text-base-900 px-3 py-2 rounded-lg block text-sm w-full text-left cursor-pointer transition-colors;
+  }
+  [data-dropdown-item]:focus-visible {
+    @apply bg-base-400 text-base-900 outline-none rounded-lg;
+  }
+  [data-hover-actions]:has(.dropdown-is-open) {
+    display: flex !important;
+  }
+
+  .floating-card {
+    @apply shadow-2xl bg-base-300 border border-base-400 rounded-xl p-6 inset-shadow-xs;
+  }
+
+  .tooltip-card {
+    @apply shadow-xl bg-base-400 border border-base-500/50 rounded-xl inset-shadow-xs;
+  }
+
+  .modal > .floating-card {
+    @apply w-full max-w-2xl max-h-[85vh] overflow-y-auto;
+  }
+
+  .sheet-card {
+    @apply pt-2 px-2 bg-base-300 border-t border-base-400 rounded-t-2xl w-full overflow-y-auto inset-shadow-xs;
+    max-height: var(--sheet-max-height, 85vh);
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0));
+  }
+
+  .progress-range-minimal {
+    @apply w-32 relative;
+    & input[type="range"] {
+      height: 8px;
+      transition: height 0.15s ease;
+    }
+    &:hover input[type="range"] {
+      height: 16px;
+    }
+  }
+
+  .safe-area {
+    padding-top: var(--safe-area-inset-top);
+    padding-right: var(--safe-area-inset-right);
+    padding-bottom: var(--safe-area-inset-bottom);
+    padding-left: var(--safe-area-inset-left);
+  }
+}
+
+/* Light mode */
+
+@plugin "daisyui/theme" {
+  name: "convictional-light";
+  default: true;
+  color-scheme: light;
+  --color-base-100: #fffdf5;
+  --color-base-200: #f7f3ea;
+  --color-base-300: #efebe2;
+  --color-base-content: oklch(19.8678% 0.002146 95.159246);
+
+  --color-primary: #2b7fff;
+  --color-secondary: #2b7fff;
+  --color-accent: #ffffff;
+  --color-neutral: #292524;
+  --color-neutral-content: #f7f3ea;
+  --color-info: #eff6ff;
+  --color-info-content: #2b7fff;
+  --color-success: #f7fee7;
+  --color-success-content: #5ea500;
+  --color-warning: #fefce8;
+  --color-warning-content: #d08700;
+  --color-error: #ffe2e2;
+  --color-error-content: #e7000b;
+
+  --radius-box: 0.375rem;
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+
+  --card-p: 1rem;
+
+  --depth: 0;
+}
+
+[data-theme="convictional-light"] {
+  --color-base-50: hsl(38, 50%, 98%);
+  --color-base-400: hsl(40, 20%, 85%);
+  --color-base-500: hsl(30, 10%, 65%);
+  --color-base-600: hsl(33, 5%, 32%);
+  --color-base-700: hsl(30, 6%, 25%);
+  --color-base-800: hsl(12, 6%, 15%);
+  --color-base-900: hsl(24, 10%, 10%);
+  --color-decision: #e6ede3;
+  --color-decision-content: #4d6847;
+  --color-border-neutral: #e6e0d6;
+
+  .card {
+    border: 1px solid #e6e0d6;
+    background-color: #f7f3ea;
+  }
+  .card-title {
+    color: #1c1917;
+  }
+  .border-neutral {
+    border-color: var(--color-border-neutral);
+  }
+  .dropdown-content {
+    data-theme: "convictional-dark";
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: #e6e0d6 #f7f3ea;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f7f3ea;
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #e6e0d6;
+    border-radius: 6px;
+    border: 3px solid #f7f3ea;
+
+    &:hover {
+      background-color: #d3cdc3;
+    }
+  }
+
+  .btn {
+    @apply inset-shadow-none shadow-xs shadow-base-300;
+  }
+  .btn-disabled {
+    @apply bg-base-200 text-base-600 border border-base-400 inset-shadow-xs inset-shadow-base-50;
+  }
+  .btn-primary {
+    @apply !text-info-content;
+  }
+  .kbd-primary {
+    @apply !text-info-content;
+  }
+  .text-primary-themed {
+    @apply !text-info-content;
+  }
+
+  .floating-card {
+    @apply inset-shadow-white shadow-2xl;
+  }
+
+  .tooltip-card {
+    @apply inset-shadow-white;
+  }
+
+  .sheet-card {
+    @apply shadow-2xl inset-shadow-white;
+  }
+}
+
+/* Dark mode */
+
+@plugin "daisyui/theme" {
+  name: "convictional-dark";
+  color-scheme: "dark";
+  --color-base-100: #1c1917;
+  --color-base-200: hsl(20, 6%, 15%);
+  --color-base-300: hsl(30 6% 20%);
+  --color-base-content: oklch(84.3223% 0.001225 56.043375);
+
+  --color-primary: #2b7fff;
+  --color-secondary: #2b7fff;
+  --color-accent: #1c1917;
+  --color-neutral: #efebe2;
+  --color-neutral-content: #1c1917;
+  --color-info: #162556;
+  --color-info-content: #2b7fff;
+  --color-success: #192e03;
+  --color-success-content: #7ccf00;
+  --color-warning: #432004;
+  --color-warning-content: #f0b100;
+  --color-error: #460809;
+  --color-error-content: #e7000b;
+
+  --radius-box: 0.375rem;
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+
+  --depth: 0;
+}
+
+[data-theme="convictional-dark"] {
+  --color-base-50: hsl(20 14% 8%);
+  --color-base-400: hsl(30 6% 25%);
+  --color-base-500: hsl(30 6% 40%);
+  --color-base-600: hsl(24 6% 83%);
+  --color-base-700: hsl(20 6% 90%);
+  --color-base-800: hsl(60 5% 96%);
+  --color-base-900: hsl(60 9% 98%);
+  --color-decision: #243024;
+  --color-decision-content: #8fa889;
+  --color-border-neutral: #44403c;
+  .card {
+    border: 1px solid #44403c;
+    background-color: #292524;
+  }
+  .card-title {
+    color: #f7f3ea;
+  }
+  .border-neutral {
+    border-color: var(--color-border-neutral);
+  }
+  .dropdown-content {
+    border: 1px solid #44403c;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: #44403c #292524;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #292524;
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #44403c;
+    border-radius: 6px;
+    border: 3px solid #292524;
+
+    &:hover {
+      background-color: #57534e;
+    }
+  }
+
+  .btn {
+    @apply inset-shadow-none shadow-xs shadow-base-50 text-base-700;
+  }
+  .btn-primary {
+    @apply text-base-700;
+  }
+  .kbd-primary {
+    @apply !text-base-700;
+  }
+  .text-primary-themed {
+    @apply !text-base-700;
+  }
+
+  .dropdown-card {
+    @apply shadow-base-100;
+  }
+
+  .floating-card {
+    @apply inset-shadow-base-500 shadow-base-100 shadow-2xl;
+  }
+
+  .tooltip-card {
+    @apply inset-shadow-base-500 shadow-base-100 border-base-200;
+  }
+
+  .sheet-card {
+    @apply shadow-2xl inset-shadow-base-500 shadow-base-100;
+  }
+}
+
+/*
+  Style overrides for the daisyui 4->5 upgrade
+
+  They made several style changes that don't align with our design.
+*/
+
+@layer utilities {
+  /* Hide tab backgrounds */
+  .tab {
+    --tab-bg: #00000000;
+  }
+
+  /* Bringe table header font size back down */
+  .table {
+    & :where(thead, tfoot) {
+      font-size: 0.75rem;
+    }
+  }
+
+  /* Hide ultra-bright input focus state */
+  .input {
+    @apply rounded-full;
+    &:focus,
+    &:focus-within {
+      --input-color: var(--color-base-300);
+    }
+  }
+  /* Textareas are multi-line, so a pill reads wrong — round generously instead. */
+  .textarea {
+    @apply rounded-2xl;
+    &:focus,
+    &:focus-within {
+      --input-color: var(--color-base-300);
+    }
+  }
+  .select {
+    @apply rounded-full;
+    &:focus,
+    &:focus-within {
+      --input-color: var(--color-base-300);
+    }
+  }
+
+  /* Disable WebKit long-press callout menu on touch devices */
+  .touch-callout-none {
+    -webkit-touch-callout: none;
+  }
+}
+
+/* Prevent mobile browser zoom on focus by ensuring 16px minimum font size.
+   Uses `(pointer: coarse)` instead of the `data-is-mobile` flag because the
+   latter relies on server-side UA detection, which misses iPadOS-as-Mac and
+   any layout that doesn't set the attribute (e.g. public.html.jinja). */
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select,
+  [contenteditable=""],
+  [contenteditable="true"] {
+    font-size: 16px;
+  }
+}

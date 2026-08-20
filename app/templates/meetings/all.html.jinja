@@ -1,0 +1,8 @@
+{% extends application_layout %}
+{% block title %}
+    Meetings
+{% endblock title %}
+{% block content %}
+    <div id="react-meetings-index"
+         data-props="{{ meetings_list_props | tojson }}"></div>
+{% endblock content %}

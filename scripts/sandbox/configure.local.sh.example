@@ -1,0 +1,117 @@
+#!/bin/bash
+# Per-developer sandbox configuration (OPTIONAL, gitignored).
+#
+# Copy this file to `configure.local.sh` in this directory to have it run at the
+# end of `make sandbox_configure`. Use it for machine- or user-specific setup
+# that shouldn't be committed. It runs on the HOST; shell into the VM with
+# "$SANDBOX_SSH".
+#
+# Environment provided by configure.sh:
+#   SANDBOX_NAME        Lima instance name (convictional-sandbox)
+#   SANDBOX_SSH         "limactl shell <name> --" command prefix
+#   SANDBOX_SSH_CONFIG  path to the VM ssh config
+#
+# Failures here are non-fatal: make sandbox_configure warns and continues.
+# The step()/done_msg()/err() helpers from configure.sh are NOT in scope here,
+# so this file uses plain echo and exits non-zero to signal failure.
+set -euo pipefail
+
+# --- Example: Headless Chrome with Chrome DevTools MCP configuration -------
+# Install chrome via playwright and register a chrome-devtools-mcp server in the VM. Each session
+# gets its own isolated Chrome, so multiple sessions can run concurrently without fighting over a shared profile lock.
+#
+# The flags on chrome-devtools-mcp are:
+#   --isolated=true: each session gets its own temp profile dir, so multiple sessions
+#     can run concurrently without fighting over a shared profile lock.
+#   --headless=true: run Chrome headless (no GUI)
+#   --executable-path: path to the Chrome binary to launch (Playwright's Chromium
+#     is installed in the VM at ~/.cache/ms-playwright/chromium-*/chrome-linux/chrome)
+#
+# Uncomment below:
+#
+# echo "==> Installing Chromium for browser testing"
+# find_chrome() { $SANDBOX_SSH bash -lc 'find ~/.cache/ms-playwright -path "*/chromium-*/chrome-linux/chrome" -type f 2>/dev/null | head -1'; }
+# CHROME_PATH=$(find_chrome)
+# if [ -z "$CHROME_PATH" ]; then
+#   $SANDBOX_SSH bash -lc 'npx -y playwright install chromium'
+#   CHROME_PATH=$(find_chrome)
+#   [ -n "$CHROME_PATH" ] || { echo "✗ Chromium not found after Playwright install" >&2; exit 1; }
+# fi
+# $SANDBOX_SSH bash -lc "'$CHROME_PATH' --headless=new --no-sandbox --dump-dom about:blank >/dev/null 2>&1" \
+#   || { echo "✗ Chromium at $CHROME_PATH failed to execute (arch mismatch?)" >&2; exit 1; }
+#
+# echo "==> Registering chrome-devtools MCP (user scope, isolated per session)"
+# $SANDBOX_SSH bash -lc "
+#   claude mcp remove chrome-devtools --scope user >/dev/null 2>&1 || true
+#   claude mcp add chrome-devtools --scope user -- npx chrome-devtools-mcp@latest \
+#     --isolated=true --headless=true --executable-path='$CHROME_PATH' --chrome-arg=--no-sandbox
+# "
+# echo "✓ chrome-devtools MCP registered; each session gets its own isolated Chrome"
+#
+# # If the chrome-devtools MCP *plugin* is enabled on your host, it's synced into
+# # the VM too. Its bundled server is also named "chrome-devtools", so it shadows
+# # the one registered above — and it can't launch a browser on arm64 anyway
+# # (defaults to a system Chrome that doesn't exist). Disabling it in the VM is
+# # therefore required for the server above to take effect. This runs after the
+# # ~/.claude sync, so your host is untouched:
+# # $SANDBOX_SSH bash -lc 'claude plugin disable chrome-devtools-mcp 2>/dev/null || true'
+# #
+# # The plugin's real value is its skills, not its server. Keep them without the
+# # plugin by re-hosting them as personal skills — they don't collide and still
+# # sync into the VM (skills under ~/.claude/skills/ auto-load next session):
+# # $SANDBOX_SSH bash -lc '
+# #   src=$(find ~/.claude/plugins -type d -path "*chrome-devtools-mcp*/skills" 2>/dev/null | head -1)
+# #   [ -n "$src" ] && mkdir -p ~/.claude/skills && cp -R "$src"/* ~/.claude/skills/
+# # '
+
+# --- Example: Pi coding agent harness with the permissions plugin ----------
+# Install the Pi BYOK coding-agent CLI in the VM, then add the pi-permission-system
+# extension so its tool/bash/MCP calls are gated by a policy file instead of
+# running with full, unconfirmed system access (Pi ships no built-in gating).
+#
+# Pi reads ANTHROPIC_API_KEY from the environment. The sandbox only exports that
+# when .env.sandbox used ANTHROPIC_API_KEY; with a CLAUDE_CODE_OAUTH_TOKEN
+# (subscription) there is no key in the VM, so Pi has no credentials — add one to
+# ~/.env in the VM yourself if you go the subscription route.
+#
+# --ignore-scripts is the vendor-recommended install flag. sudo is required
+# because the VM's npm global prefix (/usr/lib/node_modules) is root-owned; the
+# sandbox user has passwordless sudo. `pi install` then writes to ~/.pi as the
+# user, so it needs no sudo. The permission system only enforces once a policy
+# exists at ~/.pi/agent/pi-permissions.jsonc; the extension creates a default on
+# first run, which you then edit. (No-sudo alternative: the per-user vendor
+# installer, curl -fsSL https://pi.dev/install.sh | sh.)
+#
+# Uncomment below:
+#
+# if $SANDBOX_SSH bash -lc 'command -v pi >/dev/null 2>&1'; then
+#   echo "  Pi already installed — skipping"
+# else
+#   echo "==> Installing Pi coding agent"
+#   $SANDBOX_SSH bash -lc 'sudo npm install -g --ignore-scripts @earendil-works/pi-coding-agent'
+#   echo "==> Adding the pi-permission-system extension (global)"
+#   $SANDBOX_SSH bash -lc 'pi install npm:pi-permission-system'
+#   echo "✓ Pi installed; run 'pi' in a worktree to start"
+# fi
+
+# --- Example: OpenCode coding agent harness --------------------------------
+# Install the OpenCode terminal coding agent in the VM.
+#
+# Like Pi, OpenCode is bring-your-own-key: it picks up ANTHROPIC_API_KEY from the
+# environment (same subscription caveat as the Pi example above), or you wire a
+# provider interactively by launching `opencode` and running /connect.
+#
+# The npm package is used here to stay consistent with the node-based installs
+# above, with sudo for the same reason as the Pi example (root-owned global
+# prefix). No-sudo alternative: the per-user vendor installer, which drops the
+# binary in ~/.opencode/bin — curl -fsSL https://opencode.ai/install | bash.
+#
+# Uncomment below:
+#
+# if $SANDBOX_SSH bash -lc 'command -v opencode >/dev/null 2>&1'; then
+#   echo "  OpenCode already installed — skipping"
+# else
+#   echo "==> Installing OpenCode"
+#   $SANDBOX_SSH bash -lc 'sudo npm install -g opencode-ai@latest'
+#   echo "✓ OpenCode installed; run 'opencode' in a worktree to start"
+# fi

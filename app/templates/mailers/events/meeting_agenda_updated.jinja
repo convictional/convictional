@@ -1,0 +1,42 @@
+{% extends "base.jinja" %}
+
+{% block subject %}Meeting Agenda updated for {{ event.workspace.resource.title }}{% endblock subject %}
+
+{% block body_text %}
+
+{% if editors and editors|length > 1 %}
+{% for editor in editors %}{{ editor.display_name }}{% if not loop.last %}, {% endif %}{% endfor %} updated the meeting agenda for {{ event.workspace.resource.title }}.
+{% elif editors and editors|length == 1 %}
+{{ editors[0].display_name }} updated the meeting agenda for {{ event.workspace.resource.title }}.
+{% else %}
+The meeting agenda for {{ event.workspace.resource.title }} has been updated.
+{% endif %}
+
+{% if event.details and event.details.document_content %}
+Current meeting agenda:
+
+{{ event.details.document_content|markdown }}
+{% endif %}
+
+---
+View meeting: {{ url_for("meetings_show", meeting_id=event.workspace.resource.id) }}
+{% endblock body_text %}
+
+{% block body_markdown %}
+{% if editors and editors|length > 1 %}
+{% for editor in editors %}**{{ editor.display_name }}**{% if not loop.last %}, {% endif %}{% endfor %} updated the meeting agenda for **{{ event.workspace.resource.title }}**.
+{% elif editors and editors|length == 1 %}
+**{{ editors[0].display_name }}** updated the meeting agenda for **{{ event.workspace.resource.title }}**.
+{% else %}
+The meeting agenda for **{{ event.workspace.resource.title }}** has been updated.
+{% endif %}
+
+{% if event.details and event.details.document_content %}
+**Current meeting agenda:**
+
+{{ event.details.document_content|markdown }}
+{% endif %}
+
+---
+[View meeting]({{ url_for("meetings_show", meeting_id=event.workspace.resource.id) }})
+{% endblock body_markdown %}

@@ -1,0 +1,10 @@
+{% block subject %}{% endblock %}
+
+{# This will be rendered as the plain text version of the email. #}
+{% block body_text %}{% endblock %}
+
+{# This will be rendered as the HTML version of the email and override body_markdown when present. #}
+{% block body_html %}{% endblock %}
+
+{# This will be rendered through mistune as the HTML and text version of the email if those blocks are not defined. #}
+{% block body_markdown %}{% endblock %}

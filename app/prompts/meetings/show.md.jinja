@@ -1,0 +1,5 @@
+Title: {{ meeting.title or "No title" }}
+Date: {{ meeting.date or "No date" }}
+Attendees: {{ meeting.attendees | map(attribute="display_name") | join(", ") or "No attendees" }}
+Agenda: {{ agenda or "No agenda" }}
+Summary: {{ meeting.summary or "No summary" }}

@@ -1,0 +1,112 @@
+key: maren-rhea-dm
+members: [maren, rhea]
+messages:
+  - key: maren-rhea-dm-msg-001
+    author: maren
+    at: !relative_day {offset: -15, hour: 9, minute: 5}
+    content: |
+      Rhea — I need your coverage analysis by end of this week. Specifically: what percentage of our top-30 customer contract types have playbooks at 80% or better accuracy on the eval harness? That's the number I want to put in the memo.
+
+  - key: maren-rhea-dm-msg-002
+    author: rhea
+    at: !relative_day {offset: -15, hour: 9, minute: 30}
+    reply_to: maren-rhea-dm-msg-001
+    content: |
+      I can get you that by Thursday. Quick preview from what I have now: MSAs are at 83%, NDAs at 91%, SOW/Services agreements at 67%. DPAs are the problem — we're at 54% and that's the one Alderman is feeling.
+    reactions:
+      eyes: [maren]
+
+  - key: maren-rhea-dm-msg-003
+    author: maren
+    at: !relative_day {offset: -15, hour: 9, minute: 42}
+    reply_to: maren-rhea-dm-msg-002
+    content: |
+      54% on DPAs is worse than I thought. Alderman's complaint makes a lot more sense now. What's the path to 80%?
+
+  - key: maren-rhea-dm-msg-004
+    author: rhea
+    at: !relative_day {offset: -15, hour: 10, minute: 5}
+    reply_to: maren-rhea-dm-msg-003
+    content: |
+      I need four more weeks on the DPA playbooks — GDPR Article 28 clauses, data subject rights, processor liability. It's precise legal language and I'm not going to cut corners. I could ship something at 70% in two weeks but I don't think that's what you want.
+
+  - key: maren-rhea-dm-msg-005
+    author: maren
+    at: !relative_day {offset: -15, hour: 10, minute: 15}
+    reply_to: maren-rhea-dm-msg-004
+    content: |
+      You're right. Don't cut corners. Four weeks is fine — I'll use the current number in the memo as a gap, not as a final state. It actually makes the argument stronger.
+    reactions:
+      thumbs_up: [rhea]
+
+  - key: maren-rhea-dm-msg-006
+    author: rhea
+    at: !relative_day {offset: -12, hour: 14, minute: 30}
+    content: |
+      Maren — a question about Alderman. Drew mentioned in his last message that their legal ops team is specifically trying to negotiate data processing agreements with three new EU vendors. Is that the driver for the DPA complaint, or is it their general template work?
+
+  - key: maren-rhea-dm-msg-007
+    author: maren
+    at: !relative_day {offset: -12, hour: 14, minute: 50}
+    reply_to: maren-rhea-dm-msg-006
+    content: |
+      EU vendor DPAs — that's exactly what Drew mentioned. Which actually makes the timing worse: they need this now, and we're at 54%. I'm going to prioritize the EU data processor clauses in what you build next. Does that change your four-week estimate?
+
+  - key: maren-rhea-dm-msg-008
+    author: rhea
+    at: !relative_day {offset: -12, hour: 15, minute: 5}
+    reply_to: maren-rhea-dm-msg-007
+    content: |
+      If we scope it to EU processor agreements only — Articles 28, 32, and the standard contractual clauses — I can get to 80% on that subset in two weeks. That won't cover everything but it'll cover Drew's immediate use case.
+
+  - key: maren-rhea-dm-msg-009
+    author: maren
+    at: !relative_day {offset: -12, hour: 15, minute: 15}
+    reply_to: maren-rhea-dm-msg-008
+    content: |
+      Do the EU processor subset first. That's the right call. Log the broader coverage gap as a tracked item so we don't lose it.
+    reactions:
+      thumbs_up: [rhea]
+
+  - key: maren-rhea-dm-msg-010
+    author: rhea
+    at: !relative_day {offset: -9, hour: 10, minute: 45}
+    content: |
+      FYI — Jordan's new eval runs on the DPA subset are encouraging. With the Article 28 clauses I just finished, we're at 71% on EU processor DPAs. We'll hit 80% once I add the liability and indemnification sections.
+    reactions:
+      heart: [maren]
+
+  - key: maren-rhea-dm-msg-011
+    author: maren
+    at: !relative_day {offset: -9, hour: 11, minute: 0}
+    reply_to: maren-rhea-dm-msg-010
+    content: |
+      That is excellent progress. Drop a note to Jordan thanking them — the eval harness wouldn't be telling us useful things without the playbook quality work you've both done.
+
+  - key: maren-rhea-dm-msg-012
+    author: rhea
+    at: !relative_day {offset: -6, hour: 16, minute: 20}
+    content: |
+      Coverage gap analysis is done and in the doc. Summary: DPA coverage for EU processor agreements will be at 80% by end of next week. MSA and NDA are in good shape. The biggest remaining gap is SaaS subscription agreements with IP ownership riders — 61%. That one will take another month.
+
+  - key: maren-rhea-dm-msg-013
+    author: maren
+    at: !relative_day {offset: -6, hour: 16, minute: 38}
+    reply_to: maren-rhea-dm-msg-012
+    content: |
+      This is exactly what I needed for the decision post. Thank you. The SaaS-with-IP-rider gap is one I'll call out explicitly — it's not where Keating or Alderman live, but it will matter for the next five customers.
+
+  - key: maren-rhea-dm-msg-014
+    author: rhea
+    at: !relative_day {offset: -3, hour: 9, minute: 10}
+    content: |
+      Emma pulled me into the research synthesis review yesterday. She wanted a lawyer's read on whether the customers were describing a coverage problem or a feature problem. My take: they're the same problem expressed differently. They say "does it know our playbook?" which is a coverage question. They say "can I trust the suggestion?" which is an eval question. Both are ours to solve before the co-pilot is credible.
+
+  - key: maren-rhea-dm-msg-015
+    author: maren
+    at: !relative_day {offset: -3, hour: 9, minute: 28}
+    reply_to: maren-rhea-dm-msg-014
+    content: |
+      That's the clearest sentence I've read all week. Can you write that exact framing in a comment on the decision post? That's the bridge between Leo's roadmap argument and mine.
+    reactions:
+      heart: [rhea]

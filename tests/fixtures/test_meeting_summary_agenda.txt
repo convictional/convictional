@@ -1,0 +1,35 @@
+Agenda:
+
+Goals Review
+
+Progress update on March goal: 4 qualified demos per week - on track
+
+Last week: Redwood Freight, Alto Grocers, Harbourline
+Progress update on 2026 goals: 5 warehouses running the full workflow - at risk
+
+Update on support response time - at risk
+
+Ongoing discussion
+Open Decisions + Discussion Topics
+
+Redwood Freight's pilot: stock counts, label printing, offline mode, low stock alerts
+
+Potential research bets: forecast accuracy at scale, automatic reorder points
+Discuss the alerts approach to low stock warnings: https://example.com/tasks/3908692c-beac-43f8-acae-b9d54758c52c
+Previous week's Roadmap: mobile scanner, offline mode, database cleanup, search ranking
+
+Hiring: second support engineer, contractor for the mobile build
+
+______________
+
+Product Updates from last week:
+
+Label printing complete
+
+Barcode import complete
+
+Search ranking complete
+
+Mobile scanner v1 complete (Alto Grocers)
+
+Forecast research ongoing (Alto Grocers)

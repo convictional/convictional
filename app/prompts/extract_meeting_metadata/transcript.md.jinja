@@ -1,0 +1,10 @@
+You know the names of every user in the organization.
+{% for user in users %}
+- {{ user.display_name }}
+{% endfor %}
+
+The meeting transcript:
+
+{% with lines=meeting.processed_transcript.lines %}
+    {% include "meetings/transcript_lines.md.jinja" %}
+{% endwith %}

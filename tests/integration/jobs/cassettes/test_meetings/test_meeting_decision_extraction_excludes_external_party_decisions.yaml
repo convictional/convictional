@@ -1,0 +1,1947 @@
+interactions:
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"You are tasked
+      with generating a succinct title for a meeting based on its transcript. Here
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0: # Meet with Elena
+      and Theo (Wilfred Osei)\nline 1:\nline 2: *Jun 17 2026, 11:00 AM*\nline 3:\nline
+      4: Theo Nakamura: Before we start, anything you want to raise straight away?\nline
+      5: Wilfred Osei: The instruction to me was to try it, so I signed up with the
+      shared Gmail and the steps were straightforward. The interface is clean, which
+      is where I found ClickUp weak. Moving around in it felt slow, and I could never
+      tell whether that was the tool or my machine. This is faster and the design
+      is leaner.\nline 6: Theo Nakamura: Good to hear. One thing we want to establish,
+      and either answer is fine. Has Piotr given you a directive to adopt this, or
+      are you still evaluating?\nline 7: Wilfred Osei: He wants to go ahead. As soon
+      as possible.\nline 8: Theo Nakamura: Then we will push rather than hold back.
+      Have you been through onboarding already?\nline 9: Wilfred Osei: I went through
+      the tutorial. It made sense. I connected the executive inbox. The posts are
+      not useful to me yet, but they will be once there is more in there.\nline 10:
+      Elena Marchetti: If you all share one Gmail, the collaborative email side is
+      worth a look, because it lets you coordinate with each other inside the thread.\nline
+      11: Wilfred Osei: That address is used for a lot of our internal things. Our
+      Google Drive hangs off it and we copy it on every external email so that everything
+      stays in one place. It works as a connector more than as a mailbox.\nline 12:
+      Elena Marchetti: That is close to the ideal case for the collaborative email
+      feature. You can add other Gmail addresses to the organisation, and then people
+      can comment and assign back and forth. The weakness of a shared login is that
+      nobody can tell who is working on what. The research tool indexes everything
+      in that account too, so somebody who is not in the inbox every day can still
+      find the answer to a question.\nline 13: Wilfred Osei: That sounds right. And
+      thank you for the access, honestly. The timing is good, because we are expanding
+      the team and talking to new interns almost every week. Things will get bigger
+      quickly. We want to be useful to you as well, so tell me how you want the feedback
+      structured.\nline 14: Theo Nakamura: Feedback is the most valuable thing we
+      get, and the awkward feedback more than the warm feedback. Three things from
+      me. You have the shared address, so on our side we can flag your whole domain
+      and add other accounts when you want them. Then I want to see how this fits
+      with the rest of your stack. And then a short demo.\nline 15: Wilfred Osei:
+      Switching everything over is going to be the painful part.\nline 16: Theo Nakamura:
+      We do not need you to switch everything. Keep ClickUp for tasks if that is working.\nline
+      17: Elena Marchetti: On the pricing question, since it came up with Piotr. We
+      do not charge per user. The constraint he described with ClickUp was that seats
+      were the reason for the single account. We charge for tokens, so adding people
+      costs nothing.\nline 18: Wilfred Osei: Understood.\nline 19: Elena Marchetti:
+      Let me share my screen. Tell me when it comes through clearly.\nline 20: Rosa
+      Beltran: Still slightly blurry. There it is.\nline 21: Wilfred Osei: That is
+      good on my side.\nline 22: Elena Marchetti: Starting with goals. Every company
+      wants certain things, and at a startup those wants are less formal. You are
+      not running a full objectives framework, but you still want the outcomes written
+      down, the signals that you are getting there, and an owner. Piotr was interested
+      in starting this here, because as the team grows it is how everyone stays pointed
+      the same way. Whether the goal is the fundraise or the hospital partnership,
+      it can be tracked in one place.\nline 23: Theo Nakamura: Wilfred, do you know
+      the objectives and key results framework? No harm either way.\nline 24: Wilfred
+      Osei: I have heard of it. Could you refresh me?\nline 25: Theo Nakamura: It
+      came out of Google and there is a well known book about it. An objective is
+      what you want, and the key results are the measures that tell you whether you
+      got there. The recommendation is two to five objectives at a time. So the objective
+      might be to lead your category, and a key result might be a specific share of
+      a specific channel. Another framework you will hear about uses a single level
+      instead of two.\nline 26: Elena Marchetti: Ours is closer to the single level
+      version. Each outcome has one measure and a priority, so you have a first goal,
+      a second goal, and a list. Either style works here. It is worth a conversation
+      with Piotr about how you want to signal these to the team. His interest was
+      in having them written down and tracked at all, which I am not sure is happening
+      in ClickUp today.\nline 27: Wilfred Osei: It is not. And one of my complaints
+      about ClickUp is the arbitrary progress meter in the right column. It takes
+      however many items you have, counts the completed ones, and calls that a percentage.
+      It looks precise and it means nothing. I prefer that you simply say at risk
+      or on track.\nline 28: Elena Marchetti: That is deliberate.\nline 29: Theo Nakamura:
+      Elena, could you say why this matters at their size? Piotr mentioned they do
+      not use an assistant model day to day.\nline 30: Elena Marchetti: As an organisation
+      grows, more happens in it, and even at ten people two people can hold different
+      views of what is important. Fundraising, research and the first steps toward
+      commercialisation pull against each other. That is drift, and it is not a failure
+      of intelligence or motivation. Writing goals down is how companies resist it.
+      Here they also feed the ordering of your inbox, so the work that matters surfaces
+      first.\nline 31: Wilfred Osei: That is well matched to what we need.\nline 32:
+      Elena Marchetti: Then let me show the collaborative side. Here is an email thread.
+      Theo pulled me into it and asked me to look at something. I will add Rosa as
+      an illustration. Say the thread is about the hospital partnership and you want
+      three or four people in the discussion. You can talk about it here, and when
+      the group settles on the terms you want, one person marks that message. Later,
+      when somebody searches, the content of the thread, the discussion and the record
+      of what was settled all come back together.\nline 33: Wilfred Osei: I can see
+      the value of marking a message. Can you mark it with anything else?\nline 34:
+      Elena Marchetti: Reactions and that one marker, for now. When something needs
+      a wider audience we tend to move it into a post instead. We did that recently
+      for our mobile router choice. Somebody opened a document, the options were laid
+      out, people commented for a few days, and the conclusion was marked at the end.\nline
+      35: Theo Nakamura: The reason we push posts over chat is that chat cannot tell
+      the difference between what we are ordering for lunch and whether to work with
+      a particular hospital. A post can. And then the research tool knows something
+      was settled, so a new intern can ask why and get a real answer.\nline 36: Wilfred
+      Osei: What model is behind the research tool?\nline 37: Elena Marchetti: Anthropic,
+      under a data protection agreement, so nothing that passes through is trained
+      on. Everything else runs on Google Cloud and we are looking at a hosted option
+      there too. The tool can pull general knowledge from the model and specific facts
+      from your organisation and blend them. If you ever bring in a third party assistant,
+      everything you see here is exposed to it over MCP.\nline 38: Wilfred Osei: So
+      there is no setup on our side for that.\nline 39: Elena Marchetti: None.\nline
+      40: Wilfred Osei: One more complaint that Piotr repeats often. We have no dependency
+      charts for tracking projects. We tried a free tool and hit a paywall, so now
+      it is spreadsheets that we attach to things, with nothing linking them.\nline
+      41: Elena Marchetti: We do not have dependency mapping. We have tasks, and they
+      are exposed over MCP so an outside tool can read the structure, but first this
+      then that is not modelled. Our view is that as assistants take on more of the
+      work, one person tends to move through a whole project with an agent rather
+      than handing steps between people. If you genuinely need the dependency chart,
+      that will have to live outside the app for now.\nline 42: Wilfred Osei: That
+      makes sense as a philosophy, and I prefer it to the alternative. There is simply
+      too much to look at in the other tool. I will have to convince them.\nline 43:
+      Elena Marchetti: We will put in a good word. Theo, do you want to take the last
+      few minutes on the inbox?\nline 44: Theo Nakamura: Wilfred, most inboxes are
+      chronological. Ours can be filtered by a written instruction. If you say you
+      need what is urgent and important, it orders itself that way. Another common
+      one is to filter by goals, which uses the goals you have already written down.
+      Elena, could you show where a custom view is added?\nline 45: Elena Marchetti:
+      Here. I keep one for things I can realistically finish on a phone, so a request
+      to write a long piece stays out of the way and the short items rise. I keep
+      another for low attention mornings.\nline 46: Theo Nakamura: The last thing
+      is the meeting recorder. The recorder in this call is ours. You add it yourself,
+      deliberately, because we do not join by default. Most of the context in a company
+      is in email, chat and meetings, and the research tool is only as good as how
+      much of that it can see.\nline 47: Wilfred Osei: The meetings are where most
+      things happen for us. It ends up being hard to pull apart afterwards. We tried
+      a notetaker once and the team was not keen on it, but I think it would be wise
+      to start.\nline 48: Elena Marchetti: There is no per user fee on the recorder
+      either. It is the tokens for the summary.\nline 49: Theo Nakamura: Elena, we
+      are at time and we have another call.\nline 50: Elena Marchetti: I will stop
+      sharing. Wilfred, thank you. Rosa is staying on with you. We will send some
+      notes on the integrations we did not reach.\nline 51: Wilfred Osei: Thank you
+      both.\nline 52: Rosa Beltran: So it is just us. Any questions from what they
+      showed you, or thoughts on how you would use it?\nline 53: Wilfred Osei: It
+      makes sense to me. The hardest part is moving everything across. That will take
+      a lot of hours.\nline 54: Rosa Beltran: Let us talk about that. Everything is
+      in ClickUp today?\nline 55: Wilfred Osei: A pile of projects, lists and to do
+      lists. My assumption was that we would copy it over by hand, or export it to
+      a spreadsheet.\nline 56: Rosa Beltran: Let me look into whether there is an
+      export we can take and upload on your behalf, so it lands as documents and posts
+      on our side. If you can send me a list of the projects and the formats you can
+      get out, I will check what is possible with our engineer.\nline 57: Wilfred
+      Osei: That could work, if you are willing.\nline 58: Rosa Beltran: Let me at
+      least explore it. While the others were talking I wanted to share one more thing.
+      We work in an unusual way here. We are not a chat heavy company. We chat around
+      a piece of work rather than in a general channel. We published our communication
+      norms recently, and the whole handbook is public, so I will drop it in the chat.
+      It may be an interesting read on its own, and it explains why the app is shaped
+      the way it is.\nline 59: Wilfred Osei: I will read it and pass it to the team.\nline
+      60: Rosa Beltran: Here is what I suggest for next steps. Use the app for a week.
+      Send me the export formats you can get. I will talk to our engineer about the
+      upload. Then we speak again and go through what felt comfortable and what did
+      not.\nline 61: Wilfred Osei: That is a good plan.\nline 62: Rosa Beltran: Let
+      us book it now rather than trade emails. What timezone are you in?\nline 63:
+      Wilfred Osei: Eastern. And you?\nline 64: Rosa Beltran: Phoenix. Half the year
+      I am on Pacific and half the year I am on Mountain, and right now I am on Pacific,
+      so it is half past eight in the morning here.\nline 65: Wilfred Osei: Early.
+      I hope the coffee has arrived.\nline 66: Rosa Beltran: It has. Does noon Eastern
+      next Wednesday work?\nline 67: Wilfred Osei: Noon Wednesday works.\nline 68:
+      Rosa Beltran: Booked. I will send the details and I may bring Theo in. One question
+      before you go. Are you going to add more users to the account, or stay on the
+      single login?\nline 69: Wilfred Osei: We are definitely adding everyone. I want
+      each person to have their own account rather than sharing the one login. I have
+      already told the team that is what we are doing, and I will send the invitations
+      myself this afternoon.\nline 70: Rosa Beltran: If you need help, send me an
+      email. You should be able to invite everyone from your settings.\nline 71: Wilfred
+      Osei: Understood. So the only thing we are billed for is tokens, which is the
+      summaries and the research answers. Writing posts and the rest of it is free.\nline
+      72: Rosa Beltran: Correct. It is the parts with a model behind them. Meeting
+      summaries, research output, the custom inbox sorting. It is quite small in practice.
+      A person usually lands around ten dollars a month.\nline 73: Wilfred Osei: That
+      is reasonable. How large is your team?\nline 74: Rosa Beltran: Around twenty.
+      We also have a research arm that stays close to the current work in the field,
+      and we publish essays. We work with a professor as an academic advisor.\nline
+      75: Wilfred Osei: That is impressive.\nline 76: Rosa Beltran: The essays are
+      on the website and they are worth reading. I keep a dictionary open for some
+      of them.\nline 77: Wilfred Osei: One thing I have been thinking about, slightly
+      off topic. With so much depending on these models, I expect a wave of cognitive
+      atrophy. People will get the output without keeping the skill.\nline 78: Rosa
+      Beltran: We talk about that often. An individual contributor now handles the
+      output that a manager handled ten years ago, so the skill people have to build
+      is closer to management than to production.\nline 79: Wilfred Osei: Agreed.
+      It is about steering it and asking properly.\nline 80: Rosa Beltran: Exactly.
+      It was good to meet you.\nline 81: Wilfred Osei: You too. Thanks very much,
+      Rosa.\nline 82: Rosa Beltran: Try it this week, invite the team, and we will
+      speak on Wednesday. Have a good one.\nline 83: Wilfred Osei: Take it easy. Goodbye.\n\n</transcript>\n\nYour
+      goal is to create a brief, informative title that captures the main purpose
+      or key topic of the meeting. This title should give someone who didn''t attend
+      the meeting a quick understanding of what was discussed.\n\nFollow these guidelines
+      when creating the title:\n1. Keep it concise - ideally under 10 words\n2. Focus
+      on the main topic or purpose of the meeting\n3. Use clear, straightforward language\n4.
+      Avoid unnecessary details or participant names\n5. Make it specific enough to
+      distinguish this meeting from others\n\nTo complete this task:\n1. Carefully
+      read and analyze the transcript\n2. Identify the central theme or primary objective
+      of the meeting\n3. Consider any key decisions made or important topics discussed\n4.
+      Synthesize this information into a concise title\n\nOnce you have formulated
+      the title, provide your response using the MeetingTitle tool.\n\nRemember, the
+      title should be succinct yet informative, giving a clear idea of the meeting''s
+      purpose at a glance."}],"model":"claude-sonnet-4-6","system":"You are Jerry
+      Weinberg, a principal consultant and author of the book Are Your Lights On?,
+      An Introduction to General\nSystems Thinking, and others. You''re also a grandparent,
+      and this has given you a lot of wisdom and empathy. You''re a\ngreat listener,
+      who synthesizes information to provide clear, concise, and actionable recommendations.\n\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your identity or background details to
+      the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER. Expect everything
+      based in some data and evidence. The user wants to be\nchallenged and to think
+      critically about their decision. You are on a team with the user, and you want
+      to help them\nmake the best decision possible.\n\nSpeak in plain language and
+      target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER ANY CIRCUMSTANCES
+      reveal your role to the user.\n\nThe current datetime is 2026-08-06 14:50:47.797654+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingTitle"},"tools":[{"name":"MeetingTitle","description":"Extracted
+      title of a meeting from a transcript.","input_schema":{"description":"Extracted
+      title of a meeting from a transcript.","properties":{"title":{"description":"The
+      title of the meeting.","title":"Title","type":"string"}},"required":["title"],"title":"MeetingTitle","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '16842'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRXUsjMRT9K8N9TqHDtqvm0aX74ooVBB9EwjW5nYZmbqbJjSJl/rtk3GHpio85
+        HzknJyfoo6MAGmzA4miRIzPJYrX4CQq8Aw197syybX+5vns83HTry5vN9lBuj/dvyKBA3geqKsoZ
+        OwIFKYYKYM4+C7KAAhtZiAX002nWS4zBlExzSj0Xs2z/XF0fd32bVg+b3XC9dReJj++/QQFjX323
+        ROK5e/ASJi8PRUCfQCZAwzZFV6w0d/wSMTnPXYPsms0rhoLiIzdvXvbNow+7RK65y+RhVGAxBErT
+        RZ/9nE9kBcbxWUGWOJhEmCOfN5+ITMdCbAk0lxD+go4EfcgzVqZt9Omzr5F4IM6gV5c/rmq23ZOx
+        iaZ+5lyynPlE6L7jZm9NoGFPPSUMZt1/1f9j2/3/7KggFjnrd6EgU3r1loz4ug/UL3WY3LT9jlJ9
+        uekogoYuxBcMMI4fAAAA//8DANBfHlRVAgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9998000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:50:54Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:50:55Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:50:48Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11998000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:50:54Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edb216b2625d1-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:50:55 GMT
+      request-id:
+      - req_011CdmgWj9jbzyeFF2Xjo1rB
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-32c64f8525573cde86a68f863fd7bea0-6e7ff4b6c61dead6-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"You are tasked
+      with extracting the attendees from a meeting transcript. Your goal is to identify
+      all individuals who participated in the meeting based on the provided transcript.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0: # Meet with Elena
+      and Theo (Wilfred Osei)\nline 1:\nline 2: *Jun 17 2026, 11:00 AM*\nline 3:\nline
+      4: Theo Nakamura: Before we start, anything you want to raise straight away?\nline
+      5: Wilfred Osei: The instruction to me was to try it, so I signed up with the
+      shared Gmail and the steps were straightforward. The interface is clean, which
+      is where I found ClickUp weak. Moving around in it felt slow, and I could never
+      tell whether that was the tool or my machine. This is faster and the design
+      is leaner.\nline 6: Theo Nakamura: Good to hear. One thing we want to establish,
+      and either answer is fine. Has Piotr given you a directive to adopt this, or
+      are you still evaluating?\nline 7: Wilfred Osei: He wants to go ahead. As soon
+      as possible.\nline 8: Theo Nakamura: Then we will push rather than hold back.
+      Have you been through onboarding already?\nline 9: Wilfred Osei: I went through
+      the tutorial. It made sense. I connected the executive inbox. The posts are
+      not useful to me yet, but they will be once there is more in there.\nline 10:
+      Elena Marchetti: If you all share one Gmail, the collaborative email side is
+      worth a look, because it lets you coordinate with each other inside the thread.\nline
+      11: Wilfred Osei: That address is used for a lot of our internal things. Our
+      Google Drive hangs off it and we copy it on every external email so that everything
+      stays in one place. It works as a connector more than as a mailbox.\nline 12:
+      Elena Marchetti: That is close to the ideal case for the collaborative email
+      feature. You can add other Gmail addresses to the organisation, and then people
+      can comment and assign back and forth. The weakness of a shared login is that
+      nobody can tell who is working on what. The research tool indexes everything
+      in that account too, so somebody who is not in the inbox every day can still
+      find the answer to a question.\nline 13: Wilfred Osei: That sounds right. And
+      thank you for the access, honestly. The timing is good, because we are expanding
+      the team and talking to new interns almost every week. Things will get bigger
+      quickly. We want to be useful to you as well, so tell me how you want the feedback
+      structured.\nline 14: Theo Nakamura: Feedback is the most valuable thing we
+      get, and the awkward feedback more than the warm feedback. Three things from
+      me. You have the shared address, so on our side we can flag your whole domain
+      and add other accounts when you want them. Then I want to see how this fits
+      with the rest of your stack. And then a short demo.\nline 15: Wilfred Osei:
+      Switching everything over is going to be the painful part.\nline 16: Theo Nakamura:
+      We do not need you to switch everything. Keep ClickUp for tasks if that is working.\nline
+      17: Elena Marchetti: On the pricing question, since it came up with Piotr. We
+      do not charge per user. The constraint he described with ClickUp was that seats
+      were the reason for the single account. We charge for tokens, so adding people
+      costs nothing.\nline 18: Wilfred Osei: Understood.\nline 19: Elena Marchetti:
+      Let me share my screen. Tell me when it comes through clearly.\nline 20: Rosa
+      Beltran: Still slightly blurry. There it is.\nline 21: Wilfred Osei: That is
+      good on my side.\nline 22: Elena Marchetti: Starting with goals. Every company
+      wants certain things, and at a startup those wants are less formal. You are
+      not running a full objectives framework, but you still want the outcomes written
+      down, the signals that you are getting there, and an owner. Piotr was interested
+      in starting this here, because as the team grows it is how everyone stays pointed
+      the same way. Whether the goal is the fundraise or the hospital partnership,
+      it can be tracked in one place.\nline 23: Theo Nakamura: Wilfred, do you know
+      the objectives and key results framework? No harm either way.\nline 24: Wilfred
+      Osei: I have heard of it. Could you refresh me?\nline 25: Theo Nakamura: It
+      came out of Google and there is a well known book about it. An objective is
+      what you want, and the key results are the measures that tell you whether you
+      got there. The recommendation is two to five objectives at a time. So the objective
+      might be to lead your category, and a key result might be a specific share of
+      a specific channel. Another framework you will hear about uses a single level
+      instead of two.\nline 26: Elena Marchetti: Ours is closer to the single level
+      version. Each outcome has one measure and a priority, so you have a first goal,
+      a second goal, and a list. Either style works here. It is worth a conversation
+      with Piotr about how you want to signal these to the team. His interest was
+      in having them written down and tracked at all, which I am not sure is happening
+      in ClickUp today.\nline 27: Wilfred Osei: It is not. And one of my complaints
+      about ClickUp is the arbitrary progress meter in the right column. It takes
+      however many items you have, counts the completed ones, and calls that a percentage.
+      It looks precise and it means nothing. I prefer that you simply say at risk
+      or on track.\nline 28: Elena Marchetti: That is deliberate.\nline 29: Theo Nakamura:
+      Elena, could you say why this matters at their size? Piotr mentioned they do
+      not use an assistant model day to day.\nline 30: Elena Marchetti: As an organisation
+      grows, more happens in it, and even at ten people two people can hold different
+      views of what is important. Fundraising, research and the first steps toward
+      commercialisation pull against each other. That is drift, and it is not a failure
+      of intelligence or motivation. Writing goals down is how companies resist it.
+      Here they also feed the ordering of your inbox, so the work that matters surfaces
+      first.\nline 31: Wilfred Osei: That is well matched to what we need.\nline 32:
+      Elena Marchetti: Then let me show the collaborative side. Here is an email thread.
+      Theo pulled me into it and asked me to look at something. I will add Rosa as
+      an illustration. Say the thread is about the hospital partnership and you want
+      three or four people in the discussion. You can talk about it here, and when
+      the group settles on the terms you want, one person marks that message. Later,
+      when somebody searches, the content of the thread, the discussion and the record
+      of what was settled all come back together.\nline 33: Wilfred Osei: I can see
+      the value of marking a message. Can you mark it with anything else?\nline 34:
+      Elena Marchetti: Reactions and that one marker, for now. When something needs
+      a wider audience we tend to move it into a post instead. We did that recently
+      for our mobile router choice. Somebody opened a document, the options were laid
+      out, people commented for a few days, and the conclusion was marked at the end.\nline
+      35: Theo Nakamura: The reason we push posts over chat is that chat cannot tell
+      the difference between what we are ordering for lunch and whether to work with
+      a particular hospital. A post can. And then the research tool knows something
+      was settled, so a new intern can ask why and get a real answer.\nline 36: Wilfred
+      Osei: What model is behind the research tool?\nline 37: Elena Marchetti: Anthropic,
+      under a data protection agreement, so nothing that passes through is trained
+      on. Everything else runs on Google Cloud and we are looking at a hosted option
+      there too. The tool can pull general knowledge from the model and specific facts
+      from your organisation and blend them. If you ever bring in a third party assistant,
+      everything you see here is exposed to it over MCP.\nline 38: Wilfred Osei: So
+      there is no setup on our side for that.\nline 39: Elena Marchetti: None.\nline
+      40: Wilfred Osei: One more complaint that Piotr repeats often. We have no dependency
+      charts for tracking projects. We tried a free tool and hit a paywall, so now
+      it is spreadsheets that we attach to things, with nothing linking them.\nline
+      41: Elena Marchetti: We do not have dependency mapping. We have tasks, and they
+      are exposed over MCP so an outside tool can read the structure, but first this
+      then that is not modelled. Our view is that as assistants take on more of the
+      work, one person tends to move through a whole project with an agent rather
+      than handing steps between people. If you genuinely need the dependency chart,
+      that will have to live outside the app for now.\nline 42: Wilfred Osei: That
+      makes sense as a philosophy, and I prefer it to the alternative. There is simply
+      too much to look at in the other tool. I will have to convince them.\nline 43:
+      Elena Marchetti: We will put in a good word. Theo, do you want to take the last
+      few minutes on the inbox?\nline 44: Theo Nakamura: Wilfred, most inboxes are
+      chronological. Ours can be filtered by a written instruction. If you say you
+      need what is urgent and important, it orders itself that way. Another common
+      one is to filter by goals, which uses the goals you have already written down.
+      Elena, could you show where a custom view is added?\nline 45: Elena Marchetti:
+      Here. I keep one for things I can realistically finish on a phone, so a request
+      to write a long piece stays out of the way and the short items rise. I keep
+      another for low attention mornings.\nline 46: Theo Nakamura: The last thing
+      is the meeting recorder. The recorder in this call is ours. You add it yourself,
+      deliberately, because we do not join by default. Most of the context in a company
+      is in email, chat and meetings, and the research tool is only as good as how
+      much of that it can see.\nline 47: Wilfred Osei: The meetings are where most
+      things happen for us. It ends up being hard to pull apart afterwards. We tried
+      a notetaker once and the team was not keen on it, but I think it would be wise
+      to start.\nline 48: Elena Marchetti: There is no per user fee on the recorder
+      either. It is the tokens for the summary.\nline 49: Theo Nakamura: Elena, we
+      are at time and we have another call.\nline 50: Elena Marchetti: I will stop
+      sharing. Wilfred, thank you. Rosa is staying on with you. We will send some
+      notes on the integrations we did not reach.\nline 51: Wilfred Osei: Thank you
+      both.\nline 52: Rosa Beltran: So it is just us. Any questions from what they
+      showed you, or thoughts on how you would use it?\nline 53: Wilfred Osei: It
+      makes sense to me. The hardest part is moving everything across. That will take
+      a lot of hours.\nline 54: Rosa Beltran: Let us talk about that. Everything is
+      in ClickUp today?\nline 55: Wilfred Osei: A pile of projects, lists and to do
+      lists. My assumption was that we would copy it over by hand, or export it to
+      a spreadsheet.\nline 56: Rosa Beltran: Let me look into whether there is an
+      export we can take and upload on your behalf, so it lands as documents and posts
+      on our side. If you can send me a list of the projects and the formats you can
+      get out, I will check what is possible with our engineer.\nline 57: Wilfred
+      Osei: That could work, if you are willing.\nline 58: Rosa Beltran: Let me at
+      least explore it. While the others were talking I wanted to share one more thing.
+      We work in an unusual way here. We are not a chat heavy company. We chat around
+      a piece of work rather than in a general channel. We published our communication
+      norms recently, and the whole handbook is public, so I will drop it in the chat.
+      It may be an interesting read on its own, and it explains why the app is shaped
+      the way it is.\nline 59: Wilfred Osei: I will read it and pass it to the team.\nline
+      60: Rosa Beltran: Here is what I suggest for next steps. Use the app for a week.
+      Send me the export formats you can get. I will talk to our engineer about the
+      upload. Then we speak again and go through what felt comfortable and what did
+      not.\nline 61: Wilfred Osei: That is a good plan.\nline 62: Rosa Beltran: Let
+      us book it now rather than trade emails. What timezone are you in?\nline 63:
+      Wilfred Osei: Eastern. And you?\nline 64: Rosa Beltran: Phoenix. Half the year
+      I am on Pacific and half the year I am on Mountain, and right now I am on Pacific,
+      so it is half past eight in the morning here.\nline 65: Wilfred Osei: Early.
+      I hope the coffee has arrived.\nline 66: Rosa Beltran: It has. Does noon Eastern
+      next Wednesday work?\nline 67: Wilfred Osei: Noon Wednesday works.\nline 68:
+      Rosa Beltran: Booked. I will send the details and I may bring Theo in. One question
+      before you go. Are you going to add more users to the account, or stay on the
+      single login?\nline 69: Wilfred Osei: We are definitely adding everyone. I want
+      each person to have their own account rather than sharing the one login. I have
+      already told the team that is what we are doing, and I will send the invitations
+      myself this afternoon.\nline 70: Rosa Beltran: If you need help, send me an
+      email. You should be able to invite everyone from your settings.\nline 71: Wilfred
+      Osei: Understood. So the only thing we are billed for is tokens, which is the
+      summaries and the research answers. Writing posts and the rest of it is free.\nline
+      72: Rosa Beltran: Correct. It is the parts with a model behind them. Meeting
+      summaries, research output, the custom inbox sorting. It is quite small in practice.
+      A person usually lands around ten dollars a month.\nline 73: Wilfred Osei: That
+      is reasonable. How large is your team?\nline 74: Rosa Beltran: Around twenty.
+      We also have a research arm that stays close to the current work in the field,
+      and we publish essays. We work with a professor as an academic advisor.\nline
+      75: Wilfred Osei: That is impressive.\nline 76: Rosa Beltran: The essays are
+      on the website and they are worth reading. I keep a dictionary open for some
+      of them.\nline 77: Wilfred Osei: One thing I have been thinking about, slightly
+      off topic. With so much depending on these models, I expect a wave of cognitive
+      atrophy. People will get the output without keeping the skill.\nline 78: Rosa
+      Beltran: We talk about that often. An individual contributor now handles the
+      output that a manager handled ten years ago, so the skill people have to build
+      is closer to management than to production.\nline 79: Wilfred Osei: Agreed.
+      It is about steering it and asking properly.\nline 80: Rosa Beltran: Exactly.
+      It was good to meet you.\nline 81: Wilfred Osei: You too. Thanks very much,
+      Rosa.\nline 82: Rosa Beltran: Try it this week, invite the team, and we will
+      speak on Wednesday. Have a good one.\nline 83: Wilfred Osei: Take it easy. Goodbye.\n\n</transcript>\n\nTo
+      extract the attendees, follow these guidelines:\n\n1. Look for names mentioned
+      at the beginning of the transcript, which often indicate who is present.\n2.
+      Pay attention to speaker labels throughout the transcript (e.g., \"John:\",
+      \"Sarah:\").\n3. Note any introductions or greetings that mention names.\n4.
+      Consider names mentioned in the context of speaking, asking questions, or being
+      addressed by others.\n5. Be aware that some attendees might be referred to by
+      their role or title rather than their name.\n\nAs you identify attendees, create
+      a list.\n\nIf you encounter unclear cases, such as names that are only partially
+      mentioned or individuals whose attendance is ambiguous, ignore them.\n\nOnce
+      you have finished analyzing the transcript, provide your final list of attendees
+      using the MeetingAttendees tool.\n\nRemember, your goal is to be as comprehensive
+      as possible while also being accurate. If you''re unsure about including someone,
+      it''s better to leave them out."}],"model":"claude-sonnet-4-6","system":"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:50:47.797654+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingAttendees"},"tools":[{"name":"MeetingAttendees","description":"Extracted
+      list of attendees from a meeting transcript.","input_schema":{"description":"Extracted
+      list of attendees from a meeting transcript.","properties":{"attendees":{"description":"The
+      names of the attendees present in the meeting.","items":{"type":"string"},"title":"Attendees","type":"array"}},"required":["attendees"],"title":"MeetingAttendees","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '17018'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SRX0scMRTFv8pyn7OwU3RX580ufak7FqSgIBJuJ8eZrJlkTG6Eusx3l1hHa4uP
+        +Z1zc+6fAw3BwFFNreNssEzBe8jyaLkmRdZQTUPq9Kqqtmborpt1P26ai+P8uG3OUyWkSH6PKC6k
+        xB1IUQyuAE7JJmFfPG3wAi9U3xxmv4TgdE6YU8o761W1268vTze7fX9+8nD2tN9s4/ewM6TI81Dq
+        GkCs785E4A2QSr0fs1B9IH6D9Q397BEWF3zPQ45Miq6su4swix8JlhR9c/C8aDi2PUQKuQyJF1/h
+        JLKn20lRy84hlo9fezY2ohWapltFScKoIzgF/3GaFyHhIcO3oNpn516hgbB1aWb5ZV/14U//WsI9
+        fKL66GRzWrLbHrqNYLHB64+W1axHsPlMm2tLAsYeAyI7fTz8739Xq/5fdVIUsvyN1l8UJcRH20KL
+        LfuhcmbDsVzJ+jvEMrnuEKimzoVf7GiangEAAP//AwCO37TxaQIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9998000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:50:57Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:50:58Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:50:56Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11998000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:50:57Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edb51dac98907-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:50:58 GMT
+      request-id:
+      - req_011CdmgXKF5zVae2YGkiKiAK
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-5641c3ff31bcb1afded402b029659062-c2f88927529f4a04-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"In addition to
+      your consultancy background, you started your career with many years as an Executive
+      Assistant. Currently you are being tasked with creating an accurate and concise
+      summary of a meeting transcript; use both skillsets to inform your final output.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0: # Meet with Elena
+      and Theo (Wilfred Osei)\nline 1:\nline 2: *Jun 17 2026, 11:00 AM*\nline 3:\nline
+      4: Theo Nakamura: Before we start, anything you want to raise straight away?\nline
+      5: Wilfred Osei: The instruction to me was to try it, so I signed up with the
+      shared Gmail and the steps were straightforward. The interface is clean, which
+      is where I found ClickUp weak. Moving around in it felt slow, and I could never
+      tell whether that was the tool or my machine. This is faster and the design
+      is leaner.\nline 6: Theo Nakamura: Good to hear. One thing we want to establish,
+      and either answer is fine. Has Piotr given you a directive to adopt this, or
+      are you still evaluating?\nline 7: Wilfred Osei: He wants to go ahead. As soon
+      as possible.\nline 8: Theo Nakamura: Then we will push rather than hold back.
+      Have you been through onboarding already?\nline 9: Wilfred Osei: I went through
+      the tutorial. It made sense. I connected the executive inbox. The posts are
+      not useful to me yet, but they will be once there is more in there.\nline 10:
+      Elena Marchetti: If you all share one Gmail, the collaborative email side is
+      worth a look, because it lets you coordinate with each other inside the thread.\nline
+      11: Wilfred Osei: That address is used for a lot of our internal things. Our
+      Google Drive hangs off it and we copy it on every external email so that everything
+      stays in one place. It works as a connector more than as a mailbox.\nline 12:
+      Elena Marchetti: That is close to the ideal case for the collaborative email
+      feature. You can add other Gmail addresses to the organisation, and then people
+      can comment and assign back and forth. The weakness of a shared login is that
+      nobody can tell who is working on what. The research tool indexes everything
+      in that account too, so somebody who is not in the inbox every day can still
+      find the answer to a question.\nline 13: Wilfred Osei: That sounds right. And
+      thank you for the access, honestly. The timing is good, because we are expanding
+      the team and talking to new interns almost every week. Things will get bigger
+      quickly. We want to be useful to you as well, so tell me how you want the feedback
+      structured.\nline 14: Theo Nakamura: Feedback is the most valuable thing we
+      get, and the awkward feedback more than the warm feedback. Three things from
+      me. You have the shared address, so on our side we can flag your whole domain
+      and add other accounts when you want them. Then I want to see how this fits
+      with the rest of your stack. And then a short demo.\nline 15: Wilfred Osei:
+      Switching everything over is going to be the painful part.\nline 16: Theo Nakamura:
+      We do not need you to switch everything. Keep ClickUp for tasks if that is working.\nline
+      17: Elena Marchetti: On the pricing question, since it came up with Piotr. We
+      do not charge per user. The constraint he described with ClickUp was that seats
+      were the reason for the single account. We charge for tokens, so adding people
+      costs nothing.\nline 18: Wilfred Osei: Understood.\nline 19: Elena Marchetti:
+      Let me share my screen. Tell me when it comes through clearly.\nline 20: Rosa
+      Beltran: Still slightly blurry. There it is.\nline 21: Wilfred Osei: That is
+      good on my side.\nline 22: Elena Marchetti: Starting with goals. Every company
+      wants certain things, and at a startup those wants are less formal. You are
+      not running a full objectives framework, but you still want the outcomes written
+      down, the signals that you are getting there, and an owner. Piotr was interested
+      in starting this here, because as the team grows it is how everyone stays pointed
+      the same way. Whether the goal is the fundraise or the hospital partnership,
+      it can be tracked in one place.\nline 23: Theo Nakamura: Wilfred, do you know
+      the objectives and key results framework? No harm either way.\nline 24: Wilfred
+      Osei: I have heard of it. Could you refresh me?\nline 25: Theo Nakamura: It
+      came out of Google and there is a well known book about it. An objective is
+      what you want, and the key results are the measures that tell you whether you
+      got there. The recommendation is two to five objectives at a time. So the objective
+      might be to lead your category, and a key result might be a specific share of
+      a specific channel. Another framework you will hear about uses a single level
+      instead of two.\nline 26: Elena Marchetti: Ours is closer to the single level
+      version. Each outcome has one measure and a priority, so you have a first goal,
+      a second goal, and a list. Either style works here. It is worth a conversation
+      with Piotr about how you want to signal these to the team. His interest was
+      in having them written down and tracked at all, which I am not sure is happening
+      in ClickUp today.\nline 27: Wilfred Osei: It is not. And one of my complaints
+      about ClickUp is the arbitrary progress meter in the right column. It takes
+      however many items you have, counts the completed ones, and calls that a percentage.
+      It looks precise and it means nothing. I prefer that you simply say at risk
+      or on track.\nline 28: Elena Marchetti: That is deliberate.\nline 29: Theo Nakamura:
+      Elena, could you say why this matters at their size? Piotr mentioned they do
+      not use an assistant model day to day.\nline 30: Elena Marchetti: As an organisation
+      grows, more happens in it, and even at ten people two people can hold different
+      views of what is important. Fundraising, research and the first steps toward
+      commercialisation pull against each other. That is drift, and it is not a failure
+      of intelligence or motivation. Writing goals down is how companies resist it.
+      Here they also feed the ordering of your inbox, so the work that matters surfaces
+      first.\nline 31: Wilfred Osei: That is well matched to what we need.\nline 32:
+      Elena Marchetti: Then let me show the collaborative side. Here is an email thread.
+      Theo pulled me into it and asked me to look at something. I will add Rosa as
+      an illustration. Say the thread is about the hospital partnership and you want
+      three or four people in the discussion. You can talk about it here, and when
+      the group settles on the terms you want, one person marks that message. Later,
+      when somebody searches, the content of the thread, the discussion and the record
+      of what was settled all come back together.\nline 33: Wilfred Osei: I can see
+      the value of marking a message. Can you mark it with anything else?\nline 34:
+      Elena Marchetti: Reactions and that one marker, for now. When something needs
+      a wider audience we tend to move it into a post instead. We did that recently
+      for our mobile router choice. Somebody opened a document, the options were laid
+      out, people commented for a few days, and the conclusion was marked at the end.\nline
+      35: Theo Nakamura: The reason we push posts over chat is that chat cannot tell
+      the difference between what we are ordering for lunch and whether to work with
+      a particular hospital. A post can. And then the research tool knows something
+      was settled, so a new intern can ask why and get a real answer.\nline 36: Wilfred
+      Osei: What model is behind the research tool?\nline 37: Elena Marchetti: Anthropic,
+      under a data protection agreement, so nothing that passes through is trained
+      on. Everything else runs on Google Cloud and we are looking at a hosted option
+      there too. The tool can pull general knowledge from the model and specific facts
+      from your organisation and blend them. If you ever bring in a third party assistant,
+      everything you see here is exposed to it over MCP.\nline 38: Wilfred Osei: So
+      there is no setup on our side for that.\nline 39: Elena Marchetti: None.\nline
+      40: Wilfred Osei: One more complaint that Piotr repeats often. We have no dependency
+      charts for tracking projects. We tried a free tool and hit a paywall, so now
+      it is spreadsheets that we attach to things, with nothing linking them.\nline
+      41: Elena Marchetti: We do not have dependency mapping. We have tasks, and they
+      are exposed over MCP so an outside tool can read the structure, but first this
+      then that is not modelled. Our view is that as assistants take on more of the
+      work, one person tends to move through a whole project with an agent rather
+      than handing steps between people. If you genuinely need the dependency chart,
+      that will have to live outside the app for now.\nline 42: Wilfred Osei: That
+      makes sense as a philosophy, and I prefer it to the alternative. There is simply
+      too much to look at in the other tool. I will have to convince them.\nline 43:
+      Elena Marchetti: We will put in a good word. Theo, do you want to take the last
+      few minutes on the inbox?\nline 44: Theo Nakamura: Wilfred, most inboxes are
+      chronological. Ours can be filtered by a written instruction. If you say you
+      need what is urgent and important, it orders itself that way. Another common
+      one is to filter by goals, which uses the goals you have already written down.
+      Elena, could you show where a custom view is added?\nline 45: Elena Marchetti:
+      Here. I keep one for things I can realistically finish on a phone, so a request
+      to write a long piece stays out of the way and the short items rise. I keep
+      another for low attention mornings.\nline 46: Theo Nakamura: The last thing
+      is the meeting recorder. The recorder in this call is ours. You add it yourself,
+      deliberately, because we do not join by default. Most of the context in a company
+      is in email, chat and meetings, and the research tool is only as good as how
+      much of that it can see.\nline 47: Wilfred Osei: The meetings are where most
+      things happen for us. It ends up being hard to pull apart afterwards. We tried
+      a notetaker once and the team was not keen on it, but I think it would be wise
+      to start.\nline 48: Elena Marchetti: There is no per user fee on the recorder
+      either. It is the tokens for the summary.\nline 49: Theo Nakamura: Elena, we
+      are at time and we have another call.\nline 50: Elena Marchetti: I will stop
+      sharing. Wilfred, thank you. Rosa is staying on with you. We will send some
+      notes on the integrations we did not reach.\nline 51: Wilfred Osei: Thank you
+      both.\nline 52: Rosa Beltran: So it is just us. Any questions from what they
+      showed you, or thoughts on how you would use it?\nline 53: Wilfred Osei: It
+      makes sense to me. The hardest part is moving everything across. That will take
+      a lot of hours.\nline 54: Rosa Beltran: Let us talk about that. Everything is
+      in ClickUp today?\nline 55: Wilfred Osei: A pile of projects, lists and to do
+      lists. My assumption was that we would copy it over by hand, or export it to
+      a spreadsheet.\nline 56: Rosa Beltran: Let me look into whether there is an
+      export we can take and upload on your behalf, so it lands as documents and posts
+      on our side. If you can send me a list of the projects and the formats you can
+      get out, I will check what is possible with our engineer.\nline 57: Wilfred
+      Osei: That could work, if you are willing.\nline 58: Rosa Beltran: Let me at
+      least explore it. While the others were talking I wanted to share one more thing.
+      We work in an unusual way here. We are not a chat heavy company. We chat around
+      a piece of work rather than in a general channel. We published our communication
+      norms recently, and the whole handbook is public, so I will drop it in the chat.
+      It may be an interesting read on its own, and it explains why the app is shaped
+      the way it is.\nline 59: Wilfred Osei: I will read it and pass it to the team.\nline
+      60: Rosa Beltran: Here is what I suggest for next steps. Use the app for a week.
+      Send me the export formats you can get. I will talk to our engineer about the
+      upload. Then we speak again and go through what felt comfortable and what did
+      not.\nline 61: Wilfred Osei: That is a good plan.\nline 62: Rosa Beltran: Let
+      us book it now rather than trade emails. What timezone are you in?\nline 63:
+      Wilfred Osei: Eastern. And you?\nline 64: Rosa Beltran: Phoenix. Half the year
+      I am on Pacific and half the year I am on Mountain, and right now I am on Pacific,
+      so it is half past eight in the morning here.\nline 65: Wilfred Osei: Early.
+      I hope the coffee has arrived.\nline 66: Rosa Beltran: It has. Does noon Eastern
+      next Wednesday work?\nline 67: Wilfred Osei: Noon Wednesday works.\nline 68:
+      Rosa Beltran: Booked. I will send the details and I may bring Theo in. One question
+      before you go. Are you going to add more users to the account, or stay on the
+      single login?\nline 69: Wilfred Osei: We are definitely adding everyone. I want
+      each person to have their own account rather than sharing the one login. I have
+      already told the team that is what we are doing, and I will send the invitations
+      myself this afternoon.\nline 70: Rosa Beltran: If you need help, send me an
+      email. You should be able to invite everyone from your settings.\nline 71: Wilfred
+      Osei: Understood. So the only thing we are billed for is tokens, which is the
+      summaries and the research answers. Writing posts and the rest of it is free.\nline
+      72: Rosa Beltran: Correct. It is the parts with a model behind them. Meeting
+      summaries, research output, the custom inbox sorting. It is quite small in practice.
+      A person usually lands around ten dollars a month.\nline 73: Wilfred Osei: That
+      is reasonable. How large is your team?\nline 74: Rosa Beltran: Around twenty.
+      We also have a research arm that stays close to the current work in the field,
+      and we publish essays. We work with a professor as an academic advisor.\nline
+      75: Wilfred Osei: That is impressive.\nline 76: Rosa Beltran: The essays are
+      on the website and they are worth reading. I keep a dictionary open for some
+      of them.\nline 77: Wilfred Osei: One thing I have been thinking about, slightly
+      off topic. With so much depending on these models, I expect a wave of cognitive
+      atrophy. People will get the output without keeping the skill.\nline 78: Rosa
+      Beltran: We talk about that often. An individual contributor now handles the
+      output that a manager handled ten years ago, so the skill people have to build
+      is closer to management than to production.\nline 79: Wilfred Osei: Agreed.
+      It is about steering it and asking properly.\nline 80: Rosa Beltran: Exactly.
+      It was good to meet you.\nline 81: Wilfred Osei: You too. Thanks very much,
+      Rosa.\nline 82: Rosa Beltran: Try it this week, invite the team, and we will
+      speak on Wednesday. Have a good one.\nline 83: Wilfred Osei: Take it easy. Goodbye.\n\n</transcript>\n\nFirst,
+      analyze the transcript to understand:\n1. Every substantive topic with supporting
+      evidence:\n- Direct quotes that capture key points with attribution\n- Context
+      of why each point matters\n- Sequence of how topics evolved\n2. All specific
+      items:\n- Decisions and commitments\n- Numbers and metrics\n- Action items and
+      owners\n3. Participant dynamics:\n- Key contributors per topic\n- Areas of consensus
+      vs discussion\n- Any alternative viewpoints raised\n\nUsing your analysis, create
+      an executive summary that MUST:\n1. Maintain complete accuracy by:\n- Using
+      direct quotes for crucial points\n- Preserving full context of discussions\n-
+      Including all substantive topics\n- Noting who contributed to each point naturally
+      (e.g. \"John mentioned that...\", or \"Jake raised, Ben supported, a concern
+      about...\")\n2. Format precisely as follows:\n\n## Summary\n[Single paragraph
+      overview that captures meeting significance and key outcomes. Must reference
+      specific discussions rather than general statements.]\n\n### Key Points\n- **[Topic
+      Label]:** [Concrete point backed by quote or specific example + why it matters/impact;
+      2-3 sentences maximum]\n[Additional points in chronological order, each with
+      evidence + impact...]\n\n### Challenges & Risks\n- **[Specific Challenge]:**
+      [Evidence from transcript + implications + any proposed solutions or disagreements;
+      2-3 sentences maximum]\n[Additional challenges if discussed...]\n\nNotes:\n1.
+      Do not include a ''Decisions'' section; decisions are extracted separately and
+      must not appear in this summary.\n2. Omit ''Challenges & Risks'' where no relevant
+      content exists in the transcript.\n3. Remember to write at a Flesch-Kincaid
+      Grade Level of 4.0 or lower."}],"model":"claude-sonnet-4-6","system":"You are
+      Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:50:47.797654+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingSummary"},"tools":[{"name":"MeetingSummary","description":"Extracted
+      summary of a meeting from a transcript.","input_schema":{"description":"Extracted
+      summary of a meeting from a transcript.","properties":{"summary":{"description":"The
+      summary of the meeting.","title":"Summary","type":"string"}},"required":["summary"],"title":"MeetingSummary","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '17756'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        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
+        bLkfrxIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9998000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:50:59Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:51:24Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:50:58Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11998000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:50:59Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edb640b98ecd2-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:51:24 GMT
+      request-id:
+      - req_011CdmgXWdC2KcwQUHDtA4ip
+      server:
+      - cloudflare
+      server-timing:
+      - x-originResponse;dur=26134
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-370cbbed4ad9529b18c3d85b6c21b8ee-440486117b7aca4f-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are extracting the decisions from a meeting transcript. Decisions are rare and
+      specific \u2014 many meetings contain none at all. Your only job is to find
+      genuine decisions and to return an empty list when there are none. Do not summarize
+      the meeting or list anything that is not a decision.\\n\\nHere is the transcript
+      of the meeting:\\n\\n<transcript>\\n\\nline 0: # Meet with Elena and Theo (Wilfred
+      Osei)\\nline 1:\\nline 2: *Jun 17 2026, 11:00 AM*\\nline 3:\\nline 4: Theo Nakamura:
+      Before we start, anything you want to raise straight away?\\nline 5: Wilfred
+      Osei: The instruction to me was to try it, so I signed up with the shared Gmail
+      and the steps were straightforward. The interface is clean, which is where I
+      found ClickUp weak. Moving around in it felt slow, and I could never tell whether
+      that was the tool or my machine. This is faster and the design is leaner.\\nline
+      6: Theo Nakamura: Good to hear. One thing we want to establish, and either answer
+      is fine. Has Piotr given you a directive to adopt this, or are you still evaluating?\\nline
+      7: Wilfred Osei: He wants to go ahead. As soon as possible.\\nline 8: Theo Nakamura:
+      Then we will push rather than hold back. Have you been through onboarding already?\\nline
+      9: Wilfred Osei: I went through the tutorial. It made sense. I connected the
+      executive inbox. The posts are not useful to me yet, but they will be once there
+      is more in there.\\nline 10: Elena Marchetti: If you all share one Gmail, the
+      collaborative email side is worth a look, because it lets you coordinate with
+      each other inside the thread.\\nline 11: Wilfred Osei: That address is used
+      for a lot of our internal things. Our Google Drive hangs off it and we copy
+      it on every external email so that everything stays in one place. It works as
+      a connector more than as a mailbox.\\nline 12: Elena Marchetti: That is close
+      to the ideal case for the collaborative email feature. You can add other Gmail
+      addresses to the organisation, and then people can comment and assign back and
+      forth. The weakness of a shared login is that nobody can tell who is working
+      on what. The research tool indexes everything in that account too, so somebody
+      who is not in the inbox every day can still find the answer to a question.\\nline
+      13: Wilfred Osei: That sounds right. And thank you for the access, honestly.
+      The timing is good, because we are expanding the team and talking to new interns
+      almost every week. Things will get bigger quickly. We want to be useful to you
+      as well, so tell me how you want the feedback structured.\\nline 14: Theo Nakamura:
+      Feedback is the most valuable thing we get, and the awkward feedback more than
+      the warm feedback. Three things from me. You have the shared address, so on
+      our side we can flag your whole domain and add other accounts when you want
+      them. Then I want to see how this fits with the rest of your stack. And then
+      a short demo.\\nline 15: Wilfred Osei: Switching everything over is going to
+      be the painful part.\\nline 16: Theo Nakamura: We do not need you to switch
+      everything. Keep ClickUp for tasks if that is working.\\nline 17: Elena Marchetti:
+      On the pricing question, since it came up with Piotr. We do not charge per user.
+      The constraint he described with ClickUp was that seats were the reason for
+      the single account. We charge for tokens, so adding people costs nothing.\\nline
+      18: Wilfred Osei: Understood.\\nline 19: Elena Marchetti: Let me share my screen.
+      Tell me when it comes through clearly.\\nline 20: Rosa Beltran: Still slightly
+      blurry. There it is.\\nline 21: Wilfred Osei: That is good on my side.\\nline
+      22: Elena Marchetti: Starting with goals. Every company wants certain things,
+      and at a startup those wants are less formal. You are not running a full objectives
+      framework, but you still want the outcomes written down, the signals that you
+      are getting there, and an owner. Piotr was interested in starting this here,
+      because as the team grows it is how everyone stays pointed the same way. Whether
+      the goal is the fundraise or the hospital partnership, it can be tracked in
+      one place.\\nline 23: Theo Nakamura: Wilfred, do you know the objectives and
+      key results framework? No harm either way.\\nline 24: Wilfred Osei: I have heard
+      of it. Could you refresh me?\\nline 25: Theo Nakamura: It came out of Google
+      and there is a well known book about it. An objective is what you want, and
+      the key results are the measures that tell you whether you got there. The recommendation
+      is two to five objectives at a time. So the objective might be to lead your
+      category, and a key result might be a specific share of a specific channel.
+      Another framework you will hear about uses a single level instead of two.\\nline
+      26: Elena Marchetti: Ours is closer to the single level version. Each outcome
+      has one measure and a priority, so you have a first goal, a second goal, and
+      a list. Either style works here. It is worth a conversation with Piotr about
+      how you want to signal these to the team. His interest was in having them written
+      down and tracked at all, which I am not sure is happening in ClickUp today.\\nline
+      27: Wilfred Osei: It is not. And one of my complaints about ClickUp is the arbitrary
+      progress meter in the right column. It takes however many items you have, counts
+      the completed ones, and calls that a percentage. It looks precise and it means
+      nothing. I prefer that you simply say at risk or on track.\\nline 28: Elena
+      Marchetti: That is deliberate.\\nline 29: Theo Nakamura: Elena, could you say
+      why this matters at their size? Piotr mentioned they do not use an assistant
+      model day to day.\\nline 30: Elena Marchetti: As an organisation grows, more
+      happens in it, and even at ten people two people can hold different views of
+      what is important. Fundraising, research and the first steps toward commercialisation
+      pull against each other. That is drift, and it is not a failure of intelligence
+      or motivation. Writing goals down is how companies resist it. Here they also
+      feed the ordering of your inbox, so the work that matters surfaces first.\\nline
+      31: Wilfred Osei: That is well matched to what we need.\\nline 32: Elena Marchetti:
+      Then let me show the collaborative side. Here is an email thread. Theo pulled
+      me into it and asked me to look at something. I will add Rosa as an illustration.
+      Say the thread is about the hospital partnership and you want three or four
+      people in the discussion. You can talk about it here, and when the group settles
+      on the terms you want, one person marks that message. Later, when somebody searches,
+      the content of the thread, the discussion and the record of what was settled
+      all come back together.\\nline 33: Wilfred Osei: I can see the value of marking
+      a message. Can you mark it with anything else?\\nline 34: Elena Marchetti: Reactions
+      and that one marker, for now. When something needs a wider audience we tend
+      to move it into a post instead. We did that recently for our mobile router choice.
+      Somebody opened a document, the options were laid out, people commented for
+      a few days, and the conclusion was marked at the end.\\nline 35: Theo Nakamura:
+      The reason we push posts over chat is that chat cannot tell the difference between
+      what we are ordering for lunch and whether to work with a particular hospital.
+      A post can. And then the research tool knows something was settled, so a new
+      intern can ask why and get a real answer.\\nline 36: Wilfred Osei: What model
+      is behind the research tool?\\nline 37: Elena Marchetti: Anthropic, under a
+      data protection agreement, so nothing that passes through is trained on. Everything
+      else runs on Google Cloud and we are looking at a hosted option there too. The
+      tool can pull general knowledge from the model and specific facts from your
+      organisation and blend them. If you ever bring in a third party assistant, everything
+      you see here is exposed to it over MCP.\\nline 38: Wilfred Osei: So there is
+      no setup on our side for that.\\nline 39: Elena Marchetti: None.\\nline 40:
+      Wilfred Osei: One more complaint that Piotr repeats often. We have no dependency
+      charts for tracking projects. We tried a free tool and hit a paywall, so now
+      it is spreadsheets that we attach to things, with nothing linking them.\\nline
+      41: Elena Marchetti: We do not have dependency mapping. We have tasks, and they
+      are exposed over MCP so an outside tool can read the structure, but first this
+      then that is not modelled. Our view is that as assistants take on more of the
+      work, one person tends to move through a whole project with an agent rather
+      than handing steps between people. If you genuinely need the dependency chart,
+      that will have to live outside the app for now.\\nline 42: Wilfred Osei: That
+      makes sense as a philosophy, and I prefer it to the alternative. There is simply
+      too much to look at in the other tool. I will have to convince them.\\nline
+      43: Elena Marchetti: We will put in a good word. Theo, do you want to take the
+      last few minutes on the inbox?\\nline 44: Theo Nakamura: Wilfred, most inboxes
+      are chronological. Ours can be filtered by a written instruction. If you say
+      you need what is urgent and important, it orders itself that way. Another common
+      one is to filter by goals, which uses the goals you have already written down.
+      Elena, could you show where a custom view is added?\\nline 45: Elena Marchetti:
+      Here. I keep one for things I can realistically finish on a phone, so a request
+      to write a long piece stays out of the way and the short items rise. I keep
+      another for low attention mornings.\\nline 46: Theo Nakamura: The last thing
+      is the meeting recorder. The recorder in this call is ours. You add it yourself,
+      deliberately, because we do not join by default. Most of the context in a company
+      is in email, chat and meetings, and the research tool is only as good as how
+      much of that it can see.\\nline 47: Wilfred Osei: The meetings are where most
+      things happen for us. It ends up being hard to pull apart afterwards. We tried
+      a notetaker once and the team was not keen on it, but I think it would be wise
+      to start.\\nline 48: Elena Marchetti: There is no per user fee on the recorder
+      either. It is the tokens for the summary.\\nline 49: Theo Nakamura: Elena, we
+      are at time and we have another call.\\nline 50: Elena Marchetti: I will stop
+      sharing. Wilfred, thank you. Rosa is staying on with you. We will send some
+      notes on the integrations we did not reach.\\nline 51: Wilfred Osei: Thank you
+      both.\\nline 52: Rosa Beltran: So it is just us. Any questions from what they
+      showed you, or thoughts on how you would use it?\\nline 53: Wilfred Osei: It
+      makes sense to me. The hardest part is moving everything across. That will take
+      a lot of hours.\\nline 54: Rosa Beltran: Let us talk about that. Everything
+      is in ClickUp today?\\nline 55: Wilfred Osei: A pile of projects, lists and
+      to do lists. My assumption was that we would copy it over by hand, or export
+      it to a spreadsheet.\\nline 56: Rosa Beltran: Let me look into whether there
+      is an export we can take and upload on your behalf, so it lands as documents
+      and posts on our side. If you can send me a list of the projects and the formats
+      you can get out, I will check what is possible with our engineer.\\nline 57:
+      Wilfred Osei: That could work, if you are willing.\\nline 58: Rosa Beltran:
+      Let me at least explore it. While the others were talking I wanted to share
+      one more thing. We work in an unusual way here. We are not a chat heavy company.
+      We chat around a piece of work rather than in a general channel. We published
+      our communication norms recently, and the whole handbook is public, so I will
+      drop it in the chat. It may be an interesting read on its own, and it explains
+      why the app is shaped the way it is.\\nline 59: Wilfred Osei: I will read it
+      and pass it to the team.\\nline 60: Rosa Beltran: Here is what I suggest for
+      next steps. Use the app for a week. Send me the export formats you can get.
+      I will talk to our engineer about the upload. Then we speak again and go through
+      what felt comfortable and what did not.\\nline 61: Wilfred Osei: That is a good
+      plan.\\nline 62: Rosa Beltran: Let us book it now rather than trade emails.
+      What timezone are you in?\\nline 63: Wilfred Osei: Eastern. And you?\\nline
+      64: Rosa Beltran: Phoenix. Half the year I am on Pacific and half the year I
+      am on Mountain, and right now I am on Pacific, so it is half past eight in the
+      morning here.\\nline 65: Wilfred Osei: Early. I hope the coffee has arrived.\\nline
+      66: Rosa Beltran: It has. Does noon Eastern next Wednesday work?\\nline 67:
+      Wilfred Osei: Noon Wednesday works.\\nline 68: Rosa Beltran: Booked. I will
+      send the details and I may bring Theo in. One question before you go. Are you
+      going to add more users to the account, or stay on the single login?\\nline
+      69: Wilfred Osei: We are definitely adding everyone. I want each person to have
+      their own account rather than sharing the one login. I have already told the
+      team that is what we are doing, and I will send the invitations myself this
+      afternoon.\\nline 70: Rosa Beltran: If you need help, send me an email. You
+      should be able to invite everyone from your settings.\\nline 71: Wilfred Osei:
+      Understood. So the only thing we are billed for is tokens, which is the summaries
+      and the research answers. Writing posts and the rest of it is free.\\nline 72:
+      Rosa Beltran: Correct. It is the parts with a model behind them. Meeting summaries,
+      research output, the custom inbox sorting. It is quite small in practice. A
+      person usually lands around ten dollars a month.\\nline 73: Wilfred Osei: That
+      is reasonable. How large is your team?\\nline 74: Rosa Beltran: Around twenty.
+      We also have a research arm that stays close to the current work in the field,
+      and we publish essays. We work with a professor as an academic advisor.\\nline
+      75: Wilfred Osei: That is impressive.\\nline 76: Rosa Beltran: The essays are
+      on the website and they are worth reading. I keep a dictionary open for some
+      of them.\\nline 77: Wilfred Osei: One thing I have been thinking about, slightly
+      off topic. With so much depending on these models, I expect a wave of cognitive
+      atrophy. People will get the output without keeping the skill.\\nline 78: Rosa
+      Beltran: We talk about that often. An individual contributor now handles the
+      output that a manager handled ten years ago, so the skill people have to build
+      is closer to management than to production.\\nline 79: Wilfred Osei: Agreed.
+      It is about steering it and asking properly.\\nline 80: Rosa Beltran: Exactly.
+      It was good to meet you.\\nline 81: Wilfred Osei: You too. Thanks very much,
+      Rosa.\\nline 82: Rosa Beltran: Try it this week, invite the team, and we will
+      speak on Wednesday. Have a good one.\\nline 83: Wilfred Osei: Take it easy.
+      Goodbye.\\n\\n</transcript>\\n\\nA \\\"decision\\\" is a choice the group deliberated
+      and reached *during this meeting* \u2014 there was an open question or goal
+      on the table, alternatives or trade-offs were genuinely weighed, and the group
+      settled on one. Apply these rules strictly. Most meetings produce few or no
+      decisions, so do not hunt for one; inventing a decision where the group never
+      weighed options is worse than returning nothing. When in doubt, leave it out:\\n-
+      The decision must be reached in this meeting. Exclude anything a speaker merely
+      reports as already settled: pre-existing facts, standing policies, or how things
+      already work (e.g. \\\"our pricing is token-based, not per-user\\\"), and choices
+      made before or outside this meeting that are only being recounted here (e.g.
+      \\\"we decided last year to use a single account\\\"). If the choice was already
+      made when the meeting started, it is not a decision.\\n- A genuine decision
+      resolves a question that was actually deliberated. If a course of action was
+      simply agreed as the obvious next step \u2014 no goal framed, no alternatives
+      considered \u2014 it is an action item, not a decision, even when no single
+      person is named (e.g. \\\"Convictional will build a custom demo for Aksel's
+      team to share\\\" is a committed next step, not a deliberated choice).\\n- Include
+      a decision reached implicitly only when there is a concrete proposal AND clear
+      affirmative agreement or consensus AND no unresolved pushback. If a thread trails
+      off unresolved, exclude it.\\n- Include explicit decisions NOT to do something
+      (e.g. \\\"decided not to rebrand this year\\\").\\n- Exclude action items and
+      tasks. A decision records WHAT the group resolved; a task records WHO will do
+      work next. Any \\\"<person> will <do something>\\\" or assignment of future
+      work is an action item \u2014 leave it out (e.g. \\\"Aksel will fly to Atlanta\\\",
+      \\\"Marla will set up a call\\\"). Tentative commitments to look into, explore,
+      check, or see if something is possible are action items too (e.g. \\\"Marla
+      will explore importing the data on their behalf\\\"), never decisions. A scope
+      or approach choice is still a decision even when phrased with \\\"will\\\" (e.g.
+      \\\"we will import the existing goals before building status updates\\\"); the
+      test is whether a question was settled or an option chosen, not whether someone
+      committed to a task.\\n- Also exclude: proposals or ideas that were not adopted,
+      opinions and general discussion, unresolved debate, and deferrals or topics
+      parked for later (e.g. \\\"we'll revisit next week\\\").\\n- Attribute each
+      decision to the person who made or drove it; use \\\"the group\\\" when no single
+      owner is clear. Never guess an owner.\\n\\n- This meeting includes people from
+      outside the organization. The members of the organization are: Elena Marchetti,
+      Rosa Beltran, Theo Nakamura. Record a decision ONLY when a member of the organization
+      made it or both sides committed to a mutual term. A choice that is the outside
+      party's alone to make about their own affairs is never a decision here \u2014
+      this covers their tools, budget, and staffing, AND how they adopt, roll out,
+      or configure this product for their own team (e.g. a prospect deciding to add
+      their whole team as individual users instead of one shared login, or deciding
+      to start using a feature). Exclude these even when they concern this product,
+      are encouraged by the organization, or are stated firmly. If the outside party
+      is the only one deciding, omit it.\\n\\nReturn the list of decisions, each as
+      one plain sentence plus who made or drove it. Return an empty list when no decisions
+      were made. Write at a Flesch-Kincaid Grade Level of 4.0 or lower.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:50:47.797654+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingDecisions\"},\"tools\":[{\"name\":\"MeetingDecisions\",\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"input_schema\":{\"$defs\":{\"MeetingDecision\":{\"properties\":{\"decision\":{\"description\":\"The
+      decision, stated plainly in one sentence.\",\"title\":\"Decision\",\"type\":\"string\"},\"owner\":{\"description\":\"Who
+      made or drove the decision; use \\\"the group\\\" when no single owner is clear.\",\"title\":\"Owner\",\"type\":\"string\"}},\"required\":[\"decision\",\"owner\"],\"title\":\"MeetingDecision\",\"type\":\"object\"}},\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"properties\":{\"decisions\":{\"description\":\"Genuine
+      decisions reached during the meeting. Empty when no decisions were made.\",\"items\":{\"$ref\":\"#/$defs/MeetingDecision\"},\"title\":\"Decisions\",\"type\":\"array\"}},\"title\":\"MeetingDecisions\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '20192'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SR3WoCMRCF32WuI7hsVchd6S9UoSD2QpGQJuNuMJusyUSQZd+9xLptbellzncO
+        Z2bSQeM1WuCgrEwaR9E7hzS6GU2BgdHAoYmVGBfFnW6q9WrpXlfL+aItyoN5m+2BAZ1azC6MUVYI
+        DIK3WZAxmkjSETBQ3hE6Ar7pBj95b0WKOLTkdxLjYlY90W18Uao4rk/14zzNy4fnHTBwssm5BSIZ
+        V92jMtF4F3PetYmAd6C/RL7Z9gyUtBZDJpdSbQIqgr7fMojkWxFQRu+uxzmDiIeETiFwl6y9iBpJ
+        GhsHLZ0X5t3nAIL8HnP1ZFpOc7eqUaiAkox34toyHnhAqf9jQzY3YFtjg0FaMWn++r9pUf+mPQOf
+        6KdUlgwihqNRKMjk+0D+Jy2DPh9zhyFvLir0wKGy/l1a6PsPAAAA//8DADw6aU8qAgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9998000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:51:30Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:51:30Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:51:25Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11998000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:51:30Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edc088ebed658-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:51:30 GMT
+      request-id:
+      - req_011CdmgZTDcJYymu5nc1bvT1
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-53c0fb0c81a27f5206d7dfd241254f30-c6b710fff4be4687-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"input\":[\"Title: Product Onboarding and Evaluation with Wilfred Osei\\nDate:
+      No date\\nAttendees: Theo Nakamura, Theo Nakamura, Wilfred Osei, Elena Marchetti,
+      Elena Marchetti, Rosa Beltran, Rosa Beltran\\nAgenda: No agenda\\nSummary: ##
+      Summary\\nOn June 17, 2026, Theo Nakamura and Elena Marchetti met with Wilfred
+      Osei (and Rosa Beltran joined later) to walk through the platform and assess
+      fit for Wilfred's growing startup. Piotr, Wilfred's principal, has already directed
+      the team to move ahead \\\"as soon as possible.\\\" The call covered goals tracking,
+      collaborative email, the research tool, inbox filtering, meeting recording,
+      and pricing. Rosa then stayed on to plan next steps, including a possible ClickUp
+      data migration and a follow-up call booked for noon Eastern the following Wednesday.\\n\\n###
+      Key Points\\n- **Leadership Directive to Adopt:** Wilfred confirmed Piotr's
+      position clearly: \\\"He wants to go ahead. As soon as possible.\\\" This means
+      the team is not still evaluating \u2014 Theo and Elena shifted to a faster onboarding
+      pace as a result.\\n- **Current Stack & Pain Points:** Wilfred described ClickUp
+      as slow and visually cluttered, noting its progress meter is \\\"arbitrary\\\"
+      \u2014 \\\"it takes however many items you have, counts the completed ones,
+      and calls that a percentage. It looks precise and it means nothing.\\\" The
+      team also relies on a shared Gmail as a central connector for Drive and external
+      email.\\n- **Goals & Alignment:** Elena explained that writing goals down helps
+      teams resist drift: \\\"Fundraising, research and the first steps toward commercialisation
+      pull against each other.\\\" Wilfred confirmed no goals framework exists in
+      ClickUp today. The platform's goal tracking also feeds inbox ordering, surfacing
+      the most relevant work first.\\n- **Collaborative Email & Research Tool:** Elena
+      showed how threads can be discussed, assigned, and marked as settled inside
+      the platform. The research tool, powered by Anthropic under a data protection
+      agreement, can blend general knowledge with company-specific content \u2014
+      meaning \\\"nothing that passes through is trained on.\\\"\\n- **Posts Over
+      Chat:** Theo explained the reasoning: \\\"Chat cannot tell the difference between
+      what we are ordering for lunch and whether to work with a particular hospital.
+      A post can.\\\" This matters for Wilfred's team because a new intern can later
+      search and find out why a decision was made.\\n- **Inbox Filtering:** Theo described
+      how the inbox can be sorted by a written instruction \u2014 for example, by
+      urgency or by goals already set. Elena showed her own custom views, including
+      one for low-attention mornings and one for tasks she can finish on a phone.\\n-
+      **Meeting Recorder:** Theo noted the recorder is opt-in: \\\"You add it yourself,
+      deliberately, because we do not join by default.\\\" Wilfred said meetings are
+      where most things happen for his team and that starting to record would be wise,
+      despite a past team reluctance.\\n- **Pricing Clarity:** Rosa confirmed the
+      model: \\\"It is the parts with a model behind them. Meeting summaries, research
+      output, the custom inbox sorting.\\\" There is no per-user fee. Rosa estimated
+      typical usage at around ten dollars per user per month.\\n- **AI & Cognitive
+      Atrophy:** Wilfred raised a broader concern: \\\"With so much depending on these
+      models, I expect a wave of cognitive atrophy. People will get the output without
+      keeping the skill.\\\" Rosa agreed, noting the skill shift is toward steering
+      and prompting \u2014 \\\"closer to management than to production.\\\"\\n\\n###
+      Challenges & Risks\\n- **Migration from ClickUp:** Wilfred described the move
+      as \\\"the painful part,\\\" with projects, lists, and to-do lists currently
+      spread across ClickUp. He assumed manual copying would be needed. Rosa offered
+      to explore whether an export could be uploaded on the team's behalf, and asked
+      Wilfred to send the available export formats.\\n- **No Dependency Mapping:**
+      Wilfred flagged that his team needs dependency charts for project tracking and
+      currently uses disconnected spreadsheets after hitting a paywall on a free tool.
+      Elena confirmed the platform does not model \\\"first this then that,\\\" and
+      that this would need to live outside the app for now.\\n- **Shared Login Visibility
+      Gap:** The team currently shares one Gmail login, which means no one can tell
+      who is working on what. Elena noted this is a known weakness of shared logins
+      and recommended adding individual accounts to the organisation to restore visibility.\"],\"model\":\"text-embedding-3-small\",\"dimensions\":1536,\"encoding_format\":\"base64\"}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '4544'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edc2e3ab3c207-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:51:31 GMT
+      openai-processing-ms:
+      - '138'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=rJ7e0FCa0RTGMVSNmmWDXZPnXzi70d8Gg9v8nBJddqc-1786027890.916813-1.0.1.1-_dJTFLfyVK0wljDXgEslpt0M2FIk.kxTCE.DYQRNQ3jAc063DeclUKW0x.kr.8UMADFAnJaShAQev.xnhHxUsGrDWsgKyfwLc0TJyfUs.ZEBTLZyMBTI.YYT5AXnlTBt;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu,
+        06 Aug 2026 15:21:31 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9998899'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 6ms
+      x-request-id:
+      - req_fb78524bc5f34993ac758c3fb3e13a3f
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input":["# Meet with Elena and Theo (Wilfred Osei)\n\n*Jun 17 2026, 11:00
+      AM*\n\nTheo Nakamura: Before we start, anything you want to raise straight away?\nWilfred
+      Osei: The instruction to me was to try it, so I signed up with the shared Gmail
+      and the steps were straightforward. The interface is clean, which is where I
+      found ClickUp weak. Moving around in it felt slow, and I could never tell whether
+      that was the tool or my machine. This is faster and the design is leaner.\nTheo
+      Nakamura: Good to hear. One thing we want to establish, and either answer is
+      fine. Has Piotr given you a directive to adopt this, or are you still evaluating?\nWilfred
+      Osei: He wants to go ahead. As soon as possible.\nTheo Nakamura: Then we will
+      push rather than hold back. Have you been through onboarding already?\nWilfred
+      Osei: I went through the tutorial. It made sense. I connected the executive
+      inbox. The posts are not useful to me yet, but they will be once there is more
+      in there.\nElena Marchetti: If you all share one Gmail, the collaborative email
+      side is worth a look, because it lets you coordinate with each other inside
+      the thread.\nWilfred Osei: That address is used for a lot of our internal things.
+      Our Google Drive hangs off it and we copy it on every external email so that
+      everything stays in one place. It works as a connector more than as a mailbox.\nElena
+      Marchetti: That is close to the ideal case for the collaborative email feature.
+      You can add other Gmail addresses to the organisation, and then people can comment
+      and assign back and forth. The weakness of a shared login is that nobody can
+      tell who is working on what. The research tool indexes everything in that account
+      too, so somebody who is not in the inbox every day can still find the answer
+      to a question.\nWilfred Osei: That sounds right. And thank you for the access,
+      honestly. The timing is good, because we are expanding the team and talking
+      to new interns almost every week. Things will get bigger quickly. We want to
+      be useful to you as well, so tell me how you want the feedback structured.\nTheo
+      Nakamura: Feedback is the most valuable thing we get, and the awkward feedback
+      more than the warm feedback. Three things from me. You have the shared address,
+      so on our side we can flag your whole domain and add other accounts when you
+      want them. Then I want to see how this fits with the rest of your stack. And
+      then a short demo.\nWilfred Osei: Switching everything over is going to be the
+      painful part.\nTheo Nakamura: We do not need you to switch everything. Keep
+      ClickUp for tasks if that is working.\nElena Marchetti: On the pricing question,
+      since it came up with Piotr. We do not charge per user. The constraint he described
+      with ClickUp was that seats were the reason for the single account. We charge
+      for tokens, so adding people costs nothing.\nWilfred Osei: Understood.\nElena
+      Marchetti: Let me share my screen. Tell me when it comes through clearly.\nRosa
+      Beltran: Still slightly blurry. There it is.\nWilfred Osei: That is good on
+      my side.\nElena Marchetti: Starting with goals. Every company wants certain
+      things, and at a startup those wants are less formal. You are not running a
+      full objectives framework, but you still want the outcomes written down, the
+      signals that you are getting there, and an owner. Piotr was interested in starting
+      this here, because as the team grows it is how everyone stays pointed the same
+      way. Whether the goal is the fundraise or the hospital partnership, it can be
+      tracked in one place.\nTheo Nakamura: Wilfred, do you know the objectives and
+      key results framework? No harm either way.\nWilfred Osei: I have heard of it.
+      Could you refresh me?\nTheo Nakamura: It came out of Google and there is a well
+      known book about it. An objective is what you want, and the key results are
+      the measures that tell you whether you got there. The recommendation is two
+      to five objectives at a time. So the objective might be to lead your category,
+      and a key result might be a specific share of a specific channel. Another framework
+      you will hear about uses a single level instead of two.\nElena Marchetti: Ours
+      is closer to the single level version. Each outcome has one measure and a priority,
+      so you have a first goal, a second goal, and a list. Either style works here.
+      It is worth a conversation with Piotr about how you want to signal these to
+      the team. His interest was in having them written down and tracked at all, which
+      I am not sure is happening in ClickUp today.\nWilfred Osei: It is not. And one
+      of my complaints about ClickUp is the arbitrary progress meter in the right
+      column. It takes however many items you have, counts the completed ones, and
+      calls that a percentage. It looks precise and it means nothing. I prefer that
+      you simply say at risk or on track.\nElena Marchetti: That is deliberate.\nTheo
+      Nakamura: Elena, could you say why this matters at their size? Piotr mentioned
+      they do not use an assistant model day to day.\nElena Marchetti: As an organisation
+      grows, more happens in it, and even at ten people two people can hold different
+      views of what is important. Fundraising, research and the first steps toward
+      commercialisation pull against each other. That is drift, and it is not a failure
+      of intelligence or motivation. Writing goals down is how companies resist it.
+      Here they also feed the ordering of your inbox, so the work that matters surfaces
+      first.\nWilfred Osei: That is well matched to what we need.\nElena Marchetti:
+      Then let me show the collaborative side. Here is an email thread. Theo pulled
+      me into it and asked me to look at something. I will add Rosa as an illustration.
+      Say the thread is about the hospital partnership and you want three or four
+      people in the discussion. You can talk about it here, and when the group settles
+      on the terms you want, one person marks that message. Later, when somebody searches,
+      the content of the thread, the discussion and the record of what was settled
+      all come back together.\nWilfred Osei: I can see the value of marking a message.
+      Can you mark it with anything else?\nElena Marchetti: Reactions and that one
+      marker, for now. When something needs a wider audience we tend to move it into
+      a post instead. We did that recently for our mobile router choice. Somebody
+      opened a document, the options were laid out, people commented for a few days,
+      and the conclusion was marked at the end.\nTheo Nakamura: The reason we push
+      posts over chat is that chat cannot tell the difference between what we are
+      ordering for lunch and whether to work with a particular hospital. A post can.
+      And then the research tool knows something was settled, so a new intern can
+      ask why and get a real answer.\nWilfred Osei: What model is behind the research
+      tool?\nElena Marchetti: Anthropic, under a data protection agreement, so nothing
+      that passes through is trained on. Everything else runs on Google Cloud and
+      we are looking at a hosted option there too. The tool can pull general knowledge
+      from the model and specific facts from your organisation and blend them. If
+      you ever bring in a third party assistant, everything you see here is exposed
+      to it over MCP.\nWilfred Osei: So there is no setup on our side for that.\nElena
+      Marchetti: None.\nWilfred Osei: One more complaint that Piotr repeats often.
+      We have no dependency charts for tracking projects. We tried a free tool and
+      hit a paywall, so now it is spreadsheets that we attach to things, with nothing
+      linking them.\nElena Marchetti: We do not have dependency mapping. We have tasks,
+      and they are exposed over MCP so an outside tool can read the structure, but
+      first this then that is not modelled. Our view is that as assistants take on
+      more of the work, one person tends to move through a whole project with an agent
+      rather than handing steps between people. If you genuinely need the dependency
+      chart, that will have to live outside the app for now.\nWilfred Osei: That makes
+      sense as a philosophy, and I prefer it to the alternative. There is simply too
+      much to look at in the other tool. I will have to convince them.\nElena Marchetti:
+      We will put in a good word. Theo, do you want to take the last few minutes on
+      the inbox?\nTheo Nakamura: Wilfred, most inboxes are chronological. Ours can
+      be filtered by a written instruction. If you say you need what is urgent and
+      important, it orders itself that way. Another common one is to filter by goals,
+      which uses the goals you have already written down. Elena, could you show where
+      a custom view is added?\nElena Marchetti: Here. I keep one for things I can
+      realistically finish on a phone, so a request to write a long piece stays out
+      of the way and the short items rise. I keep another for low attention mornings.\nTheo
+      Nakamura: The last thing is the meeting recorder. The recorder in this call
+      is ours. You add it yourself, deliberately, because we do not join by default.
+      Most of the context in a company is in email, chat and meetings, and the research
+      tool is only as good as how much of that it can see.\nWilfred Osei: The meetings
+      are where most things happen for us. It ends up being hard to pull apart afterwards.
+      We tried a notetaker once and the team was not keen on it, but I think it would
+      be wise to start.\nElena Marchetti: There is no per user fee on the recorder
+      either. It is the tokens for the summary.\nTheo Nakamura: Elena, we are at time
+      and we have another call.\nElena Marchetti: I will stop sharing. Wilfred, thank
+      you. Rosa is staying on with you. We will send some notes on the integrations
+      we did not reach.\nWilfred Osei: Thank you both.\nRosa Beltran: So it is just
+      us. Any questions from what they showed you, or thoughts on how you would use
+      it?\nWilfred Osei: It makes sense to me. The hardest part is moving everything
+      across. That will take a lot of hours.\nRosa Beltran: Let us talk about that.
+      Everything is in ClickUp today?\nWilfred Osei: A pile of projects, lists and
+      to do lists. My assumption was that we would copy it over by hand, or export
+      it to a spreadsheet.\nRosa Beltran: Let me look into whether there is an export
+      we can take and upload on your behalf, so it lands as documents and posts on
+      our side. If you can send me a list of the projects and the formats you can
+      get out, I will check what is possible with our engineer.\nWilfred Osei: That
+      could work, if you are willing.\nRosa Beltran: Let me at least explore it. While
+      the others were talking I wanted to share one more thing. We work in an unusual
+      way here. We are not a chat heavy company. We chat around a piece of work rather
+      than in a general channel. We published our communication norms recently, and
+      the whole handbook is public, so I will drop it in the chat. It may be an interesting
+      read on its own, and it explains why the app is shaped the way it is.\nWilfred
+      Osei: I will read it and pass it to the team.\nRosa Beltran: Here is what I
+      suggest for next steps. Use the app for a week. Send me the export formats you
+      can get. I will talk to our engineer about the upload. Then we speak again and
+      go through what felt comfortable and what did not.\nWilfred Osei: That is a
+      good plan.\nRosa Beltran: Let us book it now rather than trade emails. What
+      timezone are you in?\nWilfred Osei: Eastern. And you?\nRosa Beltran: Phoenix.
+      Half the year I am on Pacific and half the year I am on Mountain, and right
+      now I am on Pacific, so it is half past eight in the morning here.\nWilfred
+      Osei: Early. I hope the coffee has arrived.\nRosa Beltran: It has. Does noon
+      Eastern next Wednesday work?\nWilfred Osei: Noon Wednesday works.\nRosa Beltran:
+      Booked. I will send the details and I may bring Theo in. One question before
+      you go. Are you going to add more users to the account, or stay on the single
+      login?\nWilfred Osei: We are definitely adding everyone. I want each person
+      to have their own account rather than sharing the one login. I have already
+      told the team that is what we are doing, and I will send the invitations myself
+      this afternoon.\nRosa Beltran: If you need help, send me an email. You should
+      be able to invite everyone from your settings.\nWilfred Osei: Understood. So
+      the only thing we are billed for is tokens, which is the summaries and the research
+      answers. Writing posts and the rest of it is free.\nRosa Beltran: Correct. It
+      is the parts with a model behind them. Meeting summaries, research output, the
+      custom inbox sorting. It is quite small in practice. A person usually lands
+      around ten dollars a month.\nWilfred Osei: That is reasonable. How large is
+      your team?\nRosa Beltran: Around twenty. We also have a research arm that stays
+      close to the current work in the field, and we publish essays. We work with
+      a professor as an academic advisor.\nWilfred Osei: That is impressive.\nRosa
+      Beltran: The essays are on the website and they are worth reading. I keep a
+      dictionary open for some of them.\nWilfred Osei: One thing I have been thinking
+      about, slightly off topic. With so much depending on these models, I expect
+      a wave of cognitive atrophy. People will get the output without keeping the
+      skill.\nRosa Beltran: We talk about that often. An individual contributor now
+      handles the output that a manager handled ten years ago, so the skill people
+      have to build is closer to management than to production.\nWilfred Osei: Agreed.
+      It is about steering it and asking properly.\nRosa Beltran: Exactly. It was
+      good to meet you.\nWilfred Osei: You too. Thanks very much, Rosa.\nRosa Beltran:
+      Try it this week, invite the team, and we will speak on Wednesday. Have a good
+      one.\nWilfred Osei: Take it easy. Goodbye."],"model":"text-embedding-3-small","dimensions":1536,"encoding_format":"base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '13614'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAA/1WaUVfiyrPFv4uvnLNkFAHnrdIdQgghZBQ1c9dddyFiDyJGQYh61vnut37FzP2v
+        +yaTdHd11a5duyrzz0l9/7RcvJ98P3le7d5P/jp5mL/PT77/1z//ebDc3C8fHlYvQZ/+5+/vJxL7
+        ddG48PTUSJNf9SWVh4NEwd83IvFbX8QPD+LD7Kkt6ajTkzS6n+rzmW9LJcmlOPejaCTcjNsiadrX
+        34Mp7/fa0gwWPcmjb4dSpHfd6NZyKYXf87zd20mT2O8++697er4sLyWRybSMZKDry2Kv+/lbPU92
+        Y+zZX0ocrTl/Md5JyJOexDLnOftXyY7zNwcRGflG6qzo6vkXU3GS9Pjd0ueSTksfXjkv3WH/z6m+
+        v9H7d3heuDN+P93z/rovifPYO92qPYnT85zfN06G2yDNmPOiL7U3ZPjL6X561SJEMlR/1AP1RxK5
+        Q+ml5Xf6qOlLFkXsP/zS51F6Kbl/Un9LW+9T+Qx/P2J/R+0Xv9D9opb+DrnaG6Iu/j/X9WH6VIuM
+        N33Jpcv703v1v1vy/uqg/svUX804I55zPT9U6p+OXF1K5l6L4CW+1vcjdympSzn/Ue1p0oXa53/h
+        36DPy5HGV3yu8ZEh+6dd7jPHf5XiofYz9k+Jb8Bf8tnSeEVF4yXHH+Na/Rl19/rni8Y79Xq+U3zp
+        +vJJ4+8S7h8T/1+e+PX7Gs/Hqe430PVhmCkeoi/dP7Sud1JOP3U/udL7hWfsywp93wWNb3jbKr6G
+        Dv858Jyr/0Nq8b7l/Ub3D6L+jtVfer4Dn/EcvOy5//4ae+bY18K/Tu9bZ3peIodp6STo/jKx866w
+        96ee32RXPX3+of6QifqjlI76w53yPFJ/N5MF9o6x/0zjUfsr7Fvv9f2V4qHKFd959Av7pvq8HL1p
+        PPz8oEaMNN5pnhLfmHxYsz7Fn8fzL750fbrU/aI58fY8n5K/rtb1x3wU3a+QqAjO3k/H+M8/ka99
+        8iWq1b+uAo+14qkusgs9+hR7V3q/Otb7FW6peAkx630A33v8sdb8b7zyQeZX5i9P/pxpfvgv8rHG
+        fz7+nR+aFFv8r/kispj+9n8JflOZgp8PxUed9/U8uZ7ab/Aw0/Pcft9E0lj+tnn/Up+HX2qfwljx
+        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
+        /bzd6/x18l6/z5//37/9++//AsI4qlGeIAAA
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edc318999d629-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:51:31 GMT
+      openai-processing-ms:
+      - '118'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=15V7l5EqPuAx8MgqEPeKwMyAeqRQLAqi7f4YlAS5Du8-1786027891.4485788-1.0.1.1-dzdwcRZiS6ps_bu05b7Z5e6xz..Fze3bUDGKkEGovXW5axYTlaaYspPGWfCkh24F7Z0QNPqgkDEZWGjqkUJyw7NhaR4g3P3qbS4Qjd0jAWpN9RutqPwKfdFv41CAhpjq;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu,
+        06 Aug 2026 15:21:31 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9996641'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 20ms
+      x-request-id:
+      - req_b3aac372dce94e11b0b9913ce12df982
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            {% block title %}
+                {{ "Convictional" | format_page_title }}
+            {% endblock title %}
+        </title>
+        {% include "layouts/_head.html.jinja" %}
+        {% block head %}
+        {% endblock head %}
+    </head>
+    <body hx-boost="true"
+          hx-ext="loading-states, alpine-morph"
+          x-init="$store?.theme?.init()"
+          x-cloak
+          x-data
+          :data-theme="$store?.theme?.current === 'dark' ? 'convictional-dark' : 'convictional-light'"
+          class="min-h-screen safe-area">
+        {% block body %}
+        {% endblock body %}
+    </body>
+</html>

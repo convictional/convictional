@@ -1,0 +1,19 @@
+{% extends application_layout %}
+{% block title %}
+    {{ "Notion Integration" |format_page_title }}
+{% endblock title %}
+{% block content %}
+    <section class="flex flex-col md:flex-row p-6 bg-base-200 rounded-xl border border-neutral"
+             id="notion-section">
+        <div class="md:w-1/3 mb-4 md:mb-0 md:pr-8">
+            <p class="font-semibold flex items-center gap-2">Notion</p>
+            <p class="text-sm opacity-75 mt-4">
+                Bring pages from your Notion workspace into Convictional. Pick which pages to sync;
+                each selected page is imported once as a Convictional document you can edit.
+            </p>
+        </div>
+        <div class="md:w-2/3 space-y-6">
+            <div id="react-notion-settings" data-props='{}'></div>
+        </div>
+    </section>
+{% endblock content %}

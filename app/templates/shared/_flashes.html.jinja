@@ -1,0 +1,28 @@
+{# Flash message display with auto-dismiss animation
+
+Required context:
+- flash_messages: list[FlashMessage] - Messages with level ("error" or "success") and content
+#}
+{% for message in flash_messages %}
+    <div x-data="{ show: true }"
+         x-init="setTimeout(() => show = false, 3000)"
+         @click="show = false"
+         x-show="show"
+         x-transition:enter="transition ease-[var(--ease-pop)] duration-400"
+         x-transition:enter-start="opacity-0 translate-y-4 scale-95"
+         x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+         x-transition:leave-end="opacity-0 -translate-y-2 scale-95"
+         class="dropdown-card cursor-pointer self-center max-w-[calc(100dvw-2rem)]">
+        <div class="relative overflow-hidden">
+            <div class="absolute inset-0 {{ 'bg-error/40' if message.level == 'error' else 'bg-success/40' }} w-0 animate-[fillBar_3s_linear_forwards]">
+            </div>
+            <div class="relative grid grid-cols-[auto_1fr_auto] items-center gap-2 px-2 py-0 {{ 'text-error-content bg-error/20' if message.level == 'error' else 'text-success-content bg-success/20' }}">
+                <span class="material-symbols-outlined text-lg">{{ 'error' if message.level == 'error' else 'check' }}</span>
+                <span class="text-xs py-1">{{ message.content }}</span>
+                <span class="material-symbols-outlined text-base text-base-500">close</span>
+            </div>
+        </div>
+    </div>
+{% endfor %}
