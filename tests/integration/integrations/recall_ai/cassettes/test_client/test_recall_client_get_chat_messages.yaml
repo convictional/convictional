@@ -1,0 +1,135 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json
+      accept:
+      - application/json
+    method: GET
+    uri: https://us-east-1.recall.ai/api/v1/bot/57032db8-2d7f-4253-8070-f52403eacd38/chat-messages
+  response:
+    body:
+      string: '{"detail":"Not found."}'
+    headers:
+      Allow:
+      - GET, HEAD, OPTIONS
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '23'
+      Content-Security-Policy:
+      - 'style-src ''self'' ''unsafe-inline'' *.usepylon.com *.posthog.com *.pusher.com;
+        connect-src ''self'' ws: wss: www.google-analytics.com us.i.posthog.com opps-api.getwarmly.com
+        pro.ip-api.com alocdn.com opps-api.getwarmly.com *.liadm.com 9xgnrndqve.execute-api.us-west-2.amazonaws.com
+        tag.clearbitscripts.com *.termly.io *.usepylon.com *.posthog.com *.pusher.com;
+        frame-src ''self'' https://app.svix.com https://www.googletagmanager.com https://embedded-dashboards.metronome.com
+        https://*.stripe.com; script-src ''self'' ''unsafe-inline'' ''unsafe-eval''
+        www.googletagmanager.com www.google-analytics.com webpack://meeting-api us-assets.i.posthog.com
+        cdn.usefathom.com tag.clearbitscripts.com s3-us-west-2.amazonaws.com/b2bjsstore/b/Y4O7Z0H983NX/reb2b.js.gz
+        opps-widget.getwarmly.com us.i.posthog.com b-code.liadm.com *.liadm.com a.usbrowserspeed.com
+        a.remarketstats.com *.clickcertain.com *.stripe.com *.termly.io *.usepylon.com
+        *.posthog.com *.pusher.com; media-src *.s3.amazonaws.com; font-src ''self''
+        *.usepylon.com *.posthog.com *.pusher.com; img-src ''self'' data: https://cdn.usefathom.com
+        https://upload.wikimedia.org https://rp.liadm.com https://*.stripe.com *.s3.amazonaws.com
+        *.s3.us-west-1.amazonaws.com https://avatars.slack-edge.com; default-src ''self'''
+      Content-Type:
+      - application/json
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Date:
+      - Wed, 04 Dec 2024 20:12:25 GMT
+      Permissions-Policy:
+      - accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), usb=()
+      Referrer-Policy:
+      - same-origin
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      Via:
+      - 1.1 a4c7006ff62b5b4c16c58f54fdfeb656.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - taSHPRvmLqTvFJQ0rjqSdtO3IZzKhAPc3tS-6FXFrbikAWgabgHFlg==
+      X-Amz-Cf-Pop:
+      - JFK50-P7
+      X-Cache:
+      - Error from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 404
+      message: Not Found
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json
+      accept:
+      - application/json
+    method: GET
+    uri: https://us-east-1.recall.ai/api/v1/bot/80f4b607-1477-4c07-9962-1c4b8378048b/chat-messages
+  response:
+    body:
+      string: '{"next":null,"previous":null,"results":[{"text":"im here to be immortalized","created_at":"2024-12-03T19:26:04.051096Z","to":"everyone","sender":{"id":400,"name":"Bernadette
+        Ashcombe","is_host":false,"platform":"unknown","extra_data":null}},{"text":"I
+        now understand the purpose of the meeting","created_at":"2024-12-03T19:26:15.024437Z","to":"everyone","sender":{"id":300,"name":"Callum
+        Wexley","is_host":false,"platform":"unknown","extra_data":null}}]}'
+    headers:
+      Allow:
+      - GET, HEAD, OPTIONS
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '454'
+      Content-Security-Policy:
+      - 'style-src ''self'' ''unsafe-inline'' *.usepylon.com *.posthog.com *.pusher.com;
+        connect-src ''self'' ws: wss: www.google-analytics.com us.i.posthog.com opps-api.getwarmly.com
+        pro.ip-api.com alocdn.com opps-api.getwarmly.com *.liadm.com 9xgnrndqve.execute-api.us-west-2.amazonaws.com
+        tag.clearbitscripts.com *.termly.io *.usepylon.com *.posthog.com *.pusher.com;
+        frame-src ''self'' https://app.svix.com https://www.googletagmanager.com https://embedded-dashboards.metronome.com
+        https://*.stripe.com; script-src ''self'' ''unsafe-inline'' ''unsafe-eval''
+        www.googletagmanager.com www.google-analytics.com webpack://meeting-api us-assets.i.posthog.com
+        cdn.usefathom.com tag.clearbitscripts.com s3-us-west-2.amazonaws.com/b2bjsstore/b/Y4O7Z0H983NX/reb2b.js.gz
+        opps-widget.getwarmly.com us.i.posthog.com b-code.liadm.com *.liadm.com a.usbrowserspeed.com
+        a.remarketstats.com *.clickcertain.com *.stripe.com *.termly.io *.usepylon.com
+        *.posthog.com *.pusher.com; media-src *.s3.amazonaws.com; font-src ''self''
+        *.usepylon.com *.posthog.com *.pusher.com; img-src ''self'' data: https://cdn.usefathom.com
+        https://upload.wikimedia.org https://rp.liadm.com https://*.stripe.com *.s3.amazonaws.com
+        *.s3.us-west-1.amazonaws.com https://avatars.slack-edge.com; default-src ''self'''
+      Content-Type:
+      - application/json
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Date:
+      - Wed, 04 Dec 2024 20:15:39 GMT
+      Permissions-Policy:
+      - accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), usb=()
+      Referrer-Policy:
+      - same-origin
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      Via:
+      - 1.1 ad2d59fb6f7c4118dea14b5b7a9a1658.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - cmsgqtte0KBIWvBUtzGeSvaLAYQltxVlTZ4EeRW2AClcd_bZy4Fvrw==
+      X-Amz-Cf-Pop:
+      - JFK50-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1

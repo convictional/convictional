@@ -1,0 +1,15 @@
+{% if content_results %}
+
+Below are excerpts from the original source materials. Use these to add explanatory depth — explain WHY findings matter, HOW they connect to each other, and provide background context that goes beyond the extracted learnings. Cite each source using the token shown in its `<id>` tag, in the `[^S1]` format.
+<sources>
+{% for source in content_results %}
+    <source>
+        <id>{{ source.citation_id }}</id>
+        <title>{{ source.title }}</title>
+        <author>{{ source.author }}</author>
+        <created_at>{{ source.created_at }}</created_at>
+        <content>{{ source.content }}</content>
+    </source>
+{% endfor %}
+</sources>
+{% endif %}

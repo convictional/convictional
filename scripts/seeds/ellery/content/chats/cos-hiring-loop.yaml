@@ -1,0 +1,150 @@
+key: cos-hiring-loop
+name: "CoS Hiring Loop"
+members: [darren, priya, tessa, leo, maren]
+messages:
+  - key: cos-hiring-loop-msg-001
+    author: maren
+    at: !relative_day {offset: -10, hour: 8, minute: 0}
+    content: |
+      CoS hiring loop is live. Three candidates in on-sites this week and next. Debrief docs will be in the hiring folder after each session. Panel assignments: Tessa has the "operate under ambiguity" panel for all three. Priya has the "translate ambiguity into a plan" panel. Leo has a 30-minute culture-and-values conversation for each.
+
+  - key: cos-hiring-loop-msg-002
+    author: tessa
+    at: !relative_day {offset: -10, hour: 8, minute: 15}
+    reply_to: cos-hiring-loop-msg-001
+    content: |
+      Happy to take the ambiguity panel. I'll run the same scenario across all three so we have a clean comparison. One ask: can someone share the scorecard so I know exactly what we're evaluating for? I want to use the same language in my notes.
+
+  - key: cos-hiring-loop-msg-003
+    author: maren
+    at: !relative_day {offset: -10, hour: 8, minute: 22}
+    reply_to: cos-hiring-loop-msg-002
+    content: |
+      Scorecard is in the hiring folder — "CoS Scorecard v2." The most important dimensions are: (1) judgment under pressure, (2) willingness to operate in the gray without constant guidance, (3) ability to represent Darren credibly in rooms where they're not present. The third one is the hardest to evaluate and the most important.
+    reactions:
+      thumbs_up: [tessa, priya, leo]
+
+  - key: cos-hiring-loop-msg-004
+    author: leo
+    at: !relative_day {offset: -10, hour: 8, minute: 38}
+    content: |
+      Quick question on the culture conversation — is there any dimension of the role I should emphasize or de-emphasize? I want to give candidates an accurate picture of what working with us actually looks like.
+
+  - key: cos-hiring-loop-msg-005
+    author: darren
+    at: !relative_day {offset: -10, hour: 9, minute: 5}
+    reply_to: cos-hiring-loop-msg-004
+    content: |
+      Be honest that it's high-ambiguity, high-trust, and high-intensity. We don't have good systems yet — that's part of what the CoS will build. If they want a company with a playbook, this isn't the job. If they want to write the playbook, it might be.
+    reactions:
+      thumbs_up: [leo, maren, tessa, priya]
+
+  - key: cos-hiring-loop-msg-006
+    author: tessa
+    at: !relative_day {offset: -9, hour: 19, minute: 15}
+    content: |
+      Naomi debrief: strong presence, great at synthesizing complexity verbally. The ambiguity scenario she handled well on structure but I kept wanting her to question the premise of the problem, not just solve it as stated. That tells me she'd execute well at a more defined stage company. Not us.
+    reactions:
+      eyes: [maren, darren, priya]
+
+  - key: cos-hiring-loop-msg-007
+    author: priya
+    at: !relative_day {offset: -9, hour: 19, minute: 30}
+    reply_to: cos-hiring-loop-msg-006
+    content: |
+      Same read from my panel. The whiteboard answer was technically complete but she didn't ask clarifying questions before starting. At our stage you need people who interrogate the problem before they solve it.
+
+  - key: cos-hiring-loop-msg-008
+    author: leo
+    at: !relative_day {offset: -9, hour: 19, minute: 42}
+    reply_to: cos-hiring-loop-msg-006
+    content: |
+      Culture conversation was good — she was self-aware about what she doesn't know, which I liked. But she described her ideal environment as "high structure with clear ownership," which made me wince a little given where we actually are.
+    reactions:
+      tears_of_joy: [tessa]
+
+  - key: cos-hiring-loop-msg-009
+    author: darren
+    at: !relative_day {offset: -7, hour: 20, minute: 5}
+    content: |
+      Priyanka debrief. She's a different gear. Asked me three questions in the first ten minutes that I haven't been asked by a candidate in two years — including "what's the thing you're most afraid of in this hire going wrong?" Nobody asks that.
+    reactions:
+      rocket: [maren, tessa, priya, leo]
+
+  - key: cos-hiring-loop-msg-010
+    author: tessa
+    at: !relative_day {offset: -7, hour: 20, minute: 18}
+    reply_to: cos-hiring-loop-msg-009
+    content: |
+      My ambiguity panel: she didn't just work through the scenario — she mapped the stakeholders and their incentives before proposing a path. That's a CoS instinct. She knew that the people in the room matter as much as the problem on the board.
+    reactions:
+      heart: [maren]
+
+  - key: cos-hiring-loop-msg-011
+    author: priya
+    at: !relative_day {offset: -7, hour: 20, minute: 28}
+    reply_to: cos-hiring-loop-msg-009
+    content: |
+      Whiteboard panel: she drew a RACI before I finished explaining the scenario. Not in a mechanical way — she said "I want to understand who cares about this before I propose how to solve it." That's the instinct.
+    reactions:
+      thumbs_up: [darren, maren]
+
+  - key: cos-hiring-loop-msg-012
+    author: leo
+    at: !relative_day {offset: -7, hour: 20, minute: 38}
+    reply_to: cos-hiring-loop-msg-009
+    content: |
+      Culture conversation: she pushed back on something I said about pace — told me directly that she thinks "move fast" is sometimes an excuse for not thinking carefully enough. I disagreed in the moment but I respected the conviction. That's someone who'll disagree with Darren too, which is what the job needs.
+    reactions:
+      heart: [darren, maren]
+      thumbs_up: [tessa, priya]
+
+  - key: cos-hiring-loop-msg-013
+    author: maren
+    at: !relative_day {offset: -6, hour: 19, minute: 40}
+    content: |
+      Debrief doc is in the folder for Priyanka — three reference names included. For Hamza next Monday, I want everyone to read the debrief first and resist the pull toward Priyanka-bias. We owe Hamza a clean slate.
+    reactions:
+      thumbs_up: [darren, tessa, priya, leo]
+
+  - key: cos-hiring-loop-msg-014
+    author: darren
+    at: !relative_day {offset: -3, hour: 8, minute: 15}
+    content: |
+      Hamza debrief: solid operator. Good instincts on stakeholder management. The gap for me was depth of judgment — his answers to the hard questions were smart but not specific. He's someone who has done this job in a defined environment. Priyanka has done it in the fire. That's the difference.
+    reactions:
+      eyes: [maren, tessa, priya]
+
+  - key: cos-hiring-loop-msg-015
+    author: tessa
+    at: !relative_day {offset: -3, hour: 8, minute: 28}
+    reply_to: cos-hiring-loop-msg-014
+    content: |
+      Same read. Hamza is excellent and will land somewhere great. I'm at Priyanka unless references surface a surprise.
+
+  - key: cos-hiring-loop-msg-016
+    author: priya
+    at: !relative_day {offset: -3, hour: 8, minute: 35}
+    reply_to: cos-hiring-loop-msg-014
+    content: |
+      Priyanka. The whiteboard panel is the tiebreaker for me — that instinct to understand the stakeholder map before proposing a solution is rare and exactly what Darren needs.
+    reactions:
+      thumbs_up: [darren]
+
+  - key: cos-hiring-loop-msg-017
+    author: leo
+    at: !relative_day {offset: -3, hour: 8, minute: 42}
+    reply_to: cos-hiring-loop-msg-014
+    content: |
+      Priyanka. She'll push back. That's actually an asset here.
+    reactions:
+      heart: [darren, maren]
+
+  - key: cos-hiring-loop-msg-018
+    author: darren
+    at: !relative_day {offset: 0, hour: 6, minute: 30}
+    content: |
+      Final-round with Priyanka at 10am. If it goes the way I think it will, I want to extend an offer today. Maren and I will connect at 3:30 on the letter. Thank you, everyone — this loop was excellent and the debriefs were the most useful thing we've done as a panel in a while.
+    reactions:
+      heart: [maren, tessa, priya, leo]
+      rocket: [tessa]

@@ -1,0 +1,26 @@
+You are tasked with generating a succinct title for a meeting based on its transcript. Here is the transcript of the meeting:
+
+<transcript>
+{% with lines=meeting.processed_transcript.lines %}
+    {% include "meetings/transcript_lines.md.jinja" %}
+{% endwith %}
+</transcript>
+
+Your goal is to create a brief, informative title that captures the main purpose or key topic of the meeting. This title should give someone who didn't attend the meeting a quick understanding of what was discussed.
+
+Follow these guidelines when creating the title:
+1. Keep it concise - ideally under 10 words
+2. Focus on the main topic or purpose of the meeting
+3. Use clear, straightforward language
+4. Avoid unnecessary details or participant names
+5. Make it specific enough to distinguish this meeting from others
+
+To complete this task:
+1. Carefully read and analyze the transcript
+2. Identify the central theme or primary objective of the meeting
+3. Consider any key decisions made or important topics discussed
+4. Synthesize this information into a concise title
+
+Once you have formulated the title, provide your response using the MeetingTitle tool.
+
+Remember, the title should be succinct yet informative, giving a clear idea of the meeting's purpose at a glance.

@@ -1,0 +1,116 @@
+key: soc2-task-force
+name: "SOC 2 Task Force"
+members: [priya, arjun, maren]
+messages:
+  - key: soc2-task-force-msg-001
+    author: priya
+    at: !relative_day {offset: -16, hour: 10, minute: 0}
+    content: |
+      Creating this chat for SOC 2 coordination — there are enough threads across the Exec chat, the engineering chat, and direct messages that I want one clear place for status. Arjun is owning infrastructure and access controls. Maren is owning the data protection and legal controls. I'm coordinating with Brandt at Halden & Rossi.
+
+  - key: soc2-task-force-msg-002
+    author: arjun
+    at: !relative_day {offset: -16, hour: 10, minute: 18}
+    content: |
+      Good idea. Quick status from my side: access control policies are drafted, AWS security groups are documented, but we don't have a formal vulnerability management process yet. I'll write one this week — it's a Type I requirement, not nice-to-have.
+    reactions:
+      thumbs_up: [priya]
+
+  - key: soc2-task-force-msg-003
+    author: maren
+    at: !relative_day {offset: -16, hour: 10, minute: 30}
+    content: |
+      From the legal controls side: data classification policy is drafted. Privacy policy is current. The gap is a formal data retention schedule — we have an informal one but it needs to be written down and signed by an executive. Priya, I'll need your sign-off as well as Darren's.
+
+  - key: soc2-task-force-msg-004
+    author: priya
+    at: !relative_day {offset: -16, hour: 10, minute: 42}
+    reply_to: soc2-task-force-msg-003
+    content: |
+      Send me the draft when it's ready. What's your target for that this week?
+
+  - key: soc2-task-force-msg-005
+    author: maren
+    at: !relative_day {offset: -16, hour: 10, minute: 50}
+    reply_to: soc2-task-force-msg-004
+    content: |
+      Thursday. I want to review it with Rhea first — she'll catch any gaps in how we handle customer contract data specifically.
+    reactions:
+      thumbs_up: [priya]
+
+  - key: soc2-task-force-msg-006
+    author: priya
+    at: !relative_day {offset: -14, hour: 15, minute: 30}
+    content: |
+      Brandt call was useful. Key findings: (1) our logging is adequate for Type I but would fail a Type II review — we need structured request logging before an audit. (2) the vendor management questionnaire responses are missing — we need to document how we assess our own software vendors. (3) everything else is in reasonable shape. Type I target: eight weeks from now.
+
+  - key: soc2-task-force-msg-007
+    author: arjun
+    at: !relative_day {offset: -14, hour: 15, minute: 48}
+    reply_to: soc2-task-force-msg-006
+    content: |
+      I can have structured request logging in two weeks. I'll scope it to the ingestion and retrieval pipelines first — those are the highest-risk paths. Vendor management questionnaire: I'll start that tomorrow. We probably have 8-10 software vendors to document.
+    reactions:
+      thumbs_up: [priya]
+
+  - key: soc2-task-force-msg-008
+    author: maren
+    at: !relative_day {offset: -14, hour: 16, minute: 5}
+    content: |
+      Eight weeks aligns with what Tessa needs for Keating. SOC 2 Type I at close or shortly after — that's the commitment Amira is looking for. I'll relay the timeline to Tessa so she can use it in her commercial conversations.
+    reactions:
+      thumbs_up: [priya, arjun]
+
+  - key: soc2-task-force-msg-009
+    author: arjun
+    at: !relative_day {offset: -8, hour: 17, minute: 30}
+    content: |
+      Two updates: (1) region-scoped storage design is complete — EU customer data is isolated at the bucket and key level, Brandt reviewed the diagram and called it solid. (2) Vulnerability management process is written and in the SOC 2 evidence folder. Requesting a quick review before I close those items.
+
+  - key: soc2-task-force-msg-010
+    author: priya
+    at: !relative_day {offset: -8, hour: 17, minute: 45}
+    reply_to: soc2-task-force-msg-009
+    content: |
+      Reviewed both. The EU storage design is clean — the architectural decision to isolate at the key level rather than the bucket level alone is the right call. Vulnerability management process is good; I'd add a note about the severity classification criteria in section 3 but that's a polish item, not a blocker.
+    reactions:
+      thumbs_up: [arjun]
+
+  - key: soc2-task-force-msg-011
+    author: maren
+    at: !relative_day {offset: -8, hour: 18, minute: 0}
+    reply_to: soc2-task-force-msg-009
+    content: |
+      The storage isolation work means we're ahead of where I expected on EU residency. I'm updating our Keating conversation to reflect that we can demonstrate isolation, not just describe it. That's a different kind of conversation.
+    reactions:
+      rocket: [arjun, priya]
+
+  - key: soc2-task-force-msg-012
+    author: priya
+    at: !relative_day {offset: -5, hour: 9, minute: 20}
+    content: |
+      SOC 2 evidence review: we're green on 14 of 18 Type I controls. The four remaining are: (1) vendor management documentation — Arjun is in progress; (2) formal change management process — I'll write this week; (3) board-level security governance statement — Darren needs to sign something; (4) training records — we haven't done security training with the whole team yet.
+
+  - key: soc2-task-force-msg-013
+    author: arjun
+    at: !relative_day {offset: -5, hour: 9, minute: 38}
+    reply_to: soc2-task-force-msg-012
+    content: |
+      Vendor management is 80% done — finishing the last three vendors today. For security training: I can run a 45-minute all-hands session this week if we put it on the calendar. It doesn't need to be elaborate, just documented.
+    reactions:
+      thumbs_up: [priya, maren]
+
+  - key: soc2-task-force-msg-014
+    author: maren
+    at: !relative_day {offset: -5, hour: 9, minute: 50}
+    content: |
+      I'll draft the board-level governance statement and route it to Darren. It's short — three paragraphs. Priya, can you review it for technical accuracy before Darren signs?
+
+  - key: soc2-task-force-msg-015
+    author: priya
+    at: !relative_day {offset: -2, hour: 10, minute: 5}
+    content: |
+      SOC 2 task force update for the record: all 18 Type I controls are now complete or in final review. Security training happened yesterday — whole team attended. Brandt is scheduled for the formal readiness review in three weeks. We're on track for the Keating timeline.
+    reactions:
+      rocket: [arjun, maren]
+      heart: [maren]

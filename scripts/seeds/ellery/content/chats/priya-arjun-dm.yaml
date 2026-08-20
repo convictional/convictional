@@ -1,0 +1,113 @@
+key: priya-arjun-dm
+members: [priya, arjun]
+messages:
+  - key: priya-arjun-dm-msg-001
+    author: priya
+    at: !relative_day {offset: -18, hour: 10, minute: 5}
+    content: |
+      Quick check-in — the SRE JD draft is in the doc. Can you review the on-call section before I share with Leona? I want to be honest about what we're asking for.
+
+  - key: priya-arjun-dm-msg-002
+    author: arjun
+    at: !relative_day {offset: -18, hour: 10, minute: 32}
+    reply_to: priya-arjun-dm-msg-001
+    content: |
+      Read it. Two notes: (1) "on-call once per quarter" undersells reality right now, it's closer to once per six weeks. (2) The "owns the incident process" line is vague — say "writes runbooks and leads postmortems" so candidates know what they're walking into.
+    reactions:
+      thumbs_up: [priya]
+
+  - key: priya-arjun-dm-msg-003
+    author: priya
+    at: !relative_day {offset: -18, hour: 10, minute: 45}
+    reply_to: priya-arjun-dm-msg-002
+    content: |
+      Both fair. Updating now. Also — I'm planning to say in the debrief that the SRE owns the SOC 2 evidence-collection work once they're ramped. Does that feel realistic?
+
+  - key: priya-arjun-dm-msg-004
+    author: arjun
+    at: !relative_day {offset: -18, hour: 11, minute: 2}
+    reply_to: priya-arjun-dm-msg-003
+    content: |
+      Realistic but probably Q2. If they start in six weeks, four weeks to ramp, they're useful on SOC 2 in week nine. We can't wait on Keating.
+
+  - key: priya-arjun-dm-msg-005
+    author: priya
+    at: !relative_day {offset: -14, hour: 16, minute: 20}
+    content: |
+      SOC 2 scoping call with Brandt this afternoon. What's your read on the key management question — are we going to need a hardware HSM or can we make the case for a software key store at Type I?
+
+  - key: priya-arjun-dm-msg-006
+    author: arjun
+    at: !relative_day {offset: -14, hour: 16, minute: 35}
+    reply_to: priya-arjun-dm-msg-005
+    content: |
+      Software is fine for Type I. The risk is that Doug at Keating sees "software key store" and flags it. I'd suggest we phrase it as "FIPS-140-2 compliant software KMS with envelope encryption" and see if that clears his filter.
+    reactions:
+      thumbs_up: [priya]
+
+  - key: priya-arjun-dm-msg-007
+    author: priya
+    at: !relative_day {offset: -12, hour: 9, minute: 10}
+    content: |
+      Keating questionnaire is live — Tessa forwarded it last night. 147 questions. Can you pull out the infrastructure and access-control sections and put your answers in the shared doc by Thursday? I'll do data classification and incident response.
+
+  - key: priya-arjun-dm-msg-008
+    author: arjun
+    at: !relative_day {offset: -12, hour: 9, minute: 28}
+    reply_to: priya-arjun-dm-msg-007
+    content: |
+      On it. One flag: questions 88-102 are about EU data residency controls we haven't fully implemented yet. I'll answer what's true and mark the rest "in progress — target date X." Is that okay?
+
+  - key: priya-arjun-dm-msg-009
+    author: priya
+    at: !relative_day {offset: -12, hour: 9, minute: 35}
+    reply_to: priya-arjun-dm-msg-008
+    content: |
+      Yes. Never lie on a security questionnaire. Mark it honest and let Tessa decide whether she wants to walk Amira through the roadmap separately.
+
+  - key: priya-arjun-dm-msg-010
+    author: arjun
+    at: !relative_day {offset: -8, hour: 17, minute: 45}
+    content: |
+      Region-scoped storage spike is done. The design isolates EU customer data at the bucket and key level — no cross-region reads possible by construction. Brandt reviewed the diagram and said it's solid. We're moving from at_risk to on_track on that subgoal.
+    reactions:
+      rocket: [priya]
+
+  - key: priya-arjun-dm-msg-011
+    author: priya
+    at: !relative_day {offset: -8, hour: 18, minute: 2}
+    reply_to: priya-arjun-dm-msg-010
+    content: |
+      This is the best news this week. I'll drop a note in the Exec chat. You should be proud of this one — I know the routing layer was a nightmare.
+    reactions:
+      heart: [arjun]
+
+  - key: priya-arjun-dm-msg-012
+    author: arjun
+    at: !relative_day {offset: -5, hour: 11, minute: 30}
+    content: |
+      Question on the SRE interview loop — are you doing a systems-design round or a troubleshooting-from-logs round? I've done both but they select for different instincts.
+
+  - key: priya-arjun-dm-msg-013
+    author: priya
+    at: !relative_day {offset: -5, hour: 11, minute: 48}
+    reply_to: priya-arjun-dm-msg-012
+    content: |
+      Troubleshooting-from-logs. We need someone who can get paged at 2am and not freeze. Systems design is table stakes; I want to see how they think when things are already on fire.
+
+  - key: priya-arjun-dm-msg-014
+    author: arjun
+    at: !relative_day {offset: -5, hour: 11, minute: 52}
+    reply_to: priya-arjun-dm-msg-013
+    content: |
+      Good call. I'll write the troubleshooting scenario this week. I've got the ingestion-pipeline timeout that bit us last month — perfect for it, root cause isn't obvious.
+    reactions:
+      thumbs_up: [priya]
+
+  - key: priya-arjun-dm-msg-015
+    author: priya
+    at: !relative_day {offset: -1, hour: 8, minute: 55}
+    content: |
+      SOC 2 prep room this morning — let's aim to have the evidence index current through yesterday before the Exec sync. If Darren gets pulled into the CISO call with Doug, we need to be able to hand him facts, not a status update.
+    reactions:
+      thumbs_up: [arjun]

@@ -1,0 +1,114 @@
+key: leo-emma-dm
+members: [leo, emma]
+messages:
+  - key: leo-emma-dm-msg-001
+    author: leo
+    at: !relative_day {offset: -15, hour: 9, minute: 30}
+    content: |
+      Emma — I want to pair this week on the co-pilot prototype UI. I have some rough wireframe ideas but honestly I'd rather start from your research notes than from my sketches. What did you pull from the first two customer sessions?
+
+  - key: leo-emma-dm-msg-002
+    author: emma
+    at: !relative_day {offset: -15, hour: 10, minute: 5}
+    reply_to: leo-emma-dm-msg-001
+    content: |
+      The biggest thing so far: both lawyers said they want the suggestion to appear *in context* — as a ghosted text in the redline margin, not as a sidebar panel. They kept reaching for the text itself, not the panel. They also both mentioned that seeing the playbook citation alongside the suggestion was the thing that made them trust it.
+
+  - key: leo-emma-dm-msg-003
+    author: leo
+    at: !relative_day {offset: -15, hour: 10, minute: 18}
+    reply_to: leo-emma-dm-msg-002
+    content: |
+      The in-context ghosted text idea is really interesting — that's different from what I sketched. Can you prototype that interaction pattern? Even lo-fi is fine. I want to see it before I push the PRD further.
+    reactions:
+      thumbs_up: [emma]
+
+  - key: leo-emma-dm-msg-004
+    author: emma
+    at: !relative_day {offset: -13, hour: 15, minute: 45}
+    content: |
+      Lo-fi prototype is in the shared design file. I went with a "ghost suggestion" approach — the AI text appears in a lighter weight with a faint teal underline, accept/reject lives in the line itself rather than a panel. The playbook citation is a small hover tooltip on the underline.
+
+  - key: leo-emma-dm-msg-005
+    author: leo
+    at: !relative_day {offset: -13, hour: 16, minute: 10}
+    reply_to: leo-emma-dm-msg-004
+    content: |
+      I love this. The hover tooltip for the citation is exactly right — lawyers won't want to read citations by default but they'll want them available when they push back. Is Theo looped in? We need the interaction spec before he can build it.
+    reactions:
+      heart: [emma]
+
+  - key: leo-emma-dm-msg-006
+    author: emma
+    at: !relative_day {offset: -13, hour: 16, minute: 22}
+    reply_to: leo-emma-dm-msg-005
+    content: |
+      Yes, sent Theo a note this afternoon. He has questions about keyboard accessibility for the accept/reject flow — I think we should talk through that before the design crit.
+
+  - key: leo-emma-dm-msg-007
+    author: leo
+    at: !relative_day {offset: -11, hour: 9, minute: 15}
+    content: |
+      Quick heads-up — Maren's coverage memo drops today. She's not trying to kill the co-pilot, but she will argue for sequencing. I want to make sure we're presenting the research as the tiebreaker, not as ammunition. Does that change anything about how you're framing your synthesis?
+
+  - key: leo-emma-dm-msg-008
+    author: emma
+    at: !relative_day {offset: -11, hour: 9, minute: 38}
+    reply_to: leo-emma-dm-msg-007
+    content: |
+      I'll present what I find, not what you want to hear. If the research says lawyers care more about coverage than co-pilot, I'll say so. If it says the opposite, I'll say that too. That's what makes it useful as a tiebreaker.
+    reactions:
+      heart: [leo]
+
+  - key: leo-emma-dm-msg-009
+    author: leo
+    at: !relative_day {offset: -11, hour: 9, minute: 44}
+    reply_to: leo-emma-dm-msg-008
+    content: |
+      That's the right answer. I needed to hear you say it.
+
+  - key: leo-emma-dm-msg-010
+    author: emma
+    at: !relative_day {offset: -7, hour: 17, minute: 20}
+    content: |
+      Interviews three and four done today. The pattern is getting clearer — everyone loves the co-pilot concept when they see the ghost-text prototype, but they immediately ask "will it know our specific playbook?" That's the coverage concern and the feature in the same breath.
+    reactions:
+      eyes: [leo]
+
+  - key: leo-emma-dm-msg-011
+    author: leo
+    at: !relative_day {offset: -7, hour: 17, minute: 40}
+    reply_to: leo-emma-dm-msg-010
+    content: |
+      That's actually a really important nuance. They're not choosing between coverage and co-pilot — they want the co-pilot to be powered by complete coverage. Maren might be right about sequencing even if she's framing it differently.
+
+  - key: leo-emma-dm-msg-012
+    author: emma
+    at: !relative_day {offset: -7, hour: 17, minute: 52}
+    reply_to: leo-emma-dm-msg-011
+    content: |
+      That's exactly the sentence I'm leading with in the synthesis. I'll have a draft by the end of the week.
+
+  - key: leo-emma-dm-msg-013
+    author: leo
+    at: !relative_day {offset: -3, hour: 10, minute: 5}
+    content: |
+      Design crit is on the calendar for Friday at 2pm. Can you present the ghost-text prototype and the key finding from interviews? I want Jordan and Priya in the room too so we can talk about the technical implications in real time.
+    reactions:
+      thumbs_up: [emma]
+
+  - key: leo-emma-dm-msg-014
+    author: emma
+    at: !relative_day {offset: -3, hour: 10, minute: 18}
+    reply_to: leo-emma-dm-msg-013
+    content: |
+      Yes. I'll prep a short research readout (5 minutes, not a deck) and then walk through the prototype interaction. One ask: can Theo be there too? He's been building in parallel and I want him to hear the research directly rather than through my notes.
+
+  - key: leo-emma-dm-msg-015
+    author: leo
+    at: !relative_day {offset: -3, hour: 10, minute: 22}
+    reply_to: leo-emma-dm-msg-014
+    content: |
+      Absolutely. Adding him now.
+    reactions:
+      thumbs_up: [emma]

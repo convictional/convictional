@@ -1,0 +1,19 @@
+{% extends "base.jinja" %}
+
+{% block subject %}
+Re: ({{ titleize(event.workspace.resource_type) }}) {{ event.workspace.resource.title }}
+{% endblock subject %}
+
+{% block body_text %}
+{{ event.creator.display_name }} updated a {{ event.workspace.resource_type|lower }} that you're subscribed to.
+
+---
+View on Convictional: {{ url_for("gid_redirect", gid=event.workspace.resource_gid.to_param) }}
+{% endblock body_text %}
+
+{% block body_markdown %}
+{{ event.creator.display_name }} updated a {{ event.workspace.resource_type|lower }} that you're subscribed to.
+
+---
+[View on Convictional]({{ url_for("gid_redirect", gid=event.workspace.resource_gid.to_param) }})
+{% endblock body_markdown %}

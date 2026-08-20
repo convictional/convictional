@@ -1,0 +1,2 @@
+app: VITE_BASE_PATH=/static/build make assets && ASSET_BUILDING_ENABLED=False BASE_URL=https://${NGROK_HOST} make app
+ngrok: sh -c 'ngrok http --url=${NGROK_HOST} ${APP_PORT:-$(python -c "from config.settings import settings; print(settings.app_port)")}'

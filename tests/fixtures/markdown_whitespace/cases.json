@@ -1,0 +1,479 @@
+{
+  "_meta": {
+    "purpose": "Cases for byte-exact WYSIWYG whitespace fidelity across the in-app (react-markdown) and email (mistune+nh3) surfaces.",
+    "plan": "decide_purple/app/web/docs/plans/2026-07-01-001-feat-whitespace-fidelity-renderer-unification-plan.md",
+    "stage": "The contract (this document) is complete (2026-07-01) — the whitespace contract is settled and target_html is filled. Still NOT wired into CI: the assertions become the PR4 parity gate once PR1 (lossless serialization) and PR2/PR3 (in-app + email renderer conformance) land.",
+    "target_html_is_normalized": "target_html is the CANONICAL NORMALIZED, whitespace-tight form both renderers must reduce to for the PR4 parity check — NOT the raw output of either surface. PR4 normalizes each renderer's real HTML (canonical block tags <p>/semantic, decoded entities, NBSP as U+00A0, <br> unified, inter-block whitespace dropped) and asserts it equals target_html. Whitespace INSIDE text-bearing blocks is significant and is never normalized away.",
+    "important": "The two surfaces legitimately differ in tags/styling (in-app uses <p>/<h1>; email uses <div> + inline styles for Gmail compat) and in entity handling (client decodes entities; server/nh3 preserve/serialize them). Cross-surface parity is therefore defined on the normalized form above, not raw HTML equality. See README.md and the plan's 'Whitespace contract' section.",
+    "status_legend": {
+      "green": "Markdown carries it losslessly through both renderers; remaining work is CSS (white-space: pre-wrap) and/or the cosmetic-\\n strip and (for empty blocks) emitting the canonical wrapped form. No serializer/wire change.",
+      "pr1-gated": "Requires a PR1 serializer change (fix a data-loss bug, or emit the settled encoding). `wire` shows the intended post-PR1 form.",
+      "descoped": "Trailing-space fidelity — excluded from the enforced parity contract per decision 3 (the single accepted concession). target_html is null; these cases are not asserted.",
+      "escalation": "Not expressible in Markdown at all (in-cell hard break). Accepted-as-flattened per the contract decision; target_html is the flattened form both surfaces already agree on.",
+      "rejected": "A candidate encoding a contract spike rejected; kept for the record, not a target. target_html is null.",
+      "control": "Must-not-regress (code blocks). Email path currently regresses code blocks (nh3) until the separate <pre>/<code>-aware sanitizer fix lands.",
+      "legacy": "Pre-migration stored content (old &#x20; leading spaces, legacy non-self-closing <br>). Decision 10 — accept, don't backfill: rendered under the new rules and PINNED via in_app_target so future changes can't silently shift how old content displays. Not a cross-surface parity target; target_html is null."
+    }
+  },
+  "cases": [
+    {
+      "name": "interior_run_paragraph",
+      "category": "interior_run",
+      "description": "Three literal spaces between words in a paragraph.",
+      "wire": "a   b\n",
+      "observed": {
+        "in_app_html": "<p>a   b</p>",
+        "email_post_nh3_html": "<div><div>a   b</div></div>"
+      },
+      "target_html": "<p>a   b</p>",
+      "status": "green",
+      "in_app_target": "<p>a   b</p>",
+      "email_target": "<div><div>a   b</div></div>",
+      "notes": "Both renderers preserve the run verbatim as text; only CSS collapses it. Needs white-space: pre-wrap on the block. Tag differs (<p> vs <div>) — normalized to <p> for the cross-surface check."
+    },
+    {
+      "name": "interior_run_nbsp",
+      "category": "interior_run",
+      "description": "Interior run encoded as raw NBSP (U+00A0).",
+      "wire": "a   b\n",
+      "observed": {
+        "in_app_html": "<p>a   b</p>",
+        "email_post_nh3_html": "<div><div>a&nbsp;&nbsp;&nbsp;b</div></div>"
+      },
+      "target_html": "<p>a   b</p>",
+      "status": "green",
+      "in_app_target": "<p>a&nbsp;&nbsp;&nbsp;b</p>",
+      "email_target": "<div><div>a&nbsp;&nbsp;&nbsp;b</div></div>",
+      "notes": "NBSP is collapse-proof (visible without pre-wrap). Client keeps raw U+00A0; nh3 serializes to &nbsp; on email — representation diverges, whitespace identical. Normalization decodes both to U+00A0. NBSP != space for text search/copy; interior runs do not need NBSP (literal spaces + pre-wrap suffice) — this case documents that NBSP also works."
+    },
+    {
+      "name": "interior_run_heading",
+      "category": "interior_run",
+      "description": "Interior run inside a heading.",
+      "wire": "# H   x\n",
+      "observed": {
+        "in_app_html": "<h1>H   x</h1>",
+        "email_post_nh3_html": "<div><h1 style=\"…\">H   x</h1></div>"
+      },
+      "target_html": "<h1>H   x</h1>",
+      "status": "green",
+      "in_app_target": "<h1>H   x</h1>",
+      "email_target": "<div><h1 style=\"font-size: 1.5em; font-weight: bold; margin: 1em 0 0.5em 0;\">H   x</h1></div>",
+      "notes": "Preserved on both; needs pre-wrap on h*. Email inline style stripped in normalization."
+    },
+    {
+      "name": "interior_run_list_item",
+      "category": "interior_run",
+      "description": "Interior run inside a bullet list item.",
+      "wire": "* a   b\n",
+      "observed": {
+        "in_app_html": "<ul class=\"…\"><li>a   b</li></ul>",
+        "email_post_nh3_html": "<div><ul style=\"…\"><li style=\"…\">a   b</li></ul></div>"
+      },
+      "target_html": "<ul><li>a   b</li></ul>",
+      "status": "green",
+      "in_app_target": "<ul><li>a   b</li></ul>",
+      "email_target": "<div><ul style=\"margin: 1em 0; padding-left: 2em;\"><li style=\"margin: 0.5em 0;\">a   b</li></ul></div>",
+      "notes": "Preserved on both; needs pre-wrap on li. Classes/inline styles stripped in normalization."
+    },
+    {
+      "name": "interior_run_blockquote",
+      "category": "interior_run",
+      "description": "Interior run inside a blockquote.",
+      "wire": "> a   b\n",
+      "observed": {
+        "in_app_html": "<blockquote><p>a   b</p></blockquote>",
+        "email_post_nh3_html": "<div><blockquote style=\"…\"><div>a   b</div></blockquote></div>"
+      },
+      "target_html": "<blockquote><p>a   b</p></blockquote>",
+      "status": "green",
+      "in_app_target": "<blockquote><p>a   b</p></blockquote>",
+      "email_target": "<div><blockquote style=\"margin: 1em 0; padding-left: 1em; border-left: 3px solid #ccc; color: #666; font-style: italic;\"><div>a   b</div></blockquote></div>",
+      "notes": "In-app blockquote p ALREADY has white-space: pre-wrap (markdown-content.css:27) — so this renders tight in-app today, and is where the cosmetic-\\n doubling is already observable. Email <div> inside blockquote normalizes to <p>."
+    },
+    {
+      "name": "interior_run_table_cell",
+      "category": "interior_run",
+      "description": "Interior run inside a GFM table cell.",
+      "wire": "| H1    | H2 |\n| ----- | -- |\n| a   b | c  |\n",
+      "observed": {
+        "in_app_html": "<table>…<td>a   b</td>…</table>",
+        "email_post_nh3_html": "<table>…<td style=\"…\">a   b</td>… (nh3 inserts a missing <tr> around thead cells)"
+      },
+      "target_html": "<table><thead><tr><th>H1</th><th>H2</th></tr></thead><tbody><tr><td>a   b</td><td>c</td></tr></tbody></table>",
+      "status": "green",
+      "in_app_target": "<table><thead><tr><th>H1</th><th>H2</th></tr></thead><tbody><tr><td>a   b</td><td>c</td></tr></tbody></table>",
+      "email_target": "<div><table style=\"border-collapse: collapse; width: 100%; margin: 1em 0;\"><thead style=\"background-color: #f5f5f5;\"><tr><th style=\"padding: 0.5em; border: 1px solid #ddd; font-weight: bold;\">H1</th><th style=\"padding: 0.5em; border: 1px solid #ddd; font-weight: bold;\">H2</th></tr></thead><tbody><tr><td style=\"padding: 0.5em; border: 1px solid #ddd;\">a   b</td><td style=\"padding: 0.5em; border: 1px solid #ddd;\">c</td></tr></tbody></table></div>",
+      "notes": "Interior run preserved. Email renderer emits thead cells with no <tr> (PR3 fix); render_markdown emits pretty-print \\n+indent between table tags (PR3 strips it). Inter-tag whitespace is dropped in normalization; cell text is preserved."
+    },
+    {
+      "name": "leading_spaces_1to3",
+      "category": "leading",
+      "description": "1-3 leading spaces. Canonical encoding is raw NBSP (U+00A0), decided in the contract.",
+      "wire": "   text\n",
+      "observed": {
+        "in_app_html": "<p>   text</p> (today, via the editor's &#x20;-prefix)",
+        "email_post_nh3_html": "<div><div>&nbsp;&nbsp;&nbsp;text</div></div> (with NBSP wire)"
+      },
+      "target_html": "<p>   text</p>",
+      "status": "pr1-gated",
+      "in_app_target": "<p>&nbsp;&nbsp;&nbsp;text</p>",
+      "email_target": "<div><div>&nbsp;&nbsp;&nbsp;text</div></div>",
+      "notes": "CONTRACT SPIKE RESULT: &#x20; does NOT survive identically on the server — nh3 (email) decodes it to a literal space while render_markdown leaves the literal string '&#x20;'. Divergent representations => not a safe contract. DECISION: standardize leading spaces on raw NBSP. This REVERSES the plan/audit's 'no client serializer change expected' — PR1 must change the client serializer to emit NBSP instead of &#x20;. NBSP survives both renderers + nh3's ^[ \\t]+ strip. `wire` shows the intended post-PR1 NBSP form."
+    },
+    {
+      "name": "leading_spaces_4plus",
+      "category": "leading",
+      "description": "4+ leading spaces — must NOT become a code block. Canonical encoding is NBSP.",
+      "wire": "    text\n",
+      "observed": {
+        "in_app_html": "<p>    text</p>",
+        "email_post_nh3_html": "<div><div>&nbsp;&nbsp;&nbsp;&nbsp;text</div></div>"
+      },
+      "target_html": "<p>    text</p>",
+      "status": "pr1-gated",
+      "in_app_target": "<p>&nbsp;&nbsp;&nbsp;&nbsp;text</p>",
+      "email_target": "<div><div>&nbsp;&nbsp;&nbsp;&nbsp;text</div></div>",
+      "notes": "Contract confirmed: literal 4-space leading DOES become an indented code block on both servers; the NBSP prefix prevents the trap (spike verified no <pre><code> for the NBSP form). Same PR1 serializer change as leading_spaces_1to3."
+    },
+    {
+      "name": "leading_spaces_nbsp",
+      "category": "leading",
+      "description": "Leading run as raw NBSP — the canonical carrier, confirmed on both surfaces.",
+      "wire": "   text\n",
+      "observed": {
+        "in_app_html": "<p>   text</p>",
+        "email_post_nh3_html": "<div><div>&nbsp;&nbsp;&nbsp;text</div></div>"
+      },
+      "target_html": "<p>   text</p>",
+      "status": "pr1-gated",
+      "in_app_target": "<p>&nbsp;&nbsp;&nbsp;text</p>",
+      "email_target": "<div><div>&nbsp;&nbsp;&nbsp;text</div></div>",
+      "notes": "The chosen encoding. Raw NBSP survives both parsers and nh3 (the sanitizer's ^[ \\t]+ strip does not match NBSP or entities). The &nbsp;/&#160; ENTITY is not viable on the client (decodes to a plain space) — only the raw NBSP byte survives as NBSP client-side, so PR1 must emit the raw byte. pr1-gated on PR1 emitting NBSP from the serializer."
+    },
+    {
+      "name": "trailing_spaces_paragraph",
+      "category": "trailing",
+      "description": "Trailing spaces on a paragraph.",
+      "wire": "text\n",
+      "observed": {
+        "in_app_html": "<p>text</p>",
+        "email_post_nh3_html": "<div><div>text</div></div>"
+      },
+      "target_html": null,
+      "status": "descoped",
+      "in_app_target": "<p>text</p>",
+      "email_target": "<div><div>text</div></div>",
+      "notes": "DECISION 3: trailing-space fidelity is the single accepted concession. Trailing spaces are visually invisible and the most expensive case (NBSP-vs-space diverges for search/copy). PR1 does NOT build the NBSP trailing path — paragraphToMarkdown's trim (paragraphFormatting.ts:56) stays; trailing spaces are normalized away as today. Excluded from the parity gate; target_html null."
+    },
+    {
+      "name": "trailing_spaces_heading",
+      "category": "trailing",
+      "description": "Trailing spaces inside a heading — incidentally preserved today.",
+      "wire": "# H\n",
+      "observed": {
+        "in_app_html": "<h1>H  </h1>",
+        "email_post_nh3_html": "<div><h1 style=\"…\">H  </h1></div>"
+      },
+      "target_html": null,
+      "status": "descoped",
+      "in_app_target": "<h1>H</h1>",
+      "email_target": "<div><h1 style=\"font-size: 1.5em; font-weight: bold; margin: 1em 0 0.5em 0;\">H</h1></div>",
+      "notes": "Headings incidentally keep trailing whitespace because paragraphToMarkdown's trim only touches paragraphs. Under decision 3 trailing fidelity is not guaranteed anywhere, so this is excluded from the parity gate (target_html null) even though the surfaces happen to agree today. Proves the model CAN carry trailing whitespace if the concession is ever revisited."
+    },
+    {
+      "name": "single_hard_break_token",
+      "category": "hard_break",
+      "description": "Shift+Enter serialized as the Markdown hard-break token — the CHOSEN single-break encoding.",
+      "wire": "a\\\nb\n",
+      "observed": {
+        "in_app_html": "<p>a<br/>\nb</p>",
+        "email_post_nh3_html": "<div><div>a<br>\nline two</div></div>"
+      },
+      "target_html": "<p>a<br>b</p>",
+      "status": "green",
+      "in_app_target": "<p>a<br>b</p>",
+      "email_target": "<div><div>a<br>b</div></div>",
+      "notes": "CONTRACT DECISION: keep the hard-break token. It round-trips losslessly through the editor (parse -> paragraph[text, hard_break, text]; verified by the contract client spike). It renders <br> PLUS a cosmetic \\n (the PR-8561 mechanism) which DOUBLES the break under pre-wrap — so PR2 (rehype) and PR3 (post-render) must strip the \\n adjacent to <br>. The cosmetic \\n is NOT from render_hard_break (returns just '<br>') — it is mistune's surrounding serialization. See single_hard_break_inline_br for the rejected alternative."
+    },
+    {
+      "name": "single_hard_break_inline_br",
+      "category": "hard_break",
+      "description": "REJECTED candidate: serialize Shift+Enter as inline <br /> instead of the token.",
+      "wire": "a<br />b\n",
+      "observed": {
+        "in_app_html": "PARSED TO A SINGLE EMPTY PARAGRAPH, 'a' and 'b' DROPPED — silent data loss.",
+        "email_post_nh3_html": "<div><div>line one<br>line two</div></div> (clean on the server)"
+      },
+      "target_html": null,
+      "status": "rejected",
+      "in_app_target": "<p>a<br>b</p>",
+      "email_target": "<div><div>a<br>b</div></div>",
+      "notes": "CONTRACT SPIKE RESULT (rejected): inline <br /> renders clean on the SERVER (no cosmetic \\n), but on the CLIENT it causes silent DATA LOSS. breaksToEmptyParagraphs (paragraphFormatting.ts:9) matches any <br> html node regardless of block/inline position and splices an illegal block <paragraph> inside the paragraph; prosemirror-remark then degrades the whole paragraph to one empty paragraph, dropping the surrounding text. Usable only if PR1 first fixes breaksToEmptyParagraphs to be block-level-only, then re-verifies — higher risk than the token. Rejected in favor of single_hard_break_token."
+    },
+    {
+      "name": "two_hard_breaks",
+      "category": "hard_break",
+      "description": "Two consecutive hard breaks (Roger's PR-8561 case).",
+      "wire": "a\\\n\\\nb\n",
+      "observed": {
+        "in_app_html": "<p>a<br/>\n<br/>\nb</p>",
+        "email_post_nh3_html": "<div><div>a<br>\n<br>\nb</div></div>"
+      },
+      "target_html": "<p>a<br><br>b</p>",
+      "status": "green",
+      "in_app_target": "<p>a<br><br>b</p>",
+      "email_target": "<div><div>a<br><br>b</div></div>",
+      "notes": "Each <br> carries a cosmetic \\n -> double expansion under pre-wrap. Same fix as single_hard_break_token: strip the \\n adjacent to each <br>."
+    },
+    {
+      "name": "hard_break_heading",
+      "category": "hard_break",
+      "description": "Hard break inside a heading — structural + latent round-trip bug.",
+      "wire": "# H x\n",
+      "observed": {
+        "in_app_html": "<h1>H x</h1>",
+        "email_post_nh3_html": "<div><h1 style=\"…\">H x</h1></div>"
+      },
+      "target_html": "<h1>H x</h1>",
+      "status": "pr1-gated",
+      "in_app_target": "<h1>H x</h1>",
+      "email_target": "<div><h1 style=\"font-size: 1.5em; font-weight: bold; margin: 1em 0 0.5em 0;\">H x</h1></div>",
+      "notes": "BUG (fixed in PR1): serialize() previously emitted a setext '=' underline (\"H\\\\\\nx\\n=\\n\") that re-parsed to an EMPTY doc — heading + Shift+Enter lost everything on reload. Mechanism (verified 2026-07-01): mdast-util-to-markdown's formatHeadingAsSetext FORCE-selects setext when an h1/h2 contains a break node (literalWithBreak), regardless of the setext:false config. PR1 RESOLUTION (decision, Nick 2026-07-01): the plan's 'ATX + inline break' is empirically unachievable — an inline <br> in a heading triggers breaksToEmptyParagraphs data loss on parse, and an ATX heading cannot hold a real newline. So flattenHeadingBreaks (markNormalization.ts) replaces an in-heading break with a SPACE, forcing ATX ('# H x') which round-trips losslessly with NO data loss. The visible <br> is an accepted fidelity loss (in-heading breaks are rare), mirroring hard_break_table_cell. `wire` and target_html are the flattened ATX form."
+    },
+    {
+      "name": "hard_break_list_item",
+      "category": "hard_break",
+      "description": "Hard break inside a list item.",
+      "wire": "* a\\\n  b\n",
+      "observed": {
+        "in_app_html": "<li>a<br/>\nb</li>",
+        "email_post_nh3_html": "<li style=\"…\">line one<br>\nline two</li>"
+      },
+      "target_html": "<ul><li>a<br>b</li></ul>",
+      "status": "green",
+      "in_app_target": "<ul><li>a<br>b</li></ul>",
+      "email_target": "<div><ul style=\"margin: 1em 0; padding-left: 2em;\"><li style=\"margin: 0.5em 0;\">a<br>b</li></ul></div>",
+      "notes": "Cosmetic \\n as with paragraphs; same strip fix."
+    },
+    {
+      "name": "hard_break_blockquote",
+      "category": "hard_break",
+      "description": "Hard break inside a blockquote.",
+      "wire": "> a\\\n> b\n",
+      "observed": {
+        "in_app_html": "<blockquote><p>a<br/>\nb</p></blockquote>",
+        "email_post_nh3_html": "<blockquote style=\"…\"><div>line one<br>\nline two</div></blockquote>"
+      },
+      "target_html": "<blockquote><p>a<br>b</p></blockquote>",
+      "status": "green",
+      "in_app_target": "<blockquote><p>a<br>b</p></blockquote>",
+      "email_target": "<div><blockquote style=\"margin: 1em 0; padding-left: 1em; border-left: 3px solid #ccc; color: #666; font-style: italic;\"><div>a<br>b</div></blockquote></div>",
+      "notes": "In-app blockquote p is already pre-wrap, so this cosmetic \\n ALREADY doubles the break in-app today. Highest-visibility current instance of PR-8561."
+    },
+    {
+      "name": "hard_break_table_cell",
+      "category": "escalation",
+      "description": "Hard break inside a table cell — Markdown-inexpressible; accepted-as-flattened.",
+      "wire": "| H1  | H2 |\n| --- | -- |\n| a b | c  |\n",
+      "observed": {
+        "in_app_html": "first body cell flattened to 'a b' (space)",
+        "email_post_nh3_html": "first body cell flattened to 'a b' (space)"
+      },
+      "target_html": "<table><thead><tr><th>H1</th><th>H2</th></tr></thead><tbody><tr><td>a b</td><td>c</td></tr></tbody></table>",
+      "status": "escalation",
+      "in_app_target": "<table><thead><tr><th>H1</th><th>H2</th></tr></thead><tbody><tr><td>a b</td><td>c</td></tr></tbody></table>",
+      "email_target": "<div><table style=\"border-collapse: collapse; width: 100%; margin: 1em 0;\"><thead style=\"background-color: #f5f5f5;\"><tr><th style=\"padding: 0.5em; border: 1px solid #ddd; font-weight: bold;\">H1</th><th style=\"padding: 0.5em; border: 1px solid #ddd; font-weight: bold;\">H2</th></tr></thead><tbody><tr><td style=\"padding: 0.5em; border: 1px solid #ddd;\">a b</td><td style=\"padding: 0.5em; border: 1px solid #ddd;\">c</td></tr></tbody></table></div>",
+      "notes": "CONTRACT DECISION: accept-as-flattened. GFM table cells cannot contain a literal newline; the editor flattens a<hb>b -> 'a b' at input time. Both surfaces already agree on the flattened form, so the parity gate can assert it, but it is documented as an accepted fidelity loss (in-cell breaks are rare). Not re-encoded upstream."
+    },
+    {
+      "name": "blank_run_one_empty_paragraph",
+      "category": "blank_run",
+      "description": "Enter x2 → one empty paragraph between two paragraphs.",
+      "wire": "A\n\n<br />\n\nB\n",
+      "observed": {
+        "in_app_html": "<p>A</p>\n<br/>\n\n\n<p>B</p>",
+        "email_post_nh3_html": "<div><div>A</div><div><br></div><div>B</div></div>"
+      },
+      "target_html": "<p>A</p><p><br></p><p>B</p>",
+      "status": "green",
+      "in_app_target": "<p>A</p><p><br></p><p>B</p>",
+      "email_target": "<div><div>A</div><div><br></div><div>B</div></div>",
+      "notes": "canonical-pending RESOLVED (in the contract): canonical empty-block form is a WRAPPED empty block <p><br></p>, 1:1 with the empty paragraph. PR2 must stop lifting the standalone <br/> to the root and instead wrap it; email already wraps <div><br></div> (normalizes to <p><br></p>). Both are 1:1 with the empty paragraph."
+    },
+    {
+      "name": "blank_run_three_empty_paragraphs",
+      "category": "blank_run",
+      "description": "Enter x4 → three empty paragraphs (the headline '3 blank lines' case).",
+      "wire": "A\n\n<br />\n\n<br />\n\n<br />\n\nB\n",
+      "observed": {
+        "in_app_html": "<p>A</p> + 3× root-level <br/> (each w/ cosmetic \\n\\n\\n) + <p>B</p>",
+        "email_post_nh3_html": "<div><div>A</div><div><br></div><div><br></div><div><br></div><div>B</div></div>"
+      },
+      "target_html": "<p>A</p><p><br></p><p><br></p><p><br></p><p>B</p>",
+      "status": "green",
+      "in_app_target": "<p>A</p><p><br></p><p><br></p><p><br></p><p>B</p>",
+      "email_target": "<div><div>A</div><div><br></div><div><br></div><div><br></div><div>B</div></div>",
+      "notes": "N empty paragraphs → N wrapped empty blocks, 1:1, round-trip identical on both (contract client spike case 4 confirmed the round-trip). The WINNING blank-run encoding. Same canonical reconciliation as blank_run_one_empty_paragraph."
+    },
+    {
+      "name": "lone_empty_paragraph",
+      "category": "blank_run",
+      "description": "A document that is a single empty paragraph.",
+      "wire": "<br />\n",
+      "observed": {
+        "in_app_html": "(empty)",
+        "email_post_nh3_html": "(empty)"
+      },
+      "target_html": "<p><br></p>",
+      "status": "pr1-gated",
+      "in_app_target": "<p><br></p>",
+      "email_target": "<div><div><br></div></div>",
+      "notes": "BUG (contract spike confirmed): paragraphToMarkdown returns \"\" when the empty paragraph is the parent's only child (the `parent.children.length === 1` branch), so a one-blank-line doc serializes to \"\" and renders empty. PR1: emit <br /> for the lone empty paragraph like every other. `wire` shows the intended post-PR1 form."
+    },
+    {
+      "name": "paragraphs_plain",
+      "category": "control",
+      "description": "Two ordinary paragraphs (Enter x1) — standard para break.",
+      "wire": "A\n\nB\n",
+      "observed": {
+        "in_app_html": "<p>A</p>\n<p>B</p>",
+        "email_post_nh3_html": "<div><div>A</div><div>B</div></div>"
+      },
+      "target_html": "<p>A</p><p>B</p>",
+      "status": "green",
+      "in_app_target": "<p>A</p><p>B</p>",
+      "email_target": "<div><div>A</div><div>B</div></div>",
+      "notes": "Baseline. Inter-block \\n sits between blocks at the container level (white-space: normal container) → harmless and dropped in normalization. Must stay correct after pre-wrap is applied to the blocks (not the container)."
+    },
+    {
+      "name": "code_block_fenced",
+      "category": "control",
+      "description": "Fenced code with interior run, leading indentation, and a blank-line gap.",
+      "wire": "```\na   b\n    indent\n\n\nblank above\n```\n",
+      "observed": {
+        "in_app_html": "<pre><code>a   b\n    indent\n\n\nblank above\n</code></pre> (correct)",
+        "email_post_nh3_html": "<div><pre style=\"…\"><code>a   b\nindent\n\nblank above\n</code></pre></div>  ← CORRUPTED: indent stripped, 3 blank lines → 2"
+      },
+      "target_html": "<pre><code>a   b\n    indent\n\n\nblank above\n</code></pre>",
+      "status": "control",
+      "in_app_target": "<pre><code>a   b\n    indent\n\n\nblank above\n</code></pre>",
+      "email_target": "<div><pre style=\"background-color: #f5f5f5; padding: 1em; border-radius: 5px; overflow-x: auto; font-family: monospace; margin: 1em 0;\"><code>a   b\n    indent\n\n\nblank above\n</code></pre></div>",
+      "notes": "nh3 (sanitize_email_html_content) runs ^[ \\t]+ strip (lib/html.py:166) and \\n\\n\\n+→\\n\\n collapse (lib/html.py:168) over the WHOLE document with no <pre> awareness — mangles code blocks on the EMAIL path (incl. INBOUND external mail). Fixed by the SEPARATE nh3 <pre>/<code>-aware fix (a prerequisite for PR3/PR4). Code content is verbatim inside <pre> and is NOT subject to pre-wrap; whitespace inside is preserved exactly."
+    },
+    {
+      "name": "code_block_indented",
+      "category": "control",
+      "description": "Indented code block, interior run, no leading-run/blank-run triggers.",
+      "wire": "    a   b\n    line two\n",
+      "observed": {
+        "in_app_html": "<pre><code>a   b\nline two</code></pre>",
+        "email_post_nh3_html": "<div><pre style=\"…\"><code>a   b\nline two</code></pre></div>"
+      },
+      "target_html": "<pre><code>a   b\nline two</code></pre>",
+      "status": "control",
+      "in_app_target": "<pre><code>a   b\nline two\n</code></pre>",
+      "email_target": "<div><pre style=\"background-color: #f5f5f5; padding: 1em; border-radius: 5px; overflow-x: auto; font-family: monospace; margin: 1em 0;\"><code>a   b\nline two</code></pre></div>",
+      "notes": "Survives today only because no line had a leading run and there was no 3+ blank run to trip the sanitizer regexes (see code_block_fenced). Leave <pre> exempt from any new pre-wrap rules; code preserves whitespace via the browser default white-space: pre on <pre>."
+    },
+    {
+      "name": "legacy_leading_spaces_x20",
+      "category": "legacy",
+      "description": "Legacy leading-space encoding: &#x20; entities, as the pre-NBSP serializer emitted.",
+      "wire": "&#x20;&#x20;&#x20;text\n",
+      "observed": {
+        "in_app_html": "<p>   text</p> (react-markdown decodes &#x20; to literal spaces)"
+      },
+      "target_html": null,
+      "status": "legacy",
+      "in_app_target": "<p>   text</p>",
+      "email_target": "<div><div>   text</div></div>",
+      "notes": "DECISION 10 (accept, don't backfill): old content authored before PR1 switched the serializer to raw NBSP still carries &#x20; entities. react-markdown decodes them to literal spaces, which pre-wrap now preserves — so legacy leading runs render faithfully without a backfill. Pinned here so a future renderer/sanitizer change can't silently collapse them again. Not a cross-surface parity target (target_html null)."
+    },
+    {
+      "name": "legacy_empty_paragraph_bare_br",
+      "category": "legacy",
+      "description": "Legacy empty-paragraph carrier: a non-self-closing <br> (as the pre-migration editor emitted), vs the current <br /> wire.",
+      "wire": "A\n\n<br>\n\nB\n",
+      "observed": {
+        "in_app_html": "<p>A</p><p><br></p><p>B</p> (wrapped, same as the <br /> form)"
+      },
+      "target_html": null,
+      "status": "legacy",
+      "in_app_target": "<p>A</p><p><br></p><p>B</p>",
+      "email_target": "<div><div>A</div><p>&lt;br&gt;</p><div>B</div></div>",
+      "notes": "DECISION 10 (accept, don't backfill): remarkHtmlBreaks' BR_PATTERN matches both <br> and <br />, so a legacy bare <br> empty paragraph converges on the same canonical wrapped empty block the current wire produces. Pinned so old content keeps rendering 1:1 with new content. Not a cross-surface parity target (target_html null)."
+    },
+    {
+      "name": "code_block_all_whitespace",
+      "category": "control",
+      "description": "Fenced code block whose body is ONLY whitespace (spaces + a blank line).",
+      "wire": "```\n   \n\n```\n",
+      "observed": {
+        "in_app_html": "<pre><code>   \n\n</code></pre> (whitespace preserved verbatim)"
+      },
+      "target_html": null,
+      "status": "control",
+      "in_app_target": "<pre><code>   \n\n</code></pre>",
+      "email_target": "<div><pre style=\"background-color: #f5f5f5; padding: 1em; border-radius: 5px; overflow-x: auto; font-family: monospace; margin: 1em 0;\"><code>   \n\n</code></pre></div>",
+      "notes": "REGRESSION GUARD for the cosmetic-\\n strip's <pre>/<code> exemption. Code content is verbatim and exempt from ALL whitespace handling (contract; normalization rule 5). rehypeStripBreakNewlines must NOT descend into <pre>/<code> — an all-whitespace code block is a single whitespace-only text node that would otherwise match the strip's cosmetic-newline regex and be deleted (silent data loss inside code). in_app_target pins the verbatim body. Cross-surface code parity is covered by code_block_fenced; target_html null here (this guards the in-app strip, and the email path's all-whitespace behavior awaits the separate nh3 <pre>/<code> fix)."
+    },
+    {
+      "name": "soft_break_paragraph",
+      "category": "control",
+      "description": "A markdown soft line break (bare newline inside a paragraph), not the hard-break token.",
+      "wire": "a\nb\n",
+      "observed": {
+        "in_app_html": "<p>a\nb</p> (soft break kept as an embedded newline)"
+      },
+      "target_html": null,
+      "status": "control",
+      "in_app_target": "<p>a\nb</p>",
+      "email_target": "<div><div>a\nb</div></div>",
+      "notes": "PINS THE SOFT-BREAK DECISION (kept, not stripped). A soft break renders as a newline EMBEDDED in a mixed text node ('a\\nb'), never as the standalone whitespace-only node rehypeStripBreakNewlines targets — so the strip leaves it verbatim and pre-wrap shows it as a single line break. This is intentional fidelity (the author's newline), distinct from the cosmetic \\n a hard break emits. Not editor output (the editor serializes single breaks as the hard-break token); target_html null."
+    },
+    {
+      "name": "em_soft_em",
+      "category": "control",
+      "description": "A soft line break BETWEEN two adjacent inline elements (*foo*\\n*bar*), not the hard-break token.",
+      "wire": "*foo*\n*bar*\n",
+      "observed": {
+        "in_app_html": "<p><em>foo</em>\n<em>bar</em></p> (soft break kept as a standalone newline node between the two <em> siblings)"
+      },
+      "target_html": null,
+      "status": "control",
+      "in_app_target": "<p><em>foo</em>\n<em>bar</em></p>",
+      "email_target": "<div><div><em>foo</em>\n<em>bar</em></div></div>",
+      "notes": "REGRESSION GUARD for the position-aware cosmetic-\\n strip. A soft break between two inline elements is a STANDALONE whitespace-only newline node (p[em, \"\\n\", em]) - the same shape as the cosmetic hard-break/inter-block newline the strip removes. rehypeStripBreakNewlines must NOT strip it: it is authored content and pre-wrap renders it as the intended line break. Stripping it welds the spans into <em>foo</em><em>bar</em> (renders \"foobar\") - the bug bencrouse flagged on PR #8732. Distinct from soft_break_paragraph, where the newline stays embedded in a mixed text node. Not editor output (single breaks serialize as the hard-break token); target_html null."
+    },
+    {
+      "name": "link_soft_em",
+      "category": "control",
+      "description": "A soft line break between a link and an adjacent inline element ([a](/x)\\n*bar*).",
+      "wire": "[a](/x)\n*bar*\n",
+      "observed": {
+        "in_app_html": "<p><a href=\"/x\">a</a>\n<em>bar</em></p> (standalone soft-break newline between the <a> and <em>)"
+      },
+      "target_html": null,
+      "status": "control",
+      "in_app_target": "<p><a href=\"/x\">a</a>\n<em>bar</em></p>",
+      "email_target": "<div><div><a href=\"/x\" style=\"color: #0066cc; text-decoration: underline;\" target=\"_blank\" rel=\"noopener noreferrer\">a</a>\n<em>bar</em></div></div>",
+      "notes": "Companion to em_soft_em: confirms the position-aware strip preserves the standalone soft-break newline between ANY two inline siblings (here <a> and <em>), not just <em>/<em>. Without the fix this welds to <a href=\"/x\">a</a><em>bar</em> (renders \"abar\"). Not editor output; target_html null."
+    },
+    {
+      "name": "inline_only_paragraph",
+      "category": "structural",
+      "description": "A paragraph whose entire content is a single inline element (bold) with no bare text node — exercises rule-1 <div>-to-<p> mapping for inline-only email paragraphs.",
+      "wire": "**bold**\n",
+      "observed": {
+        "in_app_html": "<p><strong>bold</strong></p>",
+        "email_post_nh3_html": "<div><div><strong>bold</strong></div></div>"
+      },
+      "target_html": "<p><strong>bold</strong></p>",
+      "status": "green",
+      "in_app_target": "<p><strong>bold</strong></p>",
+      "email_target": "<div><div><strong>bold</strong></div></div>",
+      "notes": "Regression guard for the cross-surface normalizer's rule-1 tag mapping. The email renderer wraps the paragraph in a bare <div> whose only child is an inline <strong> (no direct text node); the normalizer must map that <div> to <p>, NOT unwrap it. Unwrapping drops the paragraph boundary (normalizes to '<strong>bold</strong>') and diverges from react-markdown's '<p><strong>bold</strong></p>'. Common authored shape: a whole-line bold label, a bare link, an inline-code line."
+    }
+  ]
+}

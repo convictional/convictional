@@ -1,0 +1,19 @@
+{% extends "base.jinja" %}
+
+{% block subject %}
+{% if organization.display_name != "Unknown" %}
+New organization created - {{organization.display_name}}
+{% else %}
+New organization created - {{organization.users[0].display_name}}
+{% endif %}
+{% endblock %}
+
+{% block body_markdown %}
+A new organization, {{ organization.display_name }} has been created for {{ organization.users[0].display_name }}.
+
+{% if organization.domain %}Domain: {{ organization.domain }}{% endif %}
+
+User:
+    Name: {{ organization.users[0].name }}
+    Email: {{ organization.users[0].email }}
+{% endblock %}

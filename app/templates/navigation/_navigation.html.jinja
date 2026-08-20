@@ -1,0 +1,89 @@
+{# Single React island root. The Jinja skeleton inside the mount mirrors the
+   final React tree so the nav paints before JS runs (no FOUC, no CLS) and
+   hydration is invisible. #}
+{% set is_inbox = is_route_tagged('inbox') %}
+{% set is_chat = is_route_tagged('chat') %}
+{% set is_posts = is_route_tagged('posts') %}
+{% set is_docs = is_route_tagged('docs') %}
+{% set is_goals = is_route_tagged('goals') %}
+{# Error pages render this template without a logged-in current_user, so each
+   prop must coerce to a JSON-serializable value rather than leaking Jinja's
+   Undefined into tojson. #}
+{% set main_nav_props = {
+    "isAdmin": current_user.is_admin if current_user else False,
+    "isSuperuser": authentication.is_superuser,
+    "organizationName": current_user.organization.name if current_user else None,
+} %}
+{# hx-preserve keeps this element across HTMX boost navigations: HTMX skips
+   it during the body swap, React stays mounted, and useActiveRoute
+   re-computes active state on htmx:afterSettle. Without this, every link
+   click tears down the React tree and refetches /api/meetings/navigation. #}
+<div id="react-main-nav"
+     hx-preserve
+     data-props="{{ main_nav_props | tojson }}">
+    {% if is_mobile %}
+        {# Mobile skeleton: top bar with Research (main) and Search (icon).
+           The bottom tab bar is fixed-position and renders after React hydrates. #}
+        <div class="w-full flex items-center rounded-full border bg-base-200/80 border-base-300">
+            <div class="flex-1 flex items-center gap-3 px-4 py-2.5 text-base-content/50">
+                <span class="material-symbols-outlined text-lg">auto_awesome</span>
+                <span class="text-base">Research...</span>
+            </div>
+            <div class="flex items-center justify-center p-1.5 mr-0.5">
+                <span class="material-symbols-outlined text-lg w-8 h-8 flex items-center justify-center rounded-full bg-base-content/8 text-base-content/50">search</span>
+            </div>
+        </div>
+    {% else %}
+        <div class="w-full flex justify-between items-center gap-2 overflow-x-auto">
+            <nav class="relative flex items-center" aria-label="Main">
+                {# is_client_routed marks links to SPA-shell routes (app/routers/spa.py).
+                   hx-boost stays OFF for those: the shell is a standalone full document,
+                   so boosting fetches it as a fragment and depends on an HX-Redirect
+                   bounce to recover a real navigation. A native navigation loads the
+                   shell in a single top-level request instead. #}
+                {% for label, href, is_active, is_client_routed in [
+                    ('Inbox', url_for('mailbox_index'), is_inbox, True),
+                    ('Chat', url_for('chats_index'), is_chat, True),
+                    ('Posts', url_for('posts_index'), is_posts, True),
+                    ('Docs', url_for('documents_index'), is_docs, True),
+                    ('Goals', url_for('goals_index'), is_goals, True),
+                ] %}
+                    {# djlint:off #}
+            <a href="{{ href }}"
+               {% if not is_client_routed %}preload="mouseover"{% endif %}
+               {% if is_client_routed %}hx-boost="false"{% endif %}
+               {% if is_active %}aria-current="page"{% endif %}
+               class="px-2 sm:px-3 py-1.5 text-sm {{ 'text-primary font-medium' if is_active else 'text-base-content' }}">
+                {{ label }}
+            </a>
+                    {# djlint:on #}
+                {% endfor %}
+            </nav>
+            <div class="flex items-center gap-2">
+                <div class="flex items-center max-w-[200px] bg-base-200/80 border border-base-300 rounded-xl transition-colors">
+                    <a href="{{ url_for('meetings_upcoming') }}"
+                       class="grid grid-cols-[auto] sm:grid-cols-[auto_minmax(0,1fr)] items-center gap-0 sm:gap-1.5 px-1.5 sm:px-2.5 py-1 rounded-lg cursor-pointer text-base-content"
+                       aria-label="Upcoming meetings">
+                        <span class="material-symbols-outlined text-sm">calendar_today</span>
+                    </a>
+                </div>
+                <div class="flex items-center bg-base-200/80 border border-base-300 rounded-xl transition-colors">
+                    <button class="flex items-center gap-2 pl-3 pr-2 py-1 rounded-lg cursor-pointer text-base-content border border-transparent"
+                            aria-label="Search">
+                        <span class="material-symbols-outlined text-sm">search</span>
+                    </button>
+                    <div class="w-px h-5 bg-base-300"></div>
+                    <button class="flex items-center gap-1.5 pl-2 pr-2 sm:pr-3 py-1 rounded-lg cursor-pointer text-base-content border border-transparent"
+                            aria-label="Deep Research">
+                        <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                        <span class="text-sm hidden sm:inline">Research</span>
+                    </button>
+                </div>
+                <button class="cursor-pointer hover:bg-base-200 rounded-lg flex items-center justify-center px-1.5 py-1"
+                        aria-label="More options">
+                    <span class="material-symbols-outlined text-lg">more_vert</span>
+                </button>
+            </div>
+        </div>
+    {% endif %}
+</div>

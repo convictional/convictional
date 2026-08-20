@@ -1,0 +1,13 @@
+.*_cache/
+**/__pycache__/
+**/.mypy_cache/
+docs/
+log/*
+node_modules/
+scripts/seeds/
+tests/
+tmp/
+.env.*
+config/deploy/
+config/infra/
+.venv/

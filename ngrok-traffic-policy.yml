@@ -1,0 +1,7 @@
+on_http_request:
+  - expressions:
+      - req.url.path.startsWith("/vite")
+    actions:
+      - type: forward-internal
+        config:
+          url: https://${endpoint.host.split('.')[0]}.vite.internal

@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "samuelcolvin.jinjahtml",
+    "bradlc.vscode-tailwindcss"
+  ],
+}

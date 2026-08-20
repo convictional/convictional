@@ -1,0 +1,1387 @@
+interactions:
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with generating a succinct title for a meeting based on its transcript.
+      Here is the transcript of the meeting:\\n\\n<transcript>\\n\\nline 0: Tom Wilson:
+      Good morning everyone, and thanks for joining our weekly project sync. Today
+      we'll be focusing on the Q4 campaign launch progress and addressing any roadblocks.
+      Sarah, would you like to kick us off with the marketing updates?\\nline 1: Sarah
+      Chen: Thanks, Tom. I've reviewed the latest analytics from our test campaign,
+      and we're seeing some promising results. Click-through rates are averaging 3.2%,
+      which is about 0.8% higher than our previous campaigns. This brings me to our
+      main decision point today \u2013 how we want to handle our ad spend allocation.\\nline
+      2: Maya Patel: What are our options looking like?\\nline 3: Sarah Chen: We essentially
+      have two paths forward. We could go broad with a larger audience and lower cost
+      per impression across all platforms, or we could focus heavily on Instagram
+      and LinkedIn where we're seeing the highest engagement rates, but that means
+      a higher cost per impression.\\nline 4: James Rodriguez: The engagement numbers
+      on those platforms are impressive, but wouldn't we be missing out on the TikTok
+      demographic entirely?\\nline 5: Maya Patel: True, but our conversion rates on
+      Instagram are nearly double what we're seeing on TikTok. Plus, the lead quality
+      from LinkedIn has been consistently higher.\\nline 6: Tom Wilson: Let's break
+      this down. What's our priority here \u2013 reach or conversion quality?\\nline
+      7: Sarah Chen: Looking at the Q4 targets, we need a 15% increase in qualified
+      leads more than we need raw awareness. Given our budget constraints and these
+      engagement metrics, I recommend we concentrate on Instagram and LinkedIn.\\nline
+      8: James Rodriguez: That makes sense. We can also repurpose our high-performing
+      creative assets for these platforms, which would save us some production costs.\\nline
+      9: Sarah Chen: Exactly, and we're covering the criteria for both reach and quality.
+      I'll adjust the media plan accordingly.\\nline 10: Tom Wilson: Alright, let's
+      make this official. We'll reallocate the budget to focus on Instagram and LinkedIn.
+      Sarah, can you adjust the media plan accordingly?\\nline 11: Sarah Chen: Will
+      do. I'll have the revised plan by Wednesday.\\nline 12: Tom Wilson: Great. Moving
+      on to other updates \u2013 James, how are we looking on the creative side?\\nline
+      13: James Rodriguez: Good. We've finalized the visual assets for the main campaign.
+      Maya, I've shared those with you for the social media rollout. One concern though
+      \u2013 we might need to adjust some of the color schemes for better accessibility.\\nline
+      14: Maya Patel: Got it, James. I'll start adapting these for our focused platform
+      strategy.\\nline 15: Tom Wilson: Alright, let's wrap this up. Action items for
+      everyone:\\nline 16:\\nline 17: Sarah - Send revised media plan by Wednesday\\nline
+      18: James - Revise color schemes for accessibility\\nline 19: Maya - Adapt content
+      calendar for Instagram and LinkedIn focus\\nline 20: Everyone - Update project
+      timelines by EOD\\nline 21:\\nline 22: Any final questions or concerns?\\nline
+      23: Sarah Chen: All clear on my end.\\nline 24: James Rodriguez: Nothing from
+      me.\\nline 25: Maya Patel: We're good.\\nline 26: Tom Wilson: Great work, everyone.
+      Next meeting same time next week. Thanks for your time.\\n\\n</transcript>\\n\\nYour
+      goal is to create a brief, informative title that captures the main purpose
+      or key topic of the meeting. This title should give someone who didn't attend
+      the meeting a quick understanding of what was discussed.\\n\\nFollow these guidelines
+      when creating the title:\\n1. Keep it concise - ideally under 10 words\\n2.
+      Focus on the main topic or purpose of the meeting\\n3. Use clear, straightforward
+      language\\n4. Avoid unnecessary details or participant names\\n5. Make it specific
+      enough to distinguish this meeting from others\\n\\nTo complete this task:\\n1.
+      Carefully read and analyze the transcript\\n2. Identify the central theme or
+      primary objective of the meeting\\n3. Consider any key decisions made or important
+      topics discussed\\n4. Synthesize this information into a concise title\\n\\nOnce
+      you have formulated the title, provide your response using the MeetingTitle
+      tool.\\n\\nRemember, the title should be succinct yet informative, giving a
+      clear idea of the meeting's purpose at a glance.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:52:48.425593+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingTitle\"},\"tools\":[{\"name\":\"MeetingTitle\",\"description\":\"Extracted
+      title of a meeting from a transcript.\",\"input_schema\":{\"description\":\"Extracted
+      title of a meeting from a transcript.\",\"properties\":{\"title\":{\"description\":\"The
+      title of the meeting.\",\"title\":\"Title\",\"type\":\"string\"}},\"required\":[\"title\"],\"title\":\"MeetingTitle\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5770'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRa2sUMRT9K8P9nIUduxWbb7YoIlha+1AQCXeTu9ls85gmN8V1mf8umTrUWvox
+        55FzcnKAkAx5kKA9VkOLkmIkXqwWb0GAMyAhFKuWfX9mgt1sfu9vTh52F29219928VcCAbwfqKmo
+        FLQEAnLyDcBSXGGMDAJ0ikyRQf44zHpOyataaE5p56qW/ffVh+GddbefT4O+vLn/en47fFqvQUDE
+        0HxfiNhFe+3YT944VAZ5AJ4ACZer7gzDgM7G7r3prgaKprvijEx232E03YVH3qQcuo9J1wKjAI3e
+        U55ueSxnXCbNMI4/BRROg8qEJcXntSei0H2lqAlkrN7/BQ0xOl9mrE7DyMNjWcXpjmIB2Z8cHbds
+        vSWlMyG7FNVzyXLmM6F5jZu9LYGGLQXK6NVxeKl/Yvvt/+woIFX+F1odCSiUH5wmxa7tA+0/DWYz
+        Db+h3F6uLCWQYH1ao4dx/AMAAP//AwAF2nUrUgIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:52:50Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:52:51Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:52:49Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:52:50Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ede134b130621-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:52:51 GMT
+      request-id:
+      - req_011Cdmgfd47rHk1DDdsnhWGu
+      server:
+      - cloudflare
+      server-timing:
+      - x-originResponse;dur=2762
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-a4cc834c940fe7261eea4e7fd0d559b2-0180e83359ecd18a-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with extracting the attendees from a meeting transcript. Your goal
+      is to identify all individuals who participated in the meeting based on the
+      provided transcript.\\n\\nHere is the transcript of the meeting:\\n\\n<transcript>\\n\\nline
+      0: Tom Wilson: Good morning everyone, and thanks for joining our weekly project
+      sync. Today we'll be focusing on the Q4 campaign launch progress and addressing
+      any roadblocks. Sarah, would you like to kick us off with the marketing updates?\\nline
+      1: Sarah Chen: Thanks, Tom. I've reviewed the latest analytics from our test
+      campaign, and we're seeing some promising results. Click-through rates are averaging
+      3.2%, which is about 0.8% higher than our previous campaigns. This brings me
+      to our main decision point today \u2013 how we want to handle our ad spend allocation.\\nline
+      2: Maya Patel: What are our options looking like?\\nline 3: Sarah Chen: We essentially
+      have two paths forward. We could go broad with a larger audience and lower cost
+      per impression across all platforms, or we could focus heavily on Instagram
+      and LinkedIn where we're seeing the highest engagement rates, but that means
+      a higher cost per impression.\\nline 4: James Rodriguez: The engagement numbers
+      on those platforms are impressive, but wouldn't we be missing out on the TikTok
+      demographic entirely?\\nline 5: Maya Patel: True, but our conversion rates on
+      Instagram are nearly double what we're seeing on TikTok. Plus, the lead quality
+      from LinkedIn has been consistently higher.\\nline 6: Tom Wilson: Let's break
+      this down. What's our priority here \u2013 reach or conversion quality?\\nline
+      7: Sarah Chen: Looking at the Q4 targets, we need a 15% increase in qualified
+      leads more than we need raw awareness. Given our budget constraints and these
+      engagement metrics, I recommend we concentrate on Instagram and LinkedIn.\\nline
+      8: James Rodriguez: That makes sense. We can also repurpose our high-performing
+      creative assets for these platforms, which would save us some production costs.\\nline
+      9: Sarah Chen: Exactly, and we're covering the criteria for both reach and quality.
+      I'll adjust the media plan accordingly.\\nline 10: Tom Wilson: Alright, let's
+      make this official. We'll reallocate the budget to focus on Instagram and LinkedIn.
+      Sarah, can you adjust the media plan accordingly?\\nline 11: Sarah Chen: Will
+      do. I'll have the revised plan by Wednesday.\\nline 12: Tom Wilson: Great. Moving
+      on to other updates \u2013 James, how are we looking on the creative side?\\nline
+      13: James Rodriguez: Good. We've finalized the visual assets for the main campaign.
+      Maya, I've shared those with you for the social media rollout. One concern though
+      \u2013 we might need to adjust some of the color schemes for better accessibility.\\nline
+      14: Maya Patel: Got it, James. I'll start adapting these for our focused platform
+      strategy.\\nline 15: Tom Wilson: Alright, let's wrap this up. Action items for
+      everyone:\\nline 16:\\nline 17: Sarah - Send revised media plan by Wednesday\\nline
+      18: James - Revise color schemes for accessibility\\nline 19: Maya - Adapt content
+      calendar for Instagram and LinkedIn focus\\nline 20: Everyone - Update project
+      timelines by EOD\\nline 21:\\nline 22: Any final questions or concerns?\\nline
+      23: Sarah Chen: All clear on my end.\\nline 24: James Rodriguez: Nothing from
+      me.\\nline 25: Maya Patel: We're good.\\nline 26: Tom Wilson: Great work, everyone.
+      Next meeting same time next week. Thanks for your time.\\n\\n</transcript>\\n\\nTo
+      extract the attendees, follow these guidelines:\\n\\n1. Look for names mentioned
+      at the beginning of the transcript, which often indicate who is present.\\n2.
+      Pay attention to speaker labels throughout the transcript (e.g., \\\"John:\\\",
+      \\\"Sarah:\\\").\\n3. Note any introductions or greetings that mention names.\\n4.
+      Consider names mentioned in the context of speaking, asking questions, or being
+      addressed by others.\\n5. Be aware that some attendees might be referred to
+      by their role or title rather than their name.\\n\\nAs you identify attendees,
+      create a list.\\n\\nIf you encounter unclear cases, such as names that are only
+      partially mentioned or individuals whose attendance is ambiguous, ignore them.\\n\\nOnce
+      you have finished analyzing the transcript, provide your final list of attendees
+      using the MeetingAttendees tool.\\n\\nRemember, your goal is to be as comprehensive
+      as possible while also being accurate. If you're unsure about including someone,
+      it's better to leave them out.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:52:48.425593+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingAttendees\"},\"tools\":[{\"name\":\"MeetingAttendees\",\"description\":\"Extracted
+      list of attendees from a meeting transcript.\",\"input_schema\":{\"description\":\"Extracted
+      list of attendees from a meeting transcript.\",\"properties\":{\"attendees\":{\"description\":\"The
+      names of the attendees present in the meeting.\",\"items\":{\"type\":\"string\"},\"title\":\"Attendees\",\"type\":\"array\"}},\"required\":[\"attendees\"],\"title\":\"MeetingAttendees\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5946'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RR204bMRD9lWieHSmLCCj71kTwEBSESEtVIWQN9mHXrdcO9mxViPbfKwe2LUU8
+        zrnMmcueumjhqSbjubeY5hgCZHo8PSFFzlJNXW70rKpWtmse0s25O7vZri63i+/h5LFo5GmHokLO
+        3IAUpegLwDm7LByEFJkYBEGovt2PeonR6z5jTCl1r2fV8uj++fRsaY6vl+sNrxdH336tvlyQosBd
+        8W0AcaH5JIJggVz8YdcL1XviP2B9S59jN/nqfI6BFG05cTtZtSjFhp94csUCT4rW3CFPrqNNrunx
+        THeDIsPeI5WOr8Nal2CEhuFOUZa40wlcGr9Z40BkPPYIBlSH3vtX0ELY+Txi/eFQ9f5lcC3xB0Km
+        ulqczku2aaFNAouLQb+VzEY+ge1H3OgtCdi16JDY63n3Xv+Xrdr/2UFR7OVfaF4pykg/nYEWV+5D
+        5b+Wkz084QGpbK4bRKqp8fGePQ3DbwAAAP//AwBoJxjqYgIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:52:52Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:52:52Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:52:51Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:52:52Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ede25bc8eecd2-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:52:52 GMT
+      request-id:
+      - req_011CdmgfqS1VyvNzhyqDBQPe
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-81e145496e889da51f26343b5829e0a5-034c0afc369018e9-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"In
+      addition to your consultancy background, you started your career with many years
+      as an Executive Assistant. Currently you are being tasked with creating an accurate
+      and concise summary of a meeting transcript; use both skillsets to inform your
+      final output.\\n\\nHere is the transcript of the meeting:\\n\\n<transcript>\\n\\nline
+      0: Tom Wilson: Good morning everyone, and thanks for joining our weekly project
+      sync. Today we'll be focusing on the Q4 campaign launch progress and addressing
+      any roadblocks. Sarah, would you like to kick us off with the marketing updates?\\nline
+      1: Sarah Chen: Thanks, Tom. I've reviewed the latest analytics from our test
+      campaign, and we're seeing some promising results. Click-through rates are averaging
+      3.2%, which is about 0.8% higher than our previous campaigns. This brings me
+      to our main decision point today \u2013 how we want to handle our ad spend allocation.\\nline
+      2: Maya Patel: What are our options looking like?\\nline 3: Sarah Chen: We essentially
+      have two paths forward. We could go broad with a larger audience and lower cost
+      per impression across all platforms, or we could focus heavily on Instagram
+      and LinkedIn where we're seeing the highest engagement rates, but that means
+      a higher cost per impression.\\nline 4: James Rodriguez: The engagement numbers
+      on those platforms are impressive, but wouldn't we be missing out on the TikTok
+      demographic entirely?\\nline 5: Maya Patel: True, but our conversion rates on
+      Instagram are nearly double what we're seeing on TikTok. Plus, the lead quality
+      from LinkedIn has been consistently higher.\\nline 6: Tom Wilson: Let's break
+      this down. What's our priority here \u2013 reach or conversion quality?\\nline
+      7: Sarah Chen: Looking at the Q4 targets, we need a 15% increase in qualified
+      leads more than we need raw awareness. Given our budget constraints and these
+      engagement metrics, I recommend we concentrate on Instagram and LinkedIn.\\nline
+      8: James Rodriguez: That makes sense. We can also repurpose our high-performing
+      creative assets for these platforms, which would save us some production costs.\\nline
+      9: Sarah Chen: Exactly, and we're covering the criteria for both reach and quality.
+      I'll adjust the media plan accordingly.\\nline 10: Tom Wilson: Alright, let's
+      make this official. We'll reallocate the budget to focus on Instagram and LinkedIn.
+      Sarah, can you adjust the media plan accordingly?\\nline 11: Sarah Chen: Will
+      do. I'll have the revised plan by Wednesday.\\nline 12: Tom Wilson: Great. Moving
+      on to other updates \u2013 James, how are we looking on the creative side?\\nline
+      13: James Rodriguez: Good. We've finalized the visual assets for the main campaign.
+      Maya, I've shared those with you for the social media rollout. One concern though
+      \u2013 we might need to adjust some of the color schemes for better accessibility.\\nline
+      14: Maya Patel: Got it, James. I'll start adapting these for our focused platform
+      strategy.\\nline 15: Tom Wilson: Alright, let's wrap this up. Action items for
+      everyone:\\nline 16:\\nline 17: Sarah - Send revised media plan by Wednesday\\nline
+      18: James - Revise color schemes for accessibility\\nline 19: Maya - Adapt content
+      calendar for Instagram and LinkedIn focus\\nline 20: Everyone - Update project
+      timelines by EOD\\nline 21:\\nline 22: Any final questions or concerns?\\nline
+      23: Sarah Chen: All clear on my end.\\nline 24: James Rodriguez: Nothing from
+      me.\\nline 25: Maya Patel: We're good.\\nline 26: Tom Wilson: Great work, everyone.
+      Next meeting same time next week. Thanks for your time.\\n\\n</transcript>\\n\\nFirst,
+      analyze the transcript to understand:\\n1. Every substantive topic with supporting
+      evidence:\\n- Direct quotes that capture key points with attribution\\n- Context
+      of why each point matters\\n- Sequence of how topics evolved\\n2. All specific
+      items:\\n- Decisions and commitments\\n- Numbers and metrics\\n- Action items
+      and owners\\n3. Participant dynamics:\\n- Key contributors per topic\\n- Areas
+      of consensus vs discussion\\n- Any alternative viewpoints raised\\n\\nUsing
+      your analysis, create an executive summary that MUST:\\n1. Maintain complete
+      accuracy by:\\n- Using direct quotes for crucial points\\n- Preserving full
+      context of discussions\\n- Including all substantive topics\\n- Noting who contributed
+      to each point naturally (e.g. \\\"John mentioned that...\\\", or \\\"Jake raised,
+      Ben supported, a concern about...\\\")\\n2. Format precisely as follows:\\n\\n##
+      Summary\\n[Single paragraph overview that captures meeting significance and
+      key outcomes. Must reference specific discussions rather than general statements.]\\n\\n###
+      Key Points\\n- **[Topic Label]:** [Concrete point backed by quote or specific
+      example + why it matters/impact; 2-3 sentences maximum]\\n[Additional points
+      in chronological order, each with evidence + impact...]\\n\\n### Challenges
+      & Risks\\n- **[Specific Challenge]:** [Evidence from transcript + implications
+      + any proposed solutions or disagreements; 2-3 sentences maximum]\\n[Additional
+      challenges if discussed...]\\n\\nNotes:\\n1. Do not include a 'Decisions' section;
+      decisions are extracted separately and must not appear in this summary.\\n2.
+      Omit 'Challenges & Risks' where no relevant content exists in the transcript.\\n3.
+      Remember to write at a Flesch-Kincaid Grade Level of 4.0 or lower.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:52:48.425593+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingSummary\"},\"tools\":[{\"name\":\"MeetingSummary\",\"description\":\"Extracted
+      summary of a meeting from a transcript.\",\"input_schema\":{\"description\":\"Extracted
+      summary of a meeting from a transcript.\",\"properties\":{\"summary\":{\"description\":\"The
+      summary of the meeting.\",\"title\":\"Summary\",\"type\":\"string\"}},\"required\":[\"summary\"],\"title\":\"MeetingSummary\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '6684'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4RW72/cNgz9VwgF3YDickjStNvuW5FtXbsWa5Og3Y8bDjyJtrWTRVeU4l6D/O8D
+        bV8uadf1oyVKJB/fe/K1adlRMAtjAxZHh8IxUj48PXxiZsY7szCt1Kuj4+Mz19bVB3/qjyNXT37v
+        3/zsLx6ZmcnbjjSKRLAmMzOJgy6giJeMMZuZsRwzxWwWf13v4jNzWBWhXRb9Lquj4yeu/eW75o/y
+        9kX77sOvH3/6gf48ff3MzEzEVs+9Iso+1helbTFt9XTsSjaLayPT0sIcHMC0v4yXDUEmbKGh4CA3
+        5BP0RJuwhTenYLHt0NcRZBvtDAI5WG/hklt454NwnIOeb9FHqNgWgR4F+oYSQWboStYbAR2si6sp
+        z+ECEzZw1lAEaTCRpsQMmSTvk9ng7eYwN4lL3UDCTAKNz/BofvJgBqWDo/n3D6BK3EKHdw7KWM7Q
+        jqM1ZnJQs481rBOjA7SJRQBDgC5grji1AleUpMhYvoZyhOdRMtYJW8Do4KWPG3LPx163YBuWobux
+        4S+Ga4gWjXD8+AH4aBOhEPgI7wsGX3lyEAidzOEFtiRwzi75utBHqALWNTlAiKQIMVT+A1gOnEBs
+        QxpdcQK0lkT82geft3qzgl35iAE0W/ZXBChCWebLuIwHBwfwK23hNfuYZRkP4eHDSwX+bAf8a0oK
+        CkZLi4cPp2FFzuRmsDRn/zEWTAR4RQlrxW4cUN9424AXwDWXPA6r8XVDSYcdgUuCLtGV5yJ3Zrc0
+        cNl4AWm4l6EVW1KimAG7LjGOd/acNsNEKefdhWuqONF87Oipg4uOooMfyXrxHPedBPQOtKTcM3SY
+        G1lAzf9Djhlw+tqc5/AKtwidgkrD9YrVbyWB5ajk8hwnsO7fkQgiYQpbcFzWgaBXJfT0bSIQoomL
+        l35zyZvZ0gxJB7EsjfJmpFHejjq4ZV2DAmuiqNnVYCjmsJ3gv4XYYUZwia/oLmUwhAnDN6fwUlM8
+        Ywx7+CQPiso7iSk5BZbmqwyHltUQdFS9Nk0OEvaAPSaKJPvRVwnbKUPfcKDJNiYxDwi06Maiv6C6
+        cVoDewJhUrl6u+PG2U4VT1UVcE5FBqKPAhyIvm/PYoSlSdSV1KnkFcPDblSIDucTiS3NoMkhs1pE
+        3NNoPhEbr0igS+yKzcoKy5LVLn0g2BB1eutuqpptqvqtl4JhrFngnNBt90VbjpVPO9QGJ7710avh
+        4ChSx3EE8NZ2qYXe52ak7650YesxQEvOIyQOgUu+NY+zBkOgWJPAN3DuZTOZyNN7PsQV3MdZ9tUm
+        9DIYm+VoKcUdoXuC1tdNvjU8dP8UySDckl44oPqZ/00ecM8Gb7lkuQQHErgHx/3ojVND4Csdtroq
+        qY683YTtzoYz80aFN/AAZaPpWxw8Jw/Wr6dkbm5mRhVDSd/W6dF2PpHN5ubm75mRzN1KFcHx/nM+
+        bAi9LxQtmUUsIUyLjjL6ILu1MvwwLK7HJ3yVeUNRzOLk+PREc9uGViMHOa7uhxzt9hOh+9Le7qxm
+        oE5RTRhWj9vP4/e7x82nuzczwyXfXTp9dDIzQunKW1plrwAZ/dFxmNzwP1JR0tZXNbFZmDrwGoO5
+        ufkXAAD//wMAJi6Oz2sJAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:52:54Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:53:02Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:52:53Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:52:54Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ede2fcffba173-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:53:02 GMT
+      request-id:
+      - req_011CdmgfxCZ6prfStHfLi4dY
+      server:
+      - cloudflare
+      server-timing:
+      - x-originResponse;dur=9223
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-4de001179e0b064a31e95275ab13faa2-5e576817477c03a8-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are extracting the decisions from a meeting transcript. Decisions are rare and
+      specific \u2014 many meetings contain none at all. Your only job is to find
+      genuine decisions and to return an empty list when there are none. Do not summarize
+      the meeting or list anything that is not a decision.\\n\\nHere is the transcript
+      of the meeting:\\n\\n<transcript>\\n\\nline 0: Tom Wilson: Good morning everyone,
+      and thanks for joining our weekly project sync. Today we'll be focusing on the
+      Q4 campaign launch progress and addressing any roadblocks. Sarah, would you
+      like to kick us off with the marketing updates?\\nline 1: Sarah Chen: Thanks,
+      Tom. I've reviewed the latest analytics from our test campaign, and we're seeing
+      some promising results. Click-through rates are averaging 3.2%, which is about
+      0.8% higher than our previous campaigns. This brings me to our main decision
+      point today \u2013 how we want to handle our ad spend allocation.\\nline 2:
+      Maya Patel: What are our options looking like?\\nline 3: Sarah Chen: We essentially
+      have two paths forward. We could go broad with a larger audience and lower cost
+      per impression across all platforms, or we could focus heavily on Instagram
+      and LinkedIn where we're seeing the highest engagement rates, but that means
+      a higher cost per impression.\\nline 4: James Rodriguez: The engagement numbers
+      on those platforms are impressive, but wouldn't we be missing out on the TikTok
+      demographic entirely?\\nline 5: Maya Patel: True, but our conversion rates on
+      Instagram are nearly double what we're seeing on TikTok. Plus, the lead quality
+      from LinkedIn has been consistently higher.\\nline 6: Tom Wilson: Let's break
+      this down. What's our priority here \u2013 reach or conversion quality?\\nline
+      7: Sarah Chen: Looking at the Q4 targets, we need a 15% increase in qualified
+      leads more than we need raw awareness. Given our budget constraints and these
+      engagement metrics, I recommend we concentrate on Instagram and LinkedIn.\\nline
+      8: James Rodriguez: That makes sense. We can also repurpose our high-performing
+      creative assets for these platforms, which would save us some production costs.\\nline
+      9: Sarah Chen: Exactly, and we're covering the criteria for both reach and quality.
+      I'll adjust the media plan accordingly.\\nline 10: Tom Wilson: Alright, let's
+      make this official. We'll reallocate the budget to focus on Instagram and LinkedIn.
+      Sarah, can you adjust the media plan accordingly?\\nline 11: Sarah Chen: Will
+      do. I'll have the revised plan by Wednesday.\\nline 12: Tom Wilson: Great. Moving
+      on to other updates \u2013 James, how are we looking on the creative side?\\nline
+      13: James Rodriguez: Good. We've finalized the visual assets for the main campaign.
+      Maya, I've shared those with you for the social media rollout. One concern though
+      \u2013 we might need to adjust some of the color schemes for better accessibility.\\nline
+      14: Maya Patel: Got it, James. I'll start adapting these for our focused platform
+      strategy.\\nline 15: Tom Wilson: Alright, let's wrap this up. Action items for
+      everyone:\\nline 16:\\nline 17: Sarah - Send revised media plan by Wednesday\\nline
+      18: James - Revise color schemes for accessibility\\nline 19: Maya - Adapt content
+      calendar for Instagram and LinkedIn focus\\nline 20: Everyone - Update project
+      timelines by EOD\\nline 21:\\nline 22: Any final questions or concerns?\\nline
+      23: Sarah Chen: All clear on my end.\\nline 24: James Rodriguez: Nothing from
+      me.\\nline 25: Maya Patel: We're good.\\nline 26: Tom Wilson: Great work, everyone.
+      Next meeting same time next week. Thanks for your time.\\n\\n</transcript>\\n\\nA
+      \\\"decision\\\" is a choice the group deliberated and reached *during this
+      meeting* \u2014 there was an open question or goal on the table, alternatives
+      or trade-offs were genuinely weighed, and the group settled on one. Apply these
+      rules strictly. Most meetings produce few or no decisions, so do not hunt for
+      one; inventing a decision where the group never weighed options is worse than
+      returning nothing. When in doubt, leave it out:\\n- The decision must be reached
+      in this meeting. Exclude anything a speaker merely reports as already settled:
+      pre-existing facts, standing policies, or how things already work (e.g. \\\"our
+      pricing is token-based, not per-user\\\"), and choices made before or outside
+      this meeting that are only being recounted here (e.g. \\\"we decided last year
+      to use a single account\\\"). If the choice was already made when the meeting
+      started, it is not a decision.\\n- A genuine decision resolves a question that
+      was actually deliberated. If a course of action was simply agreed as the obvious
+      next step \u2014 no goal framed, no alternatives considered \u2014 it is an
+      action item, not a decision, even when no single person is named (e.g. \\\"Convictional
+      will build a custom demo for Aksel's team to share\\\" is a committed next step,
+      not a deliberated choice).\\n- Include a decision reached implicitly only when
+      there is a concrete proposal AND clear affirmative agreement or consensus AND
+      no unresolved pushback. If a thread trails off unresolved, exclude it.\\n- Include
+      explicit decisions NOT to do something (e.g. \\\"decided not to rebrand this
+      year\\\").\\n- Exclude action items and tasks. A decision records WHAT the group
+      resolved; a task records WHO will do work next. Any \\\"<person> will <do something>\\\"
+      or assignment of future work is an action item \u2014 leave it out (e.g. \\\"Aksel
+      will fly to Atlanta\\\", \\\"Marla will set up a call\\\"). Tentative commitments
+      to look into, explore, check, or see if something is possible are action items
+      too (e.g. \\\"Marla will explore importing the data on their behalf\\\"), never
+      decisions. A scope or approach choice is still a decision even when phrased
+      with \\\"will\\\" (e.g. \\\"we will import the existing goals before building
+      status updates\\\"); the test is whether a question was settled or an option
+      chosen, not whether someone committed to a task.\\n- Also exclude: proposals
+      or ideas that were not adopted, opinions and general discussion, unresolved
+      debate, and deferrals or topics parked for later (e.g. \\\"we'll revisit next
+      week\\\").\\n- Attribute each decision to the person who made or drove it; use
+      \\\"the group\\\" when no single owner is clear. Never guess an owner.\\n\\n-
+      This meeting includes people from outside the organization. The members of the
+      organization are: dev. Record a decision ONLY when a member of the organization
+      made it or both sides committed to a mutual term. A choice that is the outside
+      party's alone to make about their own affairs is never a decision here \u2014
+      this covers their tools, budget, and staffing, AND how they adopt, roll out,
+      or configure this product for their own team (e.g. a prospect deciding to add
+      their whole team as individual users instead of one shared login, or deciding
+      to start using a feature). Exclude these even when they concern this product,
+      are encouraged by the organization, or are stated firmly. If the outside party
+      is the only one deciding, omit it.\\n\\nReturn the list of decisions, each as
+      one plain sentence plus who made or drove it. Return an empty list when no decisions
+      were made. Write at a Flesch-Kincaid Grade Level of 4.0 or lower.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:52:48.425593+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingDecisions\"},\"tools\":[{\"name\":\"MeetingDecisions\",\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"input_schema\":{\"$defs\":{\"MeetingDecision\":{\"properties\":{\"decision\":{\"description\":\"The
+      decision, stated plainly in one sentence.\",\"title\":\"Decision\",\"type\":\"string\"},\"owner\":{\"description\":\"Who
+      made or drove the decision; use \\\"the group\\\" when no single owner is clear.\",\"title\":\"Owner\",\"type\":\"string\"}},\"required\":[\"decision\",\"owner\"],\"title\":\"MeetingDecision\",\"type\":\"object\"}},\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"properties\":{\"decisions\":{\"description\":\"Genuine
+      decisions reached during the meeting. Empty when no decisions were made.\",\"items\":{\"$ref\":\"#/$defs/MeetingDecision\"},\"title\":\"Decisions\",\"type\":\"array\"}},\"title\":\"MeetingDecisions\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '9079'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SSQW8TMRCF/4o15w1KopKIPQYkqKC3oh5QtTL2rNeNd2brGVNKtP8dObAtBXGc
+        973R0zz7BCN7TNCCS7Z4XAkToa4uVjtoIHpoYZTQrTebt34Mof98xOuP2z0/3F2JlO/QgD5OWF0o
+        YgNCA5lTFaxIFLWk0IBjUiSF9stp8Stz6orgklLn0q03hyL8pkzvD/f4Y3t3Qx/2j8MhQwNkx7p3
+        haiRwjt0USKT1H2aikJ7Av8k1qBlghauBzQhc5mMG1jQKJueXRFjvZEJyRsmc0miNmQ7GkvefIp0
+        RH9JJpIoWm+4NzJltD5SMFGNdZlFjE3JTMlqz3mUV9AAPxDmmsmjuYlJmGC+nRtwNqUKnhrwMaNT
+        mOfbBkR56jLa6n7RzRkI3hckh9BSSem36FFtTLJo5dx+e/rVRqd8xNrDdr/Z1Ww3YOcyWo1M3UvL
+        euH1uP+xZbcm4DTgiNmm7vX4r/+Zboa/6dwAF/1T2l00IJi/RYedxnNx9dN4m/35ZXvM9fIuIEML
+        IfFXm2CefwIAAP//AwA13937twIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:53:06Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:53:06Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:53:02Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:53:06Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ede6a6ebad46b-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:53:07 GMT
+      request-id:
+      - req_011CdmggeG5eZ1UBNEnwQTmw
+      server:
+      - cloudflare
+      server-timing:
+      - x-originResponse;dur=4553
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-43fc5143fa003845af1d0ac264a7dee3-bd0ca080852b570a-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input":["Title: Q4 Campaign Ad Spend Strategy and Platform Focus\nDate:
+      No date\nAttendees: Tom Wilson, Sarah Chen, Maya Patel, James Rodriguez\nAgenda:
+      No agenda\nSummary: ## Summary\nThe team held their weekly Q4 campaign sync,
+      led by Tom Wilson. The main focus was where to put the ad budget. Sarah Chen
+      shared that test campaign click-through rates hit 3.2%, up 0.8% from past campaigns.
+      The team debated going broad across all platforms versus focusing on Instagram
+      and LinkedIn. They chose to focus on Instagram and LinkedIn to hit a 15% increase
+      in qualified leads. James Rodriguez flagged a need to fix color schemes for
+      accessibility in the final creative assets.\n\n### Decisions\n- The group chose
+      to focus ad spend on Instagram and LinkedIn instead of spreading it across all
+      platforms. (Tom Wilson)\n\n### Key Points\n- **Test Campaign Performance:**
+      Sarah noted, \"Click-through rates are averaging 3.2%, which is about 0.8% higher
+      than our previous campaigns.\" This shows the current approach is working better
+      than before.\n- **Ad Spend Decision:** Sarah laid out two paths: go broad across
+      all platforms, or focus on Instagram and LinkedIn. Maya pointed out, \"Our conversion
+      rates on Instagram are nearly double what we''re seeing on TikTok,\" and that
+      \"lead quality from LinkedIn has been consistently higher.\" This data drove
+      the final call.\n- **Q4 Lead Goal:** Sarah stated the team needs \"a 15% increase
+      in qualified leads more than we need raw awareness.\" This framed the whole
+      budget debate and made the Instagram and LinkedIn focus the clear choice.\n-
+      **Creative Asset Reuse:** James noted the team can \"repurpose high-performing
+      creative assets\" for the chosen platforms. This saves production costs while
+      keeping quality high.\n- **Visual Assets Ready:** James confirmed the main campaign
+      visuals are done and shared them with Maya for the social media rollout.\n\n###
+      Challenges & Risks\n- **Accessibility of Creative Assets:** James raised a concern
+      that \"we might need to adjust some of the color schemes for better accessibility.\"
+      This could slow down the rollout if not fixed quickly. James took on the task
+      of making those fixes."],"model":"text-embedding-3-small","dimensions":1536,"encoding_format":"base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2255'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        879nEXwSnCAAAA==
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ede887d7cc9b1-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:53:07 GMT
+      openai-processing-ms:
+      - '136'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=7Z4p0KBOLAW6UKxaPjjum5sBId4f5yYX18Fzl1c21mY-1786027987.2770386-1.0.1.1-Qa72x.RDHzlY.7UpqfxiPdaSfHqlKGcsM6.ikLDHHtwHaXEV3xC6TsWHNR__zWyxcXBUjkglejA2NEZMFFegnDp7YiwN4K5T.jt012RmtWR9Yiq.FgZ2jV0498akNEXI;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu,
+        06 Aug 2026 15:23:07 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999467'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 3ms
+      x-request-id:
+      - req_076833edad7c45dea4c2d628b27c7125
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"input\":[\"Tom Wilson: Good morning everyone, and thanks for joining
+      our weekly project sync. Today we'll be focusing on the Q4 campaign launch progress
+      and addressing any roadblocks. Sarah, would you like to kick us off with the
+      marketing updates?\\nSarah Chen: Thanks, Tom. I've reviewed the latest analytics
+      from our test campaign, and we're seeing some promising results. Click-through
+      rates are averaging 3.2%, which is about 0.8% higher than our previous campaigns.
+      This brings me to our main decision point today \u2013 how we want to handle
+      our ad spend allocation.\\nMaya Patel: What are our options looking like?\\nSarah
+      Chen: We essentially have two paths forward. We could go broad with a larger
+      audience and lower cost per impression across all platforms, or we could focus
+      heavily on Instagram and LinkedIn where we're seeing the highest engagement
+      rates, but that means a higher cost per impression.\\nJames Rodriguez: The engagement
+      numbers on those platforms are impressive, but wouldn't we be missing out on
+      the TikTok demographic entirely?\\nMaya Patel: True, but our conversion rates
+      on Instagram are nearly double what we're seeing on TikTok. Plus, the lead quality
+      from LinkedIn has been consistently higher.\\nTom Wilson: Let's break this down.
+      What's our priority here \u2013 reach or conversion quality?\\nSarah Chen: Looking
+      at the Q4 targets, we need a 15% increase in qualified leads more than we need
+      raw awareness. Given our budget constraints and these engagement metrics, I
+      recommend we concentrate on Instagram and LinkedIn.\\nJames Rodriguez: That
+      makes sense. We can also repurpose our high-performing creative assets for these
+      platforms, which would save us some production costs.\\nSarah Chen: Exactly,
+      and we're covering the criteria for both reach and quality. I'll adjust the
+      media plan accordingly.\\nTom Wilson: Alright, let's make this official. We'll
+      reallocate the budget to focus on Instagram and LinkedIn. Sarah, can you adjust
+      the media plan accordingly?\\nSarah Chen: Will do. I'll have the revised plan
+      by Wednesday.\\nTom Wilson: Great. Moving on to other updates \u2013 James,
+      how are we looking on the creative side?\\nJames Rodriguez: Good. We've finalized
+      the visual assets for the main campaign. Maya, I've shared those with you for
+      the social media rollout. One concern though \u2013 we might need to adjust
+      some of the color schemes for better accessibility.\\nMaya Patel: Got it, James.
+      I'll start adapting these for our focused platform strategy.\\nTom Wilson: Alright,
+      let's wrap this up. Action items for everyone:\\n\\nSarah - Send revised media
+      plan by Wednesday\\nJames - Revise color schemes for accessibility\\nMaya -
+      Adapt content calendar for Instagram and LinkedIn focus\\nEveryone - Update
+      project timelines by EOD\\n\\nAny final questions or concerns?\\nSarah Chen:
+      All clear on my end.\\nJames Rodriguez: Nothing from me.\\nMaya Patel: We're
+      good.\\nTom Wilson: Great work, everyone. Next meeting same time next week.
+      Thanks for your time.\"],\"model\":\"text-embedding-3-small\",\"dimensions\":1536,\"encoding_format\":\"base64\"}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '3055'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ede8aef34d7de-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:53:07 GMT
+      openai-processing-ms:
+      - '164'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=.dWBbjhAdrWVOb5YjALii2kgkZDGiTTijOiedhMooQM-1786027987.6699889-1.0.1.1-EGAV7cnwKuPY7w_7Mpm7xkT631csU7S4VUnRvwAbWlfSssQvo24UCsEc6PpdObiAv5AAJFtSFngOyB_GU.V27coJ8X1HwKADUAE.roAJXk7ks.OIKsyKZSSnByxJVdnn;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu,
+        06 Aug 2026 15:23:07 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999266'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 4ms
+      x-request-id:
+      - req_e6bc05db2bb648a1b64310c30af81b59
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with suggesting which collection a meeting should be organized into.\\n\\nHere
+      is the meeting information:\\n\\n<meeting>\\nTitle: Q4 Campaign Ad Spend Strategy
+      and Platform Focus\\n\\nSummary: ## Summary\\nThe team held their weekly Q4
+      campaign sync, led by Tom Wilson. The main focus was where to put the ad budget.
+      Sarah Chen shared that test campaign click-through rates hit 3.2%, up 0.8% from
+      past campaigns. The team debated going broad across all platforms versus focusing
+      on Instagram and LinkedIn. They chose to focus on Instagram and LinkedIn to
+      hit a 15% increase in qualified leads. James Rodriguez flagged a need to fix
+      color schemes for accessibility in the final creative assets.\\n\\n### Decisions\\n-
+      The group chose to focus ad spend on Instagram and LinkedIn instead of spreading
+      it across all platforms. (Tom Wilson)\\n\\n### Key Points\\n- **Test Campaign
+      Performance:** Sarah noted, \\\"Click-through rates are averaging 3.2%, which
+      is about 0.8% higher than our previous campaigns.\\\" This shows the current
+      approach is working better than before.\\n- **Ad Spend Decision:** Sarah laid
+      out two paths: go broad across all platforms, or focus on Instagram and LinkedIn.
+      Maya pointed out, \\\"Our conversion rates on Instagram are nearly double what
+      we're seeing on TikTok,\\\" and that \\\"lead quality from LinkedIn has been
+      consistently higher.\\\" This data drove the final call.\\n- **Q4 Lead Goal:**
+      Sarah stated the team needs \\\"a 15% increase in qualified leads more than
+      we need raw awareness.\\\" This framed the whole budget debate and made the
+      Instagram and LinkedIn focus the clear choice.\\n- **Creative Asset Reuse:**
+      James noted the team can \\\"repurpose high-performing creative assets\\\" for
+      the chosen platforms. This saves production costs while keeping quality high.\\n-
+      **Visual Assets Ready:** James confirmed the main campaign visuals are done
+      and shared them with Maya for the social media rollout.\\n\\n### Challenges
+      & Risks\\n- **Accessibility of Creative Assets:** James raised a concern that
+      \\\"we might need to adjust some of the color schemes for better accessibility.\\\"
+      This could slow down the rollout if not fixed quickly. James took on the task
+      of making those fixes.\\n\\nAttendees: Tom Wilson, Sarah Chen, Maya Patel, James
+      Rodriguez\\n\\n</meeting>\\n\\nThere are no existing collections in this organization
+      yet.\\n\\nYour task is to decide one of the following:\\n\\n1. **existing**
+      \u2014 The meeting fits well into one of the existing collections. Provide the
+      collection's ID.\\n2. **new** \u2014 The meeting doesn't fit any existing collection,
+      but it clearly belongs to a category that would benefit from a new collection.
+      Suggest a concise collection title (1-4 words).\\n3. **none** \u2014 The meeting
+      doesn't clearly belong to any collection and doesn't warrant creating a new
+      one (e.g., one-off meetings, unclear topics).\\n\\nGuidelines:\\n- Prefer matching
+      to an existing collection when the meeting's topic aligns reasonably well\\n-
+      Use the recent meetings listed under each collection to understand what kinds
+      of meetings belong there \u2014 match by pattern (similar titles, attendees,
+      or topics), not just the collection title\\n- When the meeting title is a person's
+      name or a 1:1 format (e.g., \\\"Alice / Bob\\\"), look at which collections
+      already contain similar name-pattern meetings\\n- Only suggest a new collection
+      if the meeting represents a recurring theme that other meetings likely share
+      (e.g., \\\"Engineering Standups\\\", \\\"Client Calls\\\", \\\"Board Meetings\\\")\\n-
+      Suggest \\\"none\\\" for one-off or ambiguous meetings rather than forcing a
+      poor fit\\n- When choosing \\\"existing\\\", you MUST use an ID from the list
+      above \u2014 do not invent or guess IDs\\n- New collection titles should be
+      short and descriptive, following the pattern of the existing collections\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:53:07.995498+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingCollectionSuggestion\"},\"tools\":[{\"name\":\"MeetingCollectionSuggestion\",\"description\":\"Correctly
+      extracted `MeetingCollectionSuggestion` with all the required parameters with
+      correct types\",\"input_schema\":{\"$defs\":{\"MeetingCollectionAction\":{\"enum\":[\"existing\",\"new\",\"none\"],\"title\":\"MeetingCollectionAction\",\"type\":\"string\"}},\"properties\":{\"action\":{\"$ref\":\"#/$defs/MeetingCollectionAction\",\"description\":\"One
+      of: 'existing' (suggest an existing collection), 'new' (suggest creating a new
+      collection), or 'none' (no good match).\"},\"collection_id\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      ID of the existing collection to suggest. Required when action is 'existing'.\",\"title\":\"Collection
+      Id\"},\"collection_title\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      title of the new collection to create. Required when action is 'new'. Keep it
+      concise (1-4 words).\",\"title\":\"Collection Title\"}},\"required\":[\"action\"],\"title\":\"MeetingCollectionSuggestion\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5894'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRy24bMQz8lYBnGfAGdhLr6gY+9IGm7sFAEQiMxGjVaKWNRCV2jf33QBsv6rbo
+        TZwZcobUEbpoyIME7bEYmuUYAvFsMbsCAc6AhC5bNW+atelse3WNuNmk54+7fvXh6/IbCOBDT1VF
+        OaMlEJCirwDm7DJjYBCgY2AKDPLHcdJzjF6VTJNLrYuaN3ebTz+/37J5ejnsFriKX/Yt7n+BgIBd
+        7ftMxC7YdfSeNLsYtsVayvVVR4W+MMgj4MiBhECvY4BJrtjxmO9ucbHGrkdnw8X2EHSGQYBG7ynV
+        AaeYxiXSDMNwLyBz7FUizOPgswVGItNzoaAJZCjen0BDjM7nCSvjieTxPafi+EQhg2xW15fVW7ek
+        dCIcc/4pmU98IjT/46be6kB9Sx0l9GrZ/av/zTbt3+wgIBY+h5Y3AjKlF6dJsav3gfqzBpMZb/5I
+        qW6uLEWQYH18QA/D8AYAAP//AwD3ZvSTXAIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:53:09Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:53:10Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:53:08Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:53:09Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26ede8dd958a561-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:53:10 GMT
+      request-id:
+      - req_011Cdmgh4eXUT2zJ9v1xktfw
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-241cbe47bd9ebcdcbd56539ec1ea633d-1e6ebcadc52f1259-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

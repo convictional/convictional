@@ -1,0 +1,25 @@
+You are tasked with extracting the attendees from a meeting transcript. Your goal is to identify all individuals who participated in the meeting based on the provided transcript.
+
+Here is the transcript of the meeting:
+
+<transcript>
+{% with lines=meeting.processed_transcript.lines %}
+    {% include "meetings/transcript_lines.md.jinja" %}
+{% endwith %}
+</transcript>
+
+To extract the attendees, follow these guidelines:
+
+1. Look for names mentioned at the beginning of the transcript, which often indicate who is present.
+2. Pay attention to speaker labels throughout the transcript (e.g., "John:", "Sarah:").
+3. Note any introductions or greetings that mention names.
+4. Consider names mentioned in the context of speaking, asking questions, or being addressed by others.
+5. Be aware that some attendees might be referred to by their role or title rather than their name.
+
+As you identify attendees, create a list.
+
+If you encounter unclear cases, such as names that are only partially mentioned or individuals whose attendance is ambiguous, ignore them.
+
+Once you have finished analyzing the transcript, provide your final list of attendees using the MeetingAttendees tool.
+
+Remember, your goal is to be as comprehensive as possible while also being accurate. If you're unsure about including someone, it's better to leave them out.

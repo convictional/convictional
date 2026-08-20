@@ -1,0 +1,34 @@
+<task>
+    <title>{{ task.title }}</title>
+    <due_by>{{ task.due_by }}</due_by>
+    {% if task.workspace.assignee %}
+    <assignee>
+        <display_name>{{ task.workspace.assignee.display_name }}</display_name>
+        <email>{{ task.workspace.assignee.email }}</email>
+    </assignee>
+    {% else %}
+    <assignee>Unassigned</assignee>
+    {% endif %}
+    <description>{{ task.description }}</description>
+    {% if task.parent %}
+        <parent>
+            <title>{{ task.parent.title }}</title>
+            <description>{{ task.parent.description }}</description>
+        </parent>
+    {% endif %}
+</task>
+
+{% if results %}
+<context>
+{% for result in results %}
+    <result>
+        <id>{{ result.id }}</id>
+        <title>{{ result.title }}</title>
+        <author>{{ result.author }}</author>
+        <url>{{ result.source_url }}</url>
+        <created_at>{{ result.created_at }}</created_at>
+        <content>{{ result.index_content }}</content>
+    </result>
+{% endfor %}
+</context>
+{% endif %}

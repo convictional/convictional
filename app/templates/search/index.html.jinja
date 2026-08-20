@@ -1,0 +1,8 @@
+{% extends application_layout %}
+{% block title %}
+    {{ ('Search: ' ~ query if query else 'Search') | format_page_title }}
+{% endblock title %}
+{% block content %}
+    <div id="react-search-results"
+         data-props="{{ { 'initialQuery': query } | tojson }}"></div>
+{% endblock content %}

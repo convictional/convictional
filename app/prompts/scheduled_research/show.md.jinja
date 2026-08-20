@@ -1,0 +1,12 @@
+The user has requested research on this topic:
+<topic>
+{{ research.topic }}
+</topic>
+
+Here are the key learnings that have been extracted from the research:
+<learnings>
+{% for learning in learnings %}
+- {{ learning }}
+{% endfor %}
+</learnings>
+{% include "research/_sources.md.jinja" %}

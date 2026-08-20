@@ -1,0 +1,17 @@
+{% extends "base.jinja" %}
+
+{% block subject %}Re: ({{ titleize(event.workspace.resource_type) }}) {{ event.workspace.resource.title }}{% endblock %}
+
+{% block body_text %}
+{{ event.details.content[1] }}
+
+---
+View on Convictional: {{ url_for("gid_redirect", gid=event.workspace.resource_gid.to_param) }}
+{% endblock %}
+
+{% block body_markdown %}
+{{ event.details.content[1] }}
+
+---
+[View on Convictional]({{ url_for("gid_redirect", gid=event.workspace.resource_gid.to_param) }})
+{% endblock %}

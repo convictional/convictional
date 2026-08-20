@@ -1,0 +1,136 @@
+key: darren-maren-dm
+members: [darren, maren]
+messages:
+  - key: darren-maren-dm-msg-001
+    author: darren
+    at: !relative_day {offset: -19, hour: 22, minute: 10}
+    content: |
+      Quick one before I turn out the light — I've been saying "a CoS can wait" for six weeks. I don't think it can anymore.
+
+  - key: darren-maren-dm-msg-002
+    author: maren
+    at: !relative_day {offset: -19, hour: 22, minute: 18}
+    reply_to: darren-maren-dm-msg-001
+    content: |
+      I know. I've been waiting for you to say it out loud. Scorecard by the weekend?
+
+  - key: darren-maren-dm-msg-003
+    author: darren
+    at: !relative_day {offset: -19, hour: 22, minute: 20}
+    reply_to: darren-maren-dm-msg-002
+    content: |
+      Yes. Thank you.
+    reactions:
+      heart: [maren]
+
+  - key: darren-maren-dm-msg-004
+    author: maren
+    at: !relative_day {offset: -17, hour: 23, minute: 5}
+    content: |
+      Scorecard is in #documents. Tried to keep it honest. The "counter-indicators" section is the one I want you to read carefully.
+
+  - key: darren-maren-dm-msg-005
+    author: darren
+    at: !relative_day {offset: -17, hour: 23, minute: 14}
+    reply_to: darren-maren-dm-msg-004
+    content: |
+      The counter-indicators are the whole thing. "Wants to be a strategist more than an operator" — that's the one I've missed twice before.
+
+  - key: darren-maren-dm-msg-006
+    author: darren
+    at: !relative_day {offset: -10, hour: 21, minute: 45}
+    content: |
+      Quick Naomi read in shorthand — impressive but not us. Priyanka and Hamza still to come. Predicting right now that Priyanka is the one.
+
+  - key: darren-maren-dm-msg-007
+    author: maren
+    at: !relative_day {offset: -10, hour: 21, minute: 52}
+    reply_to: darren-maren-dm-msg-006
+    content: |
+      That's also my read on Naomi. Keep Hamza honest though — I don't want Priyanka-bias in the loop.
+
+  - key: darren-maren-dm-msg-008
+    author: darren
+    at: !relative_day {offset: -7, hour: 7, minute: 5}
+    content: |
+      I'm drowning, Maren. 24th back-to-back one-on-one yesterday. Haven't written anything substantive in a week. I can feel myself getting worse at the job.
+
+  - key: darren-maren-dm-msg-009
+    author: maren
+    at: !relative_day {offset: -7, hour: 7, minute: 18}
+    reply_to: darren-maren-dm-msg-008
+    content: |
+      I see it. Every week I see it. Take tonight off the email. Seriously. I'll cover the Alderman reply.
+    reactions:
+      heart: [darren]
+
+  - key: darren-maren-dm-msg-010
+    author: darren
+    at: !relative_day {offset: -7, hour: 7, minute: 22}
+    reply_to: darren-maren-dm-msg-009
+    content: |
+      honestly, I need this hire more than I'm saying out loud.
+    reactions:
+      heart: [maren]
+
+  - key: darren-maren-dm-msg-011
+    author: maren
+    at: !relative_day {offset: -7, hour: 7, minute: 25}
+    reply_to: darren-maren-dm-msg-010
+    content: |
+      I know. We are two weeks from having the right person on your calendar. Hold on.
+
+  - key: darren-maren-dm-msg-012
+    author: maren
+    at: !relative_day {offset: -5, hour: 8, minute: 30}
+    content: |
+      Small thought on the roadmap — I'd rather we decide slow and right than fast and wrong. Leo is going to push for a decision this week. Please don't. Let Emma's research land.
+
+  - key: darren-maren-dm-msg-013
+    author: darren
+    at: !relative_day {offset: -5, hour: 8, minute: 38}
+    reply_to: darren-maren-dm-msg-012
+    content: |
+      Agreed. I'll tell Leo tomorrow. You know what's funny — three months ago I would have decided in the same week Leo did. I think I'm getting slightly better at this job.
+
+  - key: darren-maren-dm-msg-014
+    author: maren
+    at: !relative_day {offset: -5, hour: 8, minute: 45}
+    reply_to: darren-maren-dm-msg-013
+    content: |
+      You are getting better at it. Not a sentence I give out for free.
+    reactions:
+      heart: [darren]
+
+  - key: darren-maren-dm-msg-015
+    author: maren
+    at: !relative_day {offset: -3, hour: 22, minute: 30}
+    content: |
+      Three years ago tomorrow we signed the cofounder agreement over pizza at my apartment. I was still at Sullivan Ashworth and I very nearly said no. I'm glad I didn't.
+    reactions:
+      heart: [darren]
+
+  - key: darren-maren-dm-msg-016
+    author: darren
+    at: !relative_day {offset: -3, hour: 22, minute: 40}
+    reply_to: darren-maren-dm-msg-015
+    content: |
+      I didn't know you almost said no. The pizza was bad, for the record. Best decision either of us has made.
+    reactions:
+      tears_of_joy: [maren]
+      heart: [maren]
+
+  - key: darren-maren-dm-msg-017
+    author: darren
+    at: !relative_day {offset: 0, hour: 5, minute: 50}
+    content: |
+      Priyanka call at 10. I slept about five hours. If it goes the way I think it will, I want to get an offer letter drafted today. Can we grab ten minutes this afternoon?
+
+  - key: darren-maren-dm-msg-018
+    author: maren
+    at: !relative_day {offset: 0, hour: 6, minute: 5}
+    reply_to: darren-maren-dm-msg-017
+    content: |
+      3:30? Good luck this morning. You've earned this one.
+    reactions:
+      heart: [darren]

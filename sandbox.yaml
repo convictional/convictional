@@ -1,0 +1,152 @@
+# Lima VM template for the Convictional sandbox.
+# System-level dependencies only — app setup happens via `make sandbox`
+# which syncs the repo in and runs `make install`, `make db_create`, etc.
+
+vmType: "vz"
+
+images:
+  - location: "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-arm64.img"
+    arch: "aarch64"
+
+cpus: 4
+memory: "8GiB"
+disk: "50GiB"
+
+mounts: []
+
+ssh:
+  forwardAgent: false
+
+hostResolver:
+  enabled: true
+
+containerd:
+  system: false
+  user: false
+
+provision:
+  - mode: system
+    script: |
+      #!/bin/bash
+      set -eux
+      export DEBIAN_FRONTEND=noninteractive
+
+      apt-get update
+      apt-get install -y \
+        build-essential \
+        curl \
+        git \
+        tmux \
+        libmagic-dev \
+        libffi-dev \
+        libssl-dev \
+        libpq-dev \
+        ca-certificates \
+        gnupg \
+        jq
+
+      # PostgreSQL APT repository (PG18 isn't in the noble default repo)
+      install -d /usr/share/postgresql-common/pgdg
+      curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+        -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc
+      echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" \
+        > /etc/apt/sources.list.d/pgdg.list
+      apt-get update
+
+      # PostgreSQL 18 + pgvector
+      apt-get install -y postgresql-18 postgresql-contrib-18 postgresql-18-pgvector
+
+      # Configure PostgreSQL for local trust auth
+      PG_HBA=$(find /etc/postgresql -name pg_hba.conf | head -1)
+      sed -i 's/^local\s\+all\s\+all\s\+peer/local all all trust/' "$PG_HBA"
+      sed -i 's/^host\s\+all\s\+all\s\+127.0.0.1\/32\s\+scram-sha-256/host all all 127.0.0.1\/32 trust/' "$PG_HBA"
+      systemctl restart postgresql
+
+      # Create PostgreSQL superusers for the Lima user and common usernames
+      # Lima maps the host username but the exact name varies
+      for ROLE in $(ls /home/ 2>/dev/null | head -5) lima; do
+        sudo -u postgres createuser --superuser "$ROLE" 2>/dev/null || true
+      done
+      # Also create one matching the username without the .guest/.linux suffix
+      for ROLE in $(ls /home/ 2>/dev/null | sed 's/\.\(guest\|linux\)$//' | sort -u); do
+        sudo -u postgres createuser --superuser "$ROLE" 2>/dev/null || true
+      done
+
+      # Enable extensions on the template so all new databases get them
+      sudo -u postgres psql -d template1 -c "CREATE EXTENSION IF NOT EXISTS vector;"
+      sudo -u postgres psql -d template1 -c "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
+
+      # Node.js via NodeSource. Keep the major in step with .nvmrc: an older
+      # major ships an older bundled npm, which rewrites package-lock.json
+      # (dropping fields it doesn't know, e.g. libc) on every install.
+      mkdir -p /etc/apt/keyrings
+      curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
+        | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+      echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_24.x nodistro main" \
+        > /etc/apt/sources.list.d/nodesource.list
+      apt-get update
+      apt-get install -y nodejs
+
+      # Playwright system dependencies
+      npx playwright install-deps chromium 2>/dev/null || true
+
+  - mode: boot
+    script: |
+      #!/bin/bash
+      systemctl start postgresql
+
+  - mode: user
+    script: |
+      #!/bin/bash
+      set -eux
+
+      # Install uv (manages Python)
+      curl -LsSf https://astral.sh/uv/install.sh | sh
+      export PATH="$HOME/.local/bin:$PATH"
+
+      # Install Python 3.13
+      uv python install 3.13
+
+      # Install Claude Code (native installer, installs to ~/.local/bin)
+      curl -fsSL https://claude.ai/install.sh | bash
+
+      # Skip the interactive first-run onboarding wizard (the token handles auth;
+      # headless `-p` skips this already, interactive sessions otherwise stall on it)
+      [ -f ~/.claude.json ] || echo '{}' > ~/.claude.json
+      tmp=$(mktemp)
+      jq '. + {hasCompletedOnboarding: true}' ~/.claude.json > "$tmp" && mv "$tmp" ~/.claude.json
+
+      # Set up bare repo for host sync (repo arrives via `make sandbox_sync`)
+      # The working tree at ~/app is created by `make sandbox` after first sync
+      git init --bare ~/repo.git
+
+      # Source .env on shell login (for CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY)
+      echo '[ -f ~/.env ] && set -a && source ~/.env && set +a' >> ~/.bashrc
+
+
+probes:
+  - description: "PostgreSQL is running"
+    script: |
+      #!/bin/bash
+      pg_isready -q
+    hint: "PostgreSQL is not running"
+
+  - description: "uv is available"
+    script: |
+      #!/bin/bash
+      export PATH="$HOME/.local/bin:$PATH"
+      uv --version
+    hint: "uv is not installed — provisioning may still be running"
+
+  - description: "Node.js is available"
+    script: |
+      #!/bin/bash
+      node --version | grep -q "v22"
+    hint: "Node.js 22 is not installed"
+
+  - description: "Claude Code is available"
+    script: |
+      #!/bin/bash
+      export PATH="$HOME/.local/bin:$PATH"
+      claude --version
+    hint: "Claude Code is not installed — provisioning may still be running"

@@ -1,0 +1,111 @@
+version: 2
+updates:
+  - package-ecosystem: uv
+    directories:
+      - "/"
+    schedule:
+      interval: daily
+      time: "09:00"
+    # Wait until a new version has been published for a week before opening a PR,
+    # so freshly released (potentially broken or compromised) versions bake before
+    # our auto-merge picks them up.
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 10
+    # Batch all non-major bumps into one PR per directory. Majors are riskier and
+    # not matched by any group, so they still open as individual PRs for review.
+    groups:
+      python-minor-patch:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+  # The lint/type toolchain (typescript, eslint, typescript-eslint and
+  # their plugins) is peer-locked: a major bump of one only resolves if its peers
+  # move with it (e.g. typescript 6 needs a typescript-eslint that allows it).
+  # Dependabot files majors individually by default, which splits these coupled
+  # upgrades into separate PRs that can never `npm install` (ERESOLVE). The
+  # dev-tooling group keeps the whole toolchain together, majors included, so it
+  # upgrades as one resolvable set. It is listed before npm-minor-patch so the
+  # toolchain packages land here rather than in the catch-all minor/patch group.
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "09:00"
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 10
+    # eslint 10 is held back by the plugin ecosystem, not by us: eslint-plugin-import
+    # (latest 2.32.0) still peer-caps at eslint 9, so `npm ci` ERESOLVEs on eslint 10
+    # even with the rest of the toolchain grouped. typescript-eslint already supports
+    # eslint 10, so this is purely the eslint major. Ignore it (and @eslint/js, which
+    # tracks eslint's major) until eslint-plugin-import ships v10 support; the
+    # dev-tooling group still carries typescript 6 + typescript-eslint + plugin minors.
+    #
+    # prosemirror-view is held at 1.42.0 by @handlewithcare/react-prosemirror,
+    # which peer-depends on that *exact* version. Unlike the peer caps above, no
+    # grouping can fix this: there is no react-prosemirror release that allows a
+    # newer prosemirror-view, so any bump past 1.42.0 ERESOLVEs on `npm install`
+    # no matter what it travels with. Lift this ignore when react-prosemirror
+    # publishes a release pinning a newer prosemirror-view — the prosemirror group
+    # below then moves both together.
+    ignore:
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@eslint/js"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "prosemirror-view"
+        versions: ["> 1.42.0"]
+      # typescript-eslint peer-caps at typescript <6.1.0, so a typescript 7 major
+      # cannot resolve even inside the dev-tooling group — there is no
+      # typescript-eslint release that allows TS 7 to group with. Same cap the
+      # static sites hit in #9036. Ignore the typescript major until
+      # typescript-eslint ships TS 7 support; typescript 6 minor/patch still
+      # flows via dev-tooling.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+    groups:
+      dev-tooling:
+        applies-to: version-updates
+        patterns:
+          - "typescript"
+          - "typescript-eslint"
+          - "@typescript-eslint/*"
+          - "eslint"
+          - "@eslint/*"
+          - "eslint-config-*"
+          - "eslint-plugin-*"
+          - "eslint-import-resolver-*"
+        update-types:
+          - "major"
+          - "minor"
+          - "patch"
+      # The prosemirror editor stack is peer-locked the same way the lint/type
+      # toolchain is: @handlewithcare/react-prosemirror pins an exact
+      # prosemirror-view, and the prosemirror-* packages expect matching versions
+      # of each other. Bumping any one alone (e.g. prosemirror-view in the
+      # minor/patch group, or react-prosemirror as a lone major) ERESOLVEs against
+      # the others. Group the whole stack — majors included — so it moves as one
+      # resolvable set. Listed before npm-minor-patch so these land here.
+      prosemirror:
+        applies-to: version-updates
+        patterns:
+          - "@handlewithcare/*"
+          - "prosemirror-*"
+          - "y-prosemirror"
+        update-types:
+          - "major"
+          - "minor"
+          - "patch"
+      # Batch all remaining non-major bumps into one PR. Majors outside the
+      # dev-tooling group are riskier and stay individual PRs for review.
+      npm-minor-patch:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"

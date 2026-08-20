@@ -1,0 +1,119 @@
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="htmx-config" content='{"historyCacheSize": 0}' />
+<meta name="csrf-token"
+      content="{{ csrf_token }}"
+      data-session-created-at="{{ session_created_at }}">
+<!--
+    Relates to Progressive Web App Behavior
+-->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent">
+{% if settings.dev_color %}
+    <link rel="icon"
+          type="image/svg+xml"
+          href="data:image/svg+xml,{{ dev_favicon_svg() }}">
+{% else %}
+    <link rel="icon"
+          type="image/x-icon"
+          href="{{ url_for_static_file('icons/favicon.png') }}">
+{% endif %}
+<link rel="apple-touch-icon"
+      href="{{ url_for_static_file('icons/apple-touch-icon.png') }}">
+{% if not settings.asset_building_enabled %}
+    <link hx-preserve="true"
+          href='{{ url_for_bundled_file("styles/main.css") }}'
+          rel="stylesheet">
+{% else %}
+    <script type="module"
+            src="{{ url_for_bundled_file('@vite/client') }}"
+            nonce="{{ csp_nonce }}"
+            data-head-persist></script>
+    <script type="module" nonce="{{ csp_nonce }}" data-head-persist>
+        import RefreshRuntime from "{{ url_for_bundled_file('@react-refresh') }}"
+        RefreshRuntime.injectIntoGlobalHook(window)
+        window.$RefreshReg$ = () => {}
+        window.$RefreshSig$ = () => (type) => type
+        window.__vite_plugin_react_preamble_installed__ = true
+    </script>
+    <script type="module"
+            src="{{ url_for_bundled_file('javascript/styles/main.ts') }}"
+            nonce="{{ csp_nonce }}"
+            data-head-persist></script>
+{% endif %}
+<script nonce="{{ csp_nonce }}" data-head-persist>
+    // head-support merges heads by comparing element outerHTML. Our entry
+    // scripts carry a per-request CSP nonce that the browser strips from a
+    // connected element's outerHTML but leaves on the freshly-fetched head, so
+    // the strings never match and head-support would remove and re-append every
+    // entry element on each boosted navigation. Re-appending a classic <script>
+    // re-executes it, which re-registers document-level listeners with no
+    // removal and retains the module graph forever. Elements marked
+    // data-head-persist are app-owned and identical on every page, so we hold
+    // them in place: keep the current node when head-support tries to remove it,
+    // and skip the duplicate it tries to add. viteDevId (vite-injected dev
+    // stylesheets) is preserved the same way.
+    (function () {
+        function isPersistent(node) {
+            if (!node) return false;
+            // The adding event passes a DocumentFragment; removing an Element.
+            var el = node.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? node.firstElementChild : node;
+            if (!el || !el.getAttribute) return false;
+            return el.hasAttribute('data-head-persist') || !!el.dataset.viteDevId;
+        }
+        document.addEventListener('htmx:removingHeadElement', function (event) {
+            if (isPersistent(event.detail.headElement)) event.preventDefault();
+        });
+        document.addEventListener('htmx:addingHeadElement', function (event) {
+            if (isPersistent(event.detail.headElement)) event.preventDefault();
+        });
+    })();
+</script>
+<link rel="manifest" href="{{ url_for('manifest') }}">
+<!-- Bundled JS -->
+<script type="module" src="{{ url_for_bundled_file('javascript/main.ts') }}" nonce="{{ csp_nonce }}" data-head-persist></script>
+<script nonce="{{ csp_nonce }}" data-head-persist>window.EMAIL_CSS_URL = {{ url_for_bundled_file("styles/email.css") | tojson | safe }};</script>
+{% if settings.sentry_dsn %}
+{# Sentry is bundled (@sentry/browser) and initialized in main.ts; the server
+   only hands it the DSN and release so the same bundle targets whichever Sentry
+   project this environment is configured for. #}
+<script nonce="{{ csp_nonce }}" data-head-persist>
+        window.SENTRY_DSN = {{ (settings.sentry_dsn | string) | tojson | safe }};
+        window.SENTRY_RELEASE = {{ settings.github_sha | tojson | safe }};
+</script>
+{% endif %}
+<!-- Typekit -->
+<link rel="stylesheet" href="https://use.typekit.net/lbl4dtu.css">
+<style>
+[data-loading] {
+    display: none;
+}
+
+.htmx-indicator {
+    opacity: 0;
+}
+
+.htmx-request .htmx-indicator {
+    opacity: 1;
+}
+
+.htmx-request.htmx-indicator {
+    opacity: 1;
+}
+
+/* Useful when applying the `urlize` filter to Jinja-rendered content */
+.underline-anchors a { text-decoration: underline; }
+
+/* .material-symbols-outlined and .tooltip overrides moved to styles/main.css so
+   the SPA shell (which doesn't include this partial) inherits them too. */
+
+/* https://alpinejs.dev/directives/cloak */
+[x-cloak] {
+    display: none !important;
+}
+</style>
+{% if settings.is_hot_reload %}
+{% include "shared/_reloader.html.jinja" %}
+{% endif %}

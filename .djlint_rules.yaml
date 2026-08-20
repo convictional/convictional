@@ -1,0 +1,14 @@
+- rule:
+    name: CONVICT01
+    message: "Don't use alpine bindings on elements with an id. HTMX swaps will interfere with the bindings."
+    flags: re.DOTALL|re.I
+    patterns:
+      - <\w+[^>]*\sid\b[^>]*(x-cloak|x-show|x-for|x-text|:class)
+      - <\w+[^>]*(x-cloak|x-show|x-for|x-text|:class)[^>]*\sid\b
+
+- rule:
+    name: CONVICT02
+    message: "Forms that submit data must include {{ csrf_field() }} for CSRF protection."
+    flags: re.DOTALL|re.I
+    patterns:
+      - <form\b[^>]*(?:method\s*=\s*["']post["']|hx-(?:post|put|patch|delete)\s*=)[^>]*>(?:(?!csrf_field).)*?</form>

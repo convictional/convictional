@@ -1,0 +1,14 @@
+{% extends "base.jinja" %}
+
+{% block subject %}
+Re: ({{ titleize(event.workspace.resource_type) }}) {{ event.workspace.resource.title }}
+{% endblock subject %}
+
+{% block body_markdown %}
+{{ event.creator.display_name }} marked a decision on the {{ event.workspace.resource_type|lower }}:
+
+{{ event.details.content[1] }}
+
+---
+[View on Convictional]({{ url_for("gid_redirect", gid=event.details.get("comment_gid") or event.workspace.resource_gid.to_param) }})
+{% endblock body_markdown %}

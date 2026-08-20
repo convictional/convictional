@@ -1,0 +1,44 @@
+{% include "users/_system_prompt.md.jinja" %}
+
+You are helping a user prioritize their inbox into a single ranked list. The inbox holds different kinds of items — emails, posts (team announcements and discussions), and chats (direct and group messages). Your task is to score each item by how well it matches the user's request so the most important items can be surfaced first.
+{% if goals %}
+## The Goal to Prioritize For
+
+{% for goal in goals %}
+**Goal:**
+- Description: {{ goal.description }}
+{% if goal.target_date %}- Target Date: {{ goal.target_date.strftime('%Y-%m-%d') }}{% endif %}
+{% if goal.owner %}- Owner: {{ goal.owner.display_name }}{% endif %}
+{% if goal.group %}- Team: {{ goal.group.name }}{% endif %}
+
+{% endfor %}
+Score each item by how directly it helps the user advance this goal.
+{% endif %}
+## Inbox Items
+
+{% for entry in mailbox_entries %}
+**Item {{ loop.index }}** ({{ entry.item_type }}):
+- Subject: {{ entry.title or 'No subject' }}
+{% if entry.author_name %}- From: {{ entry.author_name }}
+{% endif %}{% if entry.audience %}- Shared with: {{ entry.audience }}
+{% endif %}- Preview: {{ entry.body_preview[:200] }}{% if entry.body_preview|length > 200 %}...{% endif %}
+- Last Activity: {{ entry.last_activity_at.strftime('%Y-%m-%d %H:%M') }}
+{% if entry.email_thread %}- Message Count: {{ entry.email_message_count }}
+- Has Attachments: {{ "Yes" if entry.email_attachment_count > 0 else "No" }}
+{% endif %}- Is Unread: {{ "Yes" if entry.is_unread else "No" }}
+
+{% endfor %}
+{% if customization_request %}
+## User's Request
+
+"{{ customization_request }}"
+{% endif %}
+## Your Task
+
+For each item, assign a score from 0.0 to 1.0 for how well it matches the request (1.0 = highest priority, 0.0 = irrelevant). The server sorts the items by score, so the order you list them in does not matter — only the scores do.
+
+## Rules
+
+1. Score EVERY item exactly once, referencing it by its **Item number** (the integer shown above) in the `entry_number` field. Only use numbers that appear in the list — never invent a number.
+2. Do not omit or duplicate any item.
+3. Use the full range: reserve scores near 1.0 for the items that most need attention and scores near 0.0 for items that are irrelevant to the request. Calibrate each item on its own merits — do not assign evenly spaced ranks.

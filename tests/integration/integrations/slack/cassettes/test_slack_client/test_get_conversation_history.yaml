@@ -1,0 +1,83 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+    method: GET
+    uri: https://slack.com/api/conversations.history?channel=C077BMKNLHF&inclusive=1&limit=5&latest=1764861368.176179&oldest=1764859568.176179
+  response:
+    body:
+      string: '{"ok":true,"latest":"1764861368.176179","oldest":"1764859568.176179","messages":[{"user":"U09U3K7U1L4","type":"message","ts":"1764860468.176179","client_msg_id":"c35b8c61-3b44-423a-809d-4ea19e221c9e","text":"Project
+        update - the integration is coming together!","team":"T076JEXPWTZ","thread_ts":"1764860468.176179","reply_count":1,"reply_users_count":1,"latest_reply":"1764860513.345229","reply_users":["U09U3K7U1L4"],"is_locked":false,"subscribed":true,"last_read":"1764860513.345229","blocks":[{"type":"rich_text","block_id":"2Mter","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"Project
+        update - the integration is coming together!"}]}]}]}],"has_more":false,"is_limited":true,"pin_count":0,"channel_actions_ts":null,"channel_actions_count":0}'
+    headers:
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '386'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 04 Dec 2025 18:57:17 GMT
+      Expires:
+      - Sat, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept-Encoding
+      Via:
+      - 1.1 slack-prod.tinyspeck.com, envoy-www-iad-gsxomwff,envoy-edge-iad-glyhefnp
+      alt-svc:
+      - h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000
+      referrer-policy:
+      - no-referrer
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      timing-allow-origin:
+      - '*'
+      x-accepted-oauth-scopes:
+      - channels:history,groups:history,mpim:history,im:history,read
+      x-backend:
+      - main_normal main_canary_with_overflow main_control_with_overflow
+      x-content-type-options:
+      - nosniff
+      x-edge-backend:
+      - envoy-www
+      x-envoy-attempt-count:
+      - '1'
+      x-envoy-upstream-service-time:
+      - '41'
+      x-geoname-id:
+      - notfound
+      x-oauth-scopes:
+      - identify,channels:history,groups:history,channels:read,groups:read,search:read,team:read,users:read,users:read.email
+      x-server:
+      - slack-www-hhvm-main-iad-xbh95q7ftw2r
+      x-slack-backend:
+      - r
+      x-slack-edge-shared-secret-outcome:
+      - no-match
+      x-slack-req-id:
+      - f8062fb7392259123d8d806846a763c8
+      x-slack-shared-secret-outcome:
+      - no-match
+      x-slack-unique-id:
+      - aTHZjfsES-xC43ZZHQZyiAAAAD4
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

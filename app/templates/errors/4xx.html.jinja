@@ -1,0 +1,45 @@
+{% extends application_layout %}
+{% if status_code == 404 %}
+    {% set heading = "Page not found" %}
+{% elif status_code == 403 %}
+    {% set heading = "You don't have access" %}
+{% elif status_code == 422 %}
+    {% set heading = "Invalid request" %}
+{% else %}
+    {% set heading = "We couldn't process your request" %}
+{% endif %}
+{% block title %}
+    {{ heading|format_page_title }}
+{% endblock title %}
+{% block content %}
+    <div class="flex flex-col items-center text-center gap-6 px-6 py-16 max-w-xl mx-auto">
+        <h1 class="font-accent font-light text-4xl text-base-800 tracking-tight leading-tight [text-wrap:balance]">
+            {{ heading }}
+        </h1>
+        {% if status_code == 404 %}
+            <p class="text-base-600">
+                We couldn't find what you were looking for. The link may be broken, or the page may have moved.
+            </p>
+        {% elif status_code == 403 %}
+            {% if current_user %}
+                <p class="text-base-600">
+                    You're signed in, but this page is restricted. If you think this is a mistake, contact your workspace admin.
+                </p>
+            {% else %}
+                <p class="text-base-600">You don't have access to this page.</p>
+            {% endif %}
+        {% elif status_code == 422 %}
+            <p class="text-base-600">Something about the link looks malformed. Try going back and trying again.</p>
+        {% else %}
+            <p class="text-base-600">An error occurred.</p>
+            <p class="text-base-500 text-sm">Error {{ status_code }}</p>
+        {% endif %}
+        <div class="pt-2">
+            {% if current_user %}
+                <a href="{{ url_for('mailbox_index') }}" class="btn btn-primary">Back to home</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-primary">Back to home</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

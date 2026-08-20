@@ -1,0 +1,75 @@
+# Weekly Planning
+
+*2026-03-16 15:00:00+00:00*
+
+Marta Delgado: Everyone made it, so let us start. Priya, can you put the agenda on screen?
+Priya Raman: Sharing it now. Goals first, then the open decisions, then whatever is left of the roadmap from last week.
+Marta Delgado: Good. I will take the top goal. Four qualified demos per week in March. We are on track. Last week I ran three, with Redwood Freight, Alto Grocers and Harbourline, and Felix ran a fourth with a regional bakery group.
+Felix Bourne: The bakery one was small, but they run three warehouses, so it counts against the definition we agreed in January.
+Marta Delgado: It counts. Redwood Freight was the interesting one. Their operations lead spent most of the call describing how they count stock at the end of every shift. Three people walk the aisles with a clipboard and someone types the numbers into a spreadsheet the next morning.
+Owen Trask: So the data is a day stale before anyone reads it.
+Marta Delgado: A day stale and frequently wrong. He said they reconcile twice a month and each reconciliation costs two people a full day. That is the pain. He was not asking for software. He was describing a problem he has stopped expecting anyone to solve.
+Felix Bourne: Can you say what the value driver is for them? If I have to write this up, I want one sentence.
+Marta Delgado: One sentence is that they stop paying for the reconciliation. Two people, two days a month, plus the write-offs they take when the count is wrong and they order stock they already have. He put the write-offs at about forty thousand a year across four sites.
+Owen Trask: That number is bigger than the labour cost.
+Marta Delgado: Much bigger, and it is the number he is judged on. That is why I want us to treat Redwood Freight as the pilot rather than Harbourline. Harbourline is friendlier and would say yes faster, but they have one warehouse and no reconciliation problem, so we would learn nothing.
+Priya Raman: Agreed. I would rather work with the harder site.
+Marta Delgado: Let me finish the goals and then we can open it up. The annual goal is five warehouses running the full workflow by December, and that one is at risk. We have two. Alto Grocers is the only site using scanning, counts and label printing together, and Harbourline only uses label printing.
+Felix Bourne: Harbourline told me last week they want to add counts in April. That would be a third if it holds.
+Marta Delgado: If it holds. I am marking the goal at risk regardless, because three of the five have to come from sites we have not met yet, and our demo rate does not support that.
+Owen Trask: What would change the rate?
+Marta Delgado: Either more demos or a higher conversion from demo to pilot. I would rather work on the second one, because the first is a headcount question and we are not solving that this quarter.
+Priya Raman: Then let us move to the open decisions, because the first one is exactly the conversion question.
+Marta Delgado: Go ahead.
+Priya Raman: The Redwood Freight pilot scope. We have four things on the list: stock counts, label printing, offline mode, and low stock alerts. Label printing is done and shipped. Stock counts work on the web but not on the scanner. Offline mode does not exist. Alerts do not exist.
+Owen Trask: Offline mode is the one I want to talk about, because it is the largest of the four by a wide margin and it changes the shape of the mobile app.
+Marta Delgado: Say more.
+Owen Trask: Right now the scanner posts every scan to the server and waits for a response before it accepts the next one. If we support offline, every scan has to be queued on the device, and then we need a merge step for when two people count the same aisle while disconnected. That merge step is the real work. It is not a week.
+Priya Raman: How long is it?
+Owen Trask: Three weeks for the queue and the merge, plus whatever the first pilot teaches us. Call it a month before it is trustworthy.
+Felix Bourne: Does Redwood Freight actually have dead zones? I have been assuming they do because warehouses usually do, but I have not asked.
+Marta Delgado: I asked. Two of their four sites have poor coverage in the tall racking at the back. The other two are fine. Their operations lead described it as an annoyance rather than a blocker.
+Owen Trask: That changes my read. If it were four out of four I would build it first.
+Priya Raman: Then here is the alternative. We ship the scanner online only for the pilot, we start on the first of April, and we watch how often a scan fails. If it fails often enough to hurt them, we build offline mode with real evidence about what the merge needs to handle.
+Owen Trask: My worry is that we ship something that fails in the back of the racking on day one and they conclude the product does not work. First impressions with operations teams are hard to undo.
+Felix Bourne: We can put a queue in the client without the merge. Hold the scan on the device, retry for a minute, and show a clear warning if it still cannot reach us. That is a day of work and it covers the annoyance case without pretending to solve the conflict case.
+Owen Trask: That is a reasonable middle. A retry buffer is not offline mode, and I want to be honest with them about the difference, but it stops the obvious embarrassment.
+Marta Delgado: Then let us settle it. We ship the scanner online only for the Redwood Freight pilot on the first of April, with a one minute retry buffer and a visible warning, and we hold full offline mode until the pilot tells us what the merge has to handle. Any objection?
+Owen Trask: None from me, as long as the pilot notes say plainly that offline is not supported yet.
+Priya Raman: No objection.
+Felix Bourne: Agreed.
+Marta Delgado: Settled. Owen, the retry buffer is yours. Priya, the warning state is yours.
+Priya Raman: Noted. That brings us to alerts, which is the second open decision and the task I put in the agenda.
+Marta Delgado: Walk us through it.
+Priya Raman: The request is low stock warnings. There are two shapes. One is a push notification the moment an item crosses its threshold. The other is a single digest at a fixed time each day that lists everything below threshold.
+Felix Bourne: Alto Grocers asked for the push version explicitly.
+Priya Raman: They did, and I do not think they want what they asked for. Their catalogue is about nine thousand items. On the data we already hold, roughly a hundred and forty items cross a threshold on an average day, and most of them cross back within the hour because a delivery arrives.
+Owen Trask: A hundred and forty notifications a day is a muted app by the end of the week.
+Priya Raman: That is my concern. A digest at six in the morning, before the first shift, gives the same information at the moment someone can act on it.
+Felix Bourne: The counter argument is the fast mover. If a popular item goes to zero at ten in the morning, waiting until six the next day is a real loss.
+Priya Raman: True, and that is the case I would carve out later with a per item flag rather than by making everything urgent.
+Owen Trask: Building both now is not expensive, but supporting both is. Two delivery paths, two sets of preferences, two ways to be wrong.
+Marta Delgado: What does Redwood Freight want?
+Felix Bourne: They have not asked for alerts at all. This is an Alto Grocers request.
+Marta Delgado: Then we should not overbuild it. Let us do the daily digest at a fixed time, one message, and revisit the per item urgent flag once we have seen a month of digests. Priya, does that leave Alto Grocers unhappy?
+Priya Raman: It leaves them mildly disappointed and then quietly relieved. I will explain the notification volume to them and I expect they will agree.
+Owen Trask: I support the digest.
+Felix Bourne: Same.
+Marta Delgado: Decided. Digest only, revisit the urgent flag after a month.
+Priya Raman: The last item under open decisions is the research bets. Forecast accuracy at scale is the one I want to talk about.
+Owen Trask: Our forecast is fine for a thousand items and falls apart above five thousand, which is exactly where Alto Grocers sits. The failure is not accuracy in the statistical sense, it is that we recompute everything nightly and the job stopped finishing before the morning.
+Priya Raman: So it is a performance problem wearing a modelling costume.
+Owen Trask: Partly. There is a modelling piece too, because seasonal items need a different treatment than steady ones, and we treat them the same. But the thing that is on fire is the nightly job.
+Marta Delgado: How much time do you want?
+Owen Trask: Two days this week to make the job finish, and then I want to come back with a written proposal for the modelling piece rather than deciding it here.
+Marta Delgado: That is fine. Bring the proposal next week.
+Priya Raman: We are past the hour and we still have the roadmap from last week.
+Marta Delgado: Quickly, then. Mobile scanner shipped, and we just scoped offline mode out of the pilot. Search ranking shipped. Database cleanup, Owen?
+Owen Trask: Half done. I removed the two unused tables and the old import path. The migration for the counts table is written but not applied, and I want to apply it on a quiet morning rather than a Friday.
+Marta Delgado: Apply it Tuesday. Felix, anything from support that the group needs?
+Felix Bourne: Nothing that changes what anyone is doing this week.
+Marta Delgado: Then we will stop there. Thank you all.
+Priya Raman: One last thing before we close. The pilot notes for Redwood Freight, do those go to their operations lead directly, or through the account?
+Felix Bourne: Send them to me and I will send them on. I want to keep one thread with them rather than three.
+Priya Raman: Understood.
+Marta Delgado: Good. Talk to you all on Wednesday.

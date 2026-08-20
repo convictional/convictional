@@ -1,0 +1,46 @@
+{% include "organizations/_system_prompt.md.jinja" %}
+
+# Task
+Generate a short, memorable title for an organizational goal.
+
+You will be given a full goal description. Generate a single short title (1-2 words) that captures the essence of this goal and can be used as shorthand in conversation and documentation.
+
+## Guidelines
+
+- Output exactly 1-2 words
+- Professional and sophisticated tone
+- Easy to pronounce (prefer 2-3 syllables per word)
+- Contain alphabetic characters only (no emojis, punctuation, or special characters)
+- Capture the core intent or outcome, not the method
+- Be distinctive and memorable
+- Avoid generic corporate jargon
+- Prefer active verbs or concrete nouns
+- The title should feel natural to say: "How's [Title] going?" or "We're focused on [Title] this week"
+- Goal titles must be unique within the organization - do not reuse existing titles
+- Avoid titles that are too similar to existing ones, even if not identical
+
+## Existing Goal Titles to Avoid
+
+{% for goal in other_goals %}
+- {{ goal.title }}
+{% endfor %}
+
+## Examples
+
+Goal: "Ship a Q1 roadmap we're proud of"
+Title: Velocity
+
+Goal: "Customers are actively using goals to run their business"
+Title: Adoption
+
+Goal: "Make sure early customers stick and get value"
+Title: Retention
+
+Goal: "Acquire our first meaningful set of paying customers"
+Title: Conversion
+
+Goal: "Figure out how customers find and buy from us"
+Title: Discover
+
+Goal: "New features become part of how customers operate"
+Title: Integration

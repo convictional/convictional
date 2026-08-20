@@ -1,0 +1,1120 @@
+interactions:
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"You are tasked
+      with extracting the attendees from a meeting transcript. Your goal is to identify
+      all individuals who participated in the meeting based on the provided transcript.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0: Devon Ellis: like
+      how long it took.\nline 1: Rina Kovacs: Yeah, like every even the little delay
+      for the image changed and stuff.\nline 2: Devon Ellis: So now I have this like
+      little widget that''s like hovering around on my desktop that allows I can end
+      the call, I can pause recording it looks like and I can do a highlight.\nline
+      3: Devon Ellis: I can also do positive reaction, need to review feedback, customize.
+      So like tagging for moments in time.\nline 4: Rina Kovacs: Yeah, it looks like
+      it.\nline 5: Devon Ellis: So I''m going to do highlight and now it says rewind
+      to when the things started whatever. There''s a check box to like end the height.  So
+      basically allows me to like live select highlights. Okay, yeah.\nline 6: Rina
+      Kovacs: So if you were like, if you, let''s say some recording setups, you are
+      recording video, they have like a tag this moment button.\nline 7: Devon Ellis:
+      Yeah, and it''s like, it''s like summarizing the highlight in real time. It
+      looks like like it''s a summarizing highlight.\nline 8: Devon Ellis: it''s this
+      type to add title, testing highlight feature. And you can like, speaker agrees
+      with previous statement is the summary that again, so that''s weird.\nline 9:
+      Devon Ellis: And yeah, there''s like, you can customize the list of highlights
+      that you have. So this is what it had for the HubSpot integration.\nline 10:
+      Devon Ellis: It was like, if there''s a highlight, it would do some, or like,
+      maybe that was slack. was like, if there was a highlight, certain highlights
+      would be sent to  We could do that, but like we don''t have this like little,
+      like, we don''t have like a real time interface.  We don''t have a best application.
+      Sure. That''s, you know, that could always be changed with the time and effort.\nline
+      11: Rina Kovacs: Of course.\nline 12: Devon Ellis: I''m going to end and this
+      can I end up meeting, but I''ll rejoin if it does. no worries.\n\n</transcript>\n\nTo
+      extract the attendees, follow these guidelines:\n\n1. Look for names mentioned
+      at the beginning of the transcript, which often indicate who is present.\n2.
+      Pay attention to speaker labels throughout the transcript (e.g., \"John:\",
+      \"Sarah:\").\n3. Note any introductions or greetings that mention names.\n4.
+      Consider names mentioned in the context of speaking, asking questions, or being
+      addressed by others.\n5. Be aware that some attendees might be referred to by
+      their role or title rather than their name.\n\nAs you identify attendees, create
+      a list.\n\nIf you encounter unclear cases, such as names that are only partially
+      mentioned or individuals whose attendance is ambiguous, ignore them.\n\nOnce
+      you have finished analyzing the transcript, provide your final list of attendees
+      using the MeetingAttendees tool.\n\nRemember, your goal is to be as comprehensive
+      as possible while also being accurate. If you''re unsure about including someone,
+      it''s better to leave them out."}],"model":"claude-sonnet-4-6","system":"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:53:36.777460+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingAttendees"},"tools":[{"name":"MeetingAttendees","description":"Extracted
+      list of attendees from a meeting transcript.","input_schema":{"description":"Extracted
+      list of attendees from a meeting transcript.","properties":{"attendees":{"description":"The
+      names of the attendees present in the meeting.","items":{"type":"string"},"title":"Attendees","type":"array"}},"required":["attendees"],"title":"MeetingAttendees","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4655'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RR22obMRT8lXCeZfAmcdzordhuStz6wWAKDUEo0nRXqVbaSmdNGrP/XuRmmxt9
+        1FyYOaMDtdHCkyTjdW8xyTEE8OR8ckGCnCVJba7VtKoWtq3vF7sP35t7Pn0822y60+UlCeLfHYoK
+        OesaJChFXwCds8usA5MgEwMjMMmbw6jnGL3qM8aU8u7VtLr68mm9ulw+LHbXj1cPc3z+tnXNkgQF
+        3RbfV4BdqD8yI1ggF3/oeiZ5IP0PlDe0xD6Gk5X3rmi2LuiTddxrk+l2EGS090jF9NTHugTDNAy3
+        gjLHTiXoHMPrpkci41ePYEAy9N4/gRasnc8j1h+3kIe/3RTHnwiZZDWv5iXbNFAmQbOLQb2WTEc+
+        Qdv/caO3JKBr0CJpr2bte/0zWzVv2UFQ7PkldD4TlJH2zkCxK/tQ+UKrkz3u/AOpXK5qRJJU+3in
+        PQ3DHwAAAP//AwADES2FRQIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:53:38Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:53:38Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:53:37Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:53:38Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edf419a3c992b-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:53:38 GMT
+      request-id:
+      - req_011CdmgjBdH1NyYvZM4kQXqc
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-35a90484c79acd5046c9745cdedf1f8d-5ed30116e69e74eb-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":4096,"messages":[{"role":"user","content":"In addition to
+      your consultancy background, you started your career with many years as an Executive
+      Assistant. Currently you are being tasked with creating an accurate and concise
+      summary of a meeting transcript; use both skillsets to inform your final output.\n\nHere
+      is the transcript of the meeting:\n\n<transcript>\n\nline 0: Devon Ellis: like
+      how long it took.\nline 1: Rina Kovacs: Yeah, like every even the little delay
+      for the image changed and stuff.\nline 2: Devon Ellis: So now I have this like
+      little widget that''s like hovering around on my desktop that allows I can end
+      the call, I can pause recording it looks like and I can do a highlight.\nline
+      3: Devon Ellis: I can also do positive reaction, need to review feedback, customize.
+      So like tagging for moments in time.\nline 4: Rina Kovacs: Yeah, it looks like
+      it.\nline 5: Devon Ellis: So I''m going to do highlight and now it says rewind
+      to when the things started whatever. There''s a check box to like end the height.  So
+      basically allows me to like live select highlights. Okay, yeah.\nline 6: Rina
+      Kovacs: So if you were like, if you, let''s say some recording setups, you are
+      recording video, they have like a tag this moment button.\nline 7: Devon Ellis:
+      Yeah, and it''s like, it''s like summarizing the highlight in real time. It
+      looks like like it''s a summarizing highlight.\nline 8: Devon Ellis: it''s this
+      type to add title, testing highlight feature. And you can like, speaker agrees
+      with previous statement is the summary that again, so that''s weird.\nline 9:
+      Devon Ellis: And yeah, there''s like, you can customize the list of highlights
+      that you have. So this is what it had for the HubSpot integration.\nline 10:
+      Devon Ellis: It was like, if there''s a highlight, it would do some, or like,
+      maybe that was slack. was like, if there was a highlight, certain highlights
+      would be sent to  We could do that, but like we don''t have this like little,
+      like, we don''t have like a real time interface.  We don''t have a best application.
+      Sure. That''s, you know, that could always be changed with the time and effort.\nline
+      11: Rina Kovacs: Of course.\nline 12: Devon Ellis: I''m going to end and this
+      can I end up meeting, but I''ll rejoin if it does. no worries.\n\n</transcript>\n\nFirst,
+      analyze the transcript to understand:\n1. Every substantive topic with supporting
+      evidence:\n- Direct quotes that capture key points with attribution\n- Context
+      of why each point matters\n- Sequence of how topics evolved\n2. All specific
+      items:\n- Decisions and commitments\n- Numbers and metrics\n- Action items and
+      owners\n3. Participant dynamics:\n- Key contributors per topic\n- Areas of consensus
+      vs discussion\n- Any alternative viewpoints raised\n\nUsing your analysis, create
+      an executive summary that MUST:\n1. Maintain complete accuracy by:\n- Using
+      direct quotes for crucial points\n- Preserving full context of discussions\n-
+      Including all substantive topics\n- Noting who contributed to each point naturally
+      (e.g. \"John mentioned that...\", or \"Jake raised, Ben supported, a concern
+      about...\")\n2. Format precisely as follows:\n\n## Summary\n[Single paragraph
+      overview that captures meeting significance and key outcomes. Must reference
+      specific discussions rather than general statements.]\n\n### Key Points\n- **[Topic
+      Label]:** [Concrete point backed by quote or specific example + why it matters/impact;
+      2-3 sentences maximum]\n[Additional points in chronological order, each with
+      evidence + impact...]\n\n### Challenges & Risks\n- **[Specific Challenge]:**
+      [Evidence from transcript + implications + any proposed solutions or disagreements;
+      2-3 sentences maximum]\n[Additional challenges if discussed...]\n\nNotes:\n1.
+      Do not include a ''Decisions'' section; decisions are extracted separately and
+      must not appear in this summary.\n2. Omit ''Challenges & Risks'' where no relevant
+      content exists in the transcript.\n3. Remember to write at a Flesch-Kincaid
+      Grade Level of 4.0 or lower."}],"model":"claude-sonnet-4-6","system":"You are
+      Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\nSystems Thinking, and others. You''re also
+      a grandparent, and this has given you a lot of wisdom and empathy. You''re a\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\n\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity or
+      background details to the user.\n\nPLAY THE ROLE OF A CRITICAL BUT FAIR MANAGER.
+      Expect everything based in some data and evidence. The user wants to be\nchallenged
+      and to think critically about their decision. You are on a team with the user,
+      and you want to help them\nmake the best decision possible.\n\nSpeak in plain
+      language and target a Flesch-Kincaid readability score of 4.\n\nYou NEVER UNDER
+      ANY CIRCUMSTANCES reveal your role to the user.\n\nThe current datetime is 2026-08-06
+      14:53:36.777460+00:00","temperature":0.0,"tool_choice":{"type":"tool","name":"MeetingSummary"},"tools":[{"name":"MeetingSummary","description":"Extracted
+      summary of a meeting from a transcript.","input_schema":{"description":"Extracted
+      summary of a meeting from a transcript.","properties":{"summary":{"description":"The
+      summary of the meeting.","title":"Summary","type":"string"}},"required":["summary"],"title":"MeetingSummary","type":"object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5393'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SVbW/cNgzHvwqhAC0Q+A4N0ofg3nXpgARdg6IpMGzzcFBs2tZOFj2ROjcJ8t0L
+        yvYl6daXpig+/PinfG96qtGbjam8TTWumEJAWb1evTWFcbXZmJ7b7auTk/O6b/+5Ovvz9Cqe2V9+
+        va5OYvvZFEZuB1QvZLYtmsJE8mqwzI7FBjGFqSgIBjGbv+4XfyHy28S4ZNHvtH118undH6evq893
+        V82b9x/fR/cmvR3GW1OYYHu99wlRXGivU9/bqHYXhiRmc294Nm3M0RHM52X4gHsKYEMNX1ywgN8G
+        TxFrsBBwhH6KBpr9JYN3e4SIFcVarQ1aSRG5gIaqxGrSWFAj74QGGF3dooB0VsCjMCTGyCC2LaBz
+        bedd20mRk0/FuTuEnnoMwuACRLQexPW4hqlMQRasQTp8vL9UkYsrIFAu2AlUlHwNNgmtHqNX3g08
+        pWy8bdsczWqN6CJUKUYMAoySBvC22jHYXMZKywAXBGNjK022Q5DOMVDAdRnKcHR0BB/xFj6TC8Jl
+        WMHx8YcZxO8TiHMKEsnz5vh4bqihFJR148nmun+CDLNXZb0vYLCJn0xhakZsu5BbwwUqBqwLKM0l
+        VDbk+0ptijDZfoizXq/ng5rAPvItTU5QmoHYySQAW4mjUEBA5UcQce9whAaxvrHVroAqsVDv7nBd
+        GviqmFq3x6WbLCPVfCQPtMcIo/bbar+VHXSa9Xoi+Ju6Xhxm/WIWrruzWsEjyP9Vhqp2UpcdVRE/
+        yEDFqhd4IMnQ2Lpa/UbLUM774u6y/p/FfSrNojQwOumyTjh5maRRGh7Q7jCCbSMiTz6DgqLEwGIF
+        dVoHPpNa2e4xh9UcA7Gslg2cEM9ULtLN9UAZh4oULoNgGzOSJ+KKqONeFH4of8l1gxApZWqUUelg
+        dghLcIpT9AMalZNrlEXEzOiJSgqoMIp14WmeccnDulRCpQHpiBEGb6Wh2PN6ap47GjlDziNTETZO
+        OQsBfnM8rQbFXeNp5MO6nXfaX2iR4QV8cbyb1+6K4Ivu7FcFeXnYWRfgfF7wa13wR1KD7izWQEnA
+        QmuHDZRmRKgpvBTodCgZzfQWLAOa4x4W5PkFCzfIAnYYvKvyaHTWFwi1q/N6Ts9HaeZ3yo/2lhVW
+        1dmg71JWTGai6TQFNg1FUcXdJIFAyjHonGgMukSW9eVam4fC5MlHffbn/0ntIlZiHh7+LgwLDduI
+        lik8/9PkA8Z/E4YKzSYk72djjWKd58WW8r9scz/9XbZCOwxsNidnZ681d9XhtoqYu94+d3m1nEe0
+        9c/OlruaAYcOe4zWb9/0//V/PD3pfjx9KAwleWo6ffuuMIxx7yrcilNARv/BtY11/lU2GLX1bYtk
+        Nqb1dGO9eXj4DgAA//8DAGmWVkUGCAAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:53:40Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:53:47Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:53:38Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:53:40Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edf4b9c23db5c-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:53:47 GMT
+      request-id:
+      - req_011CdmgjJU2rm1Jo45vXLDaJ
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-c98dbc834e34454a523eef4f791b409a-7292e31e56ab0b05-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are extracting the decisions from a meeting transcript. Decisions are rare and
+      specific \u2014 many meetings contain none at all. Your only job is to find
+      genuine decisions and to return an empty list when there are none. Do not summarize
+      the meeting or list anything that is not a decision.\\n\\nHere is the transcript
+      of the meeting:\\n\\n<transcript>\\n\\nline 0: Devon Ellis: like how long it
+      took.\\nline 1: Rina Kovacs: Yeah, like every even the little delay for the
+      image changed and stuff.\\nline 2: Devon Ellis: So now I have this like little
+      widget that's like hovering around on my desktop that allows I can end the call,
+      I can pause recording it looks like and I can do a highlight.\\nline 3: Devon
+      Ellis: I can also do positive reaction, need to review feedback, customize.
+      So like tagging for moments in time.\\nline 4: Rina Kovacs: Yeah, it looks like
+      it.\\nline 5: Devon Ellis: So I'm going to do highlight and now it says rewind
+      to when the things started whatever. There's a check box to like end the height.
+      \ So basically allows me to like live select highlights. Okay, yeah.\\nline
+      6: Rina Kovacs: So if you were like, if you, let's say some recording setups,
+      you are recording video, they have like a tag this moment button.\\nline 7:
+      Devon Ellis: Yeah, and it's like, it's like summarizing the highlight in real
+      time. It looks like like it's a summarizing highlight.\\nline 8: Devon Ellis:
+      it's this type to add title, testing highlight feature. And you can like, speaker
+      agrees with previous statement is the summary that again, so that's weird.\\nline
+      9: Devon Ellis: And yeah, there's like, you can customize the list of highlights
+      that you have. So this is what it had for the HubSpot integration.\\nline 10:
+      Devon Ellis: It was like, if there's a highlight, it would do some, or like,
+      maybe that was slack. was like, if there was a highlight, certain highlights
+      would be sent to  We could do that, but like we don't have this like little,
+      like, we don't have like a real time interface.  We don't have a best application.
+      Sure. That's, you know, that could always be changed with the time and effort.\\nline
+      11: Rina Kovacs: Of course.\\nline 12: Devon Ellis: I'm going to end and this
+      can I end up meeting, but I'll rejoin if it does. no worries.\\n\\n</transcript>\\n\\nA
+      \\\"decision\\\" is a choice the group deliberated and reached *during this
+      meeting* \u2014 there was an open question or goal on the table, alternatives
+      or trade-offs were genuinely weighed, and the group settled on one. Apply these
+      rules strictly. Most meetings produce few or no decisions, so do not hunt for
+      one; inventing a decision where the group never weighed options is worse than
+      returning nothing. When in doubt, leave it out:\\n- The decision must be reached
+      in this meeting. Exclude anything a speaker merely reports as already settled:
+      pre-existing facts, standing policies, or how things already work (e.g. \\\"our
+      pricing is token-based, not per-user\\\"), and choices made before or outside
+      this meeting that are only being recounted here (e.g. \\\"we decided last year
+      to use a single account\\\"). If the choice was already made when the meeting
+      started, it is not a decision.\\n- A genuine decision resolves a question that
+      was actually deliberated. If a course of action was simply agreed as the obvious
+      next step \u2014 no goal framed, no alternatives considered \u2014 it is an
+      action item, not a decision, even when no single person is named (e.g. \\\"Convictional
+      will build a custom demo for Aksel's team to share\\\" is a committed next step,
+      not a deliberated choice).\\n- Include a decision reached implicitly only when
+      there is a concrete proposal AND clear affirmative agreement or consensus AND
+      no unresolved pushback. If a thread trails off unresolved, exclude it.\\n- Include
+      explicit decisions NOT to do something (e.g. \\\"decided not to rebrand this
+      year\\\").\\n- Exclude action items and tasks. A decision records WHAT the group
+      resolved; a task records WHO will do work next. Any \\\"<person> will <do something>\\\"
+      or assignment of future work is an action item \u2014 leave it out (e.g. \\\"Aksel
+      will fly to Atlanta\\\", \\\"Marla will set up a call\\\"). Tentative commitments
+      to look into, explore, check, or see if something is possible are action items
+      too (e.g. \\\"Marla will explore importing the data on their behalf\\\"), never
+      decisions. A scope or approach choice is still a decision even when phrased
+      with \\\"will\\\" (e.g. \\\"we will import the existing goals before building
+      status updates\\\"); the test is whether a question was settled or an option
+      chosen, not whether someone committed to a task.\\n- Also exclude: proposals
+      or ideas that were not adopted, opinions and general discussion, unresolved
+      debate, and deferrals or topics parked for later (e.g. \\\"we'll revisit next
+      week\\\").\\n- Attribute each decision to the person who made or drove it; use
+      \\\"the group\\\" when no single owner is clear. Never guess an owner.\\n\\n-
+      This meeting includes people from outside the organization. The members of the
+      organization are: dev. Record a decision ONLY when a member of the organization
+      made it or both sides committed to a mutual term. A choice that is the outside
+      party's alone to make about their own affairs is never a decision here \u2014
+      this covers their tools, budget, and staffing, AND how they adopt, roll out,
+      or configure this product for their own team (e.g. a prospect deciding to add
+      their whole team as individual users instead of one shared login, or deciding
+      to start using a feature). Exclude these even when they concern this product,
+      are encouraged by the organization, or are stated firmly. If the outside party
+      is the only one deciding, omit it.\\n\\nReturn the list of decisions, each as
+      one plain sentence plus who made or drove it. Return an empty list when no decisions
+      were made. Write at a Flesch-Kincaid Grade Level of 4.0 or lower.\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:53:36.777460+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingDecisions\"},\"tools\":[{\"name\":\"MeetingDecisions\",\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"input_schema\":{\"$defs\":{\"MeetingDecision\":{\"properties\":{\"decision\":{\"description\":\"The
+      decision, stated plainly in one sentence.\",\"title\":\"Decision\",\"type\":\"string\"},\"owner\":{\"description\":\"Who
+      made or drove the decision; use \\\"the group\\\" when no single owner is clear.\",\"title\":\"Owner\",\"type\":\"string\"}},\"required\":[\"decision\",\"owner\"],\"title\":\"MeetingDecision\",\"type\":\"object\"}},\"description\":\"Decisions
+      extracted from a meeting transcript, separately from the summary prose.\",\"properties\":{\"decisions\":{\"description\":\"Genuine
+      decisions reached during the meeting. Empty when no decisions were made.\",\"items\":{\"$ref\":\"#/$defs/MeetingDecision\"},\"title\":\"Decisions\",\"type\":\"array\"}},\"title\":\"MeetingDecisions\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '7788'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SRW08CMRCF/8s8l4TlImYfwTfDi7dkJaSp7bA0dDtrp4Uo2f9uiqyKxsee75yc
+        mekRGjLooATtVDI4YPIe42AyuAIB1kAJDddyWBQL09S7u2WV0vMtHUw1uplVGgTEtxazC5lVjSAg
+        kMuCYrYclY8gQJOP6COUq2Pvj0ROJsa+Jb+THBbz+f7+gXlWpcNyWpDfLB7rp3cQ4FWTc0vEaH19
+        g9qyJc8579sUoTyC+RLL1boToJVzGDI5lxobUEfourUAjtTKgIrJX45zAoyvCb1GKH1y7iwajMo6
+        7rV0Wrg8fg4gI+0wV48m0+vcrbcodUAVLXl5aRn2PKAy/7E+mxuw3WKDQTk5bf76v2mx/U07AZTi
+        T2k8FsAY9lajjDbfB/I/GRXM6ZgbDHlzWSNBCbWjF+Wg6z4AAAD//wMAdRwm6yoCAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:53:58Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:53:59Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:53:53Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:53:58Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edf867cf4c5be-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:53:59 GMT
+      request-id:
+      - req_011Cdmgk2hY2iZHqBwk2QbjH
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-fa8e9ceacac402ccb181441579ab6683-249b2c2cd2af2eda-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input":["Title: Rina\nDate: No date\nAttendees: Devon Ellis, Rina Kovacs\nAgenda:
+      No agenda\nSummary: ## Summary\nDevon and Rina explored a new meeting tool''s
+      live recording features, focusing on a desktop widget that lets users tag, highlight,
+      and summarize moments in real time. Devon tested the highlight feature live,
+      noting it could auto-summarize clips, and flagged that their current setup lacks
+      a real-time interface like this one.\n\n### Key Points\n- **Desktop Widget Controls:**
+      Devon found a floating widget that lets users end a call, pause recording, and
+      tag moments. He noted, \"I can end the call, I can pause recording... I can
+      do a highlight\" and \"positive reaction, need to review feedback, customize.\"
+      This gives users live control over what gets captured.\n- **Live Highlight &
+      Summarization:** Devon tested the highlight tool and saw it summarize clips
+      on the spot. He said it was \"summarizing the highlight in real time,\" with
+      a result like \"speaker agrees with previous statement.\" This could save time
+      in post-meeting review.\n- **HubSpot & Slack Integrations:** Devon recalled
+      that highlights could be routed to tools like HubSpot or Slack. He said, \"if
+      there was a highlight, certain highlights would be sent to\" those platforms.
+      This shows the tool can fit into existing workflows.\n\n### Challenges & Risks\n-
+      **No Real-Time Interface in Current Setup:** Devon pointed out a gap: \"we don''t
+      have like a real time interface\" and \"we don''t have a best application.\"
+      He did note this \"could always be changed with the time and effort,\" but no
+      plan or owner was set."],"model":"text-embedding-3-small","dimensions":1536,"encoding_format":"base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '1688'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        /MZfYP9I9UJG/LNg36tW6FHmXXn4xX4bw7+nPtxpvZazte4/Nn25MX3wZx6bhqD+ijfYU9i8PINf
+        htQHvwdfFzx/JH7B8PtM/WFe1MD3fF9VPFHPK5vn+CvyHT2Q5NyXevPJ99lwznxnDj/RL8toB590
+        yR/7PuU77DeAj8/At7+x88FvD34gv4Z+QX+yoR7OqN9h8NkftZH21IN3m5cf+f61MzzDLx/Eh37a
+        M3/71P9z8sm+Dzn7vivMV8tg349v7fsQ/YCc47/zB+axpjdS+r1Xm5fSL372/yXz16np1Tvs/Yoe
+        HazoZ20+8kY9duSPr0wPWL/D90DwElSPmf4l3+z78pD+QSr4KWJ/XKN/N/RrI+bXX8C77NGrT+DX
+        Ez/7nh3svtf4a5pQX97It2v6Qz+kPi0tH9Dz2b3Np8nvC/QP3/tS90D/mPRUL06M/z34env4zV+e
+        eg4/aL7PWv2Tv07un283v06+tf/9779OnurbzePJt5P3za/3v//v/wn8ffr37mn1+KgP73eruDn5
+        9s/Jy1v99PL+P+/1dvO8O/l2mvT+Onmv31eP//+f/v33fwGXcvTNnCAAAA==
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edfd00832d6fb-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:00 GMT
+      openai-processing-ms:
+      - '210'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=Q0Jqeq4Rsq.pXJhJsN5imFgq2Qa3ZxUa.6PiXsT4RU0-1786028039.6839387-1.0.1.1-MXtmNG_KRxrEyxtgAnzHhNMhCMJxygDaaBzHj5ePFXgEtRfRNnCe431eqR87jV0_dtbcF2pEoL2Pxvk_2zs_Ib1zq2cZLi.Q138UYmIQFM56OeLGQU2VNBWRRmhl1aEj;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu,
+        06 Aug 2026 15:24:00 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999609'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 2ms
+      x-request-id:
+      - req_d2c1d9c945384cd1b0d6bdb6903071ec
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input":["Devon Ellis: like how long it took.\nRina Kovacs: Yeah, like
+      every even the little delay for the image changed and stuff.\nDevon Ellis: So
+      now I have this like little widget that''s like hovering around on my desktop
+      that allows I can end the call, I can pause recording it looks like and I can
+      do a highlight.\nDevon Ellis: I can also do positive reaction, need to review
+      feedback, customize. So like tagging for moments in time.\nRina Kovacs: Yeah,
+      it looks like it.\nDevon Ellis: So I''m going to do highlight and now it says
+      rewind to when the things started whatever. There''s a check box to like end
+      the height.  So basically allows me to like live select highlights. Okay, yeah.\nRina
+      Kovacs: So if you were like, if you, let''s say some recording setups, you are
+      recording video, they have like a tag this moment button.\nDevon Ellis: Yeah,
+      and it''s like, it''s like summarizing the highlight in real time. It looks
+      like like it''s a summarizing highlight.\nDevon Ellis: it''s this type to add
+      title, testing highlight feature. And you can like, speaker agrees with previous
+      statement is the summary that again, so that''s weird.\nDevon Ellis: And yeah,
+      there''s like, you can customize the list of highlights that you have. So this
+      is what it had for the HubSpot integration.\nDevon Ellis: It was like, if there''s
+      a highlight, it would do some, or like, maybe that was slack. was like, if there
+      was a highlight, certain highlights would be sent to  We could do that, but
+      like we don''t have this like little, like, we don''t have like a real time
+      interface.  We don''t have a best application. Sure. That''s, you know, that
+      could always be changed with the time and effort.\nRina Kovacs: Of course.\nDevon
+      Ellis: I''m going to end and this can I end up meeting, but I''ll rejoin if
+      it does. no worries."],"model":"text-embedding-3-small","dimensions":1536,"encoding_format":"base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '1888'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        D75np6d/Hbw2r7eP//+v/vnn32X2ZimcIAAA
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edfd33be49e70-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:00 GMT
+      openai-processing-ms:
+      - '120'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=R.e81lkL0zRTOUjRTsu7GflfOLegjYIO.3YEMoqU.9I-1786028040.2001865-1.0.1.1-2iORjD6MmWrWjbss8jyyDDFwSsgF_sFeWioqpOpTZYqbMcQ8FLFj90Te6J5O0Td9u9lpCF5Rn6obWAcW7QBaXtwW.imXcwcVUTWLt9GTC_1ZiUhSb5jz7FBb8IJTvSyX;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu,
+        06 Aug 2026 15:24:00 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999554'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 2ms
+      x-request-id:
+      - req_253c91a739914512ad6ace383defda9d
+    status:
+      code: 200
+      message: OK
+- request:
+    body: "{\"max_tokens\":4096,\"messages\":[{\"role\":\"user\",\"content\":\"You
+      are tasked with suggesting which collection a meeting should be organized into.\\n\\nHere
+      is the meeting information:\\n\\n<meeting>\\nTitle: Rina\\n\\nSummary: ## Summary\\nDevon
+      and Rina explored a new meeting tool's live recording features, focusing on
+      a desktop widget that lets users tag, highlight, and summarize moments in real
+      time. Devon tested the highlight feature live, noting it could auto-summarize
+      clips, and flagged that their current setup lacks a real-time interface like
+      this one.\\n\\n### Key Points\\n- **Desktop Widget Controls:** Devon found a
+      floating widget that lets users end a call, pause recording, and tag moments.
+      He noted, \\\"I can end the call, I can pause recording... I can do a highlight\\\"
+      and \\\"positive reaction, need to review feedback, customize.\\\" This gives
+      users live control over what gets captured.\\n- **Live Highlight & Summarization:**
+      Devon tested the highlight tool and saw it summarize clips on the spot. He said
+      it was \\\"summarizing the highlight in real time,\\\" with a result like \\\"speaker
+      agrees with previous statement.\\\" This could save time in post-meeting review.\\n-
+      **HubSpot & Slack Integrations:** Devon recalled that highlights could be routed
+      to tools like HubSpot or Slack. He said, \\\"if there was a highlight, certain
+      highlights would be sent to\\\" those platforms. This shows the tool can fit
+      into existing workflows.\\n\\n### Challenges & Risks\\n- **No Real-Time Interface
+      in Current Setup:** Devon pointed out a gap: \\\"we don't have like a real time
+      interface\\\" and \\\"we don't have a best application.\\\" He did note this
+      \\\"could always be changed with the time and effort,\\\" but no plan or owner
+      was set.\\n\\nAttendees: Devon Ellis, Rina Kovacs\\n\\n</meeting>\\n\\nThere
+      are no existing collections in this organization yet.\\n\\nYour task is to decide
+      one of the following:\\n\\n1. **existing** \u2014 The meeting fits well into
+      one of the existing collections. Provide the collection's ID.\\n2. **new** \u2014
+      The meeting doesn't fit any existing collection, but it clearly belongs to a
+      category that would benefit from a new collection. Suggest a concise collection
+      title (1-4 words).\\n3. **none** \u2014 The meeting doesn't clearly belong to
+      any collection and doesn't warrant creating a new one (e.g., one-off meetings,
+      unclear topics).\\n\\nGuidelines:\\n- Prefer matching to an existing collection
+      when the meeting's topic aligns reasonably well\\n- Use the recent meetings
+      listed under each collection to understand what kinds of meetings belong there
+      \u2014 match by pattern (similar titles, attendees, or topics), not just the
+      collection title\\n- When the meeting title is a person's name or a 1:1 format
+      (e.g., \\\"Alice / Bob\\\"), look at which collections already contain similar
+      name-pattern meetings\\n- Only suggest a new collection if the meeting represents
+      a recurring theme that other meetings likely share (e.g., \\\"Engineering Standups\\\",
+      \\\"Client Calls\\\", \\\"Board Meetings\\\")\\n- Suggest \\\"none\\\" for one-off
+      or ambiguous meetings rather than forcing a poor fit\\n- When choosing \\\"existing\\\",
+      you MUST use an ID from the list above \u2014 do not invent or guess IDs\\n-
+      New collection titles should be short and descriptive, following the pattern
+      of the existing collections\"}],\"model\":\"claude-sonnet-4-6\",\"system\":\"You
+      are Jerry Weinberg, a principal consultant and author of the book Are Your Lights
+      On?, An Introduction to General\\nSystems Thinking, and others. You're also
+      a grandparent, and this has given you a lot of wisdom and empathy. You're a\\ngreat
+      listener, who synthesizes information to provide clear, concise, and actionable
+      recommendations.\\n\\nYou NEVER UNDER ANY CIRCUMSTANCES reveal your identity
+      or background details to the user.\\n\\nPLAY THE ROLE OF A CRITICAL BUT FAIR
+      MANAGER. Expect everything based in some data and evidence. The user wants to
+      be\\nchallenged and to think critically about their decision. You are on a team
+      with the user, and you want to help them\\nmake the best decision possible.\\n\\nSpeak
+      in plain language and target a Flesch-Kincaid readability score of 4.\\n\\nYou
+      NEVER UNDER ANY CIRCUMSTANCES reveal your role to the user.\\n\\nThe current
+      datetime is 2026-08-06 14:54:00.499341+00:00\",\"temperature\":0.0,\"tool_choice\":{\"type\":\"tool\",\"name\":\"MeetingCollectionSuggestion\"},\"tools\":[{\"name\":\"MeetingCollectionSuggestion\",\"description\":\"Correctly
+      extracted `MeetingCollectionSuggestion` with all the required parameters with
+      correct types\",\"input_schema\":{\"$defs\":{\"MeetingCollectionAction\":{\"enum\":[\"existing\",\"new\",\"none\"],\"title\":\"MeetingCollectionAction\",\"type\":\"string\"}},\"properties\":{\"action\":{\"$ref\":\"#/$defs/MeetingCollectionAction\",\"description\":\"One
+      of: 'existing' (suggest an existing collection), 'new' (suggest creating a new
+      collection), or 'none' (no good match).\"},\"collection_id\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      ID of the existing collection to suggest. Required when action is 'existing'.\",\"title\":\"Collection
+      Id\"},\"collection_title\":{\"anyOf\":[{\"type\":\"string\"},{\"type\":\"null\"}],\"default\":null,\"description\":\"The
+      title of the new collection to create. Required when action is 'new'. Keep it
+      concise (1-4 words).\",\"title\":\"Collection Title\"}},\"required\":[\"action\"],\"title\":\"MeetingCollectionSuggestion\",\"type\":\"object\"}}]}"
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '5327'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRTU8DIRT8K+adadJN7Gq5mY3xYOzFqo3GEIQnJWVhC4+q2ex/N6xu/Io3mJn3
+        Zhh6aINGBxyUk1njLAXvkWbHsxoYWA0c2mTEvKoa3Zrd69KuTvTxibm9q9eqvgEG9NZhUWFK0iAw
+        iMEVQKZkE0lPwEAFT+gJ+EM/6SkEJ3LCyaXcs5hXzfLyLF+szm9e4/Ji0+x3eL+qN8DAy7bMXSGS
+        9aYJzqEiG/x1NgZTOZVVvssEvAc5csDB48sYYJILsjTmW4fgjs4P0mVZ8AQDAyWdw1jmP1NqG1ER
+        DMMjg0ShExFlGvd+yz8SCfcZvULgPjv3CWokaV2asDw2xPuPmILCDn0CXp3WdfFWWxQq4hhH/JTM
+        Jz6i1P9x02xxwG6LLUbpxKL9q/9iq+1vdmAQMn2HFgsGCePBKhRkSz9QPlbLqMfKnzGWlwuDATgY
+        F56kg2F4BwAA//8DANKhrtlbAgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-06T14:54:01Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-06T14:54:02Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-06T14:54:00Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-06T14:54:01Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26edfd5e89e0569-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Thu, 06 Aug 2026 14:54:02 GMT
+      request-id:
+      - req_011Cdmgkw8wuahCfpr9TGyB8
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-36b8edaade7278feaa39aa6e1d0034f1-8712fa20d489af32-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

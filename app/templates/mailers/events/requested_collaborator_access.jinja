@@ -1,0 +1,27 @@
+{% extends "base.jinja" %}
+
+{% block subject %}({{ titleize(event.workspace.resource_type) }}) {{ resource_label(event.workspace.resource) }} — {{ event.details.requestor_display_name }} has requested access{% endblock %}
+
+{% block body_text %}
+{{ event.details.requestor_display_name }} has requested access to "{{ resource_label(event.workspace.resource) }}".
+
+{% if event.details.requestor_note %}
+They left you a note:
+
+> {{ event.details.requestor_note }}
+{% endif %}
+
+View on Convictional: {{ url_for("gid_redirect", gid=event.workspace.resource_gid.to_param) }}
+{% endblock %}
+
+{% block body_markdown %}
+{{ event.details.requestor_display_name }} has requested access to "{{ resource_label(event.workspace.resource) }}".
+
+{% if event.details.requestor_note %}
+They left you a note:
+
+> {{ event.details.requestor_note }}
+{% endif %}
+
+[Approve their request by editing the team]({{ url_for("gid_redirect", gid=event.workspace.resource_gid.to_param) }})
+{% endblock %}

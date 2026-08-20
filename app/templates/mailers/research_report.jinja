@@ -1,0 +1,34 @@
+{% extends "base.jinja" %}
+
+{% block subject %}
+{% if research_question.in_reply_to_subject %}
+Re: {{ research_question.in_reply_to_subject|strip_html }}
+{% else %}
+[Research] {{ (research_question.title or research_question.body[:50])|strip_html }}
+{% endif %}
+{% endblock subject %}
+
+{% block body_markdown %}
+
+{% if research_question.is_email_reply and research_question.title %}
+# [Research] {{ research_question.title|strip_html }}
+{% elif research_question.title %}
+# [Research] {{ research_question.title|strip_html }}
+
+> {{ research_question.body|strip_html }}
+{% else %}
+# [Research] {{ research_question.body|strip_html }}
+{% endif %}
+
+{{ research_question.response|with_markdown_format_citations(results_by_id) }}
+
+---
+
+[Schedule this research for recurring delivery]({{ settings.base_url }}scheduled_research?prefill_from={{ research_question.id }})
+
+Have a follow-up question? Just reply to this email and we'll research it for you.
+
+*{{ settings.product_name }} can make mistakes. Please verify any critical information independently.*
+
+{% if settings.feedback_email %}You can provide feedback for this research by forwarding this email to {{ settings.feedback_email }} with your comments{% endif %}
+{% endblock body_markdown %}

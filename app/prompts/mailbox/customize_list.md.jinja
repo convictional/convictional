@@ -1,0 +1,35 @@
+{% include "users/_system_prompt.md.jinja" %}
+
+You are helping a user organize their inbox into meaningful sections. The inbox holds different kinds of items — emails, posts (team announcements and discussions), and chats (direct and group messages). Your task is to analyze these items and group them according to the user's request.
+
+## Inbox Items
+
+{% for entry in mailbox_entries %}
+**Item {{ loop.index }}** ({{ entry.item_type }}):
+- Subject: {{ entry.title or 'No subject' }}
+{% if entry.author_name %}- From: {{ entry.author_name }}
+{% endif %}{% if entry.audience %}- Shared with: {{ entry.audience }}
+{% endif %}- Preview: {{ entry.body_preview[:200] }}{% if entry.body_preview|length > 200 %}...{% endif %}
+- Last Activity: {{ entry.last_activity_at.strftime('%Y-%m-%d %H:%M') }}
+{% if entry.email_thread %}- Message Count: {{ entry.email_message_count }}
+- Has Attachments: {{ "Yes" if entry.email_attachment_count > 0 else "No" }}
+{% endif %}- Is Unread: {{ "Yes" if entry.is_unread else "No" }}
+
+{% endfor %}
+
+## User's Request
+
+"{{ customization_request }}"
+
+## Your Task
+
+Organize these items into sections based on the user's request.
+
+## Rules
+
+1. Each item should appear in exactly ONE section
+2. Create at least two sections based on the user's request
+3. Section titles should be short (1-4 words)
+4. Section descriptions should be one sentence explaining the criteria
+5. You must include EVERY item — emails, posts, AND chats alike. If an item doesn't fit any section, put it in a final catch-all section so nothing is dropped.
+6. Reference each item by its **Item number** (the integer shown above) in the `entry_numbers` field. Only use numbers that appear in the list — never invent a number.

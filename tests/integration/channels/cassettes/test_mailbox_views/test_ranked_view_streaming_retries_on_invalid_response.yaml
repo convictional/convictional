@@ -1,0 +1,314 @@
+interactions:
+- request:
+    body: '{"max_tokens":632,"messages":[{"role":"user","content":"Score the inbox
+      items against my request."}],"model":"claude-sonnet-4-6","stream":true,"system":"The
+      current datetime is 2026-05-20 12:00:00+00:00\n\nThe user you are helping is
+      ranked-e2e@convictional.com whose email address is ranked-e2e@convictional.com.\n\nYou
+      are helping a user prioritize their inbox into a single ranked list. The inbox
+      holds different kinds of items — emails, posts (team announcements and discussions),
+      and chats (direct and group messages). Your task is to score each item by how
+      well it matches the user''s request so the most important items can be surfaced
+      first.\n\n## Inbox Items\n\n**Item 1** (Email):\n- Subject: Important Conversation
+      5\n- Preview: This is the preview of conversation 5.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n**Item 2** (Email):\n- Subject: Important Conversation
+      4\n- Preview: This is the preview of conversation 4.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n**Item 3** (Email):\n- Subject: Important Conversation
+      3\n- Preview: This is the preview of conversation 3.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n**Item 4** (Email):\n- Subject: Important Conversation
+      2\n- Preview: This is the preview of conversation 2.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n**Item 5** (Email):\n- Subject: Important Conversation
+      1\n- Preview: This is the preview of conversation 1.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n## User''s Request\n\n\"Rank my inbox so the most
+      urgent conversations come first\"\n\n## Your Task\n\nFor each item, assign a
+      score from 0.0 to 1.0 for how well it matches the request (1.0 = highest priority,
+      0.0 = irrelevant). The server sorts the items by score, so the order you list
+      them in does not matter — only the scores do.\n\n## Rules\n\n1. Score EVERY
+      item exactly once, referencing it by its **Item number** (the integer shown
+      above) in the `entry_number` field. Only use numbers that appear in the list
+      — never invent a number.\n2. Do not omit or duplicate any item.\n3. Use the
+      full range: reserve scores near 1.0 for the items that most need attention and
+      scores near 0.0 for items that are irrelevant to the request. Calibrate each
+      item on its own merits — do not assign evenly spaced ranks.\n\nRespond with
+      a JSON object matching this schema:\n{\n  \"$defs\": {\n    \"LLMRankedEntry\":
+      {\n      \"properties\": {\n        \"entry_number\": {\n          \"anyOf\":
+      [\n            {\n              \"type\": \"integer\"\n            },\n            {\n              \"type\":
+      \"null\"\n            }\n          ],\n          \"default\": null,\n          \"description\":
+      \"The item number (the integer N from ''Item N'' in the list above)\",\n          \"title\":
+      \"Entry Number\"\n        },\n        \"score\": {\n          \"anyOf\": [\n            {\n              \"maximum\":
+      1.0,\n              \"minimum\": 0.0,\n              \"type\": \"number\"\n            },\n            {\n              \"type\":
+      \"null\"\n            }\n          ],\n          \"default\": null,\n          \"description\":
+      \"Priority against the request, 1.0 = highest, 0.0 = irrelevant\",\n          \"title\":
+      \"Score\"\n        }\n      },\n      \"title\": \"LLMRankedEntry\",\n      \"type\":
+      \"object\"\n    }\n  },\n  \"properties\": {\n    \"entries\": {\n      \"description\":
+      \"A score for every item\",\n      \"items\": {\n        \"$ref\": \"#/$defs/LLMRankedEntry\"\n      },\n      \"title\":
+      \"Entries\",\n      \"type\": \"array\"\n    }\n  },\n  \"title\": \"LLMMailboxRankResponse\",\n  \"type\":
+      \"object\"\n}\n\nOutput ONLY the JSON object itself. No preface, no markdown
+      code fences, no trailing commentary.","temperature":0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3748'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.85.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - NOT_GIVEN
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAHTNMmoC/8WTwW6DMAyG7zwF8hkkNk075FXGhFLiVgjqsMSpWiHefQmFjWis006cUOzf+X6b
+        GC9ILNIzWitPWFmWhhMlWYp0AL71CAKiJGTLGcQAZ62w85K6k05hbjURcv6Sv3pZo0KtPVVGUmuQ
+        ze2oTY3Kp+KLfcDoLgSktY2nUKDUmth7A/H2noFl3VcGpQeAINd1c8jih0OqcQm6xVhDveOKdYtk
+        QTwVRZGBdhwFx3FMErwPYKZVh07X7fYYNiShS1J4BVFkcT54mOsYr0E4fQTAr1A/SZaPoZMkgt4j
+        MexLNiOHHZglpWkJ/hbToC1BpHv0HUwEG0etg4USDtKUk7Vxl5E8oIbX/NeD0/2K+X3Rsp6bxqMk
+        rIxGG+V/lKrYGYLNvRr/uVjP4093Ww2uc+BLPgEpNuZCjQQAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '1999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-06-17T16:19:51Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-06-17T16:19:51Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-06-17T16:19:51Z'
+      anthropic-ratelimit-tokens-limit:
+      - '2400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '2399000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-06-17T16:19:51Z'
+      cache-control:
+      - no-cache
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a0d360d63e2ad18c-OMA
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - text/event-stream; charset=utf-8
+      date:
+      - Wed, 17 Jun 2026 16:19:52 GMT
+      request-id:
+      - req_rank_retry_forced
+      server:
+      - cloudflare
+      set-cookie:
+      - _cfuvid=CLFkOOCLfpJPKfThZ1KH27GzceH3xgtW5QFEz2yBozY-1781713191.3927438-1.0.1.1-vvfdRQcGLuBSaeYkTPpwY_5HIEKmegvFnCHlT2pB3c4;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.anthropic.com
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-096869ffb179e9e513959acacddff58d-79094e6a39978b53-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens":632,"messages":[{"role":"user","content":"Score the inbox
+      items against my request."}],"model":"claude-sonnet-4-6","stream":true,"system":"The
+      current datetime is 2026-05-20 12:00:00+00:00\n\nThe user you are helping is
+      ranked-e2e@convictional.com whose email address is ranked-e2e@convictional.com.\n\nYou
+      are helping a user prioritize their inbox into a single ranked list. The inbox
+      holds different kinds of items — emails, posts (team announcements and discussions),
+      and chats (direct and group messages). Your task is to score each item by how
+      well it matches the user''s request so the most important items can be surfaced
+      first.\n\n## Inbox Items\n\n**Item 1** (Email):\n- Subject: Important Conversation
+      5\n- Preview: This is the preview of conversation 5.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n**Item 2** (Email):\n- Subject: Important Conversation
+      4\n- Preview: This is the preview of conversation 4.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n**Item 3** (Email):\n- Subject: Important Conversation
+      3\n- Preview: This is the preview of conversation 3.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n**Item 4** (Email):\n- Subject: Important Conversation
+      2\n- Preview: This is the preview of conversation 2.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n**Item 5** (Email):\n- Subject: Important Conversation
+      1\n- Preview: This is the preview of conversation 1.\n- Last Activity: 2026-05-20
+      12:00\n- Is Unread: Yes\n\n## User''s Request\n\n\"Rank my inbox so the most
+      urgent conversations come first\"\n\n## Your Task\n\nFor each item, assign a
+      score from 0.0 to 1.0 for how well it matches the request (1.0 = highest priority,
+      0.0 = irrelevant). The server sorts the items by score, so the order you list
+      them in does not matter — only the scores do.\n\n## Rules\n\n1. Score EVERY
+      item exactly once, referencing it by its **Item number** (the integer shown
+      above) in the `entry_number` field. Only use numbers that appear in the list
+      — never invent a number.\n2. Do not omit or duplicate any item.\n3. Use the
+      full range: reserve scores near 1.0 for the items that most need attention and
+      scores near 0.0 for items that are irrelevant to the request. Calibrate each
+      item on its own merits — do not assign evenly spaced ranks.\n\nRespond with
+      a JSON object matching this schema:\n{\n  \"$defs\": {\n    \"LLMRankedEntry\":
+      {\n      \"properties\": {\n        \"entry_number\": {\n          \"anyOf\":
+      [\n            {\n              \"type\": \"integer\"\n            },\n            {\n              \"type\":
+      \"null\"\n            }\n          ],\n          \"default\": null,\n          \"description\":
+      \"The item number (the integer N from ''Item N'' in the list above)\",\n          \"title\":
+      \"Entry Number\"\n        },\n        \"score\": {\n          \"anyOf\": [\n            {\n              \"maximum\":
+      1.0,\n              \"minimum\": 0.0,\n              \"type\": \"number\"\n            },\n            {\n              \"type\":
+      \"null\"\n            }\n          ],\n          \"default\": null,\n          \"description\":
+      \"Priority against the request, 1.0 = highest, 0.0 = irrelevant\",\n          \"title\":
+      \"Score\"\n        }\n      },\n      \"title\": \"LLMRankedEntry\",\n      \"type\":
+      \"object\"\n    }\n  },\n  \"properties\": {\n    \"entries\": {\n      \"description\":
+      \"A score for every item\",\n      \"items\": {\n        \"$ref\": \"#/$defs/LLMRankedEntry\"\n      },\n      \"title\":
+      \"Entries\",\n      \"type\": \"array\"\n    }\n  },\n  \"title\": \"LLMMailboxRankResponse\",\n  \"type\":
+      \"object\"\n}\n\nOutput ONLY the JSON object itself. No preface, no markdown
+      code fences, no trailing commentary.","temperature":0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3748'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.85.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - NOT_GIVEN
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SQT0vEMBDF7/0UJecWWlz/9bgXD3p2QZEwJmMbNk1iMlmQpd/dCVi0irnN+73J
+        mxk8oaOhnjElGFEmgkiVBoKhPgv6CCgGsYGiWWsxnMXsNVq2KAtZY5u8c0jtrr1im9GlN42y6+/j
+        E97chXQIaXp8OOyO823cX7Nnm8BC9LYIkJLhOFfilHfEQ4rh+aURiXyQEYGTxOCytV9SwveMTuFG
+        1EhgbFq1vE5tXMgkyR/RMey7i55TQE0oFX9Nxju5tXQrZ6z/Y2tvScAw4YwRrLyc//q/aT/9pksj
+        fKbNfLwNxpNRKMlg5OuUy2iIuhzZvWEsi8sRPaPR+lewYlnqH2+pqk8AAAD//0qFxDM0LOOTcvKT
+        s7HHNhYlYHtSUisgnkWWB/kVqq8ktQKkEExZKSnVQi0GAAAA//+CWlyQmZeOZpOCEkhQCagGAAAA
+        ///C6jhgwipJxO84sBIUx0FEUB0FVwZ1WnUM2HVAewEAAAD//6KvvUD9RZmpxTHAhAx0AohXGZ9X
+        mpuUWhQDiuQYpeLk/KJUINtAz7JWB1OJEYoSC1NsaoxR1SCUKNUipwYAAAAA//+ir8cRzjNBcZ45
+        Vi+Yoqqpja1VQknMEB8AAAAA///CkZ7zCwgl5/wCJPfDTAMAAAD//0pFLQWxhgSKpBKSz1GKJKBv
+        UuJLSovylIgumGppWDKhFSXmxrWIIAQAAAD//0pFL/oxAw9ZTgkp9AEAAAD//wMAmP1V4DYGAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '1999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-06-17T16:19:51Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-06-17T16:19:51Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-06-17T16:19:51Z'
+      anthropic-ratelimit-tokens-limit:
+      - '2400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '2399000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-06-17T16:19:51Z'
+      cache-control:
+      - no-cache
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a0d360d63e2ad18c-OMA
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - text/event-stream; charset=utf-8
+      date:
+      - Wed, 17 Jun 2026 16:19:52 GMT
+      request-id:
+      - req_011Cc98rqFp7ZgXsbsjbeebp
+      server:
+      - cloudflare
+      set-cookie:
+      - _cfuvid=CLFkOOCLfpJPKfThZ1KH27GzceH3xgtW5QFEz2yBozY-1781713191.3927438-1.0.1.1-vvfdRQcGLuBSaeYkTPpwY_5HIEKmegvFnCHlT2pB3c4;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.anthropic.com
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-096869ffb179e9e513959acacddff58d-79094e6a39978b53-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

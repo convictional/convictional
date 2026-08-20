@@ -1,0 +1,8 @@
+{% extends application_layout %}
+{% block title %}
+    {{ 'Groups' | format_page_title }}
+{% endblock title %}
+{% block content %}
+    <div id="react-groups-index"
+         data-props="{{ {'canManage': current_user.is_admin} | tojson }}"></div>
+{% endblock content %}

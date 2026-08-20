@@ -1,0 +1,8 @@
+{% include "organizations/_system_prompt.md.jinja" %}
+
+The user you are helping is {{ current_user.display_name }} whose email address is {{ current_user.email }}.
+
+{% if current_user.bio %}
+Here's brief bio they wrote:
+<user_bio>{{ current_user.bio }}</user_bio>
+{% endif %}

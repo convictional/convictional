@@ -1,0 +1,962 @@
+interactions:
+- request:
+    body: '{"input": ["Title: Long Meeting\nDate: No date\nAttendees: No attendees\nAgenda:
+      No agenda\nSummary: No summary"], "model": "text-embedding-3-small", "dimensions":
+      1536, "encoding_format": "base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '191'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        +VsyfwdfhftOvemw34D5XciIr83Th2ULaQUeM/oHmaJX9tiH/hBXst8t8eZ7juof9OQN+oN+omb+
+        oo4i3h/0O136L/+Avgnok3RKfhse0W8yemB+/Mj3MPTUtLR5/RC+fyW+3VP8CR8K/VZNvU2I/xGP
+        Eb3jnQc/Xeyn/7F+/vj9dJzYPK/PvNmhFzPqge9j/0/0WD7l/p/ovZbVgwfizffheEe9yuETuSJ+
+        CfEU+NfmX/GV77+ZzWcebd5GPNISPkbvyJD74P/CL0vFD3pUBi3muWavfe9CX6f+AF4fycfk0/SP
+        9ZN8bxhSL77mV/T3XetHrJ8Q63fAP3wU5A0+L5fwu6N/+0k+9Avy1foT5i/2fRE9jj4hn3p8b2Be
+        pU0J+cH38/z4fflzzXzujvraUX9JQX0opsxXrH9Hf067pnd/W/3k+/fgrnPy18ny9XHxcfKj8e9/
+        /3Wyqh4XLyc/TraLj+3f//fvBP4+/3uzmr286Mu7zSwuTn78c/K2rlZv2//ZVs+L183Jj7PWXyfb
+        ajt7+X//599//xezCAKDmiAAAA==
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26714fbebfb292b-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:12:12 GMT
+      openai-processing-ms:
+      - '212'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=gBb5s5H7BgRHJCoRLCKwlN49OHYVzGTc5SN4BQrst0c-1785946331.5090497-1.0.1.1-sBqYoeKXE9MK7QyHvqUfSAkx2XQxJycDQptENbxjl2OB4AIgw2qZaHovxCvu7tjiAzjdy5f0P6TBL6oS0LEQ2QvfyDU.vIPHItWkH5VhwfFNao8SCZ5rLE2cML5qxbvz;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Wed,
+        05 Aug 2026 16:42:12 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999977'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 0s
+      x-request-id:
+      - req_9c1a32ca468642b1b1f5adee3e278f52
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input": ["Speaker: Line 0\nSpeaker: Line 1\nSpeaker: Line 2\nSpeaker:
+      Line 3\nSpeaker: Line 4\nSpeaker: Line 5\nSpeaker: Line 6\nSpeaker: Line 7\nSpeaker:
+      Line 8\nSpeaker: Line 9\nSpeaker: Line 10\nSpeaker: Line 11\nSpeaker: Line 12\nSpeaker:
+      Line 13\nSpeaker: Line 14\nSpeaker: Line 15\nSpeaker: Line 16\nSpeaker: Line
+      17\nSpeaker: Line 18\nSpeaker: Line 19\nSpeaker: Line 20\nSpeaker: Line 21\nSpeaker:
+      Line 22\nSpeaker: Line 23\nSpeaker: Line 24\nSpeaker: Line 25\nSpeaker: Line
+      26\nSpeaker: Line 27\nSpeaker: Line 28\nSpeaker: Line 29\nSpeaker: Line 30\nSpeaker:
+      Line 31\nSpeaker: Line 32\nSpeaker: Line 33\nSpeaker: Line 34\nSpeaker: Line
+      35\nSpeaker: Line 36\nSpeaker: Line 37\nSpeaker: Line 38\nSpeaker: Line 39\nSpeaker:
+      Line 40\nSpeaker: Line 41\nSpeaker: Line 42\nSpeaker: Line 43\nSpeaker: Line
+      44\nSpeaker: Line 45\nSpeaker: Line 46\nSpeaker: Line 47\nSpeaker: Line 48\nSpeaker:
+      Line 49\nSpeaker: Line 50\nSpeaker: Line 51\nSpeaker: Line 52\nSpeaker: Line
+      53\nSpeaker: Line 54\nSpeaker: Line 55\nSpeaker: Line 56\nSpeaker: Line 57\nSpeaker:
+      Line 58\nSpeaker: Line 59\nSpeaker: Line 60\nSpeaker: Line 61\nSpeaker: Line
+      62\nSpeaker: Line 63\nSpeaker: Line 64\nSpeaker: Line 65\nSpeaker: Line 66\nSpeaker:
+      Line 67\nSpeaker: Line 68\nSpeaker: Line 69\nSpeaker: Line 70\nSpeaker: Line
+      71\nSpeaker: Line 72\nSpeaker: Line 73\nSpeaker: Line 74\nSpeaker: Line 75\nSpeaker:
+      Line 76\nSpeaker: Line 77\nSpeaker: Line 78\nSpeaker: Line 79\nSpeaker: Line
+      80\nSpeaker: Line 81\nSpeaker: Line 82\nSpeaker: Line 83\nSpeaker: Line 84\nSpeaker:
+      Line 85\nSpeaker: Line 86\nSpeaker: Line 87\nSpeaker: Line 88\nSpeaker: Line
+      89\nSpeaker: Line 90\nSpeaker: Line 91\nSpeaker: Line 92\nSpeaker: Line 93\nSpeaker:
+      Line 94\nSpeaker: Line 95\nSpeaker: Line 96\nSpeaker: Line 97\nSpeaker: Line
+      98\nSpeaker: Line 99\nSpeaker: Line 100\nSpeaker: Line 101\nSpeaker: Line 102\nSpeaker:
+      Line 103\nSpeaker: Line 104\nSpeaker: Line 105\nSpeaker: Line 106\nSpeaker:
+      Line 107\nSpeaker: Line 108\nSpeaker: Line 109\nSpeaker: Line 110\nSpeaker:
+      Line 111\nSpeaker: Line 112\nSpeaker: Line 113\nSpeaker: Line 114\nSpeaker:
+      Line 115\nSpeaker: Line 116\nSpeaker: Line 117\nSpeaker: Line 118\nSpeaker:
+      Line 119\nSpeaker: Line 120\nSpeaker: Line 121\nSpeaker: Line 122\nSpeaker:
+      Line 123\nSpeaker: Line 124\nSpeaker: Line 125\nSpeaker: Line 126\nSpeaker:
+      Line 127\nSpeaker: Line 128\nSpeaker: Line 129\nSpeaker: Line 130\nSpeaker:
+      Line 131\nSpeaker: Line 132\nSpeaker: Line 133\nSpeaker: Line 134\nSpeaker:
+      Line 135\nSpeaker: Line 136\nSpeaker: Line 137\nSpeaker: Line 138\nSpeaker:
+      Line 139\nSpeaker: Line 140\nSpeaker: Line 141\nSpeaker: Line 142\nSpeaker:
+      Line 143\nSpeaker: Line 144\nSpeaker: Line 145\nSpeaker: Line 146\nSpeaker:
+      Line 147\nSpeaker: Line 148\nSpeaker: Line 149\nSpeaker: Line 150\nSpeaker:
+      Line 151\nSpeaker: Line 152\nSpeaker: Line 153\nSpeaker: Line 154\nSpeaker:
+      Line 155\nSpeaker: Line 156\nSpeaker: Line 157\nSpeaker: Line 158\nSpeaker:
+      Line 159\nSpeaker: Line 160\nSpeaker: Line 161\nSpeaker: Line 162\nSpeaker:
+      Line 163\nSpeaker: Line 164\nSpeaker: Line 165\nSpeaker: Line 166\nSpeaker:
+      Line 167\nSpeaker: Line 168\nSpeaker: Line 169\nSpeaker: Line 170\nSpeaker:
+      Line 171\nSpeaker: Line 172\nSpeaker: Line 173\nSpeaker: Line 174\nSpeaker:
+      Line 175\nSpeaker: Line 176\nSpeaker: Line 177\nSpeaker: Line 178\nSpeaker:
+      Line 179\nSpeaker: Line 180\nSpeaker: Line 181\nSpeaker: Line 182\nSpeaker:
+      Line 183\nSpeaker: Line 184\nSpeaker: Line 185\nSpeaker: Line 186\nSpeaker:
+      Line 187\nSpeaker: Line 188\nSpeaker: Line 189\nSpeaker: Line 190\nSpeaker:
+      Line 191\nSpeaker: Line 192\nSpeaker: Line 193\nSpeaker: Line 194\nSpeaker:
+      Line 195\nSpeaker: Line 196\nSpeaker: Line 197\nSpeaker: Line 198\nSpeaker:
+      Line 199\nSpeaker: Line 200\nSpeaker: Line 201\nSpeaker: Line 202\nSpeaker:
+      Line 203\nSpeaker: Line 204\nSpeaker: Line 205\nSpeaker: Line 206\nSpeaker:
+      Line 207\nSpeaker: Line 208\nSpeaker: Line 209\nSpeaker: Line 210\nSpeaker:
+      Line 211\nSpeaker: Line 212\nSpeaker: Line 213\nSpeaker: Line 214\nSpeaker:
+      Line 215\nSpeaker: Line 216\nSpeaker: Line 217\nSpeaker: Line 218\nSpeaker:
+      Line 219\nSpeaker: Line 220\nSpeaker: Line 221\nSpeaker: Line 222\nSpeaker:
+      Line 223\nSpeaker: Line 224\nSpeaker: Line 225\nSpeaker: Line 226\nSpeaker:
+      Line 227\nSpeaker: Line 228\nSpeaker: Line 229\nSpeaker: Line 230\nSpeaker:
+      Line 231\nSpeaker: Line 232\nSpeaker: Line 233\nSpeaker: Line 234\nSpeaker:
+      Line 235\nSpeaker: Line 236\nSpeaker: Line 237\nSpeaker: Line 238\nSpeaker:
+      Line 239\nSpeaker: Line 240\nSpeaker: Line 241\nSpeaker: Line 242\nSpeaker:
+      Line 243\nSpeaker: Line 244\nSpeaker: Line 245\nSpeaker: Line 246\nSpeaker:
+      Line 247\nSpeaker: Line 248\nSpeaker: Line 249\nSpeaker: Line 250\nSpeaker:
+      Line 251\nSpeaker: Line 252\nSpeaker: Line 253\nSpeaker: Line 254\nSpeaker:
+      Line 255\nSpeaker: Line 256\nSpeaker: Line 257\nSpeaker: Line 258\nSpeaker:
+      Line 259\nSpeaker: Line 260\nSpeaker: Line 261\nSpeaker: Line 262\nSpeaker:
+      Line 263\nSpeaker: Line 264\nSpeaker: Line 265\nSpeaker: Line 266\nSpeaker:
+      Line 267\nSpeaker: Line 268\nSpeaker: Line 269\nSpeaker: Line 270\nSpeaker:
+      Line 271\nSpeaker: Line 272\nSpeaker: Line 273\nSpeaker: Line 274\nSpeaker:
+      Line 275\nSpeaker: Line 276\nSpeaker: Line 277\nSpeaker: Line 278\nSpeaker:
+      Line 279\nSpeaker: Line 280\nSpeaker: Line 281\nSpeaker: Line 282\nSpeaker:
+      Line 283\nSpeaker: Line 284\nSpeaker: Line 285\nSpeaker: Line 286\nSpeaker:
+      Line 287\nSpeaker: Line 288\nSpeaker: Line 289\nSpeaker: Line 290\nSpeaker:
+      Line 291\nSpeaker: Line 292\nSpeaker: Line 293\nSpeaker: Line 294\nSpeaker:
+      Line 295\nSpeaker: Line 296\nSpeaker: Line 297\nSpeaker: Line 298\nSpeaker:
+      Line 299\nSpeaker: Line 300\nSpeaker: Line 301\nSpeaker: Line 302\nSpeaker:
+      Line 303\nSpeaker: Line 304\nSpeaker: Line 305\nSpeaker: Line 306\nSpeaker:
+      Line 307\nSpeaker: Line 308\nSpeaker: Line 309\nSpeaker: Line 310\nSpeaker:
+      Line 311\nSpeaker: Line 312\nSpeaker: Line 313\nSpeaker: Line 314\nSpeaker:
+      Line 315\nSpeaker: Line 316\nSpeaker: Line 317\nSpeaker: Line 318\nSpeaker:
+      Line 319\nSpeaker: Line 320\nSpeaker: Line 321\nSpeaker: Line 322\nSpeaker:
+      Line 323\nSpeaker: Line 324\nSpeaker: Line 325\nSpeaker: Line 326\nSpeaker:
+      Line 327\nSpeaker: Line 328\nSpeaker: Line 329\nSpeaker: Line 330\nSpeaker:
+      Line 331\nSpeaker: Line 332\nSpeaker: Line 333\nSpeaker: Line 334\nSpeaker:
+      Line 335\nSpeaker: Line 336\nSpeaker: Line 337\nSpeaker: Line 338\nSpeaker:
+      Line 339\nSpeaker: Line 340\nSpeaker: Line 341\nSpeaker: Line 342\nSpeaker:
+      Line 343\nSpeaker: Line 344\nSpeaker: Line 345\nSpeaker: Line 346\nSpeaker:
+      Line 347\nSpeaker: Line 348\nSpeaker: Line 349\nSpeaker: Line 350\nSpeaker:
+      Line 351\nSpeaker: Line 352\nSpeaker: Line 353\nSpeaker: Line 354\nSpeaker:
+      Line 355\nSpeaker: Line 356\nSpeaker: Line 357\nSpeaker: Line 358\nSpeaker:
+      Line 359\nSpeaker: Line 360\nSpeaker: Line 361\nSpeaker: Line 362\nSpeaker:
+      Line 363\nSpeaker: Line 364\nSpeaker: Line 365\nSpeaker: Line 366\nSpeaker:
+      Line 367\nSpeaker: Line 368\nSpeaker: Line 369\nSpeaker: Line 370\nSpeaker:
+      Line 371\nSpeaker: Line 372\nSpeaker: Line 373\nSpeaker: Line 374\nSpeaker:
+      Line 375\nSpeaker: Line 376\nSpeaker: Line 377\nSpeaker: Line 378\nSpeaker:
+      Line 379\nSpeaker: Line 380\nSpeaker: Line 381\nSpeaker: Line 382\nSpeaker:
+      Line 383\nSpeaker: Line 384\nSpeaker: Line 385\nSpeaker: Line 386\nSpeaker:
+      Line 387\nSpeaker: Line 388\nSpeaker: Line 389\nSpeaker: Line 390\nSpeaker:
+      Line 391\nSpeaker: Line 392\nSpeaker: Line 393\nSpeaker: Line 394\nSpeaker:
+      Line 395\nSpeaker: Line 396\nSpeaker: Line 397\nSpeaker: Line 398\nSpeaker:
+      Line 399\nSpeaker: Line 400\nSpeaker: Line 401\nSpeaker: Line 402\nSpeaker:
+      Line 403\nSpeaker: Line 404\nSpeaker: Line 405\nSpeaker: Line 406\nSpeaker:
+      Line 407\nSpeaker: Line 408\nSpeaker: Line 409\nSpeaker: Line 410\nSpeaker:
+      Line 411\nSpeaker: Line 412\nSpeaker: Line 413\nSpeaker: Line 414\nSpeaker:
+      Line 415\nSpeaker: Line 416\nSpeaker: Line 417\nSpeaker: Line 418\nSpeaker:
+      Line 419\nSpeaker: Line 420\nSpeaker: Line 421\nSpeaker: Line 422\nSpeaker:
+      Line 423\nSpeaker: Line 424\nSpeaker: Line 425\nSpeaker: Line 426\nSpeaker:
+      Line 427\nSpeaker: Line 428\nSpeaker: Line 429\nSpeaker: Line 430\nSpeaker:
+      Line 431\nSpeaker: Line 432\nSpeaker: Line 433\nSpeaker: Line 434\nSpeaker:
+      Line 435\nSpeaker: Line 436\nSpeaker: Line 437\nSpeaker: Line 438\nSpeaker:
+      Line 439\nSpeaker: Line 440\nSpeaker: Line 441\nSpeaker: Line 442\nSpeaker:
+      Line 443\nSpeaker: Line 444\nSpeaker: Line 445\nSpeaker: Line 446\nSpeaker:
+      Line 447\nSpeaker: Line 448\nSpeaker: Line 449\nSpeaker: Line 450\nSpeaker:
+      Line 451\nSpeaker: Line 452\nSpeaker: Line 453\nSpeaker: Line 454\nSpeaker:
+      Line 455\nSpeaker: Line 456\nSpeaker: Line 457\nSpeaker: Line 458\nSpeaker:
+      Line 459\nSpeaker: Line 460\nSpeaker: Line 461\nSpeaker: Line 462\nSpeaker:
+      Line 463\nSpeaker: Line 464\nSpeaker: Line 465\nSpeaker: Line 466\nSpeaker:
+      Line 467\nSpeaker: Line 468\nSpeaker: Line 469\nSpeaker: Line 470\nSpeaker:
+      Line 471\nSpeaker: Line 472\nSpeaker: Line 473\nSpeaker: Line 474\nSpeaker:
+      Line 475\nSpeaker: Line 476\nSpeaker: Line 477\nSpeaker: Line 478\nSpeaker:
+      Line 479\nSpeaker: Line 480\nSpeaker: Line 481\nSpeaker: Line 482\nSpeaker:
+      Line 483\nSpeaker: Line 484\nSpeaker: Line 485\nSpeaker: Line 486\nSpeaker:
+      Line 487\nSpeaker: Line 488\nSpeaker: Line 489\nSpeaker: Line 490\nSpeaker:
+      Line 491\nSpeaker: Line 492\nSpeaker: Line 493\nSpeaker: Line 494\nSpeaker:
+      Line 495\nSpeaker: Line 496\nSpeaker: Line 497\nSpeaker: Line 498\nSpeaker:
+      Line 499\nSpeaker: Line 500\nSpeaker: Line 501\nSpeaker: Line 502\nSpeaker:
+      Line 503\nSpeaker: Line 504\nSpeaker: Line 505\nSpeaker: Line 506\nSpeaker:
+      Line 507\nSpeaker: Line 508\nSpeaker: Line 509\nSpeaker: Line 510\nSpeaker:
+      Line 511\nSpeaker: Line 512\nSpeaker: Line 513\nSpeaker: Line 514\nSpeaker:
+      Line 515\nSpeaker: Line 516\nSpeaker: Line 517\nSpeaker: Line 518\nSpeaker:
+      Line 519\nSpeaker: Line 520\nSpeaker: Line 521\nSpeaker: Line 522\nSpeaker:
+      Line 523\nSpeaker: Line 524\nSpeaker: Line 525\nSpeaker: Line 526\nSpeaker:
+      Line 527\nSpeaker: Line 528\nSpeaker: Line 529\nSpeaker: Line 530\nSpeaker:
+      Line 531\nSpeaker: Line 532\nSpeaker: Line 533\nSpeaker: Line 534\nSpeaker:
+      Line 535\nSpeaker: Line 536\nSpeaker: Line 537\nSpeaker: Line 538\nSpeaker:
+      Line 539\nSpeaker: Line 540\nSpeaker: Line 541\nSpeaker: Line 542\nSpeaker:
+      Line 543\nSpeaker: Line 544\nSpeaker: Line 545\nSpeaker: Line 546\nSpeaker:
+      Line 547\nSpeaker: Line 548\nSpeaker: Line 549\nSpeaker: Line 550\nSpeaker:
+      Line 551\nSpeaker: Line 552\nSpeaker: Line 553\nSpeaker: Line 554\nSpeaker:
+      Line 555\nSpeaker: Line 556\nSpeaker: Line 557\nSpeaker: Line 558\nSpeaker:
+      Line 559\nSpeaker: Line 560\nSpeaker: Line 561\nSpeaker: Line 562\nSpeaker:
+      Line 563\nSpeaker: Line 564\nSpeaker: Line 565\nSpeaker: Line 566\nSpeaker:
+      Line 567\nSpeaker: Line 568\nSpeaker: Line 569\nSpeaker: Line 570\nSpeaker:
+      Line 571\nSpeaker: Line 572\nSpeaker: Line 573\nSpeaker: Line 574\nSpeaker:
+      Line 575\nSpeaker: Line 576\nSpeaker: Line 577\nSpeaker: Line 578\nSpeaker:
+      Line 579\nSpeaker: Line 580\nSpeaker: Line 581\nSpeaker: Line 582\nSpeaker:
+      Line 583\nSpeaker: Line 584\nSpeaker: Line 585\nSpeaker: Line 586\nSpeaker:
+      Line 587\nSpeaker: Line 588\nSpeaker: Line 589\nSpeaker: Line 590\nSpeaker:
+      Line 591\nSpeaker: Line 592\nSpeaker: Line 593\nSpeaker: Line 594\nSpeaker:
+      Line 595\nSpeaker: Line 596\nSpeaker: Line 597\nSpeaker: Line 598\nSpeaker:
+      Line 599\nSpeaker: Line 600\nSpeaker: Line 601\nSpeaker: Line 602\nSpeaker:
+      Line 603\nSpeaker: Line 604\nSpeaker: Line 605\nSpeaker: Line 606\nSpeaker:
+      Line 607\nSpeaker: Line 608\nSpeaker: Line 609\nSpeaker: Line 610\nSpeaker:
+      Line 611\nSpeaker: Line 612\nSpeaker: Line 613\nSpeaker: Line 614\nSpeaker:
+      Line 615\nSpeaker: Line 616\nSpeaker: Line 617\nSpeaker: Line 618\nSpeaker:
+      Line 619\nSpeaker: Line 620\nSpeaker: Line 621\nSpeaker: Line 622\nSpeaker:
+      Line 623\nSpeaker: Line 624\nSpeaker: Line 625\nSpeaker: Line 626\nSpeaker:
+      Line 627\nSpeaker: Line 628\nSpeaker: Line 629\nSpeaker: Line 630\nSpeaker:
+      Line 631\nSpeaker: Line 632\nSpeaker: Line 633\nSpeaker: Line 634\nSpeaker:
+      Line 635\nSpeaker: Line 636\nSpeaker: Line 637\nSpeaker: Line 638\nSpeaker:
+      Line 639\nSpeaker: Line 640\nSpeaker: Line 641\nSpeaker: Line 642\nSpeaker:
+      Line 643\nSpeaker: Line 644\nSpeaker: Line 645\nSpeaker: Line 646\nSpeaker:
+      Line 647\nSpeaker: Line 648\nSpeaker: Line 649\nSpeaker: Line 650\nSpeaker:
+      Line 651\nSpeaker: Line 652\nSpeaker: Line 653\nSpeaker: Line 654\nSpeaker:
+      Line 655\nSpeaker: Line 656\nSpeaker: Line 657\nSpeaker: Line 658\nSpeaker:
+      Line 659\nSpeaker: Line 660\nSpeaker: Line 661\nSpeaker: Line 662\nSpeaker:
+      Line 663\nSpeaker: Line 664\nSpeaker: Line 665\nSpeaker: Line 666\nSpeaker:
+      Line 667\nSpeaker: Line 668\nSpeaker: Line 669\nSpeaker: Line 670\nSpeaker:
+      Line 671\nSpeaker: Line 672\nSpeaker: Line 673\nSpeaker: Line 674\nSpeaker:
+      Line 675\nSpeaker: Line 676\nSpeaker: Line 677\nSpeaker: Line 678\nSpeaker:
+      Line 679\nSpeaker: Line 680\nSpeaker: Line 681\nSpeaker: Line 682\nSpeaker:
+      Line 683\nSpeaker: Line 684\nSpeaker: Line 685\nSpeaker: Line 686\nSpeaker:
+      Line 687\nSpeaker: Line 688\nSpeaker: Line 689\nSpeaker: Line 690\nSpeaker:
+      Line 691\nSpeaker: Line 692\nSpeaker: Line 693\nSpeaker: Line 694\nSpeaker:
+      Line 695\nSpeaker: Line 696\nSpeaker: Line 697\nSpeaker: Line 698\nSpeaker:
+      Line 699\nSpeaker: Line 700\nSpeaker: Line 701\nSpeaker: Line 702\nSpeaker:
+      Line 703\nSpeaker: Line 704\nSpeaker: Line 705\nSpeaker: Line 706\nSpeaker:
+      Line 707\nSpeaker: Line 708\nSpeaker: Line 709\nSpeaker: Line 710\nSpeaker:
+      Line 711\nSpeaker: Line 712\nSpeaker: Line 713\nSpeaker: Line 714\nSpeaker:
+      Line 715\nSpeaker: Line 716\nSpeaker: Line 717\nSpeaker: Line 718\nSpeaker:
+      Line 719\nSpeaker: Line 720\nSpeaker: Line 721\nSpeaker: Line 722\nSpeaker:
+      Line 723\nSpeaker: Line 724\nSpeaker: Line 725\nSpeaker: Line 726\nSpeaker:
+      Line 727\nSpeaker: Line 728\nSpeaker: Line 729\nSpeaker: Line 730\nSpeaker:
+      Line 731\nSpeaker: Line 732\nSpeaker: Line 733\nSpeaker: Line 734\nSpeaker:
+      Line 735\nSpeaker: Line 736\nSpeaker: Line 737\nSpeaker: Line 738\nSpeaker:
+      Line 739\nSpeaker: Line 740\nSpeaker: Line 741\nSpeaker: Line 742\nSpeaker:
+      Line 743\nSpeaker: Line 744\nSpeaker: Line 745\nSpeaker: Line 746\nSpeaker:
+      Line 747\nSpeaker: Line 748\nSpeaker: Line 749\nSpeaker: Line 750\nSpeaker:
+      Line 751\nSpeaker: Line 752\nSpeaker: Line 753\nSpeaker: Line 754\nSpeaker:
+      Line 755\nSpeaker: Line 756\nSpeaker: Line 757\nSpeaker: Line 758\nSpeaker:
+      Line 759\nSpeaker: Line 760\nSpeaker: Line 761\nSpeaker: Line 762\nSpeaker:
+      Line 763\nSpeaker: Line 764\nSpeaker: Line 765\nSpeaker: Line 766\nSpeaker:
+      Line 767\nSpeaker: Line 768\nSpeaker: Line 769\nSpeaker: Line 770\nSpeaker:
+      Line 771\nSpeaker: Line 772\nSpeaker: Line 773\nSpeaker: Line 774\nSpeaker:
+      Line 775\nSpeaker: Line 776\nSpeaker: Line 777\nSpeaker: Line 778\nSpeaker:
+      Line 779\nSpeaker: Line 780\nSpeaker: Line 781\nSpeaker: Line 782\nSpeaker:
+      Line 783\nSpeaker: Line 784\nSpeaker: Line 785\nSpeaker: Line 786\nSpeaker:
+      Line 787\nSpeaker: Line 788\nSpeaker: Line 789\nSpeaker: Line 790\nSpeaker:
+      Line 791\nSpeaker: Line 792\nSpeaker: Line 793\nSpeaker: Line 794\nSpeaker:
+      Line 795\nSpeaker: Line 796\nSpeaker: Line 797\nSpeaker: Line 798\nSpeaker:
+      Line 799\nSpeaker: Line 800\nSpeaker: Line 801\nSpeaker: Line 802\nSpeaker:
+      Line 803\nSpeaker: Line 804\nSpeaker: Line 805\nSpeaker: Line 806\nSpeaker:
+      Line 807\nSpeaker: Line 808\nSpeaker: Line 809\nSpeaker: Line 810\nSpeaker:
+      Line 811\nSpeaker: Line 812\nSpeaker: Line 813\nSpeaker: Line 814\nSpeaker:
+      Line 815\nSpeaker: Line 816\nSpeaker: Line 817\nSpeaker: Line 818\nSpeaker:
+      Line 819\nSpeaker: Line 820\nSpeaker: Line 821\nSpeaker: Line 822\nSpeaker:
+      Line 823\nSpeaker: Line 824\nSpeaker: Line 825\nSpeaker: Line 826\nSpeaker:
+      Line 827\nSpeaker: Line 828\nSpeaker: Line 829\nSpeaker: Line 830\nSpeaker:
+      Line 831\nSpeaker: Line 832\nSpeaker: Line 833\nSpeaker: Line 834\nSpeaker:
+      Line 835\nSpeaker: Line 836\nSpeaker: Line 837\nSpeaker: Line 838\nSpeaker:
+      Line 839\nSpeaker: Line 840\nSpeaker: Line 841\nSpeaker: Line 842\nSpeaker:
+      Line 843\nSpeaker: Line 844\nSpeaker: Line 845\nSpeaker: Line 846\nSpeaker:
+      Line 847\nSpeaker: Line 848\nSpeaker: Line 849\nSpeaker: Line 850\nSpeaker:
+      Line 851\nSpeaker: Line 852\nSpeaker: Line 853\nSpeaker: Line 854\nSpeaker:
+      Line 855\nSpeaker: Line 856\nSpeaker: Line 857\nSpeaker: Line 858\nSpeaker:
+      Line 859\nSpeaker: Line 860\nSpeaker: Line 861\nSpeaker: Line 862\nSpeaker:
+      Line 863\nSpeaker: Line 864\nSpeaker: Line 865\nSpeaker: Line 866\nSpeaker:
+      Line 867\nSpeaker: Line 868\nSpeaker: Line 869\nSpeaker: Line 870\nSpeaker:
+      Line 871\nSpeaker: Line 872\nSpeaker: Line 873\nSpeaker: Line 874\nSpeaker:
+      Line 875\nSpeaker: Line 876\nSpeaker: Line 877\nSpeaker: Line 878\nSpeaker:
+      Line 879\nSpeaker: Line 880\nSpeaker: Line 881\nSpeaker: Line 882\nSpeaker:
+      Line 883\nSpeaker: Line 884\nSpeaker: Line 885\nSpeaker: Line 886\nSpeaker:
+      Line 887\nSpeaker: Line 888\nSpeaker: Line 889\nSpeaker: Line 890\nSpeaker:
+      Line 891\nSpeaker: Line 892\nSpeaker: Line 893\nSpeaker: Line 894\nSpeaker:
+      Line 895\nSpeaker: Line 896\nSpeaker: Line 897\nSpeaker: Line 898\nSpeaker:
+      Line 899\nSpeaker: Line 900\nSpeaker: Line 901\nSpeaker: Line 902\nSpeaker:
+      Line 903\nSpeaker: Line 904\nSpeaker: Line 905\nSpeaker: Line 906\nSpeaker:
+      Line 907\nSpeaker: Line 908\nSpeaker: Line 909\nSpeaker: Line 910\nSpeaker:
+      Line 911\nSpeaker: Line 912\nSpeaker: Line 913\nSpeaker: Line 914\nSpeaker:
+      Line 915\nSpeaker: Line 916\nSpeaker: Line 917\nSpeaker: Line 918\nSpeaker:
+      Line 919\nSpeaker: Line 920\nSpeaker: Line 921\nSpeaker: Line 922\nSpeaker:
+      Line 923\nSpeaker: Line 924\nSpeaker: Line 925\nSpeaker: Line 926\nSpeaker:
+      Line 927\nSpeaker: Line 928\nSpeaker: Line 929\nSpeaker: Line 930\nSpeaker:
+      Line 931\nSpeaker: Line 932\nSpeaker: Line 933\nSpeaker: Line 934\nSpeaker:
+      Line 935\nSpeaker: Line 936\nSpeaker: Line 937\nSpeaker: Line 938\nSpeaker:
+      Line 939\nSpeaker: Line 940\nSpeaker: Line 941\nSpeaker: Line 942\nSpeaker:
+      Line 943\nSpeaker: Line 944\nSpeaker: Line 945\nSpeaker: Line 946\nSpeaker:
+      Line 947\nSpeaker: Line 948\nSpeaker: Line 949\nSpeaker: Line 950\nSpeaker:
+      Line 951\nSpeaker: Line 952\nSpeaker: Line 953\nSpeaker: Line 954\nSpeaker:
+      Line 955\nSpeaker: Line 956\nSpeaker: Line 957\nSpeaker: Line 958\nSpeaker:
+      Line 959\nSpeaker: Line 960\nSpeaker: Line 961\nSpeaker: Line 962\nSpeaker:
+      Line 963\nSpeaker: Line 964\nSpeaker: Line 965\nSpeaker: Line 966\nSpeaker:
+      Line 967\nSpeaker: Line 968\nSpeaker: Line 969\nSpeaker: Line 970\nSpeaker:
+      Line 971\nSpeaker: Line 972\nSpeaker: Line 973\nSpeaker: Line 974\nSpeaker:
+      Line 975\nSpeaker: Line 976\nSpeaker: Line 977\nSpeaker: Line 978\nSpeaker:
+      Line 979\nSpeaker: Line 980\nSpeaker: Line 981\nSpeaker: Line 982\nSpeaker:
+      Line 983\nSpeaker: Line 984\nSpeaker: Line 985\nSpeaker: Line 986\nSpeaker:
+      Line 987\nSpeaker: Line 988\nSpeaker: Line 989\nSpeaker: Line 990\nSpeaker:
+      Line 991\nSpeaker: Line 992\nSpeaker: Line 993\nSpeaker: Line 994\nSpeaker:
+      Line 995\nSpeaker: Line 996\nSpeaker: Line 997\nSpeaker: Line 998\nSpeaker:
+      Line 999"], "model": "text-embedding-3-small", "dimensions": 1536, "encoding_format":
+      "base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '18980'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        fNQft8//79/+/vs/6Qh+M54gAAA=
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26715000b146fcd-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:12:12 GMT
+      openai-processing-ms:
+      - '240'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=xgK8QkXbTUGpKaz3aM0ksIfm.lUAzbKchnDRf50_bLY-1785946332.171163-1.0.1.1-2Ix_Nye_XrGYaQeVJd1EJ4.ij_j9BEHWtKks_Fxv.Soq0qbf3.iboFeNCNbQAYbyv8cLRLPUJwGyT85ZlHsFzf5maPFGKbwWdFDQwBPJ9HO1rFTkeGnfI3UTbcG2iSt_;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Wed,
+        05 Aug 2026 16:42:12 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9995528'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 26ms
+      x-request-id:
+      - req_91f66717523448ddb91acd9ef18f7aaa
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input": ["This is chat history"], "model": "text-embedding-3-small",
+      "dimensions": 1536, "encoding_format": "base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '112'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAA/0WaXVfjyM6F/wu3mVkECEnoO1WVYxzbcQxJ0+FdZ51FIF3NRzAkBAOz5r+/epSe
+        M3e4y6kqSVtbW3L/ddAsH1a3bwffDp7ut28Hfxzc3bzdHHz7v7/+XVitl6u7u/vnqKv//v3tQJIw
+        mYqXj4etLKQ8k8RPp+Jitmkl5quhZH65a0Osi1ayshpK6Q+rGOLhQyvN6LEvlTxORaIMWmmLdCBl
+        uK6iSFV0RX9xJpmU77WLD6GVejQ/0/Ue580furIYvw4lDfFdf+82+n7eGer5rT7Lq76/8Ppchbt3
+        cSLLrvSSRN/3V/r7uNHzFrIa6P5Bz5fHLz0/r/V9//Wu+y9n+iyfZ7p0zf0uv7oSJ7uh5E6w7073
+        k3FXz5OS9VLvI4Xam4fHqnXxU+1dZI3+3m31/Pip50n2qPbrfnWII7Uvy+3+fe4zXDbS+i7+edPz
+        4+RrKxIudT/ZvOv7R+qvutTfi/pPXful9rVZyX2OWf+u/pac+7hT7nOu9699OxTvR3pf+aXrWZKx
+        34DzB8THicZH1u+1xDH3mdxz3xp/fNffZ9M+/jzFH2u1R8LqTFK9j+63Dl1pJlv1l7y8S5Drpb5f
+        3A/0p2FXe3nX3/d8rue7CfYc81x2NL7uZKrn5epPqVLWPefP1J9NVp2JD6fE7wT/jUv80eO8c/Vv
+        JoszPW/C+0XRSDPeEb9i1zqpNP4y+VQ8uan6QzahUVDlZ+qfQ55H7O9fwWPAnvfZVrJRqvgKCf7/
+        qb/vBa/nO/AV3/X8KFd9fXW00z+f8f9Y4+8Vr2rfKXgNal/qutif6HMTbsDnEfjMeB97MlmBzy/F
+        V+Zb3c+tNX4yVH815ZZ4TtlvuGkUL2u9n3vD/mj3eRzo/r+4b9T41KX6KzM8xwn7yyP7Kz7U6bre
+        JHq+FzetnWw1vu058Q0J+3m1N54n2H9i+aHrvfwKvB8S76j+bdi/dPfct6v+yvwx+OlM1b4X7u8a
+        /FOzfqT5HiefA82vK37/wX0mPc57It5hpvmZ6v1zf7hrNf7LreZfj/jXij9JNP511sXeDvcnX2Kh
+        8ancRO8fXza6v7/C/gXPjwON13R7qudtOe8cewvi4e7ebV39OekTjxH3S9R/WZmBzwl4f7R4X2Lv
+        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
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26715034bfdd32b-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:12:12 GMT
+      openai-processing-ms:
+      - '79'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=lCkFUt0WTPtogtIHt50Hv4juBxTCXouRFlh6nq6dwF4-1785946332.6907926-1.0.1.1-56UOwCyOZ.Lt6pL8H7IhlOilAbCEOqfq.RgTinehO4IATAPdLzHeK6bcosETsg0xD1TGABVMUBex2bJ1J1bO.LWIT8S4HZ2H3A3lZluxTCX5PA.qhNeh_B9WhqACV3cD;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Wed,
+        05 Aug 2026 16:42:12 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999995'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 0s
+      x-request-id:
+      - req_dac08eeabe8e48ba98fffc4a54aaff1d
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input": ["This is a post comment"], "model": "text-embedding-3-small",
+      "dimensions": 1536, "encoding_format": "base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '114'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        A4H7I1uYIAAA
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26715050f47f749-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:12:13 GMT
+      openai-processing-ms:
+      - '109'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=jaCSPDSpJyWDFcGUVS4yoiVkK2AkwTG8pgF8izmjo2Y-1785946332.9627938-1.0.1.1-R2em6QHy0GLWzr7_SqObgf9Vxj.E251NQ3IkzsRlYEpRiVYVm2Q8jHL6WZxi2SVVEaNDWk7.aP1FshPg6UiGd5GdC5ZHb7DkiH8NG2FRW0a58aCONyzNeFVL9grjHhSS;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Wed,
+        05 Aug 2026 16:42:13 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999995'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 0s
+      x-request-id:
+      - req_7bbd5f85356b4eb1a1730e04ac0976e9
+    status:
+      code: 200
+      message: OK
+version: 1

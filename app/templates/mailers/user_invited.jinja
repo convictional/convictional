@@ -1,0 +1,15 @@
+{% extends "base.jinja" %}
+
+{% block subject %}You've been invited to an organization in Convictional{% endblock %}
+
+{% block body_markdown %}
+{{ user.invited_by.display_name|strip_html }} has invited you to join their organization, {{ user.organization.display_name|strip_html }}.
+{% if note %}
+
+They left you a note:
+
+> {{ note|strip_html }}
+
+{% endif %}
+[Sign in]({{ url_for("login") }}) to start collaborating with your team.
+{% endblock %}

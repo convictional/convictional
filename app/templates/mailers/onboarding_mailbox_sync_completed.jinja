@@ -1,0 +1,36 @@
+{% extends "base.jinja" %}
+
+{% block subject %}Your email is ready{% endblock subject %}
+
+{% block body_markdown %}
+{{ user.first_name }},
+
+Your emails are now available in Convictional. Here's how to make the most of it:
+
+**Search across everything** — Press ⌘K to find emails, meetings, and perform research.
+
+<img src="{{ url_for_static_file('images/command_palette.gif') }}" width="400" style="margin-bottom: 36px;">
+
+**Collaborate on email** — Assign threads to teammates, chat about them, and draft emails together.
+
+<img src="{{ url_for_static_file('images/collaborators.gif') }}" width="400" style="margin-bottom: 36px;">
+{% if is_calendar_connected %}
+
+**Check upcoming meetings** — Your meeting navigation bar shows what's next on your calendar.
+
+<img src="{{ url_for_static_file('images/meeting_navigation_bar.gif') }}" width="400" style="margin-bottom: 36px;">
+{% endif %}
+
+**Navigate faster** — Press ? to see keyboard shortcuts.
+
+<img src="{{ url_for_static_file('images/hotkeys.png') }}" width="400" style="margin-bottom: 36px;">
+{% if user.is_admin %}
+
+**Invite your team** — Open the ⋮ menu (top right), then [Team Members]({{ url_for('organization_users_index') }}).
+
+<img src="{{ url_for_static_file('images/team_members.gif') }}" width="400" style="margin-bottom: 36px;">
+{% endif %}
+
+---
+[Open Convictional]({{ url_for('mailbox_index') }})
+{% endblock body_markdown %}

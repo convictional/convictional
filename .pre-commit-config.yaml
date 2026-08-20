@@ -1,0 +1,24 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+        exclude: "app/web/static"
+      - id: check-added-large-files
+        args: ["--maxkb=750"]
+        exclude: "^(app/web/static/|experiments/named_entity_knowledge_store/src/context_entropy_paper/paper\\.pdf$)"
+  - repo: local
+    hooks:
+      - id: get-site-checks
+        name: get site lint, format, types
+        entry: bash -c 'cd static_sites && make get_lint && make get_format CHECK=true && make get_types'
+        language: system
+        files: ^static_sites/get/
+        pass_filenames: false
+      - id: sqlfluff-lint-dbt
+        name: sqlfluff lint (bigquery-dbt)
+        entry: bash -c 'cd data/bigquery-dbt && make lint'
+        language: system
+        files: ^data/bigquery-dbt/.*\.sql$
+        pass_filenames: false

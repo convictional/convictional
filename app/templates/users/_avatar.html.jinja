@@ -1,0 +1,40 @@
+{# User avatar with image or initial fallback
+
+Required context:
+- user: User - User object with picture and display_name attributes
+
+Optional context:
+- size: str = "large" - Avatar size: "xs" (w-4), "small" (w-5), "medium" (w-6), "large" (w-8)
+- group: bool = false - Add border for grouped/stacked avatars
+- is_active: bool = false - Highlight border for active state
+#}
+{% set user_picture = user_avatar_url(user) %}
+{% set has_user_picture = user and user_picture %}
+{% set avatar_class = 'avatar-placeholder' if not has_user_picture else '' %}
+{% set border_class = 'border-3 border-info-content' if is_active else ('border-3 border-base-200' if group else '') %}
+{% set size_styles = {
+    "xs": "w-4 h-4 text-xs",
+    "small": "w-5 h-5 text-sm",
+    "medium": "w-6 h-6 text-base",
+    "large": "w-8 h-8 text-xl"
+} %}
+{% set size_class = size_styles.get(size, size_styles["large"]) %}
+{% set avatar %}
+    <div x-data="{ imgError: false }">
+        <div class="avatar block rounded-full static {{ avatar_class }} {{ border_class }}"
+             :class="imgError && 'avatar-placeholder'">
+            <div class="{{ size_class }} rounded-full bg-neutral-300 text-neutral-600">
+                {% if has_user_picture %}
+                    <img x-show="!imgError"
+                         @error="imgError = true"
+                         src="{{ user_picture }}"
+                         alt="{{ user.display_name }}" />
+                    <span x-show="imgError" class="uppercase" title="{{ user.display_name }}">{{ user.display_name|first }}</span>
+                {% elif user %}
+                    <span class="uppercase" title="{{ user.display_name }}">{{ user.display_name|first }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endset %}
+{{ avatar }}

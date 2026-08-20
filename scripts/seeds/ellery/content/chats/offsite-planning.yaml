@@ -1,0 +1,119 @@
+key: offsite-planning
+name: "Exec Offsite Planning"
+members: [darren, maren, priya, tessa]
+messages:
+  - key: offsite-planning-msg-001
+    author: darren
+    at: !relative_day {offset: -10, hour: 19, minute: 30}
+    content: |
+      Quick thread for offsite logistics. Lyndon mentioned in the board-prep call that he'd like to see us do a proper two-day offsite before the first formal board meeting. I think that's the right call regardless. Proposed window: five weeks from now, a Tuesday and Wednesday. Venue TBD.
+
+  - key: offsite-planning-msg-002
+    author: maren
+    at: !relative_day {offset: -10, hour: 19, minute: 45}
+    reply_to: offsite-planning-msg-001
+    content: |
+      Five weeks works for me. I'd suggest we separate the offsite into two halves: day one is strategy and roadmap — we need to get the Leo/Maren roadmap decision formally closed if it isn't by then. Day two is operating rhythm and OKRs — what do we want the next six months to look like.
+
+  - key: offsite-planning-msg-003
+    author: priya
+    at: !relative_day {offset: -10, hour: 19, minute: 58}
+    reply_to: offsite-planning-msg-002
+    content: |
+      That structure makes sense. One ask: can we do a half-day on hiring sequencing? We have five open decisions about what order to hire in and I don't think we've ever blocked two hours to work through them properly without a competing agenda item.
+    reactions:
+      thumbs_up: [maren, darren]
+
+  - key: offsite-planning-msg-004
+    author: tessa
+    at: !relative_day {offset: -10, hour: 20, minute: 10}
+    content: |
+      I'm good on the window. One logistics concern: we have a Q2 number to hit and I don't want the two days to feel like a retreat from the work. Can we agree that the offsite produces a short list of decisions made, not just conversations had?
+    reactions:
+      thumbs_up: [darren, priya, maren]
+
+  - key: offsite-planning-msg-005
+    author: darren
+    at: !relative_day {offset: -8, hour: 7, minute: 20}
+    content: |
+      Venue options: I looked at three places within an hour of the office. Option A is a hotel with meeting rooms — professional but bland. Option B is a converted barn space in the hills — good food, great whiteboard walls, slightly annoying drive. Option C is a colleague's company retreat house — free, but only available Tuesday. Leaning toward B. Thoughts?
+
+  - key: offsite-planning-msg-006
+    author: maren
+    at: !relative_day {offset: -8, hour: 7, minute: 38}
+    reply_to: offsite-planning-msg-005
+    content: |
+      B. The whiteboard walls alone are worth the drive. We're going to need wall space for the OKR work.
+    reactions:
+      thumbs_up: [tessa, priya]
+
+  - key: offsite-planning-msg-007
+    author: priya
+    at: !relative_day {offset: -8, hour: 7, minute: 45}
+    reply_to: offsite-planning-msg-005
+    content: |
+      B. One practical note: let's confirm wifi before we book. We'll need to pull live data for the OKR conversation and I'd rather know the connectivity situation in advance.
+    reactions:
+      thumbs_up: [darren]
+
+  - key: offsite-planning-msg-008
+    author: darren
+    at: !relative_day {offset: -8, hour: 8, minute: 0}
+    reply_to: offsite-planning-msg-006
+    content: |
+      Barn it is. I'll confirm wifi and book by end of week.
+
+  - key: offsite-planning-msg-009
+    author: tessa
+    at: !relative_day {offset: -6, hour: 13, minute: 30}
+    content: |
+      Agenda draft thoughts: Day 1 morning — roadmap decision close (requires pre-read from Emma's research, Leo's PRD, Maren's memo). Day 1 afternoon — hiring sequencing (requires Priya's hiring plan and a decision framework). Day 2 morning — OKR review and finalization. Day 2 afternoon — operating rhythm design (how do we want our weeks to work going forward?).
+
+  - key: offsite-planning-msg-010
+    author: maren
+    at: !relative_day {offset: -6, hour: 13, minute: 48}
+    reply_to: offsite-planning-msg-009
+    content: |
+      I'd add 30 minutes at the start of day one for a check-in — not a work item, just a moment to say how we each are. We've been sprinting for three weeks since the raise closed and I think we need to be human with each other for a minute before we start solving problems.
+    reactions:
+      heart: [darren, tessa, priya]
+
+  - key: offsite-planning-msg-011
+    author: darren
+    at: !relative_day {offset: -6, hour: 14, minute: 0}
+    reply_to: offsite-planning-msg-010
+    content: |
+      Adding it. And I want the last 30 minutes of day two to be unstructured — just us, no agenda, celebrating what we've built. We haven't done that once since the raise.
+    reactions:
+      heart: [maren, tessa, priya]
+
+  - key: offsite-planning-msg-012
+    author: priya
+    at: !relative_day {offset: -4, hour: 9, minute: 5}
+    content: |
+      Pre-read list for the offsite — I'll put together the engineering hiring plan summary. Can each of you bring a one-pager on "the one decision I most want us to make at the offsite"? That'll help me prep the right data and give Darren a pre-read brief.
+
+  - key: offsite-planning-msg-013
+    author: tessa
+    at: !relative_day {offset: -4, hour: 9, minute: 22}
+    reply_to: offsite-planning-msg-012
+    content: |
+      My one decision: Q2 GTM hiring order — specifically whether we do the second AE or the SDR first. I can bring comp analysis and pipeline data to support either direction.
+
+  - key: offsite-planning-msg-014
+    author: maren
+    at: !relative_day {offset: -4, hour: 9, minute: 30}
+    reply_to: offsite-planning-msg-012
+    content: |
+      Mine: the roadmap sequencing decision, if it's not closed before we get there. I'll write the one-pager this week to keep the momentum going.
+    reactions:
+      thumbs_up: [darren]
+
+  - key: offsite-planning-msg-015
+    author: darren
+    at: !relative_day {offset: -1, hour: 20, minute: 10}
+    content: |
+      Venue confirmed — barn space is booked. Wifi confirmed (100Mbps, they host corporate offsites regularly). Five weeks from today. I'm looking forward to this more than I've looked forward to anything in about six months.
+    reactions:
+      heart: [maren, tessa, priya]
+      rocket: [tessa]

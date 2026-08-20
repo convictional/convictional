@@ -1,0 +1,174 @@
+interactions:
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "<goal>\nGrow
+      annual recurring revenue by 20% through new customer acquisition and upselling.\n</goal>\n\n<content>\n<type>meeting</type>\n<title>Q1
+      Sales Pipeline Review</title>\n<body>Discussed strategies to close three enterprise
+      deals worth $500K total.</body>\n</content>\n\n<similarity_score>0.707</similarity_score>\n\nIs
+      this content aligned with the goal?"}], "model": "claude-haiku-4-5", "system":
+      "You are an expert at analyzing whether business content aligns with organizational
+      goals.\n\nYou will be given a piece of content from a business collaboration
+      tool (emails, meetings, tasks, discussions, etc.) and an organizational goal.\nYour
+      job is to determine if the content is related to the goal.\n\nThe goal information
+      includes its title, description, ownership, status, progress, subgoals, and
+      recent updates. Use all of this context to understand what the goal is about
+      and what progress looks like \u2014 not just the title.\n\n## Signal Strength\n\nFirst,
+      determine if the content has any meaningful relationship to the goal. Most content
+      will be unrelated \u2014 set is_aligned to false when:\n- The content discusses
+      entirely different topics, projects, or concerns\n- Any apparent connection
+      is superficial, coincidental, or based only on shared terminology\n- The content
+      is in the same general domain but doesn''t relate to a specific aspect of this
+      goal\n- You would not expect someone tracking this goal to take any action based
+      on this content\n\nIf the content IS meaningfully related, classify the alignment
+      as one of:\n- **strong**: The content directly mentions, discusses, or advances
+      this goal. The connection is explicit and unmistakable.\n- **medium**: The content
+      references specific activities, decisions, or outcomes that clearly relate to
+      this goal, even if the goal isn''t mentioned by name.\n- **weak**: The content
+      discusses a specific initiative, project, or action that has a concrete \u2014
+      but not immediately obvious \u2014 connection to this goal. Mere topical overlap
+      or shared terminology is NOT enough for a weak signal.\n\n## Similarity Score\n\nYou
+      will be given a cosine similarity score between the content and goal embeddings
+      (0.0 to 1.0). Use it as a prior:\n- **0.7+**: High semantic similarity \u2014
+      content likely discusses related topics\n- **0.5-0.7**: Moderate similarity
+      \u2014 worth evaluating but don''t assume alignment\n- **0.3-0.5**: Low similarity
+      \u2014 alignment is unlikely unless there''s a clear, specific connection\n\nThe
+      similarity score measures topical overlap, not alignment. Two documents about
+      \"sales\" may be similar but unrelated to a specific sales goal. Use the score
+      to calibrate your confidence, not as a direct measure of alignment.\n\n## Alignment
+      Score\n\nRate how aligned the content is with the goal from 0.0 to 1.0:\n- 0.9-1.0:
+      Certain \u2014 the alignment is unambiguous\n- 0.7-0.8: Confident \u2014 strong
+      evidence supports the judgment\n- 0.5-0.6: Moderate \u2014 the relationship
+      is plausible but requires interpretation\n- 0.3-0.4: Low \u2014 the connection
+      is speculative\n\n## Description\n\nIf aligned, provide a concise 1-2 sentence
+      explanation of how the content relates to the goal. Focus on the specific connection,
+      not a general summary of the content.\n\nYou may be given examples of content
+      that users have confirmed as aligned or not aligned with the goal. Use these
+      to calibrate your judgment \u2014 they reflect what this organization considers
+      relevant.\n\nBe objective and calibrated. Not all content aligns to a goal.
+      It is perfectly normal and expected for content to be unrelated.\nIf you are
+      unsure, it''s better to rate the content as unaligned than to overstate the
+      connection.", "temperature": 0.0, "tool_choice": {"type": "tool", "name": "AlignmentJudgment"},
+      "tools": [{"name": "AlignmentJudgment", "description": "Correctly extracted
+      `AlignmentJudgment` with all the required parameters with correct types", "input_schema":
+      {"$defs": {"SignalStrength": {"enum": ["strong", "medium", "weak"], "title":
+      "SignalStrength", "type": "string"}}, "properties": {"is_aligned": {"description":
+      "Whether the content is meaningfully aligned with the goal", "title": "Is Aligned",
+      "type": "boolean"}, "signal": {"anyOf": [{"$ref": "#/$defs/SignalStrength"},
+      {"type": "null"}], "default": null, "description": "The strength of the alignment
+      signal: strong, medium, or weak. Only set if is_aligned is true."}, "alignment_score":
+      {"description": "How aligned is the content with the goal from 0.0 to 1.0",
+      "maximum": 1.0, "minimum": 0.0, "title": "Alignment Score", "type": "number"},
+      "description": {"anyOf": [{"type": "string"}, {"type": "null"}], "default":
+      null, "description": "A concise 1-2 sentence explanation of how the content
+      relates to the goal. Only set if is_aligned is true.", "title": "Description"}},
+      "required": ["is_aligned", "alignment_score"], "title": "AlignmentJudgment",
+      "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4868'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RS0YoTMRT9lXDRt3SZGWwL8ybii7uC1EUrIuE2uZ3JNpNMc5OWWgb8CL/QL5HU
+        LbqKTyHnnOTcc5IzDMGQgxa0w2xo1qPd5dmL2XzWVM28rqoaJFgDLQzcqaquX5mHg1mv3n76+vHh
+        w2KxX2G40yAhnUYqKmLGjkBCDK4AyGw5oU8gQQefyCdoP5+v+hSCU5np6lL2WVX17brZrMy7+Xpx
+        v96+5vdZj2u+Awkeh3LupbOdH8inN9l0ZS0X+DEnaM9gWWHhyUCbYiYJl22RKdYhErTVzXIugW3n
+        saQfyNg8gARDrKMdkw0eWrjvSQxEyfpOGMs6MxML7QIXhHyiOEbLJAyhY3EMMfXi2byqbqU49lb3
+        wthIOrmTKNmj3eRELFIQno5CZ05hoChQ77NlW0x/fPuOYkcnMZDu0VsexDZE0cVwLJbofUYnIukc
+        YwEiHchnEpuTaKrnNzBJ0OgcxdLDY8e/ZoBp+iKBUxhVJORLvj/avxBM+0xeE7Q+O/cIGkpoHV+x
+        fHnf0nKpW6WwI8/Q1stlU7x1T0pHwhJGPZVUVz4Smv9x17PFgcaeBoro1Hz4V/+brfu/2UlCyOnJ
+        fE0tgSkerCaVbCkIyr80GM3l72wpluiqowAt+JAUHtA63DiCafoJAAD//wMA3Zi/ISkDAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:34:44Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:34:45Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:34:44Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:34:44Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26736028b6ce3e3-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:34:45 GMT
+      request-id:
+      - req_011CdjvdWy54ov2fQoWEi9Pv
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-10e897c26ace4ab6104acd2e3a919fd5-542588f2b5866d1a-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

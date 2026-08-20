@@ -1,0 +1,165 @@
+key: gtm-chat
+name: "GTM"
+group: gtm
+members: [tessa, mateo, darren]
+messages:
+  - key: gtm-chat-msg-001
+    author: tessa
+    at: !relative_day {offset: -17, hour: 9, minute: 15}
+    content: |
+      Post-raise GTM frame. Q2 new-ARR target is set; we are not missing it. Keating is the lead story. Three other enterprise-ish ops are in motion. Mateo and I sync daily — Darren, we'll pull you in surgically.
+    reactions:
+      thumbs_up: [mateo, darren]
+
+  - key: gtm-chat-msg-002
+    author: mateo
+    at: !relative_day {offset: -17, hour: 9, minute: 28}
+    reply_to: gtm-chat-msg-001
+    content: |
+      Keating: the buying committee is officially Amira (champion), Doug (CISO), Peter (partner / economic). I'm mapping each person to a proof point. Doc going up tonight.
+
+  - key: gtm-chat-msg-003
+    author: darren
+    at: !relative_day {offset: -17, hour: 9, minute: 42}
+    reply_to: gtm-chat-msg-001
+    content: |
+      Sounds right. Book me for anything CEO-level. I'd rather you over-use me on Keating than protect my calendar.
+    reactions:
+      heart: [tessa, mateo]
+
+  - key: gtm-chat-msg-004
+    author: mateo
+    at: !relative_day {offset: -13, hour: 11, minute: 50}
+    content: |
+      Exec demo prep going well. Peter loved the demo on the practice run. He kept asking about the reviewer UI — the "see what changed and why" moment. That's our magic moment for this pitch.
+
+  - key: gtm-chat-msg-005
+    author: tessa
+    at: !relative_day {offset: -13, hour: 12, minute: 3}
+    reply_to: gtm-chat-msg-004
+    content: |
+      Make that our cold open for every AmLaw demo going forward.
+
+  - key: gtm-chat-msg-006
+    author: darren
+    at: !relative_day {offset: -13, hour: 12, minute: 15}
+    reply_to: gtm-chat-msg-004
+    content: |
+      Noting this for the brownbag — the more we know what is landing with enterprise buyers, the better the roadmap conversation goes.
+
+  - key: gtm-chat-msg-007
+    author: mateo
+    at: !relative_day {offset: -10, hour: 17, minute: 40}
+    content: |
+      Exec demo is done. Peter said "I have not seen an enterprise demo from a Series A company this polished in three years." Tessa is being humble. This was Tessa.
+    reactions:
+      rocket: [tessa, darren]
+      heart: [tessa]
+
+  - key: gtm-chat-msg-008
+    author: tessa
+    at: !relative_day {offset: -10, hour: 17, minute: 52}
+    reply_to: gtm-chat-msg-007
+    content: |
+      That was Mateo and Maren. Maren's legal answer on the DPA question was the moment.
+
+  - key: gtm-chat-msg-009
+    author: mateo
+    at: !relative_day {offset: -8, hour: 10, minute: 20}
+    content: |
+      Amira has three open questions on the DPA draft. Sharing in the #thread-maren-amira-legal thread and looping Maren. Non-blocking for the proposal but she'd love responses before Friday.
+    reactions:
+      thumbs_up: [tessa]
+      eyes: [darren]
+
+  - key: gtm-chat-msg-010
+    author: mateo
+    at: !relative_day {offset: -8, hour: 10, minute: 22}
+    content: |
+      Parallel update — Soma Tolbert at Lake Forest might be a Q3 close. Their ops lead slipped a timeline hint on our last call. I'll add them to the pipeline review.
+
+  - key: gtm-chat-msg-011
+    author: tessa
+    at: !relative_day {offset: -8, hour: 10, minute: 28}
+    reply_to: gtm-chat-msg-010
+    content: |
+      Rocket. Keep it warm.
+
+  - key: gtm-chat-msg-012
+    author: darren
+    at: !relative_day {offset: -6, hour: 8, minute: 45}
+    content: |
+      Pricing question — if Amira asks for a pilot credit, what's your instinct? I want us aligned before Mateo is in the room.
+
+  - key: gtm-chat-msg-013
+    author: tessa
+    at: !relative_day {offset: -6, hour: 8, minute: 55}
+    reply_to: gtm-chat-msg-012
+    content: |
+      I'd offer a scoped pilot credit — 20% off the first three months only, applied to the first invoice once they graduate. Not a discount on the pilot itself. Protects the ACV story.
+
+  - key: gtm-chat-msg-014
+    author: darren
+    at: !relative_day {offset: -6, hour: 9, minute: 2}
+    reply_to: gtm-chat-msg-013
+    content: |
+      Good framing. Approved. Don't lead with it.
+
+  - key: gtm-chat-msg-015
+    author: mateo
+    at: !relative_day {offset: -6, hour: 9, minute: 10}
+    reply_to: gtm-chat-msg-014
+    content: |
+      Understood. Only if Amira asks first.
+    reactions:
+      thumbs_up: [tessa, darren]
+
+  - key: gtm-chat-msg-016
+    author: tessa
+    at: !relative_day {offset: -5, hour: 14, minute: 30}
+    content: |
+      Switching gears for a minute — I'm opening the 2nd AE req this week. Top of mind on the profile: someone who has sold into in-house legal teams, not generic SaaS. If anyone has names, send them my way.
+
+  - key: gtm-chat-msg-017
+    author: mateo
+    at: !relative_day {offset: -5, hour: 14, minute: 45}
+    reply_to: gtm-chat-msg-016
+    content: |
+      I have two. Will send.
+
+  - key: gtm-chat-msg-018
+    author: darren
+    at: !relative_day {offset: -5, hour: 14, minute: 50}
+    reply_to: gtm-chat-msg-016
+    content: |
+      Also thinking about a first SDR. Can we sequence 2nd AE first, then SDR two months later?
+
+  - key: gtm-chat-msg-019
+    author: tessa
+    at: !relative_day {offset: -5, hour: 14, minute: 58}
+    reply_to: gtm-chat-msg-018
+    content: |
+      Yes. AE unlocks capacity, SDR unlocks volume. Order matters.
+    reactions:
+      eyes: [darren]
+
+  - key: gtm-chat-msg-020
+    author: mateo
+    at: !relative_day {offset: -3, hour: 11, minute: 5}
+    content: |
+      Amira came back with the pricing revision ask — stepped rate after the pilot, unlimited playbooks during. Tessa is pulling numbers tonight for exec approval.
+
+  - key: gtm-chat-msg-021
+    author: tessa
+    at: !relative_day {offset: -2, hour: 10, minute: 15}
+    content: |
+      Pricing revision approved by Darren. Mateo, we're sending the revised proposal Friday. Want to walk it live with Amira?
+
+  - key: gtm-chat-msg-022
+    author: mateo
+    at: !relative_day {offset: -2, hour: 10, minute: 22}
+    reply_to: gtm-chat-msg-021
+    content: |
+      Yes — already on her calendar for 2pm ET Friday. I'll bring the one-pager and the updated pricing table.
+    reactions:
+      rocket: [tessa, darren]

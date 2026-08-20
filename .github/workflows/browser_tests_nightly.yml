@@ -1,0 +1,152 @@
+name: Nightly Browser Tests
+on:
+  schedule:
+    # 08:00 UTC daily (~04:00 ET / 01:00 PT)
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+  pull_request:
+    types: [labeled, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  browser_tests:
+    name: Browser tests
+    # Run on schedule/manual dispatch; on PRs, only when the `browser-tests` label is applied.
+    if: >-
+      github.event_name != 'pull_request' ||
+      contains(github.event.pull_request.labels.*.name, 'browser-tests')
+    timeout-minutes: 50
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: app/web
+    services:
+      postgres:
+        image: pgvector/pgvector:pg18
+        env:
+          POSTGRES_DB: convictional_test
+          POSTGRES_USER: convictional
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      ENV: test
+      # Keep the Playwright timeout well under PYTEST_TIMEOUT. When the two match,
+      # pytest-timeout kills the test before any wait can report itself, and the only
+      # output is an asyncio selector traceback that names neither the locator nor the
+      # assertion. 60s is far more than any single wait needs on a loaded runner.
+      BROWSER_TEST_DEFAULT_TIMEOUT: 60000 # 1 minute
+      PYTEST_TIMEOUT: 300 # 5 minutes
+      POSTGRES_URL: asyncpg://convictional:password@localhost:5432/convictional_test
+      ADMIN_POSTGRES_USER: convictional
+      ADMIN_POSTGRES_PASSWORD: password
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@acb598e5ddbc6f68a970c5da0688d2f3a9f04d05 # v1.6.0
+        with:
+          packages: libmagic-dev
+          version: 1.0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          enable-cache: true
+
+      - name: Set up Python environment
+        run: uv python install 3.13
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: "app/web/.nvmrc"
+          cache: "npm"
+          cache-dependency-path: app/web/package-lock.json
+
+      - name: Install dependencies
+        run: make install ARGS="--chromium"
+
+      - name: Set up database
+        run: make db_create
+
+      - name: Run browser tests
+        run: make test_browser ARGS="tests/browser --junitxml=test-results/browser.xml"
+
+      - name: Upload browser test results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: test-results-browser
+          path: app/web/test-results/
+          retention-days: 180
+
+      - name: Upload screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: failed-screenshots
+          path: app/web/tmp/screenshots/
+
+  issue_on_failure:
+    name: Create issue on failure
+    needs: browser_tests
+    # PR failures already surface as a failed check; only file an issue for
+    # scheduled / manually-dispatched runs.
+    if: failure() && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Open failure issue
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const title = `Nightly browser tests failed (${new Date().toISOString().slice(0, 10)})`;
+            const body = [
+              `Nightly browser tests failed.`,
+              ``,
+              `**Run:** ${runUrl}`,
+              `**Commit:** ${context.sha}`,
+              ``,
+              `Screenshots and JUnit results are attached to the run as artifacts.`,
+            ].join('\n');
+
+            const { data: existingIssues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'nightly-failure',
+            });
+            if (existingIssues.length > 0) {
+              // Update the existing issue with a new comment instead of opening a new one
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existingIssues[0].number,
+                body: `Nightly browser tests failed again on ${new Date().toISOString().slice(0, 10)}.\n\n**Run:** ${runUrl}\n**Commit:** ${context.sha}`,
+              });
+              return;
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['browser-tests', 'nightly-failure'],
+            });

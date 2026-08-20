@@ -1,0 +1,319 @@
+key: exec-chat
+name: "Exec"
+group: exec
+members: [darren, maren, priya, leo, tessa]
+messages:
+  - key: exec-chat-msg-001
+    author: darren
+    at: !relative_day {offset: -20, hour: 8, minute: 15}
+    content: |
+      First exec sync post-close is Thursday. I want to keep it short. My ask: come with (1) the one thing you're worried about and (2) the one thing you'd spend against first if I gave you a blank check. That's it.
+    reactions:
+      thumbs_up: [maren, priya, tessa]
+      eyes: [leo]
+
+  - key: exec-chat-msg-002
+    author: maren
+    at: !relative_day {offset: -20, hour: 8, minute: 27}
+    reply_to: exec-chat-msg-001
+    content: |
+      Good frame. Mine is going to sound like a broken record — coverage.
+
+  - key: exec-chat-msg-003
+    author: priya
+    at: !relative_day {offset: -20, hour: 8, minute: 31}
+    content: |
+      Mine is SRE. One page is ready. Will drop it in the chat before Thursday.
+
+  - key: exec-chat-msg-004
+    author: tessa
+    at: !relative_day {offset: -20, hour: 8, minute: 42}
+    content: |
+      Mine is a second AE by end of Q2. Keating is not the only fire. I'll bring numbers.
+
+  - key: exec-chat-msg-005
+    author: leo
+    at: !relative_day {offset: -20, hour: 9, minute: 10}
+    content: |
+      Mine is going to be controversial — I think we should ship the co-pilot in Q3. PRD coming this week.
+    reactions:
+      eyes: [maren, priya, darren]
+
+  - key: exec-chat-msg-006
+    author: darren
+    at: !relative_day {offset: -17, hour: 16, minute: 5}
+    content: |
+      Thursday sync — short, useful. Open items: (1) hiring order, (2) Keating timeline, (3) roadmap tension, (4) all-hands date. Maren and I will take hiring offline tonight.
+    reactions:
+      thumbs_up: [maren, priya, tessa, leo]
+
+  - key: exec-chat-msg-007
+    author: maren
+    at: !relative_day {offset: -17, hour: 20, minute: 40}
+    reply_to: exec-chat-msg-006
+    content: |
+      Parking here so it's logged: Darren and I just agreed CoS is urgent. Scorecard by the weekend. Leona at Halverson Partners on Monday.
+
+  - key: exec-chat-msg-008
+    author: tessa
+    at: !relative_day {offset: -17, hour: 20, minute: 51}
+    reply_to: exec-chat-msg-007
+    content: |
+      Finally. Happy to panel. Also happy to be a bad cop in references.
+    reactions:
+      tears_of_joy: [darren, maren, priya]
+
+  - key: exec-chat-msg-009
+    author: leo
+    at: !relative_day {offset: -14, hour: 9, minute: 14}
+    content: |
+      Redline Co-pilot PRD v1 is up. Posting in #posts now. Honest asks: Jordan on eval timeline, Maren on the playbook-layering question, Priya on retrieval. I know this will be a conversation.
+    reactions:
+      eyes: [maren, priya, darren, tessa]
+
+  - key: exec-chat-msg-010
+    author: maren
+    at: !relative_day {offset: -14, hour: 9, minute: 22}
+    reply_to: exec-chat-msg-009
+    content: |
+      Read it twice. I'm going to write a counter-memo this weekend. Not to kill it — to reframe the order of operations. You will not be surprised by anything in it.
+
+  - key: exec-chat-msg-011
+    author: leo
+    at: !relative_day {offset: -14, hour: 9, minute: 24}
+    reply_to: exec-chat-msg-010
+    content: |
+      Respect. Looking forward to reading it.
+    reactions:
+      heart: [maren, darren]
+
+  - key: exec-chat-msg-012
+    author: priya
+    at: !relative_day {offset: -14, hour: 10, minute: 1}
+    reply_to: exec-chat-msg-009
+    content: |
+      Retrieval question in the PRD comments. Short version: I want us to be honest about what the eval harness can and cannot say by day 4. Jordan and I will write that up.
+
+  - key: exec-chat-msg-013
+    author: darren
+    at: !relative_day {offset: -14, hour: 10, minute: 12}
+    content: |
+      Good. This is exactly the disagreement I want us to have in public and decide well. Let's not let it get personal. And let's not let it drift — I want this locked in 2 weeks.
+    reactions:
+      thumbs_up: [maren, priya, leo, tessa]
+
+  - key: exec-chat-msg-014
+    author: tessa
+    at: !relative_day {offset: -12, hour: 11, minute: 30}
+    content: |
+      Keating update — Amira pushed the questionnaire to us Monday night. 147 questions. They've implied SOC 2 Type I is a precondition and Type II is a commitment. No surprises but it's real now.
+
+  - key: exec-chat-msg-015
+    author: priya
+    at: !relative_day {offset: -12, hour: 11, minute: 38}
+    reply_to: exec-chat-msg-014
+    content: |
+      Got it. Arjun and I will split the security section tonight. Brandt at Halden & Rossi is already looped on Type I scope.
+
+  - key: exec-chat-msg-016
+    author: darren
+    at: !relative_day {offset: -12, hour: 11, minute: 44}
+    reply_to: exec-chat-msg-014
+    content: |
+      What do you need from me on the CISO side?
+
+  - key: exec-chat-msg-017
+    author: tessa
+    at: !relative_day {offset: -12, hour: 11, minute: 47}
+    reply_to: exec-chat-msg-016
+    content: |
+      A 20-minute "two CISOs in a room" style call if Doug asks. He's softened but he wants to hear conviction, not a script.
+    reactions:
+      eyes: [darren, priya]
+
+  - key: exec-chat-msg-018
+    author: maren
+    at: !relative_day {offset: -10, hour: 18, minute: 20}
+    content: |
+      CoS on-sites this week. Naomi Tuesday, Priyanka Thursday, Hamza next Monday. Panel-letter coming tonight. Tessa, can you take the "operate under ambiguity" panel for all three?
+
+  - key: exec-chat-msg-019
+    author: tessa
+    at: !relative_day {offset: -10, hour: 18, minute: 27}
+    reply_to: exec-chat-msg-018
+    content: |
+      Yes. Happy to.
+
+  - key: exec-chat-msg-020
+    author: priya
+    at: !relative_day {offset: -10, hour: 18, minute: 33}
+    reply_to: exec-chat-msg-018
+    content: |
+      I'll take the "translate ambiguity into a plan" panel. I want to see how they think under a whiteboard.
+
+  - key: exec-chat-msg-021
+    author: darren
+    at: !relative_day {offset: -8, hour: 19, minute: 50}
+    content: |
+      Debrief on Naomi — strong operator energy, slightly less technical than the role needs. Impressive but I kept wanting her to ask one more "why."
+    reactions:
+      eyes: [maren, tessa, priya]
+
+  - key: exec-chat-msg-022
+    author: maren
+    at: !relative_day {offset: -8, hour: 19, minute: 58}
+    reply_to: exec-chat-msg-021
+    content: |
+      Same read. She'd thrive at a Series B with more defined problems.
+
+  - key: exec-chat-msg-023
+    author: priya
+    at: !relative_day {offset: -8, hour: 20, minute: 3}
+    reply_to: exec-chat-msg-021
+    content: |
+      Agreed. Whiteboard was fine but not specific about our stage.
+
+  - key: exec-chat-msg-024
+    author: darren
+    at: !relative_day {offset: -6, hour: 19, minute: 35}
+    content: |
+      Priyanka debrief — this is a different gear. She has done this job at a Series B AI company that looked like us six months later. Asked me three questions I haven't been asked by a candidate in two years.
+    reactions:
+      rocket: [maren, tessa, priya]
+
+  - key: exec-chat-msg-025
+    author: tessa
+    at: !relative_day {offset: -6, hour: 19, minute: 40}
+    reply_to: exec-chat-msg-024
+    content: |
+      My panel felt the same. She's the one unless references surface a surprise.
+
+  - key: exec-chat-msg-026
+    author: maren
+    at: !relative_day {offset: -6, hour: 19, minute: 47}
+    reply_to: exec-chat-msg-024
+    content: |
+      My debrief doc is in #documents. Three names for backchannel references. Final-round call on Tuesday.
+
+  - key: exec-chat-msg-027
+    author: leo
+    at: !relative_day {offset: -5, hour: 10, minute: 12}
+    content: |
+      Quick flag — Coverage-First walk-through meeting on Friday went long but was good. I'm not convinced on the sequencing but I am convinced the question is the right one. Emma's research is the tiebreaker for me.
+
+  - key: exec-chat-msg-028
+    author: maren
+    at: !relative_day {offset: -5, hour: 10, minute: 18}
+    reply_to: exec-chat-msg-027
+    content: |
+      Appreciate the honesty. I will read whatever Emma finds with an open hand. If the research says customers want the co-pilot more than coverage, I will stand down on sequencing.
+    reactions:
+      heart: [leo, darren]
+
+  - key: exec-chat-msg-029
+    author: darren
+    at: !relative_day {offset: -5, hour: 10, minute: 24}
+    reply_to: exec-chat-msg-027
+    content: |
+      This is what I want every strategic disagreement to look like. Thank you both.
+    reactions:
+      heart: [maren, leo, tessa, priya]
+
+  - key: exec-chat-msg-030
+    author: tessa
+    at: !relative_day {offset: -4, hour: 13, minute: 10}
+    content: |
+      Keating pricing — Amira asked for a revision. Specifically, she wants the pilot tier to include unlimited playbooks during the pilot window (90 days) and a stepped rate once they graduate. I want to give her that.
+
+  - key: exec-chat-msg-031
+    author: darren
+    at: !relative_day {offset: -4, hour: 13, minute: 18}
+    reply_to: exec-chat-msg-030
+    content: |
+      Walk me through the margin picture at the stepped rate. If we can't make it work on gross margin I won't sign it.
+
+  - key: exec-chat-msg-032
+    author: tessa
+    at: !relative_day {offset: -4, hour: 13, minute: 28}
+    reply_to: exec-chat-msg-031
+    content: |
+      I'll send numbers tonight. TL;DR: stepped rate year 1 lands us at 62% gross, year 2 at 71% once the volume commit kicks in. Within our bar.
+
+  - key: exec-chat-msg-033
+    author: darren
+    at: !relative_day {offset: -4, hour: 13, minute: 33}
+    reply_to: exec-chat-msg-032
+    content: |
+      Green-lit in principle pending the numbers. Get the revision out Friday.
+    reactions:
+      thumbs_up: [tessa, maren]
+      rocket: [tessa]
+
+  - key: exec-chat-msg-034
+    author: priya
+    at: !relative_day {offset: -3, hour: 16, minute: 5}
+    content: |
+      Residency update — Arjun's region-scoped storage spike is working. Brandt is comfortable with the design from a SOC 2 lens. We went from at_risk to on_track on that subgoal. I'll write a short update later.
+    reactions:
+      rocket: [darren, maren, tessa]
+      heart: [tessa]
+
+  - key: exec-chat-msg-035
+    author: darren
+    at: !relative_day {offset: -2, hour: 20, minute: 10}
+    content: |
+      OKRs v0 draft is in #documents. Five objectives. Please read before the Thursday sync — we'll finalize the shape, not the wording. Names against each KR are owner, not author.
+    reactions:
+      thumbs_up: [maren, priya, leo, tessa]
+      eyes: [leo]
+
+  - key: exec-chat-msg-036
+    author: maren
+    at: !relative_day {offset: -2, hour: 20, minute: 22}
+    reply_to: exec-chat-msg-035
+    content: |
+      Read. One note: the Rhythm OKR has four KRs, the others have three. I'd tighten to three. Less is more.
+
+  - key: exec-chat-msg-037
+    author: leo
+    at: !relative_day {offset: -1, hour: 9, minute: 5}
+    content: |
+      One more reference data point for the roadmap conversation — my competitive scan is up. Three adjacent products frame the redline problem as a coverage problem first and a co-pilot problem second. I still think we should ship the co-pilot but the sequencing argument is stronger than I gave Maren credit for.
+    reactions:
+      heart: [maren]
+      eyes: [darren, priya]
+
+  - key: exec-chat-msg-038
+    author: maren
+    at: !relative_day {offset: -1, hour: 9, minute: 12}
+    reply_to: exec-chat-msg-037
+    content: |
+      Means a lot, Leo. I want us both right — coverage this quarter, co-pilot in a v1-behind-a-flag world for a handful of design partners. That's my draft proposal for the decision post.
+
+  - key: exec-chat-msg-039
+    author: maren
+    at: !relative_day {offset: -1, hour: 9, minute: 14}
+    content: |
+      Also parking — Alderman's DPA ask from Drew is well inside our current coverage gap. Exactly the point of the memo.
+
+  - key: exec-chat-msg-040
+    author: maren
+    at: !relative_day {offset: -1, hour: 9, minute: 18}
+    content: |
+      Last one from me — Rhea's gap analysis is ready. DPA coverage on the top 5 segments is where we're thinnest. I'll attach numbers to the decision post when we close it.
+
+  - key: exec-chat-msg-041
+    author: darren
+    at: !relative_day {offset: 0, hour: 6, minute: 50}
+    content: |
+      Early today — CoS final-round with Priyanka at 10am. Thursday all-hands prepped. Keating pricing going out Friday. If anything is on fire before 9am, ping me directly.
+    reactions:
+      heart: [maren]
+      thumbs_up: [priya, tessa]
+
+  - key: exec-chat-msg-042
+    author: priya
+    at: !relative_day {offset: 0, hour: 7, minute: 22}
+    reply_to: exec-chat-msg-041
+    content: |
+      Nothing on fire. Arjun and I are in the SOC 2 prep room all morning. Ping if you need us for the CISO call.

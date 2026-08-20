@@ -1,0 +1,1104 @@
+interactions:
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Given the
+      following prompt from the user, generate a list of queries to research the topic.\n<topic>Information
+      about quantum flux capacitors in our system</topic>\n\nReturn a maximum of 1
+      queries, but feel free to return less if the original prompt is clear.\n\n##
+      Source selection\n\n### Internal source query instructions:\n\n- You must return
+      source: internal to indicate these queries are for searching internal organization
+      content.\n- You''ll be searching organization activity and documents to help
+      the user explore and answer this question.\n- Query terms should be short (less
+      than 5 words, ideally 3 or less) for a basic embedding and TD/IDF search.\n-
+      If the text seems like a good search on its own, just return the text as entered.\n-
+      Anything related to time (e.g. \"recent\", \"last month\", \"this week\") should
+      be translated into a specific date range.\n- If you see a specific date, use
+      that date range. If you see a general date (e.g. \"recently\", \"last month\"),
+      use the last 30 days, respecting the current date and time.\n- If you recognize
+      named entities, surround them with double quotes (e.g. \"Hulk Hogan\", \"Apple\").
+      Consider if an capitalized word is a named entity.\n\n## Date ranges\n\nIn your
+      response, you may include a starts_at and ends_at date range for each query
+      if the topic or directions indicate a specific time period.\n\nIMPORTANT: Today''s
+      date is 2026-08-05. The current year is 2026. Use this as your reference point
+      for all date calculations.\n\n- Reference Point: Calculate all relative dates
+      based on today''s date: 2026-08-05.\n- Format: Return timestamps in ISO 8601
+      format: YYYY-MM-DDTHH:MM:SS.\n- Boundaries: Start of day is 00:00:00 and End
+      of day is 23:59:59.\n- Default Year: If a month or quarter is specified without
+      a year, use 2026.\n- Absence: If no date range is specified, do not include
+      starts_at or ends_at fields.\n\nRelative Date Logic\n\n- \"today\" \u2192 starts_at:
+      Current Date T00:00:00, ends_at: Current Date T23:59:59\n- \"yesterday\" \u2192
+      starts_at: Previous Date T00:00:00, ends_at: Previous Date T23:59:59\n- \"this
+      week\" \u2192 starts_at: Monday of current week, ends_at: Sunday of current
+      week\n- \"last week\" \u2192 starts_at: Monday of previous week, ends_at: Sunday
+      of previous week\n- \"this month\" \u2192 starts_at: Day 1 of current month,
+      ends_at: Last day of current month\n- \"last month\" \u2192 starts_at: Day 1
+      of previous month, ends_at: Last day of previous month\n- \"this year\" \u2192
+      starts_at: Jan 1 of current year, ends_at: Dec 31 of current year\n- \"recently\",
+      \"lately\", or vague time \u2192 starts_at: (Current Date - 30 days), ends_at:
+      Current Date\n\nBusiness Date Ranges\n- \"Q1\" / \"first quarter\" \u2192 Jan
+      1 to Mar 31\n- \"Q2\" / \"second quarter\" \u2192 Apr 1 to June 30\n- \"Q3\"
+      / \"third quarter\" \u2192 July 1 to Sept 30\n- \"Q4\" / \"fourth quarter\"
+      \u2192 Oct 1 to Dec 31\n- \"H1\" / \"first half\" \u2192 Jan 1 to June 30\n-
+      \"H2\" / \"second half\" \u2192 July 1 to Dec 31\n\nNote: Apply the current
+      year (2026) unless a specific year is mentioned.\n\nExamples (using today''s
+      date 2026-08-05):\nQuery: \"Q3 sales targets\"\nterms: \"sales targets\", starts_at:
+      \"2026-07-01T00:00:00\", ends_at: \"2026-09-30T23:59:59\"\n\nQuery: \"last month''s
+      revenue\"\nterms: \"revenue\", starts_at: \"2026-07-01T00:00:00\", ends_at:
+      \"2026-07-31T23:59:59\"\n\nQuery: \"Q4 2023 results\"\nterms: \"results\", starts_at:
+      \"2023-10-01T00:00:00\", ends_at: \"2023-12-31T23:59:59\"\n\n## Existing Queries
+      and Learnings\n\nThe following existing queries and learnings are provided to
+      help you avoid duplication and improve the specificity of your generated queries."}],
+      "model": "claude-sonnet-4-6", "system": "The current datetime is 2026-08-05
+      16:47:29.986015+00:00\n\nThe user you are helping is foo-1855@example.com whose
+      email address is foo-1855@example.com.\n\nYou are an expert researcher. Today
+      is 2026-08-05 16:47:29.986076+00:00. Follow these instructions when responding:\n-
+      You may be asked to research subjects that is after your knowledge cutoff, assume
+      the user is right when presented with news.\n- Be highly organized.\n- Suggest
+      solutions that I didn''t think about.\n- Be proactive and anticipate my needs.\n-
+      Treat me as an expert in all subject matter.\n- Mistakes erode my trust, so
+      be accurate and thorough.\n- Value good arguments over authorities, the source
+      is irrelevant.\n- Consider new technologies and contrarian ideas, not just the
+      conventional wisdom.\n- You may use high levels of speculation or prediction,
+      just flag it for me.", "temperature": 0.0, "tool_choice": {"type": "tool", "name":
+      "IterableGeneratedResearchQuery"}, "tools": [{"name": "IterableGeneratedResearchQuery",
+      "description": "Correct segmentation of `GeneratedResearchQuery` tasks", "input_schema":
+      {"$defs": {"GeneratedResearchQuery": {"properties": {"title": {"description":
+      "A user-facing title for the query, it''ll be prefaced with ''Reading about''
+      in the UI", "title": "Title", "type": "string"}, "terms": {"description": "The
+      search terms", "title": "Terms", "type": "string"}, "starts_at": {"anyOf": [{"format":
+      "date-time", "type": "string"}, {"type": "null"}], "default": null, "description":
+      "The earliest datetime to allow results", "title": "Starts At"}, "ends_at":
+      {"anyOf": [{"format": "date-time", "type": "string"}, {"type": "null"}], "default":
+      null, "description": "The latest datetime to allow results", "title": "Ends
+      At"}, "goals": {"description": "First talk about the goal of the research that
+      this query is meant to accomplish, then go deeper into how to advance the research
+      once the results are found, mention additional research directions. Be as specific
+      as possible, especially for additional research directions.", "title": "Goals",
+      "type": "string"}, "source": {"$ref": "#/$defs/ResearchSource", "default": "internal",
+      "description": "The source to use for this research query"}}, "required": ["title",
+      "terms", "goals"], "title": "GeneratedResearchQuery", "type": "object"}, "ResearchSource":
+      {"enum": ["internal", "slack"], "title": "ResearchSource", "type": "string"}},
+      "description": "Correct segmentation of `GeneratedResearchQuery` tasks", "properties":
+      {"tasks": {"description": "Correctly segmented list of `GeneratedResearchQuery`
+      tasks", "items": {"$ref": "#/$defs/GeneratedResearchQuery"}, "title": "Tasks",
+      "type": "array"}}, "title": "IterableGeneratedResearchQuery", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '6353'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RTTW8UMQz9K5YvXNKq2wJb9lqpBSHERzmB0Cgk3pmwmXhqO90u1f53lGmXT3GM
+        /ez3/Ozc48iRMq4wZF8jHSmXQnb09Og5OkwRVzhq350sFhfx2zacXp4u+DX1m+XLsny2FnRou4ka
+        ilR9T+hQOLeAV01qvhg6DFyMiuHq8/0Bb8y5q0oHlvau3cni6l29vhu3Lz6V5dO7N7Q8v7q5Xq7R
+        YfFjq3tlJP5rpisqJN4ofiAlL2F4X0l2rVuZquHqHs3rRh8ok82S3ldfrI5wmesdXPjJh2QsCqnA
+        2ypwvVOjsY1EMiqu8OYRv2748BOPDnv2uSEuU4ngyw5SMZLiM0QOdaRi3hIXBzFpqKqJizpgAaHA
+        EhWEchMPxvAfFtgmG1IBGwhYel/S97nnEwWdheoxfBxSUx9yjaRgFIaSgs+gEwV1kMYp008xEMl8
+        yupgEv5GwaCw0YOsNkIDNp3Aa7DWeO7HmfvdMbwtgUBIazYFLwRrriU6SOWW1FLvjWBdxQaS5gXD
+        wNsmfTeDmzv9vC03U20Kbwsk1Ura6CeSNcvoG8lIJqmp9yXCduDZgA3tQM1vaOAcSeYiIz+26W85
+        31JsPMfoULlKaMs+bAT3X/YOg8+ZZD6Lh/uLSSgY7vdfHKrx1Al55fLnZc4JpZtKpfUsNefH4KOX
+        h1idb391/3B9nfGGiuLq9Oz8eeMOA3VBaF5D9yfk5JAX8vF/uUNtY6BpoJHE5+7Z+C/+V3Yx/J3d
+        O+Rqv4cWZ+cOleQ2BeosNYOw/dnoJc5faU3SRu96Ylxhn/lrM3T/AwAA//8DACiWU482BAAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:47:31Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:47:34Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:47:30Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:47:31Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26748b6e990c97c-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:47:34 GMT
+      request-id:
+      - req_011CdjwbzaoPzFi54fzQNoTt
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-b4228085bfe37c142d621282e017e6e7-020aef7cac0e04af-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input": ["quantum flux capacitors"], "model": "text-embedding-3-small",
+      "dimensions": 1536, "encoding_format": "base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '115'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        rwukLpggAAA=
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26748d2d8610a52-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:47:35 GMT
+      openai-processing-ms:
+      - '98'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=qeqyFgh6FXAMgCKMz713Icnirt8i7a1s5d_KN6ctnD8-1785948454.8598013-1.0.1.1-2wUEK6CWzCZW3J9l9ALNbOtsMWSSgtuMB4mz2C5tDGLr5ST7iozsMyUehNgH6TCpS7WPAR1haPiv8XU6lkty6ZMiT_q0Svd4AWGDg.r2iUz7cFl_J6Py0cAf6gs8O3YB;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Wed,
+        05 Aug 2026 17:17:35 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999995'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 0s
+      x-request-id:
+      - req_6fbf872d4f4e49bb8675afe1818dff35
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>Information
+      about quantum flux capacitors in our system</topic>\n<directions>Information
+      about quantum flux capacitors in our system</directions>\n\nThe following search
+      was attempted but found no matching content:\n<query>\n<title>Quantum Flux Capacitors
+      in Our System</title>\n<goals>Find any internal documentation, discussions,
+      or records related to quantum flux capacitors within the organization''s systems.
+      This includes technical specs, implementation details, project notes, or any
+      mentions of this technology. Once results are found, investigate further into
+      how they are integrated, any known issues or performance metrics, and who the
+      key stakeholders or teams involved are.</goals>\n<search_terms>quantum flux
+      capacitors</search_terms>\n<source>internal</source>\n</query>\n\nSuggest alternative
+      research directions that might find relevant information:\n1. Consider different
+      terminology, synonyms, or related concepts\n2. Think about adjacent topics that
+      might contain relevant information\n3. Consider whether a different source might
+      be more appropriate\n4. Focus on broader or narrower aspects of the topic\n\nGenerate
+      follow-up questions that could lead to better search results."}], "model": "claude-sonnet-4-6",
+      "system": "The current datetime is 2026-08-05 16:47:34.806743+00:00\n\nThe user
+      you are helping is foo-1855@example.com whose email address is foo-1855@example.com.\n\nYou
+      are an expert researcher. Today is 2026-08-05 16:47:34.806808+00:00. Follow
+      these instructions when responding:\n- You may be asked to research subjects
+      that is after your knowledge cutoff, assume the user is right when presented
+      with news.\n- Be highly organized.\n- Suggest solutions that I didn''t think
+      about.\n- Be proactive and anticipate my needs.\n- Treat me as an expert in
+      all subject matter.\n- Mistakes erode my trust, so be accurate and thorough.\n-
+      Value good arguments over authorities, the source is irrelevant.\n- Consider
+      new technologies and contrarian ideas, not just the conventional wisdom.\n-
+      You may use high levels of speculation or prediction, just flag it for me.",
+      "temperature": 0.0, "tool_choice": {"type": "tool", "name": "GeneratedResearchQueryNoResultsReview"},
+      "tools": [{"name": "GeneratedResearchQueryNoResultsReview", "description": "Correctly
+      extracted `GeneratedResearchQueryNoResultsReview` with all the required parameters
+      with correct types", "input_schema": {"properties": {"follow_up_questions":
+      {"description": "List of alternative research directions to try, max of 3.",
+      "items": {"type": "string"}, "title": "Follow Up Questions", "type": "array"},
+      "follow_up_title": {"description": "A short user-facing title for the follow-up
+      directions, shown as progress in the UI", "title": "Follow Up Title", "type":
+      "string"}}, "required": ["follow_up_questions", "follow_up_title"], "title":
+      "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3079'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RU244bNwz9FUIvmwCzwXqbdhG/pQ4StIsWXQctAgTBQJboGSUacZak7BgLA/mI
+        fmG/pJDs6drb9sljXg7JwyM+mIE8RjM3Ltrs8VIoJdTLl5c/mMYEb+ZmkK69ms0W/vPW/fLlerm6
+        G4ZZdzv748O7wTRGdyOWKBSxHZrGMMVisCJB1CY1jXGUFJOa+ceHKV6JYpsFpyrlf26vZm8/3C5/
+        eyX554Us5Ga2mN3mm5f3pjHJDiXvHSZkq+iXKGjZ9XcZefcrLVFyVFniJuC2gKYxq5k/mDXFSNs2
+        j60GrZ29joqcrIYNwoQCbwKj00BJYE0Md9kmzQO8jfkrLOxoXVBiMc0J3n1GqRlm/tG8P8CEVLEj
+        yE4UhwMYYywdQ2m924Eose0QiOH+WEbR9YkidTtQ5CEcvhuQ7HqwAhfr0oeb+rho4GJKPQctHskj
+        sqPks9OQuv9OYxRK9mAkfrSPtEWeur+Av779CdrjaYOD3cEKwZPLA6YyV04eGSz4sF4jY9KCaFcr
+        xk2og5fdvTCN+ZHJekwV8ci7Elj/2bqSNfXQW/Zby5Uh6zc2uUJeRKdMKTgBpbH8hPTI99SOLRs5
+        IW7CdIFdDgqOhpESJpVTNjxugkOQEV1YB1dB5MjMUzqnnFq6zuvwCCDw7P3d7z+9kecXDWz74PrK
+        FuMUdr5GcJQcjiqFm6OA8OtxIGIY8yoGB0KZKzZPYh3tiCwNjLY8K6l91g0FV6SnNnnLXp5X9f0z
+        5BMNFeo9HuSGENagfRAIAjYBDshdGZYYUnDnAtgG7QFF7SoG6dGfS1Z7TMB4accx7kB7kpLMQ9la
+        gX58IXWWF+bTvjHOxohcnuvxPPj6HM1+/6kxojS2jFYonR+O6hC8z4VbM085xqPRo9oQZbLleprm
+        D4er0Cp9wfJqZ9evrktt12PrGOvW2/OQq8nPaP3/+abcUgHHvpBnY/v98O/4R++sf+rdN4aynpqu
+        v7tpjCAXabUaCkFmWm49cUdZtR2SmZsu0spGs9//DQAA//8DAD95jS3VBQAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:47:36Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:47:41Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:47:35Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:47:36Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26748d4aa1a15e4-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:47:41 GMT
+      request-id:
+      - req_011CdjwcLvAtRr5Rhpn8fauU
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-61d7e3297b4f38a7f3304150924ac1e1-07380225b4598798-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Given the
+      following prompt from the user, generate a list of queries to research the topic.\n<topic>Information
+      about quantum flux capacitors in our system</topic>\n\nYour specific directions
+      are:\n<prompt>Previous research goal: Find any internal documentation, discussions,
+      or records related to quantum flux capacitors within the organization''s systems.
+      This includes technical specs, implementation details, project notes, or any
+      mentions of this technology. Once results are found, investigate further into
+      how they are integrated, any known issues or performance metrics, and who the
+      key stakeholders or teams involved are.\n\nFollow-up research directions:\n-
+      Search internal systems for related energy storage or quantum technology terminology,
+      such as ''flux capacitor'', ''quantum energy storage'', ''superconducting capacitor'',
+      ''quantum resonator'', or ''quantum power systems'' \u2014 the technology may
+      be documented under a different or abbreviated name.\n- Broaden the search to
+      adjacent quantum hardware or advanced electronics topics in internal documentation,
+      such as ''quantum circuit components'', ''quantum device specifications'', or
+      ''superconducting quantum interference devices (SQUIDs)'', which may reference
+      flux capacitor concepts.\n- Search external or public sources (research papers,
+      patents, or technical standards) for ''quantum flux capacitor'' to determine
+      if this is an emerging or niche technology with established terminology, then
+      re-apply those terms to an internal search.</prompt>\n\nReturn a maximum of
+      1 queries, but feel free to return less if the original prompt is clear.\n\n##
+      Source selection\n\n### Internal source query instructions:\n\n- You must return
+      source: internal to indicate these queries are for searching internal organization
+      content.\n- You''ll be searching organization activity and documents to help
+      the user explore and answer this question.\n- Query terms should be short (less
+      than 5 words, ideally 3 or less) for a basic embedding and TD/IDF search.\n-
+      If the text seems like a good search on its own, just return the text as entered.\n-
+      Anything related to time (e.g. \"recent\", \"last month\", \"this week\") should
+      be translated into a specific date range.\n- If you see a specific date, use
+      that date range. If you see a general date (e.g. \"recently\", \"last month\"),
+      use the last 30 days, respecting the current date and time.\n- If you recognize
+      named entities, surround them with double quotes (e.g. \"Hulk Hogan\", \"Apple\").
+      Consider if an capitalized word is a named entity.\n\n## Date ranges\n\nIn your
+      response, you may include a starts_at and ends_at date range for each query
+      if the topic or directions indicate a specific time period.\n\nIMPORTANT: Today''s
+      date is 2026-08-05. The current year is 2026. Use this as your reference point
+      for all date calculations.\n\n- Reference Point: Calculate all relative dates
+      based on today''s date: 2026-08-05.\n- Format: Return timestamps in ISO 8601
+      format: YYYY-MM-DDTHH:MM:SS.\n- Boundaries: Start of day is 00:00:00 and End
+      of day is 23:59:59.\n- Default Year: If a month or quarter is specified without
+      a year, use 2026.\n- Absence: If no date range is specified, do not include
+      starts_at or ends_at fields.\n\nRelative Date Logic\n\n- \"today\" \u2192 starts_at:
+      Current Date T00:00:00, ends_at: Current Date T23:59:59\n- \"yesterday\" \u2192
+      starts_at: Previous Date T00:00:00, ends_at: Previous Date T23:59:59\n- \"this
+      week\" \u2192 starts_at: Monday of current week, ends_at: Sunday of current
+      week\n- \"last week\" \u2192 starts_at: Monday of previous week, ends_at: Sunday
+      of previous week\n- \"this month\" \u2192 starts_at: Day 1 of current month,
+      ends_at: Last day of current month\n- \"last month\" \u2192 starts_at: Day 1
+      of previous month, ends_at: Last day of previous month\n- \"this year\" \u2192
+      starts_at: Jan 1 of current year, ends_at: Dec 31 of current year\n- \"recently\",
+      \"lately\", or vague time \u2192 starts_at: (Current Date - 30 days), ends_at:
+      Current Date\n\nBusiness Date Ranges\n- \"Q1\" / \"first quarter\" \u2192 Jan
+      1 to Mar 31\n- \"Q2\" / \"second quarter\" \u2192 Apr 1 to June 30\n- \"Q3\"
+      / \"third quarter\" \u2192 July 1 to Sept 30\n- \"Q4\" / \"fourth quarter\"
+      \u2192 Oct 1 to Dec 31\n- \"H1\" / \"first half\" \u2192 Jan 1 to June 30\n-
+      \"H2\" / \"second half\" \u2192 July 1 to Dec 31\n\nNote: Apply the current
+      year (2026) unless a specific year is mentioned.\n\nExamples (using today''s
+      date 2026-08-05):\nQuery: \"Q3 sales targets\"\nterms: \"sales targets\", starts_at:
+      \"2026-07-01T00:00:00\", ends_at: \"2026-09-30T23:59:59\"\n\nQuery: \"last month''s
+      revenue\"\nterms: \"revenue\", starts_at: \"2026-07-01T00:00:00\", ends_at:
+      \"2026-07-31T23:59:59\"\n\nQuery: \"Q4 2023 results\"\nterms: \"results\", starts_at:
+      \"2023-10-01T00:00:00\", ends_at: \"2023-12-31T23:59:59\"\n\n## Existing Queries
+      and Learnings\n\nThe following existing queries and learnings are provided to
+      help you avoid duplication and improve the specificity of your generated queries.\n\nHere
+      are queries that have already been generated, do not repeat them:\n\n- Internal
+      application: quantum flux capacitors"}], "model": "claude-sonnet-4-6", "system":
+      "The current datetime is 2026-08-05 16:47:40.953617+00:00\n\nThe user you are
+      helping is foo-1855@example.com whose email address is foo-1855@example.com.\n\nYou
+      are an expert researcher. Today is 2026-08-05 16:47:40.953653+00:00. Follow
+      these instructions when responding:\n- You may be asked to research subjects
+      that is after your knowledge cutoff, assume the user is right when presented
+      with news.\n- Be highly organized.\n- Suggest solutions that I didn''t think
+      about.\n- Be proactive and anticipate my needs.\n- Treat me as an expert in
+      all subject matter.\n- Mistakes erode my trust, so be accurate and thorough.\n-
+      Value good arguments over authorities, the source is irrelevant.\n- Consider
+      new technologies and contrarian ideas, not just the conventional wisdom.\n-
+      You may use high levels of speculation or prediction, just flag it for me.",
+      "temperature": 0.0, "tool_choice": {"type": "tool", "name": "IterableGeneratedResearchQuery"},
+      "tools": [{"name": "IterableGeneratedResearchQuery", "description": "Correct
+      segmentation of `GeneratedResearchQuery` tasks", "input_schema": {"$defs": {"GeneratedResearchQuery":
+      {"properties": {"title": {"description": "A user-facing title for the query,
+      it''ll be prefaced with ''Reading about'' in the UI", "title": "Title", "type":
+      "string"}, "terms": {"description": "The search terms", "title": "Terms", "type":
+      "string"}, "starts_at": {"anyOf": [{"format": "date-time", "type": "string"},
+      {"type": "null"}], "default": null, "description": "The earliest datetime to
+      allow results", "title": "Starts At"}, "ends_at": {"anyOf": [{"format": "date-time",
+      "type": "string"}, {"type": "null"}], "default": null, "description": "The latest
+      datetime to allow results", "title": "Ends At"}, "goals": {"description": "First
+      talk about the goal of the research that this query is meant to accomplish,
+      then go deeper into how to advance the research once the results are found,
+      mention additional research directions. Be as specific as possible, especially
+      for additional research directions.", "title": "Goals", "type": "string"}, "source":
+      {"$ref": "#/$defs/ResearchSource", "default": "internal", "description": "The
+      source to use for this research query"}}, "required": ["title", "terms", "goals"],
+      "title": "GeneratedResearchQuery", "type": "object"}, "ResearchSource": {"enum":
+      ["internal", "slack"], "title": "ResearchSource", "type": "string"}}, "description":
+      "Correct segmentation of `GeneratedResearchQuery` tasks", "properties": {"tasks":
+      {"description": "Correctly segmented list of `GeneratedResearchQuery` tasks",
+      "items": {"$ref": "#/$defs/GeneratedResearchQuery"}, "title": "Tasks", "type":
+      "array"}}, "title": "IterableGeneratedResearchQuery", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '7818'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RUy27rRgz9FWIW9UYJ4iKP1puiD/QiRRdNgqIFiguDHlHSJKOhQnKc6AYG+hH9
+        wn5JMbKVXKftTuLzkOcMX1zPNUW3cj5irulEOSWyk/OTS1e5ULuV67Vdny2X39f3T/7xtvkFl3Z3
+        /9Pl8+1X333tKmfjQCWKVLElVznhWAyoGtQwmauc52SUzK3+eJnjjTmus9Lcpfzn9dny4vfzfGHb
+        nm8vlve/fRqvbu4+fdi6yiXsS961keAm0gdKJGhU35ISiu9uMslYqqUhm1u9OEN90H3LYBOkm4zJ
+        cg8ltR1BjQVbgi+gifkZPA7og7HAFiVgMi3TkfTqVu5dxOOh0qGEq1zLGEvgXUiewDqCOgh5gz06
+        aFhgMacdV9MFdKiAUQjrETZECSSnCqwLCo9lLtgIY01Jp8qHkllDakEoljVAQRoSR25H+PvPv2Bx
+        3GRRvbU/nn9RAab6zTubpyrGoFka9AQhGUnCCDX73FMytMAJrEODHkcQakhonl6xJzDy3QFSTjUJ
+        INShmcIMWAA3G6FtmPAXfk/hugEhzdEUUAgazqmuIKQtqYUWbV980tOzQUjw1AXfFaOWdtIr4DAQ
+        ymrKt45GsFDWw4CgA/nQBA+D8D15q8AI+6pA0VGN+m/gZ+aHiawJe/AYpyytIPRDpLe5ExvplDqQ
+        NCw9ltF7MgleT+FHjpGfTvJw0EHgpBCSj7meCSzsTbLQPJB4TnX2Voz/SZqQcsJ3xoGfaMauxXF3
+        8+v1D+Xrc7n5ID4HA8/9wImS6aLso8liHQlYUXubi4yg46e97D6jLugr5VS/yiCOp/BtVC5kaCjk
+        emHVk1kGZRBMI2C2jkULoLJshVIncJpKvZJtDKEujmaEByraxAfqONYkeuoqp5zFlzc8t3e7j7vK
+        eYyRZHrt+7OyX7bb7T5WTo2HtRAqp+ODMzmUHnNRq1ulHOPBWJNhKO94b8vTSVu97I/K2viBkrrV
+        l5dX56W372jthSY9rI9DzmZ/edP/55tzSwcaOupJMK4v+n/Hv3mX3XvvrnKc7QjfxVXllGQbPK0t
+        lAW5coprlHq6kIeHum6J3cq1kTdlobt/AAAA//8DAGYG6cANBgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:47:42Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:47:48Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:47:41Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:47:42Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26748fb195b3000-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:47:48 GMT
+      request-id:
+      - req_011CdjwcpHhk5pA1NAMq9WDr
+      server:
+      - cloudflare
+      server-timing:
+      - x-originResponse;dur=7287
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-c2a7a183d07284a5bbd980491937b66d-411f5eb1600a9eb2-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"input": ["flux capacitor quantum storage"], "model": "text-embedding-3-small",
+      "dimensions": 1536, "encoding_format": "base64"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '122'
+      content-type:
+      - application/json
+      host:
+      - api.openai.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 2.50.0
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+    method: POST
+    uri: https://api.openai.com/v1/embeddings
+  response:
+    body:
+      string: !!binary |
+        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
+        DP4429f7+cu///D33/8DXUopIJggAAA=
+    headers:
+      access-control-expose-headers:
+      - X-Request-ID
+      - CF-Ray
+      - CF-Ray
+      alt-svc:
+      - h3=":443"; ma=86400
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2674929fb1425bd-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:47:49 GMT
+      openai-processing-ms:
+      - '137'
+      openai-project:
+      - proj_CCvJMAmsXbqbjFMUUgVQGliy
+      openai-version:
+      - '2020-10-01'
+      server:
+      - cloudflare
+      set-cookie:
+      - __cf_bm=Ilpw_w8pHJA5FGBl8wmJWgzgwBECnHDt.xo6koMR50E-1785948468.7966216-1.0.1.1-9eWG8wOw9d1QQ.Z9Y0xE.U_wWw5P1ezTDo5INyS6BjlVwkyLPzhR7IegOkbrLRMknqm8k18FhKaus04hxzenkwNS6D1xvys6ojCm4HH.JLd5MfnjyfFmwrijecRBLJj5;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Wed,
+        05 Aug 2026 17:17:49 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-openai-proxy-wasm:
+      - v0.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '10000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '9999993'
+      x-ratelimit-reset-requests:
+      - 6ms
+      x-ratelimit-reset-tokens:
+      - 0s
+      x-request-id:
+      - req_5de6cdba889b458cb229fc0d9b28142a
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>Information
+      about quantum flux capacitors in our system</topic>\n<directions>Previous research
+      goal: Find any internal documentation, discussions, or records related to quantum
+      flux capacitors within the organization''s systems. This includes technical
+      specs, implementation details, project notes, or any mentions of this technology.
+      Once results are found, investigate further into how they are integrated, any
+      known issues or performance metrics, and who the key stakeholders or teams involved
+      are.\n\nFollow-up research directions:\n- Search internal systems for related
+      energy storage or quantum technology terminology, such as ''flux capacitor'',
+      ''quantum energy storage'', ''superconducting capacitor'', ''quantum resonator'',
+      or ''quantum power systems'' \u2014 the technology may be documented under a
+      different or abbreviated name.\n- Broaden the search to adjacent quantum hardware
+      or advanced electronics topics in internal documentation, such as ''quantum
+      circuit components'', ''quantum device specifications'', or ''superconducting
+      quantum interference devices (SQUIDs)'', which may reference flux capacitor
+      concepts.\n- Search external or public sources (research papers, patents, or
+      technical standards) for ''quantum flux capacitor'' to determine if this is
+      an emerging or niche technology with established terminology, then re-apply
+      those terms to an internal search.</directions>\n\nThe following search was
+      attempted but found no matching content:\n<query>\n<title>Quantum energy storage
+      & flux capacitor variants</title>\n<goals>Since the direct search for ''quantum
+      flux capacitors'' has already been run, this query broadens the search using
+      related terminology \u2014 ''flux capacitor'', ''quantum energy storage'', and
+      ''quantum storage'' \u2014 to surface internal documentation that may reference
+      the same technology under a different or abbreviated name. If results are found,
+      investigate the context in which these terms appear: are they tied to a specific
+      project, team, or system? Look for technical specs, implementation notes, or
+      performance metrics. Follow-up directions include searching for ''superconducting
+      capacitor'', ''quantum resonator'', ''quantum power systems'', ''SQUIDs'', or
+      ''quantum circuit components'' to further triangulate how this technology is
+      documented internally. Also consider cross-referencing any authors or teams
+      mentioned in results to identify key stakeholders.</goals>\n<search_terms>flux
+      capacitor quantum storage</search_terms>\n<source>internal</source>\n</query>\n\nPrevious
+      queries in this research session:\n\n- internal: \"quantum flux capacitors\"
+      (no results)\n\nSuggest alternative research directions that might find relevant
+      information:\n1. Consider different terminology, synonyms, or related concepts\n2.
+      Think about adjacent topics that might contain relevant information\n3. Consider
+      whether a different source might be more appropriate\n4. Focus on broader or
+      narrower aspects of the topic\n\nGenerate follow-up questions that could lead
+      to better search results."}], "model": "claude-sonnet-4-6", "system": "The current
+      datetime is 2026-08-05 16:47:49.051858+00:00\n\nThe user you are helping is
+      foo-1855@example.com whose email address is foo-1855@example.com.\n\nYou are
+      an expert researcher. Today is 2026-08-05 16:47:49.051917+00:00. Follow these
+      instructions when responding:\n- You may be asked to research subjects that
+      is after your knowledge cutoff, assume the user is right when presented with
+      news.\n- Be highly organized.\n- Suggest solutions that I didn''t think about.\n-
+      Be proactive and anticipate my needs.\n- Treat me as an expert in all subject
+      matter.\n- Mistakes erode my trust, so be accurate and thorough.\n- Value good
+      arguments over authorities, the source is irrelevant.\n- Consider new technologies
+      and contrarian ideas, not just the conventional wisdom.\n- You may use high
+      levels of speculation or prediction, just flag it for me.", "temperature": 0.0,
+      "tool_choice": {"type": "tool", "name": "GeneratedResearchQueryNoResultsReview"},
+      "tools": [{"name": "GeneratedResearchQueryNoResultsReview", "description": "Correctly
+      extracted `GeneratedResearchQueryNoResultsReview` with all the required parameters
+      with correct types", "input_schema": {"properties": {"follow_up_questions":
+      {"description": "List of alternative research directions to try, max of 3.",
+      "items": {"type": "string"}, "title": "Follow Up Questions", "type": "array"},
+      "follow_up_title": {"description": "A short user-facing title for the follow-up
+      directions, shown as progress in the UI", "title": "Follow Up Title", "type":
+      "string"}}, "required": ["follow_up_questions", "follow_up_title"], "title":
+      "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4885'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3xU224bRwz9FWIeqhZYpbbrOIjeilZtUwSB46RokSBYUDPU7sSznBWHo0sNAf2I
+        fmG/pJjVxZKL5m2X5JCH55B8MF10FMzE2IDZ0ThFZtLx9fjGVMY7MzFdauqLy8sf3OeVu7uepsX3
+        3fXV6/fzN6t8bSqjm55KFKWEDZnKSAzFgCn5pMhqKmMjK7GayceHQ7zGGOqc6FCl/Of64vLlL7+u
+        b1+8/ik38uLDQt7ffvfhd74ylWHsyrufiUlQyd1RIhTbvs0kmzfxjlIOmu5o6WlVknKf1UwezDyG
+        EFd17mv1OiCbrntk57mBXQaY0Sayg0VG1tzBPOQ1WOzReo0CStJ5jiE2G1OdpFtkSuojJzP5aN7t
+        MnlWEsYAaZOUugTzKDCTiI7kmL9FcSsUAmQH6JbIlhyUvpoN2Nj1kYk1nRauIGXbAiYYpdyT2Mgu
+        Wy09HIGOKhi9e/vbqx/Lx6GWUIqMe+/BaL3Y7PWk1qiCKI8BfVyRHHoYwT9//Q3aEijZdocHOtzA
+        jMCiYohNJgeZS48IXRQCSoqz4FNLriQuc+BQnP9zaLTxTCQFfGkRBLUlAW2RYXRO/uiZqcytX0YF
+        jXu5yjta73kuFPZ5FryFFLNYSvA1WnTUeQs99iSpgh7L9KUKXk2n0yOYNPSM8odfQi/Ui2dN3wyK
+        HYl4gqaAcLTThWDV0h64T+ATIAjZ2PDQ5QlXK6/tGSMcO2IbULNQBchAHUkziBnZUq87ZGDLrC2y
+        x/Ct53mUDgOUNTgIwiA0xr4PG0DegPPJxiUJObDIkb3FMDCcYIb2voBHPhnRgc1C8JeGt5f4mayO
+        Ay0pFFhK2O3/hrVea1FOofNNq9DGnGjHyAkDnp0Xsho2FeR0ED5B8Pf0SPZxL/Y1y8g+XY+kUbAh
+        8OzVo/olnQ62o6W3BHdflR041ZECWZVCScGF3ZdmWmhOQkNRLKKmPBsfN2UQ0zPgcav3YM+muMVl
+        adJrgrhicOS8LTcLXLS5I1Ysh+OZ+bStjMUQSMql2l/GHVVmu/1UmaSxr4UwRT6/mYMj0SIXoGbC
+        OYS90ZGiD+lgy8NVnjzsDmKt8Z7Kxbq8ubkotW1LtRUa8NTnIUe/ELr/8x3elgrUt2WQMdTPu//G
+        P3ov26febWVi1lPT1curyiSSometvhBkDos7XPe9RnVD0UxME+IMg9lu/wUAAP//AwDK7Sg/0AYA
+        AA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:47:50Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:47:55Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:47:49Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:47:50Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a267492dcee3a561-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:47:55 GMT
+      request-id:
+      - req_011CdjwdPv2TzoDd1zhGm4aQ
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-5d2fc531829645c9e661ae695c688224-411418d3b3ff095d-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

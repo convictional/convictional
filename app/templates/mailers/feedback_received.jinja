@@ -1,0 +1,16 @@
+{% extends "base.jinja" %}
+
+{% block subject %}Feedback received from {{ user_email }} at {{ now }}{% endblock %}
+
+{% block body_markdown %}
+Feedback received from {{ user_email }} on the following page:
+[{{ url }}]({{ url }})
+
+{% if sentry_feedback_url %}
+**Sentry Links:**
+- [Feedback Details]({{ sentry_feedback_url }})
+
+{% endif %}
+---
+{{ description }}
+{% endblock %}

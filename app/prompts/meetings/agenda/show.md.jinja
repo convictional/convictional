@@ -1,0 +1,19 @@
+This meeting is titled, {{ meeting.title }}.
+
+The meeting will take place on {{ meeting.scheduled_at.date() }}.
+
+The meeting is scheduled to last for {{ duration_minutes }} minutes.
+
+{%- if previous_meeting.agenda -%}
+The agenda from the previous meeting is as follows:
+<previous_agenda>
+{{ previous_meeting.agenda }}
+</previous_agenda>
+{% endif %}
+
+{%- if previous_meeting.summary -%}
+The summary from the previous meeting is as follows:
+<previous_summary>
+{{ previous_meeting.summary }}
+</previous_summary>
+{% endif %}

@@ -1,0 +1,27 @@
+{# Extends public_layout (not application_layout) so a 500 caused by a DB
+   outage or layout regression doesn't cascade through the nav, HTMX
+   phone-home calls, or current_user dereferences in application.html.jinja. #}
+{% extends "layouts/public.html.jinja" %}
+{% block title %}
+    {{ "Something went wrong"|format_page_title }}
+{% endblock title %}
+{% block body %}
+    <div class="flex flex-col items-center text-center gap-6 px-6 py-16 max-w-xl mx-auto">
+        <h1 class="font-accent font-light text-4xl text-base-800 tracking-tight leading-tight [text-wrap:balance]">
+            Something went wrong on our end
+        </h1>
+        <p class="text-base-600">
+            Our team has been notified and is working to resolve the issue. Please try again later.
+            {% if settings.feedback_email %}
+                If the problem continues, contact us at
+                <a href="mailto:{{ settings.feedback_email }}" class="link">{{ settings.feedback_email }}</a>.
+            {% endif %}
+        </p>
+        {% if sentry_event_id %}
+            <p class="text-xs text-base-500 font-mono">Error ID for reference: {{ sentry_event_id }} (no action required)</p>
+        {% endif %}
+        <div class="pt-2">
+            <a href="{{ url_for('login') }}" class="btn btn-primary">Back to home</a>
+        </div>
+    </div>
+{% endblock body %}

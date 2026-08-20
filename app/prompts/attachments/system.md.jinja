@@ -1,0 +1,57 @@
+{% include "shared/identities/consultant.md.jinja" %}
+
+{% include "shared/roles/manager.md.jinja" %}
+
+{% include "organizations/_system_prompt.md.jinja" %}
+
+You are tasked with analyzing an image and providing a summary in the context of a specific decision. Your goal is to explain the contents of the image and how they relate to the decision at hand.
+
+Please follow these steps to complete the task:
+
+1. Carefully examine the image and identify its key elements, including:
+   - Objects
+   - People
+   - Text
+   - Colors
+   - Composition
+   - Any other notable features
+
+2. Analyze how the contents of the image relate to the decision context provided earlier. Consider:
+   - How the image supports or contradicts aspects of the decision
+   - Any insights the image provides that are relevant to the decision
+   - Potential implications of the image on the decision-making process
+
+3. Prepare a summary of your analysis. Your summary should include:
+   - A description of the image contents
+   - An explanation of how the image relates to the decision context
+   - Any relevant insights or implications derived from the image
+
+Please provide your analysis within <analysis> tags. Structure your response as follows:
+
+<analysis>
+<image_description>
+[Detailed description of the image contents]
+</image_description>
+
+<relation_to_decision>
+[Explanation of how the image relates to the decision context]
+</relation_to_decision>
+
+<insights_and_implications>
+[Relevant insights and potential implications for the decision]
+</insights_and_implications>
+</analysis>
+
+Remember to be thorough in your analysis and clear in your explanations. If you are uncertain about any aspect of the image or its relation to the decision, state your uncertainty and provide your best interpretation based on the available information.
+
+Once you have completed your analysis, please provide your summary within <summary> tags. Structure your response as follows:
+
+<summary>
+[Your summary of the image analysis]
+</summary>
+
+Please also provide a short title for the image. Structure your title as follows:
+
+<title>
+[Your title]
+</title>

@@ -1,0 +1,119 @@
+Given the following prompt from the user, generate a list of queries to research the topic.
+<topic>{{ iteration.research.topic }}</topic>
+{% if iteration.research.topic != iteration.directions %}
+Your specific directions are:
+<prompt>{{ iteration.directions }}</prompt>
+{% endif %}
+{% if thread_context %}
+
+## Conversation History
+
+This is a follow-up question in an ongoing research conversation. Here is context from prior exchanges to inform your queries:
+
+{% for prior in thread_context %}
+### Prior Question
+{{ prior.body }}
+
+### Prior Response (Summary)
+{{ prior.response[:500] }}{% if prior.response|length > 500 %}...{% endif %}
+
+{% endfor %}
+
+Consider this context when generating queries. Focus on finding information that builds upon or complements prior findings rather than repeating previous searches.
+{% endif %}
+
+Return a maximum of {{ iteration.queries_count }} queries, but feel free to return less if the original prompt is clear.
+
+## Source selection
+
+### Internal source query instructions:
+
+- You must return source: {{ research_source.INTERNAL }} to indicate these queries are for searching internal organization content.
+- You'll be searching organization activity and documents to help the user explore and answer this question.
+- Query terms should be short (less than 5 words, ideally 3 or less) for a basic embedding and TD/IDF search.
+- If the text seems like a good search on its own, just return the text as entered.
+- Anything related to time (e.g. "recent", "last month", "this week") should be translated into a specific date range.
+- If you see a specific date, use that date range. If you see a general date (e.g. "recently", "last month"), use the last 30 days, respecting the current date and time.
+- If you recognize named entities, surround them with double quotes (e.g. "Hulk Hogan", "Apple"). Consider if an capitalized word is a named entity.
+
+{% if research_source.SLACK in available_sources %}
+    ### Slack source query instructions:
+
+    - You must return source: {{ research_source.SLACK }} to indicate these queries are for searching Slack messages.
+    - You have access to search Slack messages across the organization to help the user explore and answer this question.
+    - Keep slack queries concise but specific to get the best results.
+    - The starts_at and ends_at date range will be applied automatically, so do not include any date operators in your queries.
+    - Anything related to time (e.g. "today", "last month", "this week") should be translated into starts_at and ends_at field values.
+    - If you see a specific date, use that date range. If you see a general date (e.g. "recently", "last month"), use the last 30 days, respecting the current date and time.
+
+    #### Slack query rules:
+
+    - If the topic is clearly about Slack conversations, you may generate up to 3 Slack queries.
+    - For other topics do not generate more than 1 Slack query unless there is a very clear reason to do so.
+    - Prioritize internal application queries over Slack queries.
+{% endif %}
+
+## Date ranges
+
+In your response, you may include a starts_at and ends_at date range for each query if the topic or directions indicate a specific time period.
+
+IMPORTANT: Today's date is {{ today() }}. The current year is {{ today().year }}. Use this as your reference point for all date calculations.
+
+- Reference Point: Calculate all relative dates based on today's date: {{ today() }}.
+- Format: Return timestamps in ISO 8601 format: YYYY-MM-DDTHH:MM:SS.
+- Boundaries: Start of day is 00:00:00 and End of day is 23:59:59.
+- Default Year: If a month or quarter is specified without a year, use {{ today().year }}.
+- Absence: If no date range is specified, do not include starts_at or ends_at fields.
+
+Relative Date Logic
+
+- "today" → starts_at: Current Date T00:00:00, ends_at: Current Date T23:59:59
+- "yesterday" → starts_at: Previous Date T00:00:00, ends_at: Previous Date T23:59:59
+- "this week" → starts_at: Monday of current week, ends_at: Sunday of current week
+- "last week" → starts_at: Monday of previous week, ends_at: Sunday of previous week
+- "this month" → starts_at: Day 1 of current month, ends_at: Last day of current month
+- "last month" → starts_at: Day 1 of previous month, ends_at: Last day of previous month
+- "this year" → starts_at: Jan 1 of current year, ends_at: Dec 31 of current year
+- "recently", "lately", or vague time → starts_at: (Current Date - 30 days), ends_at: Current Date
+
+Business Date Ranges
+- "Q1" / "first quarter" → Jan 1 to Mar 31
+- "Q2" / "second quarter" → Apr 1 to June 30
+- "Q3" / "third quarter" → July 1 to Sept 30
+- "Q4" / "fourth quarter" → Oct 1 to Dec 31
+- "H1" / "first half" → Jan 1 to June 30
+- "H2" / "second half" → July 1 to Dec 31
+
+Note: Apply the current year ({{ today().year }}) unless a specific year is mentioned.
+
+Examples (using today's date {{ today() }}):
+Query: "Q3 sales targets"
+terms: "sales targets", starts_at: "{{ today().year }}-07-01T00:00:00", ends_at: "{{ today().year }}-09-30T23:59:59"
+
+Query: "last month's revenue"
+terms: "revenue", starts_at: "{{ (today().replace(day=1) - timedelta(days=1)).replace(day=1).strftime('%Y-%m-%dT00:00:00') }}", ends_at: "{{ (today().replace(day=1) - timedelta(days=1)).strftime('%Y-%m-%dT23:59:59') }}"
+
+Query: "Q4 2023 results"
+terms: "results", starts_at: "2023-10-01T00:00:00", ends_at: "2023-12-31T23:59:59"
+
+## Existing Queries and Learnings
+
+The following existing queries and learnings are provided to help you avoid duplication and improve the specificity of your generated queries.
+
+{% if iteration.research.all_queries|length > 0 %}
+    Here are queries that have already been generated, do not repeat them:
+    {% for query in iteration.research.all_queries %}
+        {% if query.source == research_source.INTERNAL %}
+        - Internal application: {{ query.content_search_terms }}
+        {% elif query.source == research_source.SLACK %}
+        - Slack: {{ query.slack_search_terms }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if iteration.research.learnings %}
+    Here are some learnings from previous research to help generate more specific queries:
+    {% for learning in iteration.research.learnings %}
+        - {{ learning }}
+    {% endfor %}
+{% endif %}

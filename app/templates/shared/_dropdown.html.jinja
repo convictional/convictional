@@ -1,0 +1,70 @@
+{# Dropdown menu component with customizable trigger and content
+
+Optional context:
+- button_size: str = "medium" - Trigger button size: "small", "medium", "large"
+- button_class: str = (derived from size) - CSS classes for trigger button
+- is_open: bool = false - Initial open state
+- dropdown_position: str = "bottom-start" - Anchor position (bottom, bottom-start, bottom-end, top, top-start, top-end, left, left-start, left-end, right, right-start, right-end)
+- block root_x_data - Override to set custom x-data expression; must expose isOpen
+- text: str - Button text (used with default target block)
+- items: dict[str, str] - Menu items as {label: url} (used with default list_content block)
+
+Blocks:
+- target - Custom trigger element (default: button with text and arrow)
+- content - Full dropdown content wrapper
+- list_content - Menu list content (default: renders items as links)
+
+Events:
+- Listens for @close-dropdown to close the menu
+#}
+{% set button_size = button_size|default("medium") %}
+{% set button_class_by_size = {"small": "btn btn-sm", "medium": "btn", "large": "btn btn-lg"} %}
+{% set button_class = button_class|default(button_class_by_size[button_size]) %}
+{% set is_open = is_open|default(false) %}
+{% set dropdown_position = dropdown_position|default('bottom-start') %}
+{#
+    bottom, bottom-start, bottom-end,
+    top, top-start, top-end,
+    left, left-start, left-end,
+    right, right-start, right-end
+#}
+{# djlint:off #}
+<div x-data="{% block root_x_data %}{ isOpen: {{ is_open|tojson }} }{% endblock root_x_data %}"
+     class="w-max"
+     @close-dropdown="isOpen = false"
+     @click.outside="isOpen = false"
+     @keydown.escape.prevent="isOpen = false"
+     @keydown.enter="if (isOpen && document.activeElement?.matches('[data-dropdown-item]')) { $event.preventDefault(); document.activeElement.click(); }"
+     @keydown.down="if (isOpen) { $event.preventDefault(); let items = [...$el.querySelectorAll('[data-dropdown-item]')]; let i = items.indexOf(document.activeElement); if (i < items.length - 1) items[i + 1].focus(); else if (i === -1 && items.length) items[0].focus(); }"
+     @keydown.up="if (isOpen) { $event.preventDefault(); let items = [...$el.querySelectorAll('[data-dropdown-item]')]; let i = items.indexOf(document.activeElement); if (i > 0) items[i - 1].focus(); else if (i === -1 && items.length) items[items.length - 1].focus(); }"
+     {% block root_attributes %}{% endblock root_attributes %}>
+    <div x-ref="target" @click="isOpen = !isOpen" class="cursor-pointer">
+        {% block target %}
+            <button class="{{ button_class }}">
+                {{ text }}
+                <span class="material-symbols-outlined text-lg transition -mr-1"
+                      :class="{ 'rotate-180': isOpen }">keyboard_arrow_down</span>
+            </button>
+        {% endblock target %}
+    </div>
+    <div x-show="isOpen"
+        x-cloak
+        x-transition
+         x-anchor.{{ dropdown_position }}.offset.4="$refs.target"
+        class="z-99">
+        {% block content %}
+            <div class="dropdown-card p-2">
+                {% block list_content %}
+                    <ul>
+                        {% for label, url in items.items() %}
+                            <li>
+                                <a class="dropdown-item" href="{{ url }}">{{ label }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endblock list_content %}
+            </div>
+        {% endblock content %}
+    </div>
+</div>
+{# djlint:on #}

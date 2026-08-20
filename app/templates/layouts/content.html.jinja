@@ -1,0 +1,13 @@
+{% set included_blocks = request.headers.get('Convictional-Include-Block', 'content') %}
+{% if 'header' in included_blocks %}
+    {% block header %}
+    {% endblock header %}
+{% endif %}
+{% block content %}
+{% endblock content %}
+{% if flash_messages %}
+    {# top-14 clears the top nav (~52px tall); pt-[safe-area-inset-top] avoids the iOS notch #}
+    <div class="toast toast-center toast-top top-14! z-50 lg:ml-7 pt-[var(--safe-area-inset-top)]"
+         id="flashes"
+         hx-swap-oob="beforeend">{% include "shared/_flashes.html.jinja" %}</div>
+{% endif %}

@@ -1,0 +1,84 @@
+# Meet with Elena and Theo (Wilfred Osei)
+
+*Jun 17 2026, 11:00 AM*
+
+Theo Nakamura: Before we start, anything you want to raise straight away?
+Wilfred Osei: The instruction to me was to try it, so I signed up with the shared Gmail and the steps were straightforward. The interface is clean, which is where I found ClickUp weak. Moving around in it felt slow, and I could never tell whether that was the tool or my machine. This is faster and the design is leaner.
+Theo Nakamura: Good to hear. One thing we want to establish, and either answer is fine. Has Piotr given you a directive to adopt this, or are you still evaluating?
+Wilfred Osei: He wants to go ahead. As soon as possible.
+Theo Nakamura: Then we will push rather than hold back. Have you been through onboarding already?
+Wilfred Osei: I went through the tutorial. It made sense. I connected the executive inbox. The posts are not useful to me yet, but they will be once there is more in there.
+Elena Marchetti: If you all share one Gmail, the collaborative email side is worth a look, because it lets you coordinate with each other inside the thread.
+Wilfred Osei: That address is used for a lot of our internal things. Our Google Drive hangs off it and we copy it on every external email so that everything stays in one place. It works as a connector more than as a mailbox.
+Elena Marchetti: That is close to the ideal case for the collaborative email feature. You can add other Gmail addresses to the organisation, and then people can comment and assign back and forth. The weakness of a shared login is that nobody can tell who is working on what. The research tool indexes everything in that account too, so somebody who is not in the inbox every day can still find the answer to a question.
+Wilfred Osei: That sounds right. And thank you for the access, honestly. The timing is good, because we are expanding the team and talking to new interns almost every week. Things will get bigger quickly. We want to be useful to you as well, so tell me how you want the feedback structured.
+Theo Nakamura: Feedback is the most valuable thing we get, and the awkward feedback more than the warm feedback. Three things from me. You have the shared address, so on our side we can flag your whole domain and add other accounts when you want them. Then I want to see how this fits with the rest of your stack. And then a short demo.
+Wilfred Osei: Switching everything over is going to be the painful part.
+Theo Nakamura: We do not need you to switch everything. Keep ClickUp for tasks if that is working.
+Elena Marchetti: On the pricing question, since it came up with Piotr. We do not charge per user. The constraint he described with ClickUp was that seats were the reason for the single account. We charge for tokens, so adding people costs nothing.
+Wilfred Osei: Understood.
+Elena Marchetti: Let me share my screen. Tell me when it comes through clearly.
+Rosa Beltran: Still slightly blurry. There it is.
+Wilfred Osei: That is good on my side.
+Elena Marchetti: Starting with goals. Every company wants certain things, and at a startup those wants are less formal. You are not running a full objectives framework, but you still want the outcomes written down, the signals that you are getting there, and an owner. Piotr was interested in starting this here, because as the team grows it is how everyone stays pointed the same way. Whether the goal is the fundraise or the hospital partnership, it can be tracked in one place.
+Theo Nakamura: Wilfred, do you know the objectives and key results framework? No harm either way.
+Wilfred Osei: I have heard of it. Could you refresh me?
+Theo Nakamura: It came out of Google and there is a well known book about it. An objective is what you want, and the key results are the measures that tell you whether you got there. The recommendation is two to five objectives at a time. So the objective might be to lead your category, and a key result might be a specific share of a specific channel. Another framework you will hear about uses a single level instead of two.
+Elena Marchetti: Ours is closer to the single level version. Each outcome has one measure and a priority, so you have a first goal, a second goal, and a list. Either style works here. It is worth a conversation with Piotr about how you want to signal these to the team. His interest was in having them written down and tracked at all, which I am not sure is happening in ClickUp today.
+Wilfred Osei: It is not. And one of my complaints about ClickUp is the arbitrary progress meter in the right column. It takes however many items you have, counts the completed ones, and calls that a percentage. It looks precise and it means nothing. I prefer that you simply say at risk or on track.
+Elena Marchetti: That is deliberate.
+Theo Nakamura: Elena, could you say why this matters at their size? Piotr mentioned they do not use an assistant model day to day.
+Elena Marchetti: As an organisation grows, more happens in it, and even at ten people two people can hold different views of what is important. Fundraising, research and the first steps toward commercialisation pull against each other. That is drift, and it is not a failure of intelligence or motivation. Writing goals down is how companies resist it. Here they also feed the ordering of your inbox, so the work that matters surfaces first.
+Wilfred Osei: That is well matched to what we need.
+Elena Marchetti: Then let me show the collaborative side. Here is an email thread. Theo pulled me into it and asked me to look at something. I will add Rosa as an illustration. Say the thread is about the hospital partnership and you want three or four people in the discussion. You can talk about it here, and when the group settles on the terms you want, one person marks that message. Later, when somebody searches, the content of the thread, the discussion and the record of what was settled all come back together.
+Wilfred Osei: I can see the value of marking a message. Can you mark it with anything else?
+Elena Marchetti: Reactions and that one marker, for now. When something needs a wider audience we tend to move it into a post instead. We did that recently for our mobile router choice. Somebody opened a document, the options were laid out, people commented for a few days, and the conclusion was marked at the end.
+Theo Nakamura: The reason we push posts over chat is that chat cannot tell the difference between what we are ordering for lunch and whether to work with a particular hospital. A post can. And then the research tool knows something was settled, so a new intern can ask why and get a real answer.
+Wilfred Osei: What model is behind the research tool?
+Elena Marchetti: Anthropic, under a data protection agreement, so nothing that passes through is trained on. Everything else runs on Google Cloud and we are looking at a hosted option there too. The tool can pull general knowledge from the model and specific facts from your organisation and blend them. If you ever bring in a third party assistant, everything you see here is exposed to it over MCP.
+Wilfred Osei: So there is no setup on our side for that.
+Elena Marchetti: None.
+Wilfred Osei: One more complaint that Piotr repeats often. We have no dependency charts for tracking projects. We tried a free tool and hit a paywall, so now it is spreadsheets that we attach to things, with nothing linking them.
+Elena Marchetti: We do not have dependency mapping. We have tasks, and they are exposed over MCP so an outside tool can read the structure, but first this then that is not modelled. Our view is that as assistants take on more of the work, one person tends to move through a whole project with an agent rather than handing steps between people. If you genuinely need the dependency chart, that will have to live outside the app for now.
+Wilfred Osei: That makes sense as a philosophy, and I prefer it to the alternative. There is simply too much to look at in the other tool. I will have to convince them.
+Elena Marchetti: We will put in a good word. Theo, do you want to take the last few minutes on the inbox?
+Theo Nakamura: Wilfred, most inboxes are chronological. Ours can be filtered by a written instruction. If you say you need what is urgent and important, it orders itself that way. Another common one is to filter by goals, which uses the goals you have already written down. Elena, could you show where a custom view is added?
+Elena Marchetti: Here. I keep one for things I can realistically finish on a phone, so a request to write a long piece stays out of the way and the short items rise. I keep another for low attention mornings.
+Theo Nakamura: The last thing is the meeting recorder. The recorder in this call is ours. You add it yourself, deliberately, because we do not join by default. Most of the context in a company is in email, chat and meetings, and the research tool is only as good as how much of that it can see.
+Wilfred Osei: The meetings are where most things happen for us. It ends up being hard to pull apart afterwards. We tried a notetaker once and the team was not keen on it, but I think it would be wise to start.
+Elena Marchetti: There is no per user fee on the recorder either. It is the tokens for the summary.
+Theo Nakamura: Elena, we are at time and we have another call.
+Elena Marchetti: I will stop sharing. Wilfred, thank you. Rosa is staying on with you. We will send some notes on the integrations we did not reach.
+Wilfred Osei: Thank you both.
+Rosa Beltran: So it is just us. Any questions from what they showed you, or thoughts on how you would use it?
+Wilfred Osei: It makes sense to me. The hardest part is moving everything across. That will take a lot of hours.
+Rosa Beltran: Let us talk about that. Everything is in ClickUp today?
+Wilfred Osei: A pile of projects, lists and to do lists. My assumption was that we would copy it over by hand, or export it to a spreadsheet.
+Rosa Beltran: Let me look into whether there is an export we can take and upload on your behalf, so it lands as documents and posts on our side. If you can send me a list of the projects and the formats you can get out, I will check what is possible with our engineer.
+Wilfred Osei: That could work, if you are willing.
+Rosa Beltran: Let me at least explore it. While the others were talking I wanted to share one more thing. We work in an unusual way here. We are not a chat heavy company. We chat around a piece of work rather than in a general channel. We published our communication norms recently, and the whole handbook is public, so I will drop it in the chat. It may be an interesting read on its own, and it explains why the app is shaped the way it is.
+Wilfred Osei: I will read it and pass it to the team.
+Rosa Beltran: Here is what I suggest for next steps. Use the app for a week. Send me the export formats you can get. I will talk to our engineer about the upload. Then we speak again and go through what felt comfortable and what did not.
+Wilfred Osei: That is a good plan.
+Rosa Beltran: Let us book it now rather than trade emails. What timezone are you in?
+Wilfred Osei: Eastern. And you?
+Rosa Beltran: Phoenix. Half the year I am on Pacific and half the year I am on Mountain, and right now I am on Pacific, so it is half past eight in the morning here.
+Wilfred Osei: Early. I hope the coffee has arrived.
+Rosa Beltran: It has. Does noon Eastern next Wednesday work?
+Wilfred Osei: Noon Wednesday works.
+Rosa Beltran: Booked. I will send the details and I may bring Theo in. One question before you go. Are you going to add more users to the account, or stay on the single login?
+Wilfred Osei: We are definitely adding everyone. I want each person to have their own account rather than sharing the one login. I have already told the team that is what we are doing, and I will send the invitations myself this afternoon.
+Rosa Beltran: If you need help, send me an email. You should be able to invite everyone from your settings.
+Wilfred Osei: Understood. So the only thing we are billed for is tokens, which is the summaries and the research answers. Writing posts and the rest of it is free.
+Rosa Beltran: Correct. It is the parts with a model behind them. Meeting summaries, research output, the custom inbox sorting. It is quite small in practice. A person usually lands around ten dollars a month.
+Wilfred Osei: That is reasonable. How large is your team?
+Rosa Beltran: Around twenty. We also have a research arm that stays close to the current work in the field, and we publish essays. We work with a professor as an academic advisor.
+Wilfred Osei: That is impressive.
+Rosa Beltran: The essays are on the website and they are worth reading. I keep a dictionary open for some of them.
+Wilfred Osei: One thing I have been thinking about, slightly off topic. With so much depending on these models, I expect a wave of cognitive atrophy. People will get the output without keeping the skill.
+Rosa Beltran: We talk about that often. An individual contributor now handles the output that a manager handled ten years ago, so the skill people have to build is closer to management than to production.
+Wilfred Osei: Agreed. It is about steering it and asking properly.
+Rosa Beltran: Exactly. It was good to meet you.
+Wilfred Osei: You too. Thanks very much, Rosa.
+Rosa Beltran: Try it this week, invite the team, and we will speak on Wednesday. Have a good one.
+Wilfred Osei: Take it easy. Goodbye.

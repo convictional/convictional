@@ -1,0 +1,134 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json
+      accept:
+      - application/json
+    method: POST
+    uri: https://us-east-1.recall.ai/api/v1/bot/
+  response:
+    body:
+      string: '{"id":"f3353c74-1ddf-42c5-9e4c-bf7b7cb20716","video_url":null,"media_retention_end":null,"status_changes":[{"code":"ready","message":null,"created_at":"2024-12-05T19:01:07.627236Z","sub_code":null}],"meeting_metadata":null,"meeting_participants":[],"meeting_url":{"meeting_id":"ebf-sucq-adc","platform":"google_meet"},"metadata":{},"bot_name":"convictional.com","join_at":null,"transcription_options":{"provider":"meeting_captions","use_separate_streams_when_available":false},"automatic_leave":{"waiting_room_timeout":1200,"noone_joined_timeout":1200,"everyone_left_timeout":2,"in_call_not_recording_timeout":3600,"recording_permission_denied_timeout":3600,"silence_detection":{"timeout":3600,"activate_after":1200},"bot_detection":{"using_participant_events":{"timeout":600,"activate_after":1200}}},"calendar_meetings":[],"recording_mode":"speaker_view","recording":null,"recordings":[]}'
+    headers:
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '889'
+      Content-Security-Policy:
+      - 'default-src ''self''; style-src ''self'' ''unsafe-inline'' *.usepylon.com
+        *.posthog.com *.pusher.com; frame-src ''self'' https://app.svix.com https://www.googletagmanager.com
+        https://embedded-dashboards.metronome.com https://*.stripe.com; script-src
+        ''self'' ''unsafe-inline'' ''unsafe-eval'' www.googletagmanager.com www.google-analytics.com
+        webpack://meeting-api us-assets.i.posthog.com cdn.usefathom.com tag.clearbitscripts.com
+        s3-us-west-2.amazonaws.com/b2bjsstore/b/Y4O7Z0H983NX/reb2b.js.gz opps-widget.getwarmly.com
+        us.i.posthog.com b-code.liadm.com *.liadm.com a.usbrowserspeed.com a.remarketstats.com
+        *.clickcertain.com *.stripe.com *.termly.io *.usepylon.com *.posthog.com *.pusher.com;
+        connect-src ''self'' ws: wss: www.google-analytics.com us.i.posthog.com opps-api.getwarmly.com
+        pro.ip-api.com alocdn.com opps-api.getwarmly.com *.liadm.com 9xgnrndqve.execute-api.us-west-2.amazonaws.com
+        tag.clearbitscripts.com *.termly.io *.usepylon.com *.posthog.com *.pusher.com;
+        font-src ''self'' *.usepylon.com *.posthog.com *.pusher.com; media-src *.s3.amazonaws.com;
+        img-src ''self'' data: https://cdn.usefathom.com https://upload.wikimedia.org
+        https://rp.liadm.com https://*.stripe.com *.s3.amazonaws.com *.s3.us-west-1.amazonaws.com
+        https://avatars.slack-edge.com'
+      Content-Type:
+      - application/json
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Date:
+      - Thu, 05 Dec 2024 19:53:12 GMT
+      Permissions-Policy:
+      - accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), usb=()
+      Referrer-Policy:
+      - same-origin
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      Via:
+      - 1.1 4da3e729faec3d2f5eeca39813785c2c.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - T4f6zcu_qjAWHcJv9bd7zhX0rzjDkU-Hcxef4bM5p1L-o2H3mUUsVQ==
+      X-Amz-Cf-Pop:
+      - JFK50-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json
+      accept:
+      - application/json
+    method: POST
+    uri: https://us-east-1.recall.ai/api/v1/bot/
+  response:
+    body:
+      string: '{"id":"17468003-5abb-4b40-8bdf-c8026915973b","video_url":null,"media_retention_end":null,"status_changes":[],"meeting_metadata":null,"meeting_participants":[],"meeting_url":{"meeting_id":"ebf-sucq-adc","platform":"google_meet"},"metadata":{},"bot_name":"convictional.com","join_at":null,"transcription_options":{"provider":"meeting_captions","use_separate_streams_when_available":false},"automatic_leave":{"waiting_room_timeout":1200,"noone_joined_timeout":1200,"everyone_left_timeout":2,"in_call_not_recording_timeout":3600,"recording_permission_denied_timeout":3600,"silence_detection":{"timeout":3600,"activate_after":1200},"bot_detection":{"using_participant_events":{"timeout":600,"activate_after":1200}}},"calendar_meetings":[],"recording_mode":"speaker_view","recording":null,"recordings":[]}'
+    headers:
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '799'
+      Content-Security-Policy:
+      - 'default-src ''self''; style-src ''self'' ''unsafe-inline'' *.usepylon.com
+        *.posthog.com *.pusher.com; frame-src ''self'' https://app.svix.com https://www.googletagmanager.com
+        https://embedded-dashboards.metronome.com https://*.stripe.com; script-src
+        ''self'' ''unsafe-inline'' ''unsafe-eval'' www.googletagmanager.com www.google-analytics.com
+        webpack://meeting-api us-assets.i.posthog.com cdn.usefathom.com tag.clearbitscripts.com
+        s3-us-west-2.amazonaws.com/b2bjsstore/b/Y4O7Z0H983NX/reb2b.js.gz opps-widget.getwarmly.com
+        us.i.posthog.com b-code.liadm.com *.liadm.com a.usbrowserspeed.com a.remarketstats.com
+        *.clickcertain.com *.stripe.com *.termly.io *.usepylon.com *.posthog.com *.pusher.com;
+        connect-src ''self'' ws: wss: www.google-analytics.com us.i.posthog.com opps-api.getwarmly.com
+        pro.ip-api.com alocdn.com opps-api.getwarmly.com *.liadm.com 9xgnrndqve.execute-api.us-west-2.amazonaws.com
+        tag.clearbitscripts.com *.termly.io *.usepylon.com *.posthog.com *.pusher.com;
+        font-src ''self'' *.usepylon.com *.posthog.com *.pusher.com; media-src *.s3.amazonaws.com;
+        img-src ''self'' data: https://cdn.usefathom.com https://upload.wikimedia.org
+        https://rp.liadm.com https://*.stripe.com *.s3.amazonaws.com *.s3.us-west-1.amazonaws.com
+        https://avatars.slack-edge.com'
+      Content-Type:
+      - application/json
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Date:
+      - Thu, 05 Dec 2024 19:53:12 GMT
+      Permissions-Policy:
+      - accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), usb=()
+      Referrer-Policy:
+      - same-origin
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      Via:
+      - 1.1 4da3e729faec3d2f5eeca39813785c2c.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - Vs_QMWlXME8S5DVqTuTtkTK25fb7d4Q0jjVByVSyLejJf_Rg6n9Idw==
+      X-Amz-Cf-Pop:
+      - JFK50-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 201
+      message: Created
+version: 1

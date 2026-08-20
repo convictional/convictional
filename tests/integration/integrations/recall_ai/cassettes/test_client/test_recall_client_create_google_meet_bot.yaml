@@ -1,0 +1,69 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Content-Type:
+      - application/json
+      accept:
+      - application/json
+    method: POST
+    uri: https://us-east-1.recall.ai/api/v1/bot/
+  response:
+    body:
+      string: '{"id":"bac7a4d1-c8f7-4599-a4f8-b6f729a63114","video_url":null,"status_changes":[{"code":"ready","message":null,"created_at":"2024-09-19T17:41:03.040176Z","sub_code":null}],"meeting_metadata":null,"meeting_participants":[],"meeting_url":{"meeting_id":"azj-itsc-jpo","platform":"google_meet"},"metadata":{},"join_at":null,"calendar_meetings":[],"recording":null,"recordings":[]}'
+    headers:
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '376'
+      Content-Security-Policy:
+      - 'img-src ''self'' data: https://cdn.usefathom.com https://upload.wikimedia.org
+        https://rp.liadm.com https://*.stripe.com *.s3.amazonaws.com *.s3.us-west-1.amazonaws.com
+        https://avatars.slack-edge.com; connect-src ''self'' ws: wss: www.google-analytics.com
+        us.i.posthog.com opps-api.getwarmly.com pro.ip-api.com alocdn.com opps-api.getwarmly.com
+        *.liadm.com 9xgnrndqve.execute-api.us-west-2.amazonaws.com tag.clearbitscripts.com
+        *.termly.io *.usepylon.com *.posthog.com *.pusher.com; script-src ''self''
+        ''unsafe-inline'' ''unsafe-eval'' www.googletagmanager.com www.google-analytics.com
+        webpack://meeting-api us-assets.i.posthog.com cdn.usefathom.com tag.clearbitscripts.com
+        s3-us-west-2.amazonaws.com/b2bjsstore/b/Y4O7Z0H983NX/reb2b.js.gz opps-widget.getwarmly.com
+        us.i.posthog.com b-code.liadm.com *.liadm.com a.usbrowserspeed.com a.remarketstats.com
+        *.clickcertain.com *.stripe.com *.termly.io *.usepylon.com *.posthog.com *.pusher.com;
+        style-src ''self'' ''unsafe-inline'' *.usepylon.com *.posthog.com *.pusher.com;
+        media-src *.s3.amazonaws.com; font-src ''self'' *.usepylon.com *.posthog.com
+        *.pusher.com; default-src ''self''; frame-src ''self'' https://app.svix.com
+        https://www.googletagmanager.com https://embedded-dashboards.metronome.com
+        https://*.stripe.com'
+      Content-Type:
+      - application/json
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Date:
+      - Thu, 19 Sep 2024 17:41:37 GMT
+      Permissions-Policy:
+      - accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(),
+        fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(),
+        midi=(), payment=(), usb=()
+      Referrer-Policy:
+      - same-origin
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      Via:
+      - 1.1 ad2d59fb6f7c4118dea14b5b7a9a1658.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - Qrt1SHy2gu7Y31Ky1of8Fp_fhjLt6-LGiYmgD3syLy9yrJFrYaNIqA==
+      X-Amz-Cf-Pop:
+      - JFK50-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 201
+      message: Created
+version: 1

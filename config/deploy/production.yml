@@ -1,0 +1,285 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: convictional
+  annotations:
+    run.googleapis.com/ingress: internal-and-cloud-load-balancing
+spec:
+  template:
+    metadata:
+      name: ${REVISION_NAME}
+      annotations:
+        autoscaling.knative.dev/minScale: "2"
+        autoscaling.knative.dev/maxScale: "10"
+        autoscaling.knative.dev/target: "10"
+        run.googleapis.com/cloudsql-instances: ${GCP_PROJECT_ID}:${GCP_REGION}:convictional
+        run.googleapis.com/startup-cpu-boost: "true"
+        run.googleapis.com/execution-environment: gen2
+        run.googleapis.com/cpu-throttling: "false"
+    spec:
+      serviceAccountName: convictional-app@${GCP_PROJECT_ID}.iam.gserviceaccount.com
+      containers:
+        - name: convictional-1
+          image: ${CONTAINER_IMAGE}
+          ports:
+            - name: http1
+              containerPort: 8080
+          resources:
+            limits:
+              cpu: "2"
+              memory: "4Gi"
+          startupProbe:
+            httpGet:
+              path: /
+              port: 8080
+              httpHeaders:
+                - name: host
+                  value: ${APP_DOMAIN}
+            periodSeconds: 2
+            # Startup budget = failureThreshold × periodSeconds = 180s. Set
+            # generously because cold start is slow and variable, and with
+            # minScale > 1 a single instance exceeding the budget fails the
+            # whole revision's deploy.
+            failureThreshold: 90
+            timeoutSeconds: 1
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              httpHeaders:
+                - name: host
+                  value: ${APP_DOMAIN}
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 5
+          env:
+            - name: ENV
+              value: production
+            - name: BASE_URL
+              value: https://${APP_DOMAIN}
+            - name: GCP_PROJECT
+              value: ${GCP_PROJECT_ID}
+            - name: GCP_PROJECT_NUMBER
+              value: "${GCP_PROJECT_NUMBER}"
+            - name: GCP_LOCATION
+              value: ${GCP_REGION}
+            - name: JOBS_SERVICE_NAME
+              value: convictional-jobs
+            - name: GCS_BUCKET
+              value: ${GCS_BUCKET}
+            - name: CLOUD_TASKS_SERVICE_ACCOUNT
+              value: convictional-background-jobs@${GCP_PROJECT_ID}.iam.gserviceaccount.com
+            - name: OPENAI_ORGANIZATION
+              value: ${OPENAI_ORGANIZATION}
+            - name: JOB_RUNNER
+              value: cloud_tasks
+            - name: JOB_TIMEOUT_SECONDS
+              value: "1800"
+            - name: EMAIL_DELIVERY
+              value: mailgun
+            # Sender identities and the Mailgun sending domain. No defaults in source —
+            # a default would make every deployment send as this domain — so each
+            # environment states its own, and startup fails without them.
+            - name: EMAIL_FROM
+              value: ${EMAIL_FROM}
+            - name: RESEARCH_EMAIL_FROM
+              value: ${RESEARCH_EMAIL_FROM}
+            - name: MAILGUN_DOMAIN
+              value: ${MAILGUN_DOMAIN}
+            # Operator contact addresses. feedback_email is shown on the error page and
+            # is the VAPID subject; the other two receive signup notices.
+            - name: FEEDBACK_EMAIL
+              value: ${FEEDBACK_EMAIL}
+            - name: SIGNUP_EMAIL
+              value: ${SIGNUP_EMAIL}
+            - name: NEW_USER_NOTIFICATION_EMAILS
+              value: ${NEW_USER_NOTIFICATION_EMAILS}
+            # Externally hosted legal and security pages. Unset means the operator has
+            # published none: the /policies/* redirects 404 and the sign-in footer omits
+            # the link, so each must be named here to keep the links live.
+            - name: TERMS_OF_SERVICE_URL
+              value: ${TERMS_OF_SERVICE_URL}
+            - name: PRIVACY_POLICY_URL
+              value: ${PRIVACY_POLICY_URL}
+            - name: SECURITY_POLICY_URL
+              value: ${SECURITY_POLICY_URL}
+            - name: CACHE_STORE
+              value: postgres
+            - name: POSTGRES_JSON
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_POSTGRES_JSON
+            - name: GOOGLE_OAUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_OAUTH2_CLIENT_ID
+            - name: GOOGLE_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_OAUTH2_CLIENT_SECRET
+            # iOS-type Google OAuth client for the native app's PKCE sign-in.
+            # Not secret (ships in the app binary), so kept as a plain value.
+            # MUST match `iosClientId` in app/mobile/google-oauth.config.json —
+            # the mobile app requests the auth code as that client and this
+            # backend redeems it; a mismatch makes Google return
+            # `unauthorized_client`.
+            - name: GOOGLE_OAUTH_IOS_CLIENT_ID
+              value: ${GOOGLE_OAUTH_IOS_CLIENT_ID}
+            # Apple Developer Team ID; builds the AASA appID for Universal Links.
+            # Unset previously, which made /.well-known/apple-app-site-association
+            # return 404.
+            - name: APPLE_TEAM_ID
+              value: ${APPLE_TEAM_ID}
+            # Pairs with APPLE_TEAM_ID to form the AASA appID. Both must be set or the
+            # served appID is `<TEAM_ID>.` and iOS binds no Universal Links.
+            - name: IOS_BUNDLE_ID
+              value: ${IOS_BUNDLE_ID}
+            - name: MICROSOFT_OAUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_MICROSOFT_OAUTH2_CLIENT_ID
+            - name: MICROSOFT_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_MICROSOFT_OAUTH2_CLIENT_SECRET
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_SENTRY_DSN
+            - name: SENTRY_ORG
+              value: ${SENTRY_ORG}
+            - name: SENTRY_PROJECT
+              value: convictional
+            - name: SENTRY_PROJECT_ID
+              value: "${SENTRY_PROJECT_ID}"
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_SECRET_KEY_BASE
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_OPENAI_API_KEY
+            - name: ANTHROPIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_ANTHROPIC_API_KEY
+            - name: MAILGUN_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: MAILGUN_API_KEY
+            - name: MAILGUN_WEBHOOK_SIGNING_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_MAILGUN_WEBHOOK_SIGNING_KEY
+            - name: RECALL_AI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_RECALL_AI_API_KEY
+            - name: RECALL_AI_WEBHOOK_SIGNING_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_RECALL_AI_BOT_STATUS_WEBHOOK_SIGNING_SECRET
+            - name: KLIPY_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_KLIPY_API_KEY
+            - name: SLACK_OAUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: SLACK_OAUTH_CLIENT_ID
+            - name: SLACK_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: SLACK_OAUTH_CLIENT_SECRET
+            - name: MCP_JWT_SIGNING_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_MCP_JWT_SIGNING_KEY
+            - name: MCP_STORAGE_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_MCP_STORAGE_ENCRYPTION_KEY
+            - name: PUSH_ENABLED
+              value: "true"
+            - name: VAPID_PUBLIC_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_VAPID_PUBLIC_KEY
+            - name: VAPID_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_VAPID_PRIVATE_KEY
+            - name: ALLOWED_HOSTS
+              value: ${APP_DOMAIN},convictional-${GCP_PROJECT_NUMBER}.${GCP_REGION}.run.app
+            # Signup blocklists (see accounts.py: is_login_blocked / is_domain_banned).
+            # Comma-separated. Sourced from Secret Manager rather than inline values so no
+            # blocked identity (email, Google sub) or named domain lands in git history —
+            # the whole reason these moved out of source. Absent secret → empty → no blocking.
+            - name: BANNED_DOMAINS
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_BANNED_DOMAINS
+            - name: BLOCKED_EMAILS
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_BLOCKED_EMAILS
+            - name: BLOCKED_OAUTH_SUBS
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_BLOCKED_OAUTH_SUBS
+            # Superuser is granted per address (see accounts.py: User.is_superuser), never
+            # by email domain — a domain rule hands superuser to whoever next registers it.
+            # Comma-separated, from Secret Manager for the same reason as the blocklists
+            # above: no named individual in git history. Absent secret → empty → no
+            # superuser, which locks the /api docs, /background_jobs, and the organization
+            # system prompt. Must list every address that needs those.
+            - name: SUPERUSER_EMAILS
+              valueFrom:
+                secretKeyRef:
+                  key: latest
+                  name: CONVICTIONAL_SUPERUSER_EMAILS
+            # Kill-switch for self-serve account creation (see settings.signups_enabled).
+            - name: SIGNUPS_ENABLED
+              value: "false"
+            - name: EMAIL_CLIENT
+              value: gmail
+            - name: EMAIL_MESSAGES_ONBOARDING_SYNC_LIMIT
+              value: "10000"
+            - name: ENABLE_GMAIL_WATCH
+              value: "true"
+            - name: ASSET_HOST
+              value: https://${CDN_DOMAIN}
+            - name: STATIC_ASSET_URL_PREFIX
+              value: "/"
+            - name: WORKER_COUNT
+              value: "2"
+            - name: RUNTIME_NETWORK_THREADS_PER_WORKER
+              value: "4"
+
+  traffic:
+    - percent: 100
+      revisionName: ${SERVING_REVISION_NAME}

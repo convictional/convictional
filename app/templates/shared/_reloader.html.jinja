@@ -1,0 +1,16 @@
+<script nonce="{{ csp_nonce }}" data-head-persist>
+    (function() {
+        var protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+        var socket = new WebSocket(protocol + window.location.host + '/reload');
+        var maxReloadAttempts = 1;
+        var reloadInterval = 100; // time between reload attempts in ms
+        socket.onclose = function() {
+            let reloadAttempts = 0;
+            const intervalFn = setInterval(function() {
+                window.location.reload();
+                reloadAttempts++;
+                if (reloadAttempts === maxReloadAttempts) clearInterval(intervalFn);
+            }, reloadInterval);
+        }
+    })();
+</script>

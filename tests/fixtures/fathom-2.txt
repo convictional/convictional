@@ -1,0 +1,45 @@
+Rina - December 03
+[VIEW RECORDING - 3 mins (1 min of highlights)](https://fathom.video/share/example-recording-2): https://fathom.video/share/example-recording-2
+
+---
+
+0:00 - Devon Ellis (Convictional)
+  like how long it took.
+  ACTION ITEM: Devon describes widget features for call control and recording functionality - [WATCH](https://fathom.video/share/example-recording-2?timestamp=1.52): https://fathom.video/share/example-recording-2?timestamp=1.52
+
+0:01 - Rina Kovacs (Convictional)
+  Yeah, like every even the little delay for the image changed and stuff.
+
+0:13 - Devon Ellis (Convictional)
+  So now I have this like little widget that's like hovering around on my desktop that allows I can end the call, I can pause recording it looks like and I can do a highlight.
+  HIGHLIGHT: Testing highlishts feature - [WATCH](https://fathom.video/share/example-recording-2?timestamp=27.5): https://fathom.video/share/example-recording-2?timestamp=27.5
+    I can also do positive reaction, need to review feedback, customize. So like tagging for moments in time.
+
+
+0:39 - Rina Kovacs (Convictional)
+
+    Yeah, it looks like it.
+
+
+0:41 - Devon Ellis (Convictional)
+  So I'm going to do highlight and now it says rewind to when the things started whatever. There's a check box to like end the height.  So basically allows me to like live select highlights. Okay, yeah.
+
+1:00 - Rina Kovacs (Convictional)
+
+  HIGHLIGHT: Rina discusses video recording feature with moment-tagging button capability - [WATCH](https://fathom.video/share/example-recording-2?timestamp=60.0): https://fathom.video/share/example-recording-2?timestamp=60.0
+    So if you were like, if you, let's say some recording setups, you are recording video, they have like a tag this moment button.
+
+
+1:10 - Devon Ellis (Convictional)
+  Yeah, and it's like, it's like summarizing the highlight in real time. It looks like like it's a summarizing highlight.
+  POSITIVE REACTION: Devon discusses highlight features and integration capabilities for customizable notifications - [WATCH](https://fathom.video/share/example-recording-2?timestamp=77.86): https://fathom.video/share/example-recording-2?timestamp=77.86
+    it's this type to add title, testing highlight feature. And you can like, speaker agrees with previous statement is the summary that again, so that's weird.
+
+    And yeah, there's like, you can customize the list of highlights that you have. So this is what it had for the HubSpot integration.
+  It was like, if there's a highlight, it would do some, or like, maybe that was slack. was like, if there was a highlight, certain highlights would be sent to  We could do that, but like we don't have this like little, like, we don't have like a real time interface.  We don't have a best application. Sure. That's, you know, that could always be changed with the time and effort.
+
+2:29 - Rina Kovacs (Convictional)
+  Of course.
+
+2:30 - Devon Ellis (Convictional)
+  I'm going to end and this can I end up meeting, but I'll rejoin if it does. no worries.

@@ -1,0 +1,22 @@
+{% set plain_text_timestamp = format_datetime(in_reply_to.sent_at or in_reply_to.received_at, "datetime_long", timezone) %}
+<br />
+
+
+---------- Forwarded message ---------\
+From: {{ in_reply_to.sender_address.name }} <{{ in_reply_to.sender_address.email }}>\
+Date: {{ plain_text_timestamp }}\
+Subject: {{ in_reply_to.normalized_subject or in_reply_to.subject or "" }}\
+To: {% if in_reply_to.to %}{{ ", ".join(in_reply_to.to) }}{% endif %}
+{%- if in_reply_to.cc %}\
+Cc: {{ ", ".join(in_reply_to.cc) }}
+{% endif %}
+
+:::quoted_html
+{% if in_reply_to.body_html -%}
+{{ in_reply_to.body_html|sanitize_email_html_content|safe }}
+{% elif in_reply_to.body_plain -%}
+<p>{{ in_reply_to.body_plain|linebreaksbr }}</p>
+{% else -%}
+<p><em>No content</em></p>
+{% endif -%}
+:::

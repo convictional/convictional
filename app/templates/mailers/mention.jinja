@@ -1,0 +1,20 @@
+{% extends "base.jinja" %}
+
+{% block subject %}
+Re: ({{ titleize(mention.workspace.resource_type) }}) {{ mention.workspace.resource.title }}
+{% endblock subject %}
+
+{% block body_markdown %}
+{{ mention.creator.display_name }} mentioned you on a {{ titleize(mention.workspace.resource_type)|lower }}.
+
+{{ body }}
+
+---
+{% if mention.recordable_gid.record_type == "DocumentComment" %}
+{% set view_url = url_for("documents_edit", document_id=mention.workspace.resource.id) ~ "#comment-" ~ mention.recordable_gid.record_id %}
+{% else %}
+{% set view_url = url_for("gid_redirect", gid=mention.workspace.resource_gid.to_param) %}
+{% endif %}
+[View on Convictional]({{ view_url }})
+You're receiving this because you were mentioned, but you can [unsubscribe]({{ view_url }}).
+{% endblock body_markdown %}

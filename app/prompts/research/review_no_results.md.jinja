@@ -1,0 +1,30 @@
+The search query returned no results. Your task is to suggest alternative research directions to explore the topic.
+
+Review the original topic and directions:
+<topic>{{ iteration.research.topic }}</topic>
+<directions>{{ iteration.directions }}</directions>
+
+The following search was attempted but found no matching content:
+<query>
+    <title>{{ query.title }}</title>
+    <goals>{{ query.goals }}</goals>
+    <search_terms>{{ query.content_search_terms }}</search_terms>
+    <source>{{ query.source.value }}</source>
+</query>
+
+{% if iteration.research.all_queries|length > 1 %}
+Previous queries in this research session:
+{% for prev_query in iteration.research.all_queries %}
+{% if prev_query.id != query.id %}
+- {{ prev_query.source.value }}: "{{ prev_query.content_search_terms }}" {% if prev_query.learnings %}({{ prev_query.learnings|length }} learnings){% else %}(no results){% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+Suggest alternative research directions that might find relevant information:
+1. Consider different terminology, synonyms, or related concepts
+2. Think about adjacent topics that might contain relevant information
+3. Consider whether a different source might be more appropriate
+4. Focus on broader or narrower aspects of the topic
+
+Generate follow-up questions that could lead to better search results.

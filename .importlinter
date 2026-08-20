@@ -1,0 +1,146 @@
+[importlinter]
+root_packages=
+    integrations
+    app
+    infra
+    config
+    lib
+
+[importlinter:contract:app_layers]
+name = Layers
+type = layers
+layers =
+    integrations
+    app
+    infra
+    config
+    lib
+ignore_imports=
+    app.main -> integrations
+    app.main -> integrations.**
+
+[importlinter:contract:channels]
+name=Channels dependencies
+type=forbidden
+source_modules=
+    app.channels
+forbidden_modules=
+    app.jobs
+    app.mailers
+    app.routers
+    app.prompts
+
+[importlinter:contract:mailers]
+name=Mailers dependencies
+type=forbidden
+source_modules=
+    app.mailers
+forbidden_modules=
+    app.channels
+    app.helpers
+    app.jobs
+    app.middleware
+    app.presenters
+    app.routers
+    app.prompts
+
+[importlinter:contract:helpers]
+name=Helpers dependencies
+type=forbidden
+source_modules=
+    app.helpers
+forbidden_modules=
+    app.jobs
+    app.middleware
+    app.routers
+    app.prompts
+
+
+[importlinter:contract:jobs]
+name=Jobs dependencies
+type=forbidden
+source_modules=
+    app.jobs
+forbidden_modules=
+    app.channels
+    app.helpers
+    app.middleware
+    app.presenters
+    app.routers
+
+[importlinter:contract:middleware]
+name=Middleware dependencies
+type=forbidden
+source_modules=
+    app.middleware
+forbidden_modules=
+    app.channels
+    app.mailers
+    app.helpers
+    app.jobs
+    app.models
+    app.presenters
+    app.routers
+    app.prompts
+
+[importlinter:contract:models_dependencies]
+name=Models dependencies
+type=forbidden
+source_modules=
+    app.models
+forbidden_modules=
+    app.channels
+    app.mailers
+    app.helpers
+    app.jobs
+    app.middleware
+    app.presenters
+    app.routers
+
+[importlinter:contract:models_layers]
+name = Models layers
+type = layers
+layers =
+    app.models.workspaces | app.models.commands
+    app.models.collaboration
+    app.models.accounts
+
+[importlinter:contract:models_workspaces_independence]
+name= Models workspaces independence
+type=independence
+modules=
+    app.models.workspaces.*
+
+[importlinter:contract:api_routers]
+name=API routers one-way dependency
+type=forbidden
+source_modules=
+    app.routers
+forbidden_modules=
+    app.routers.api
+allow_indirect_imports = True
+ignore_imports=
+    app.routers.api.** -> app.routers.api.**
+unmatched_ignore_imports_alerting = warn
+
+[importlinter:contract:api_internal_layers]
+name=API internal layers
+type=layers
+layers=
+    app.routers.api.streams | app.routers.api.dependencies
+    app.routers.api.serializers
+    app.routers.api.schemas
+
+[importlinter:contract:presenters]
+name=Presenters dependencies
+type=forbidden
+source_modules=
+    app.models
+forbidden_modules=
+    app.channels
+    app.mailers
+    app.helpers
+    app.jobs
+    app.presenters
+    app.routers
+    app.prompts

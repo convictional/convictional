@@ -1,0 +1,27 @@
+{% extends "base.jinja" %}
+
+{% block subject %}Re: (Document) {{ event.workspace.resource.title }}{% endblock subject %}
+
+{% block body_text %}
+{% set quoted = event.details.get("quoted_text", []) %}
+{% if quoted and quoted[1] %}
+> {{ quoted[1]|truncate(200) }}
+
+{% endif %}
+{{ event.details["content"][1] }}
+
+---
+View on Convictional: {{ url_for("documents_edit", document_id=event.workspace.resource.id) }}#comment-{{ event.details["comment_id"] }}
+{% endblock body_text %}
+
+{% block body_markdown %}
+{% set quoted = event.details.get("quoted_text", []) %}
+{% if quoted and quoted[1] %}
+> {{ quoted[1]|truncate(200) }}
+
+{% endif %}
+{{ event.details["content"][1] }}
+
+---
+[View on Convictional]({{ url_for("documents_edit", document_id=event.workspace.resource.id) }}#comment-{{ event.details["comment_id"] }})
+{% endblock body_markdown %}

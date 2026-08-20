@@ -1,0 +1,1019 @@
+interactions:
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Given the
+      following prompt from the user, generate a list of queries to research the topic.\n<topic>test
+      research topic</topic>\n\nReturn a maximum of 3 queries, but feel free to return
+      less if the original prompt is clear.\n\n## Source selection\n\n### Internal
+      source query instructions:\n\n- You must return source: internal to indicate
+      these queries are for searching internal organization content.\n- You''ll be
+      searching organization activity and documents to help the user explore and answer
+      this question.\n- Query terms should be short (less than 5 words, ideally 3
+      or less) for a basic embedding and TD/IDF search.\n- If the text seems like
+      a good search on its own, just return the text as entered.\n- Anything related
+      to time (e.g. \"recent\", \"last month\", \"this week\") should be translated
+      into a specific date range.\n- If you see a specific date, use that date range.
+      If you see a general date (e.g. \"recently\", \"last month\"), use the last
+      30 days, respecting the current date and time.\n- If you recognize named entities,
+      surround them with double quotes (e.g. \"Hulk Hogan\", \"Apple\"). Consider
+      if an capitalized word is a named entity.\n\n## Date ranges\n\nIn your response,
+      you may include a starts_at and ends_at date range for each query if the topic
+      or directions indicate a specific time period.\n\nIMPORTANT: Today''s date is
+      2026-08-05. The current year is 2026. Use this as your reference point for all
+      date calculations.\n\n- Reference Point: Calculate all relative dates based
+      on today''s date: 2026-08-05.\n- Format: Return timestamps in ISO 8601 format:
+      YYYY-MM-DDTHH:MM:SS.\n- Boundaries: Start of day is 00:00:00 and End of day
+      is 23:59:59.\n- Default Year: If a month or quarter is specified without a year,
+      use 2026.\n- Absence: If no date range is specified, do not include starts_at
+      or ends_at fields.\n\nRelative Date Logic\n\n- \"today\" \u2192 starts_at: Current
+      Date T00:00:00, ends_at: Current Date T23:59:59\n- \"yesterday\" \u2192 starts_at:
+      Previous Date T00:00:00, ends_at: Previous Date T23:59:59\n- \"this week\" \u2192
+      starts_at: Monday of current week, ends_at: Sunday of current week\n- \"last
+      week\" \u2192 starts_at: Monday of previous week, ends_at: Sunday of previous
+      week\n- \"this month\" \u2192 starts_at: Day 1 of current month, ends_at: Last
+      day of current month\n- \"last month\" \u2192 starts_at: Day 1 of previous month,
+      ends_at: Last day of previous month\n- \"this year\" \u2192 starts_at: Jan 1
+      of current year, ends_at: Dec 31 of current year\n- \"recently\", \"lately\",
+      or vague time \u2192 starts_at: (Current Date - 30 days), ends_at: Current Date\n\nBusiness
+      Date Ranges\n- \"Q1\" / \"first quarter\" \u2192 Jan 1 to Mar 31\n- \"Q2\" /
+      \"second quarter\" \u2192 Apr 1 to June 30\n- \"Q3\" / \"third quarter\" \u2192
+      July 1 to Sept 30\n- \"Q4\" / \"fourth quarter\" \u2192 Oct 1 to Dec 31\n- \"H1\"
+      / \"first half\" \u2192 Jan 1 to June 30\n- \"H2\" / \"second half\" \u2192
+      July 1 to Dec 31\n\nNote: Apply the current year (2026) unless a specific year
+      is mentioned.\n\nExamples (using today''s date 2026-08-05):\nQuery: \"Q3 sales
+      targets\"\nterms: \"sales targets\", starts_at: \"2026-07-01T00:00:00\", ends_at:
+      \"2026-09-30T23:59:59\"\n\nQuery: \"last month''s revenue\"\nterms: \"revenue\",
+      starts_at: \"2026-07-01T00:00:00\", ends_at: \"2026-07-31T23:59:59\"\n\nQuery:
+      \"Q4 2023 results\"\nterms: \"results\", starts_at: \"2023-10-01T00:00:00\",
+      ends_at: \"2023-12-31T23:59:59\"\n\n## Existing Queries and Learnings\n\nThe
+      following existing queries and learnings are provided to help you avoid duplication
+      and improve the specificity of your generated queries."}], "model": "claude-sonnet-4-6",
+      "system": "The current datetime is 2026-08-05 16:46:29.463091+00:00\n\nThe user
+      you are helping is dev whose email address is dev@example.com.\n\nYou are an
+      expert researcher. Today is 2026-08-05 16:46:29.463109+00:00. Follow these instructions
+      when responding:\n- You may be asked to research subjects that is after your
+      knowledge cutoff, assume the user is right when presented with news.\n- Be highly
+      organized.\n- Suggest solutions that I didn''t think about.\n- Be proactive
+      and anticipate my needs.\n- Treat me as an expert in all subject matter.\n-
+      Mistakes erode my trust, so be accurate and thorough.\n- Value good arguments
+      over authorities, the source is irrelevant.\n- Consider new technologies and
+      contrarian ideas, not just the conventional wisdom.\n- You may use high levels
+      of speculation or prediction, just flag it for me.", "temperature": 0.0, "tool_choice":
+      {"type": "tool", "name": "IterableGeneratedResearchQuery"}, "tools": [{"name":
+      "IterableGeneratedResearchQuery", "description": "Correct segmentation of `GeneratedResearchQuery`
+      tasks", "input_schema": {"$defs": {"GeneratedResearchQuery": {"properties":
+      {"title": {"description": "A user-facing title for the query, it''ll be prefaced
+      with ''Reading about'' in the UI", "title": "Title", "type": "string"}, "terms":
+      {"description": "The search terms", "title": "Terms", "type": "string"}, "starts_at":
+      {"anyOf": [{"format": "date-time", "type": "string"}, {"type": "null"}], "default":
+      null, "description": "The earliest datetime to allow results", "title": "Starts
+      At"}, "ends_at": {"anyOf": [{"format": "date-time", "type": "string"}, {"type":
+      "null"}], "default": null, "description": "The latest datetime to allow results",
+      "title": "Ends At"}, "goals": {"description": "First talk about the goal of
+      the research that this query is meant to accomplish, then go deeper into how
+      to advance the research once the results are found, mention additional research
+      directions. Be as specific as possible, especially for additional research directions.",
+      "title": "Goals", "type": "string"}, "source": {"$ref": "#/$defs/ResearchSource",
+      "default": "internal", "description": "The source to use for this research query"}},
+      "required": ["title", "terms", "goals"], "title": "GeneratedResearchQuery",
+      "type": "object"}, "ResearchSource": {"enum": ["internal", "slack"], "title":
+      "ResearchSource", "type": "string"}}, "description": "Correct segmentation of
+      `GeneratedResearchQuery` tasks", "properties": {"tasks": {"description": "Correctly
+      segmented list of `GeneratedResearchQuery` tasks", "items": {"$ref": "#/$defs/GeneratedResearchQuery"},
+      "title": "Tasks", "type": "array"}}, "title": "IterableGeneratedResearchQuery",
+      "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '6295'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RTy24bMQz8FYKXXDZB3bwQ34qiKVoECRq4RYsiWCgS7WUsS45I2XEN/3vBdZxH
+        HzeJHGlmqNEaZzlQxCH66Gqgfckpke4f7Z9ggxxwiDOZtG8Gg/fhbvn9h1x+CDK65/PL48+nZ9+w
+        QV3NyVAk4iaEDZYcreBEWNQlxQZ9TkpJcfhzvcNrzrGtQjsW21fjqXr+dX5xdFdPKB9fPMjRhPUa
+        G0xuZuc+KRV3G+kjJSpOKVyTkCu++1KprOy2NK+KwzWqk6lsKVl7SSMShR0eRnnOHq4WVBZMS3NC
+        ZSYmxWBlB1ODYYOT7KJ1Rx2BrSGPQTsWuDdiYAHNMOYUwKUVcFIqyUUI2dcZJZUGAouvIpyTNJAL
+        OK+8YF1BoWhO7ALtCPb+IWAPlqwdpx6Qy8Ql/uWUczqAq+TJ0DWqgCsE41xTaKCQ+eoPPM7fCGoK
+        VOxdQt8Rn+cEtusxD/pkq6cFJ8AK9MCi8mQqrg7gXQhs/C4+Kw1cyFtRwOcaA3DysQYCDpSUxytO
+        E5jSCkTdlLocTQpwWuS4oND0g9vNYl7yHXkVGxQnVnbKCxIDBejy8qVIb5k1rGa4LdkFKq9m5GL/
+        YnKADUquxVsYdmZwc7Np0LsYqfSx2eZz6wU3m5sGRfO8LeQkp9fJ7RtC95WS3ZlqjI/FQOrY8rKt
+        1f5vDNfbdLaap5QEh28PT98Yt++o9YV6se1ryFO/kAv/6+3OGgPNO5pRcbE9nv2Nf+4Ouj+7mwZz
+        1ZelweFZg2IfxFOrbAPCPjuuhP6rjamY9XZCGYc4ifnWBrr5DQAA//8DAMikmetWBAAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:46:31Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:46:33Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:46:30Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:46:31Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a267473caf81f3c4-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:46:33 GMT
+      request-id:
+      - req_011CdjwXXrbf4gmRfsUFr8VH
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-ba9173d1df188b6df2d30572d148e9f9-08ec720929eece1c-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>test
+      research topic</topic>\n<directions>test research topic</directions>\n\nThe
+      following search was attempted but found no matching content:\n<query>\n<title>Test
+      Research Topic Overview</title>\n<goals>The goal of this query is to find any
+      internal documents, discussions, or activity related to the ''test research
+      topic'' within the organization. Once results are found, review the content
+      to understand the scope and context of this topic as it exists internally. Additional
+      research directions could include identifying key stakeholders involved, any
+      related projects or initiatives, and how this topic connects to broader organizational
+      goals.</goals>\n<search_terms>test research topic</search_terms>\n<source>internal</source>\n</query>\n\nSuggest
+      alternative research directions that might find relevant information:\n1. Consider
+      different terminology, synonyms, or related concepts\n2. Think about adjacent
+      topics that might contain relevant information\n3. Consider whether a different
+      source might be more appropriate\n4. Focus on broader or narrower aspects of
+      the topic\n\nGenerate follow-up questions that could lead to better search results."}],
+      "model": "claude-sonnet-4-6", "system": "The current datetime is 2026-08-05
+      16:46:33.370108+00:00\n\nThe user you are helping is dev whose email address
+      is dev@example.com.\n\nYou are an expert researcher. Today is 2026-08-05 16:46:33.370190+00:00.
+      Follow these instructions when responding:\n- You may be asked to research subjects
+      that is after your knowledge cutoff, assume the user is right when presented
+      with news.\n- Be highly organized.\n- Suggest solutions that I didn''t think
+      about.\n- Be proactive and anticipate my needs.\n- Treat me as an expert in
+      all subject matter.\n- Mistakes erode my trust, so be accurate and thorough.\n-
+      Value good arguments over authorities, the source is irrelevant.\n- Consider
+      new technologies and contrarian ideas, not just the conventional wisdom.\n-
+      You may use high levels of speculation or prediction, just flag it for me.",
+      "temperature": 0.0, "tool_choice": {"type": "tool", "name": "GeneratedResearchQueryNoResultsReview"},
+      "tools": [{"name": "GeneratedResearchQueryNoResultsReview", "description": "Correctly
+      extracted `GeneratedResearchQueryNoResultsReview` with all the required parameters
+      with correct types", "input_schema": {"properties": {"follow_up_questions":
+      {"description": "List of alternative research directions to try, max of 3.",
+      "items": {"type": "string"}, "title": "Follow Up Questions", "type": "array"},
+      "follow_up_title": {"description": "A short user-facing title for the follow-up
+      directions, shown as progress in the UI", "title": "Follow Up Title", "type":
+      "string"}}, "required": ["follow_up_questions", "follow_up_title"], "title":
+      "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3017'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SUz27cRgzGX4WYy17kwBukTrq3pKmNJoXR2jkE+QNhdoaSxjsayhyOZcVYoA/R
+        J8yTBJS1cd20N2lIfvzx01B3pieP0WyMi7Z4PMqUEsrRs6MTU5ngzcb0ua2P1+tf/NX4/vrX8w+X
+        by7envbD9W79x9ZURqYBNQtzti2ayjBFPbA5hyw2iamMoySYxGw+3h3yhSjWJeOhi76X+nj94uwp
+        vzl7Oz7rX5/8fPL7aTk9D5etqUyyvdadYUK2gv4CM1p23Z8FeTqnC8wlSr7Am4CjiqahiNncmYZi
+        pLEuQy1BZrKXUZCTlXCDcFCB14HRSaCUoSGGT+YdZnkIv6MhuE/GVP/Quy6Y5wqz+Wgu7/PwdtaO
+        kKmww3uxdmaOsLVu1zKV5Cto2PY4Eu9yBTZ5iEF0rsIIjFEHBCFYiVLwgUKUYqUBzGK3MeQOGtWz
+        ymEjzEbfCmyxIUZIlpnGkFotCWlBY1zgnpjKvGKyHhNIh7B0KVkrvlMg9yFRpHYCYshTojT1Gb7+
+        9Tfk4jqwGVbfCUMKEmZrVxWs8HaIxFaIJ8hS/LSqVGM1hEgCA9MVOlnNUtYx5Qxbku6BVI35wVEh
+        yIUb6xCsv7IOk6go3SBHOwzKvtw3ne83j0lCM8EOlcHusKPokbPWCNo+wxikC/cOELc2hS+znTB2
+        BDINwdkYJ6AxwX+MuXy+5Vy/tnQYGBhnsGXGXAHjQKwPxOCo70sKbu6TQTor0Ntp8VwnlC7opENw
+        UJJHBgs+NA2yiuoqzDJRl6xZdJ6Yz/vKKCyyXvxl0fx8sc1+/7kyWWioGW2m9HgF50DG64LJodmk
+        EuNy6FFsiPlwVuYl39zd71cttEO9/+unz9fa23VYO8aZp36ccnyIM1r/f7FDrXbAocNe96b+qf8x
+        /yG67v4d3VeGijzie/G8Mhn5JjisJahBRn9O3rKffxazsw7rFslsTBtpa6PZ778BAAD//wMAn8v6
+        ox8FAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:46:34Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:46:38Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:46:33Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:46:34Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2674754cea8ea3e-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:46:38 GMT
+      request-id:
+      - req_011CdjwXpRFef1G4mUjJMYR5
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-ff965020fc58fd7a48d3ea26ffcb19cf-aaf8ccf6c2ede602-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Given the
+      following prompt from the user, generate a list of queries to research the topic.\n<topic>test
+      research topic</topic>\n\nYour specific directions are:\n<prompt>Previous research
+      goal: The goal of this query is to find any internal documents, discussions,
+      or activity related to the ''test research topic'' within the organization.
+      Once results are found, review the content to understand the scope and context
+      of this topic as it exists internally. Additional research directions could
+      include identifying key stakeholders involved, any related projects or initiatives,
+      and how this topic connects to broader organizational goals.\n\nFollow-up research
+      directions:\n- Search external sources for general background, frameworks, and
+      literature related to ''test research topic'' to establish foundational context
+      before narrowing to internal resources.\n- Broaden the search using related
+      terminology or synonyms \u2014 such as ''research initiative'', ''exploratory
+      study'', or ''pilot project'' \u2014 across both internal and external sources
+      to surface adjacent or overlapping content.\n- Identify key stakeholders or
+      teams within the organization who typically own research initiatives, and search
+      for their recent projects, reports, or communications that may relate to this
+      topic under a different name or classification.</prompt>\n\nReturn a maximum
+      of 1 queries, but feel free to return less if the original prompt is clear.\n\n##
+      Source selection\n\n### Internal source query instructions:\n\n- You must return
+      source: internal to indicate these queries are for searching internal organization
+      content.\n- You''ll be searching organization activity and documents to help
+      the user explore and answer this question.\n- Query terms should be short (less
+      than 5 words, ideally 3 or less) for a basic embedding and TD/IDF search.\n-
+      If the text seems like a good search on its own, just return the text as entered.\n-
+      Anything related to time (e.g. \"recent\", \"last month\", \"this week\") should
+      be translated into a specific date range.\n- If you see a specific date, use
+      that date range. If you see a general date (e.g. \"recently\", \"last month\"),
+      use the last 30 days, respecting the current date and time.\n- If you recognize
+      named entities, surround them with double quotes (e.g. \"Hulk Hogan\", \"Apple\").
+      Consider if an capitalized word is a named entity.\n\n## Date ranges\n\nIn your
+      response, you may include a starts_at and ends_at date range for each query
+      if the topic or directions indicate a specific time period.\n\nIMPORTANT: Today''s
+      date is 2026-08-05. The current year is 2026. Use this as your reference point
+      for all date calculations.\n\n- Reference Point: Calculate all relative dates
+      based on today''s date: 2026-08-05.\n- Format: Return timestamps in ISO 8601
+      format: YYYY-MM-DDTHH:MM:SS.\n- Boundaries: Start of day is 00:00:00 and End
+      of day is 23:59:59.\n- Default Year: If a month or quarter is specified without
+      a year, use 2026.\n- Absence: If no date range is specified, do not include
+      starts_at or ends_at fields.\n\nRelative Date Logic\n\n- \"today\" \u2192 starts_at:
+      Current Date T00:00:00, ends_at: Current Date T23:59:59\n- \"yesterday\" \u2192
+      starts_at: Previous Date T00:00:00, ends_at: Previous Date T23:59:59\n- \"this
+      week\" \u2192 starts_at: Monday of current week, ends_at: Sunday of current
+      week\n- \"last week\" \u2192 starts_at: Monday of previous week, ends_at: Sunday
+      of previous week\n- \"this month\" \u2192 starts_at: Day 1 of current month,
+      ends_at: Last day of current month\n- \"last month\" \u2192 starts_at: Day 1
+      of previous month, ends_at: Last day of previous month\n- \"this year\" \u2192
+      starts_at: Jan 1 of current year, ends_at: Dec 31 of current year\n- \"recently\",
+      \"lately\", or vague time \u2192 starts_at: (Current Date - 30 days), ends_at:
+      Current Date\n\nBusiness Date Ranges\n- \"Q1\" / \"first quarter\" \u2192 Jan
+      1 to Mar 31\n- \"Q2\" / \"second quarter\" \u2192 Apr 1 to June 30\n- \"Q3\"
+      / \"third quarter\" \u2192 July 1 to Sept 30\n- \"Q4\" / \"fourth quarter\"
+      \u2192 Oct 1 to Dec 31\n- \"H1\" / \"first half\" \u2192 Jan 1 to June 30\n-
+      \"H2\" / \"second half\" \u2192 July 1 to Dec 31\n\nNote: Apply the current
+      year (2026) unless a specific year is mentioned.\n\nExamples (using today''s
+      date 2026-08-05):\nQuery: \"Q3 sales targets\"\nterms: \"sales targets\", starts_at:
+      \"2026-07-01T00:00:00\", ends_at: \"2026-09-30T23:59:59\"\n\nQuery: \"last month''s
+      revenue\"\nterms: \"revenue\", starts_at: \"2026-07-01T00:00:00\", ends_at:
+      \"2026-07-31T23:59:59\"\n\nQuery: \"Q4 2023 results\"\nterms: \"results\", starts_at:
+      \"2023-10-01T00:00:00\", ends_at: \"2023-12-31T23:59:59\"\n\n## Existing Queries
+      and Learnings\n\nThe following existing queries and learnings are provided to
+      help you avoid duplication and improve the specificity of your generated queries.\n\nHere
+      are queries that have already been generated, do not repeat them:\n\n- Internal
+      application: test research topic"}], "model": "claude-sonnet-4-6", "system":
+      "The current datetime is 2026-08-05 16:46:38.305589+00:00\n\nThe user you are
+      helping is dev whose email address is dev@example.com.\n\nYou are an expert
+      researcher. Today is 2026-08-05 16:46:38.305638+00:00. Follow these instructions
+      when responding:\n- You may be asked to research subjects that is after your
+      knowledge cutoff, assume the user is right when presented with news.\n- Be highly
+      organized.\n- Suggest solutions that I didn''t think about.\n- Be proactive
+      and anticipate my needs.\n- Treat me as an expert in all subject matter.\n-
+      Mistakes erode my trust, so be accurate and thorough.\n- Value good arguments
+      over authorities, the source is irrelevant.\n- Consider new technologies and
+      contrarian ideas, not just the conventional wisdom.\n- You may use high levels
+      of speculation or prediction, just flag it for me.", "temperature": 0.0, "tool_choice":
+      {"type": "tool", "name": "IterableGeneratedResearchQuery"}, "tools": [{"name":
+      "IterableGeneratedResearchQuery", "description": "Correct segmentation of `GeneratedResearchQuery`
+      tasks", "input_schema": {"$defs": {"GeneratedResearchQuery": {"properties":
+      {"title": {"description": "A user-facing title for the query, it''ll be prefaced
+      with ''Reading about'' in the UI", "title": "Title", "type": "string"}, "terms":
+      {"description": "The search terms", "title": "Terms", "type": "string"}, "starts_at":
+      {"anyOf": [{"format": "date-time", "type": "string"}, {"type": "null"}], "default":
+      null, "description": "The earliest datetime to allow results", "title": "Starts
+      At"}, "ends_at": {"anyOf": [{"format": "date-time", "type": "string"}, {"type":
+      "null"}], "default": null, "description": "The latest datetime to allow results",
+      "title": "Ends At"}, "goals": {"description": "First talk about the goal of
+      the research that this query is meant to accomplish, then go deeper into how
+      to advance the research once the results are found, mention additional research
+      directions. Be as specific as possible, especially for additional research directions.",
+      "title": "Goals", "type": "string"}, "source": {"$ref": "#/$defs/ResearchSource",
+      "default": "internal", "description": "The source to use for this research query"}},
+      "required": ["title", "terms", "goals"], "title": "GeneratedResearchQuery",
+      "type": "object"}, "ResearchSource": {"enum": ["internal", "slack"], "title":
+      "ResearchSource", "type": "string"}}, "description": "Correct segmentation of
+      `GeneratedResearchQuery` tasks", "properties": {"tasks": {"description": "Correctly
+      segmented list of `GeneratedResearchQuery` tasks", "items": {"$ref": "#/$defs/GeneratedResearchQuery"},
+      "title": "Tasks", "type": "array"}}, "title": "IterableGeneratedResearchQuery",
+      "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '7619'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RU224bRwz9FWJe9LI2rDQXV2+pUQStgV6CJEBQBAI1Q2nHnh1uSK7VraF/L7jS
+        ulGSvu3yes4hOY+h40QlrEIsOCS6UK6V7OL5xcvQhJzCKnS6W18tlzfpbv/x5va6vd5s8Rlff3x7
+        /eHn0AQbe/IoUsUdhSYIFzegalbDaqEJkatRtbD663GON+ayHpTmLv4/rK+Wvz6/+fAm3/5mf7wQ
+        enUrP/D7n5Z9aELFzvN+MRLcFHpDlQSN0ltSQontnwPJ6NVqP1hYPQZDvddjy2wTpDkUcs2W0fID
+        KWBN0OfCBr3wHUVTJ0XSaVgF+TbjPDg0YcdYPPZdS+DfwFuwNit8dkSQFYxBB9liJMjVSCoWSByH
+        jqopsEDKGgfVzFVBqDgtT1oYqcETBuM+xwVsRjgact3BlgUw3WGkauCoc+XCuxF0iC2gwuI7FBbe
+        c3HGY3EJ7xzzRhgTVQVr6dQGNjRyTZOF/sZo0LeCSo4wYm+DEJwGDNaiQYcjbAhi8RXYZkrezseX
+        IOXtloSqlfFJijJewu81khMdiimgEGx5qKkBoYdM+4klP5AU7GGfrZ2wfEecBnKiank7Au+r62OE
+        3SSxGt5TyyWRaDMN3cQHEn3fo03SG5/4C7DssOZ/0B1YprnqJbxOKZ8sT41Tljk/11iGRFBRhPfe
+        fqa0GSFRj2I+cofjuBqIwqoXQpMm0RMmdljHeS7QYcUdzWl9wXrkxVxOPGbKU3pL1pJMFaY1JKWz
+        bW/xwcWV7osVnEh6daGexbyOmgzRJ6uXoQnKg0Q/oHlk4fDp0ISIpZBMp3a86aMU4XD41AQ17tdC
+        qFzPr31yKH0eqHrNOpRyMiYyzH5KR9swvSerx+NFr43vqWpYPXu5fOW9Y0vrKDSBX5+HXM1+IUz/
+        55tzvQP1LXUkWNYvum/j//Mu26+9hybwYF+alj9eNUFJHnKktWUXKPg7mFDS9Dwdh03rHXFYhV3h
+        jQt6+BcAAP//AwC4n3FIigUAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:46:39Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:46:43Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:46:38Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:46:39Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2674773ae51efaa-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:46:43 GMT
+      request-id:
+      - req_011CdjwYBSoF5MBtJy6QSAvo
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-571752069895b169bfabd85d02115a1b-1d410d8e7d58e8e5-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "The search
+      query returned no results. Your task is to suggest alternative research directions
+      to explore the topic.\n\nReview the original topic and directions:\n<topic>test
+      research topic</topic>\n<directions>Previous research goal: The goal of this
+      query is to find any internal documents, discussions, or activity related to
+      the ''test research topic'' within the organization. Once results are found,
+      review the content to understand the scope and context of this topic as it exists
+      internally. Additional research directions could include identifying key stakeholders
+      involved, any related projects or initiatives, and how this topic connects to
+      broader organizational goals.\n\nFollow-up research directions:\n- Search external
+      sources for general background, frameworks, and literature related to ''test
+      research topic'' to establish foundational context before narrowing to internal
+      resources.\n- Broaden the search using related terminology or synonyms \u2014
+      such as ''research initiative'', ''exploratory study'', or ''pilot project''
+      \u2014 across both internal and external sources to surface adjacent or overlapping
+      content.\n- Identify key stakeholders or teams within the organization who typically
+      own research initiatives, and search for their recent projects, reports, or
+      communications that may relate to this topic under a different name or classification.</directions>\n\nThe
+      following search was attempted but found no matching content:\n<query>\n<title>Research
+      initiatives and pilot projects</title>\n<goals>The goal of this query is to
+      surface internal documents or discussions related to ''test research topic''
+      by searching for adjacent terminology such as ''research initiative'' or ''pilot
+      project''. This broadens the search beyond the exact phrase to capture content
+      that may be classified or named differently internally. Once results are found,
+      review for overlap with the test research topic, identify owning teams or stakeholders,
+      and trace connections to broader organizational goals. Additional research directions
+      include narrowing results by department or team, cross-referencing with any
+      project management or planning tools, and identifying whether any of these initiatives
+      have formal documentation or reporting structures.</goals>\n<search_terms>research
+      initiative pilot project</search_terms>\n<source>internal</source>\n</query>\n\nPrevious
+      queries in this research session:\n\n- internal: \"test research topic\" (no
+      results)\n\nSuggest alternative research directions that might find relevant
+      information:\n1. Consider different terminology, synonyms, or related concepts\n2.
+      Think about adjacent topics that might contain relevant information\n3. Consider
+      whether a different source might be more appropriate\n4. Focus on broader or
+      narrower aspects of the topic\n\nGenerate follow-up questions that could lead
+      to better search results."}], "model": "claude-sonnet-4-6", "system": "The current
+      datetime is 2026-08-05 16:46:43.790177+00:00\n\nThe user you are helping is
+      dev whose email address is dev@example.com.\n\nYou are an expert researcher.
+      Today is 2026-08-05 16:46:43.790227+00:00. Follow these instructions when responding:\n-
+      You may be asked to research subjects that is after your knowledge cutoff, assume
+      the user is right when presented with news.\n- Be highly organized.\n- Suggest
+      solutions that I didn''t think about.\n- Be proactive and anticipate my needs.\n-
+      Treat me as an expert in all subject matter.\n- Mistakes erode my trust, so
+      be accurate and thorough.\n- Value good arguments over authorities, the source
+      is irrelevant.\n- Consider new technologies and contrarian ideas, not just the
+      conventional wisdom.\n- You may use high levels of speculation or prediction,
+      just flag it for me.", "temperature": 0.0, "tool_choice": {"type": "tool", "name":
+      "GeneratedResearchQueryNoResultsReview"}, "tools": [{"name": "GeneratedResearchQueryNoResultsReview",
+      "description": "Correctly extracted `GeneratedResearchQueryNoResultsReview`
+      with all the required parameters with correct types", "input_schema": {"properties":
+      {"follow_up_questions": {"description": "List of alternative research directions
+      to try, max of 3.", "items": {"type": "string"}, "title": "Follow Up Questions",
+      "type": "array"}, "follow_up_title": {"description": "A short user-facing title
+      for the follow-up directions, shown as progress in the UI", "title": "Follow
+      Up Title", "type": "string"}}, "required": ["follow_up_questions", "follow_up_title"],
+      "title": "GeneratedResearchQueryNoResultsReview", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4555'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RUzW4cNwx+FUKH7mUceIs4QffmxkXSwChQN4e2QTDgSpwZ2ZI4EaldT4wF+hB9
+        wj5JIXm3jlv0NsO/7+NHkQ8msqNgNsYGLI7OhFMiPXt59sp0xjuzMVHG/ny9fuNu979tv1ymD5fj
+        +v3V8PL38d1b0xldZqpRJIIjmc5kDtWAIl4Uk5rOWE5KSc3m48MpXplDX4ROKPW/9OfrN9fX2/j9
+        7RDff3j3aoy76/Lrd9evTWcSxpr3lhJlVHI3JITZTj8XystPfENSgsoN7Tzta9E0FzWbBzNwCLzv
+        y9yr18bsMijlhOp3BKcqcOUzWfWcBJThh/s5cK7kntI/F5IWYDYfzS+PWXTfSgVAi46itx345Ipo
+        XjrA5CDRXkC4ZEsCA2dYKYlCPsEqz96uKiSJ4jZ4mWDgkhxWKAzQpLvXDu5oAaUcfeLA47H8kDHS
+        nvOdgE6oEHGBTDvCABPvQScvIGV7S1bBC1iOkVNYwHmxRYQc/PXHn7CfvJ3AYgKdKIFPA+cIkTOB
+        Yh5JyYFPx04fiZO8MN1JhSffsdEiPo2wzYyOMnAeMfkvp44CprHgSCDFToACK9E60dFb8Mmrb5NZ
+        dbCqjdVCY+YyV8OcmQfgoapiadZVB1XSgVD81gevC4gWtzRBpeQBLQGm5YkhWvW7GveVXAGVakJT
+        qw0ESqrEEZwfBsqUFGyoD3rwtrVRYRPGSs5y2lGqxqrIj65+D0ubznHGdez/EKgjKOlYRjqIRFrL
+        JFaS1k6mmbMKDJkjKGEUiCwKwd9RWCpR3qenF9SKJ9498qJhaMl1rCd9b7656uCo8dLBnNkVqw3L
+        oSKI9ZQstRxlGHxyR9FcWwrI1ESok238qmAO2rPT3AjaejVstT7T8YX5dOiMxRAo11087v5jWXM4
+        fOqMKM99JhROz69Ccwh9LhXYbFIJ4Wh0pOiDnGyl3Z3Nw+PK98p3VHd0fXGxrth2ot5mavL0z0PO
+        T/5M6P7Pd8qtCDRPFClj6C/if+OfvOvp395DZ7jo16Zv1687I5R33lKvvgpk6r10mF27X0fN+5HY
+        bMwYeIvBHA5/AwAA//8DAKpt15WyBQAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '9999000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:46:45Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:46:49Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:46:44Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '11999000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:46:45Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a2674795ff77dddf-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:46:49 GMT
+      request-id:
+      - req_011CdjwYatwRrXAvnykzvia7
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-43a8f6ec98069a2a0b4d51e7842a7934-ff4626c396bc88a0-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 16384, "messages": [{"role": "user", "content": "Here are
+      the key learnings that have been extracted from the research:\n<learnings>\n\n</learnings>"}],
+      "model": "claude-sonnet-4-6", "system": "You are an AI assistant designed to
+      provide answers in a professional context.\nDo not identify yourself. You are
+      a nameless entity here to assist users with their work.\nYour purpose is to
+      provide brief, informative response to the user''s query, grounded in their
+      specific work context.\n\nThe current datetime is 2026-08-05 16:46:49.394410+00:00\n\nThe
+      user you are helping is dev whose email address is dev@example.com.\n\nGuidelines
+      for your responses:\n\n1. Response Formulation:\n- Analyze the question and
+      identify key points to address.\n- Incorporate relevant information from the
+      provided context.\n- You must identify and answer any questions directly, thoroughly,
+      and accurately.\n- If you cannot answer a question with the information provided,
+      clearly state that you cannot answer and what additional information is needed.\n-
+      Use a professional, helpful tone.\n- Always speak in the third person.\n- Structure
+      your response with explanatory sections using markdown headings that organize
+      findings thematically.\n- Explain WHY findings matter and HOW they relate to
+      each other \u2014 synthesize a coherent narrative, not just an enumeration of
+      facts.\n- Draw on the provided source content to add depth and context beyond
+      the extracted learnings.\n\n2. Information Boundaries:\n- Clearly state when
+      you need additional context to provide accurate information.\n- Be explicit
+      about what types of information you can and cannot access.\n- Suggest how the
+      user might find additional information if needed.\n\n3. Citations:\n- You must
+      provide citations for any external sources referenced in your responses.\n-
+      When citing sources in your answer, you must use a special footnote format.\n-
+      Citations should be placed inline, at the end of the sentence, bullet point,
+      or paragraph where the information is used. Never place them at the end of the
+      entire response as a reference list.\n- Users find inline citations more readable
+      than citations at the end of the answer.\n- Each source is shown with a short
+      token inside its `<id>` tag (for example `S1`). To cite a source, enclose that
+      exact token in square brackets preceded by a caret symbol (^). The format should
+      look like this: [^S1]\n- Only ever cite the exact token shown in a source''s
+      `<id>`. Never invent a token or cite one that does not appear in a source.\n-
+      Here is a full example of the correct format:\n<citations_example>According
+      to recent studies, climate change is accelerating.[^S1]\nThe data suggests a
+      significant correlation between variables.[^S2]\nMultiple researchers have confirmed
+      these findings.[^S1]</citations_example>\n- Never end your response with a list
+      of references or citations. They must be inline.\n\n4. Formatting:\n- Use markdown
+      formatting to enhance readability (e.g., bold, italics, code blocks, lists).\n-
+      Never include a title or header to begin your response.\n- If a list item is
+      a heading (i.e. it ends with a colon), nest child items in a new list using
+      the header list item as the parent list container.\n- Always ensure child list
+      items include four spaces of indentation.\n- Never end your response with a
+      list of references or citations, they must be inline. For example, DO NOT end
+      with:\n<bad_citations>According to recent studies, climate change is accelerating.[^S1]\nThe
+      data suggests a significant correlation between variables.[^S2]\nMultiple researchers
+      have confirmed these findings.[^S1]\n\n[^S1] Source 1\n[^S2] Source 2\n</bad_citations>\n\nThe
+      user''s query is: test research topic", "temperature": 0.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3724'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RU244bRRD9lVLnAbDGVrwBhOYNQZAQUkAEEikssmq7a2Y621M1W11tr1mtxEfw
+        hXwJ6rEdrxPx1FJdzzlV1Q9ulEDJtc4nLIGWWZjJll8uv3aNi8G1bsz95vl6/V14v3u3fr99Qz9s
+        r8K77+Pup5dvXONsP1GNopyxJ9c4lVQNmHPMhmyucV7YiM21fzyc4o3uq2d+WvejAU4ToWawAQ1Y
+        QCkTqh8gESpH7jPsSAno3hS9UQBRmFS2MVCAThRsIDCZoodrZ5TtXGK2rq4dvI02SDHIUtQTHHHV
+        Suey534mEBR30KmMDSDkcjMziltqoFcpXFsr5Uk4E3hkFoMb+gBrdc3X/OwZvB3QPsvwiqgmmMAv
+        Kp4oVPdvcgoHhIHS1JUEyAHQ+6Jo9KFBMzPsJCXZRe5hJyWF2k7prkSl0NZ6S1gsvoVRlCBP5GMX
+        PdwV0v1iAf/+/Q/4hBq7/VygSo01ykC6ufqlZBBzdUQ20iro57TqVw0E6iJHi8K5gZFskCBJ+ki5
+        gS5yqOI14GWcUGMWzl+sDrheH2Qf0UgjplyFD+LLSGz5iA95D0qJtsgGE06kuQFUiz7V+qIHOIzp
+        nFoTsM7O5LwFx54vPx3ssVM2Ld6KUoBcxhE10ozolvYwSax1p5JS3S6V8VKewwLl04Bfl76nXJu8
+        onuD10ZTrq71ChaLX6tcNOcfs0/zMKnju5xVHb2h9mTz/lzVCr9PSXBe+BT59izPU+1ypY4GI2El
+        WbfotN4eufZBxrT/a6764oBrqYUveR3PIAof4BHnovTkJlDn9Z5I0x48Tgf9bqirJGZekftZlp/Z
+        H0gz+fo56P4A6N7qWuEWY8KbRPWwbBCV0g8z+R2ltPTRPjqti7tyj382LptMGyXMwq51xGFjRdkd
+        HZnuCrEn13JJ6WgMZBhTPtnK/GW1Dy7yVGxjckucXfvNi3XjPPqBNl4Jqxqby4jnJ78Shv/znXJr
+        A5oGGkkxbb4aP40/e9fDx97Hxkmxp6arCi+TbqOnjUVS17r6LwXUUD9t7kgr801P4lrXJ7nB5B4f
+        /wMAAP//AwAG4LtN7AUAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:46:50Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:46:55Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:46:49Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:46:50Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26747b91f8bc947-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:46:55 GMT
+      request-id:
+      - req_011CdjwYzynH22dTtt4PQrvx
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-ab94f36d38aeb59e206f2c6b6de48276-ed51651372830c65-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "test research
+      topic"}], "model": "claude-sonnet-4-6", "system": "The current datetime is 2026-08-05
+      16:46:55.620776+00:00.\n\nYou have been provided a research request from a user.\n\nCreate
+      a concise, descriptive title for this research request.\n\nDO NOT answer the
+      question or provide any research results.\n\nRequirements:\n- Maximum 5 words\n-
+      No articles (a, an, the) unless essential\n- Capture the essence of what the
+      user wants to research\n- Ensure title is a phrase that describes the research
+      topic, not an answer\n\nBefore finalizing your response, carefully review the
+      title and ensure it is not longer than 5 words.", "temperature": 0.0, "tool_choice":
+      {"type": "tool", "name": "ResearchQuestionTitle"}, "tools": [{"name": "ResearchQuestionTitle",
+      "description": "Correctly extracted `ResearchQuestionTitle` with all the required
+      parameters with correct types", "input_schema": {"properties": {"title": {"description":
+      "The title of the research command.", "title": "Title", "type": "string"}},
+      "required": ["title"], "title": "ResearchQuestionTitle", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '1113'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RR20oDMRD9lTLPKXSx3vKmQhV8EKWCFyTEZNyNZpM1M7Hasv8uWV284WPOJXPm
+        zAbaaNGDBON1tjilGALydD7dAQHOgoSWajWrqiP7uLq5XOziYk0H4a2qr04uliCA3zosKiTSNYKA
+        FH0BNJEj1oFBgImBMTDI282o5xi9yoTjlPLOalYdNavz/cNq8eTu19erer31etoujkFA0G3xXSCh
+        TqY5z0jsYlg69sMnocsMcgM8ABKWSDwZ1ZNl7JyZnL1genG4gl6A0d5jGhwfiaxLaBj6/k4AcexU
+        Qk0x/Mw6EITPGYNBkCF7/wlaZO08jVge2pCbj2CK4xMGArk3r8po06AyCXXZQP1UzEY+obb/caO3
+        DMCuwRaT9mq7/av/YqvmN9sLiJm/Q1s7Aqh0ZFCxK/VAuaHVyQ4dP2Aqi6saI0iofbzXHvr+HQAA
+        //8DADjp/YdGAgAA
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:46:56Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:46:57Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:46:56Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:46:56Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26747dfea6957da-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:46:57 GMT
+      request-id:
+      - req_011CdjwZTWiSAE5ZynNMCWTp
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-15c9ee8c56dc8cc75235a4f0c4fc2676-fccf8a02bb006a08-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

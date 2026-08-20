@@ -1,0 +1,19 @@
+{% extends "base.jinja" %}
+
+{% block subject %}
+{{ scheduled_research.title }}
+{% endblock subject %}
+
+{% block body_text %}
+{{ rendered_markdown|with_markdown_format_citations(results_by_id) }}
+
+---
+Edit schedule: {{ settings.base_url }}scheduled_research#{{ scheduled_research.id }}
+{% endblock body_text %}
+
+{% block body_markdown %}
+{{ rendered_markdown|with_markdown_format_citations(results_by_id) }}
+
+---
+[Edit schedule]({{ settings.base_url }}scheduled_research#{{ scheduled_research.id }})
+{% endblock body_markdown %}

@@ -1,0 +1,138 @@
+interactions:
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "Goal description:\nPlanning
+      goal\n\nOutput only the title (1-2 words), nothing else."}], "model": "claude-haiku-4-5",
+      "system": "The current datetime is 2026-08-05 16:43:48.601474+00:00\n\n# Task\nGenerate
+      a short, memorable title for an organizational goal.\n\nYou will be given a
+      full goal description. Generate a single short title (1-2 words) that captures
+      the essence of this goal and can be used as shorthand in conversation and documentation.\n\n##
+      Guidelines\n\n- Output exactly 1-2 words\n- Professional and sophisticated tone\n-
+      Easy to pronounce (prefer 2-3 syllables per word)\n- Contain alphabetic characters
+      only (no emojis, punctuation, or special characters)\n- Capture the core intent
+      or outcome, not the method\n- Be distinctive and memorable\n- Avoid generic
+      corporate jargon\n- Prefer active verbs or concrete nouns\n- The title should
+      feel natural to say: \"How''s [Title] going?\" or \"We''re focused on [Title]
+      this week\"\n- Goal titles must be unique within the organization - do not reuse
+      existing titles\n- Avoid titles that are too similar to existing ones, even
+      if not identical\n\n## Existing Goal Titles to Avoid\n\n## Examples\n\nGoal:
+      \"Ship a Q1 roadmap we''re proud of\"\nTitle: Velocity\n\nGoal: \"Customers
+      are actively using goals to run their business\"\nTitle: Adoption\n\nGoal: \"Make
+      sure early customers stick and get value\"\nTitle: Retention\n\nGoal: \"Acquire
+      our first meaningful set of paying customers\"\nTitle: Conversion\n\nGoal: \"Figure
+      out how customers find and buy from us\"\nTitle: Discover\n\nGoal: \"New features
+      become part of how customers operate\"\nTitle: Integration", "tool_choice":
+      {"type": "tool", "name": "GoalTitle"}, "tools": [{"name": "GoalTitle", "description":
+      "Correctly extracted `GoalTitle` with all the required parameters with correct
+      types", "input_schema": {"properties": {"title": {"anyOf": [{"type": "string"},
+      {"type": "null"}], "default": null, "description": "A 1-2 word title for the
+      goal, or null if the description is too vague to generate a meaningful title.",
+      "title": "Title"}}, "title": "GoalTitle", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '2134'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3SRUUsDMRCE/8s+p3BpLcK9KioWCqJUQSSsydqmzSXXZFOt5f675PTQKj7mm5lM
+        dnOAJhhyUIN2mA2NVmg3eXQymo7G1Xgqq0qCAGughiYtVSXlmVm/zpZns6v1+baN/uaNp/wKAnjf
+        UnFRSrgkEBCDKwBTsonRMwjQwTN5hvrxMPg5BKdyoqGlnLOq5PU6z28XF7tL+T7R9/v54uGUthcg
+        wGNTcpcB3Z1l1wd9mxnqA3APap+d6wRodI5izz+7jI2kGbruSUDi0KpImII/fkUvJNpm8vrrri9o
+        iNG6NLDcz1kfPusVhw35BLWUUpZuvSKlIyHb4NWxpRr0SGj+04ZsaaB2RQ1FdGra/PV/q3L1W+0E
+        hMw/0WQiIFHcWU2KbdkPlO8xGE2/yheKZXK1pAA1+MAKd2gdPjuCrvsAAAD//wMAE9DS+zACAAA=
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:43:49Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:43:49Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:43:49Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:43:49Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a267434efcb59172-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:43:49 GMT
+      request-id:
+      - req_011CdjwKfqUyqhkCbjZZWRTS
+      server:
+      - cloudflare
+      server-timing:
+      - x-originResponse;dur=807
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-2b8b517d02e360651956d191154840a7-c63b4303872a7612-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

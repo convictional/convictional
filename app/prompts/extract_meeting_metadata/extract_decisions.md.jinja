@@ -1,0 +1,31 @@
+You are extracting the decisions from a meeting transcript. Decisions are rare and specific — many meetings contain none at all. Your only job is to find genuine decisions and to return an empty list when there are none. Do not summarize the meeting or list anything that is not a decision.
+
+Here is the transcript of the meeting:
+
+<transcript>
+{% with lines=meeting.processed_transcript.lines %}
+    {% include "meetings/transcript_lines.md.jinja" %}
+{% endwith %}
+</transcript>
+
+{% if meeting.agenda %}
+Here is the meeting's agenda, for context:
+
+<agenda>
+{{ meeting.agenda }}
+</agenda>
+{% endif %}
+
+A "decision" is a choice the group deliberated and reached *during this meeting* — there was an open question or goal on the table, alternatives or trade-offs were genuinely weighed, and the group settled on one. Apply these rules strictly. Most meetings produce few or no decisions, so do not hunt for one; inventing a decision where the group never weighed options is worse than returning nothing. When in doubt, leave it out:
+- The decision must be reached in this meeting. Exclude anything a speaker merely reports as already settled: pre-existing facts, standing policies, or how things already work (e.g. "our pricing is token-based, not per-user"), and choices made before or outside this meeting that are only being recounted here (e.g. "we decided last year to use a single account"). If the choice was already made when the meeting started, it is not a decision.
+- A genuine decision resolves a question that was actually deliberated. If a course of action was simply agreed as the obvious next step — no goal framed, no alternatives considered — it is an action item, not a decision, even when no single person is named (e.g. "Convictional will build a custom demo for Aksel's team to share" is a committed next step, not a deliberated choice).
+- Include a decision reached implicitly only when there is a concrete proposal AND clear affirmative agreement or consensus AND no unresolved pushback. If a thread trails off unresolved, exclude it.
+- Include explicit decisions NOT to do something (e.g. "decided not to rebrand this year").
+- Exclude action items and tasks. A decision records WHAT the group resolved; a task records WHO will do work next. Any "<person> will <do something>" or assignment of future work is an action item — leave it out (e.g. "Aksel will fly to Atlanta", "Marla will set up a call"). Tentative commitments to look into, explore, check, or see if something is possible are action items too (e.g. "Marla will explore importing the data on their behalf"), never decisions. A scope or approach choice is still a decision even when phrased with "will" (e.g. "we will import the existing goals before building status updates"); the test is whether a question was settled or an option chosen, not whether someone committed to a task.
+- Also exclude: proposals or ideas that were not adopted, opinions and general discussion, unresolved debate, and deferrals or topics parked for later (e.g. "we'll revisit next week").
+- Attribute each decision to the person who made or drove it; use "the group" when no single owner is clear. Never guess an owner.
+{% if not meeting.is_internal %}
+- This meeting includes people from outside the organization. The members of the organization are: {% for user in users %}{{ user.display_name }}{% if not loop.last %}, {% endif %}{% endfor %}. Record a decision ONLY when a member of the organization made it or both sides committed to a mutual term. A choice that is the outside party's alone to make about their own affairs is never a decision here — this covers their tools, budget, and staffing, AND how they adopt, roll out, or configure this product for their own team (e.g. a prospect deciding to add their whole team as individual users instead of one shared login, or deciding to start using a feature). Exclude these even when they concern this product, are encouraged by the organization, or are stated firmly. If the outside party is the only one deciding, omit it.
+{% endif %}
+
+Return the list of decisions, each as one plain sentence plus who made or drove it. Return an empty list when no decisions were made. Write at a Flesch-Kincaid Grade Level of 4.0 or lower.

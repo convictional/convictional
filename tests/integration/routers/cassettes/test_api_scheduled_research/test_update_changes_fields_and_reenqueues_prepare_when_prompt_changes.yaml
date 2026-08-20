@@ -1,0 +1,135 @@
+interactions:
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"role": "user", "content": "New prompt"}],
+      "model": "claude-haiku-4-5", "system": "You are preparing a scheduled research
+      request for delivery.\n\nThe user''s next message is a single freeform prompt.
+      Split it into three parts and return structured JSON:\n\n1. `title` \u2014 a
+      short user-facing title for the schedule, max 5 words, no articles (\"a\", \"an\",
+      \"the\"), and not the answer to the research question itself. Describe the *topic*,
+      not the likely result. Good: \"Quarterly SaaS valuation trends\". Bad: \"SaaS
+      valuations are rising\".\n\n2. `topic_prompt` \u2014 the research intent, stripped
+      of formatting directives. This is what the research pipeline will search and
+      reason over. Keep the user''s wording and specificity intact \u2014 do not summarize
+      or paraphrase.\n\n3. `formatting_prompt` \u2014 any formatting, length, or presentation
+      directives the user included (\"bullet points\", \"three paragraphs max\", \"table
+      by region\", \"include links\"). Return `null` if the prompt contains no formatting
+      guidance. Separating formatting from intent empirically improves downstream
+      compliance through the recursive research pipeline.", "temperature": 0.0, "tool_choice":
+      {"type": "tool", "name": "PreparedScheduledResearch"}, "tools": [{"name": "PreparedScheduledResearch",
+      "description": "Correctly extracted `PreparedScheduledResearch` with all the
+      required parameters with correct types", "input_schema": {"properties": {"title":
+      {"description": "A short user-facing title for the schedule, max 5 words.",
+      "title": "Title", "type": "string"}, "topic_prompt": {"description": "The research
+      intent, stripped of formatting directives.", "title": "Topic Prompt", "type":
+      "string"}, "formatting_prompt": {"anyOf": [{"type": "string"}, {"type": "null"}],
+      "default": null, "description": "Formatting directives, or null if the prompt
+      has none.", "title": "Formatting Prompt"}}, "required": ["title", "topic_prompt"],
+      "title": "PreparedScheduledResearch", "type": "object"}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '1952'
+      content-type:
+      - application/json
+      host:
+      - api.anthropic.com
+      x-stainless-arch:
+      - arm64
+      x-stainless-async:
+      - async:asyncio
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - MacOS
+      x-stainless-package-version:
+      - 0.120.2
+      x-stainless-read-timeout:
+      - '600'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.13.3
+      x-stainless-timeout:
+      - '600'
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RRXUsjMRT9L/c5hZnabmEQQVZhYaHrumofRMI1uc7EZpJpcqPWMv9dMnVwq/iY
+        85FzcrKD1muyUIGymDRNGjTrNJlN5pNpMZ2XRVGCAKOhgjbWsijLn/rxefXrb9qutqerWnuNbvEI
+        AnjbUVZRjFgTCAjeZgBjNJHRMQhQ3jE5hup2N+rZeytTpDEln5MsysXleazxYnHzY3N29ZJew3a6
+        jkcgwGGbfReBOgyk/6mGdLKkLykSBtXki1yXGKodsOGhw/H18vfyz2p5knv6zijZBd92fED1AhRa
+        S2Fw7ttpE0gx9P2dgMi+k4EwenfYeyAibRI5RVC5ZO07qInR2DhiaVim2u0LSvZrchGqsphNc7Zq
+        SKpAyMY7eSgpRj4Q6u+40ZsTqGuopYBWztuv+g+2bD6zvQCf+H9oPhMQKTwZRZJN3gfyh2oMehj7
+        gUJ+uazJQwXOs8QnNBbvLUHfvwEAAP//AwDmhZp7YgIAAA==
+    headers:
+      anthropic-organization-id:
+      - 45502256-a817-44f6-b1a1-32c6c1a79de8
+      anthropic-ratelimit-input-tokens-limit:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-remaining:
+      - '10000000'
+      anthropic-ratelimit-input-tokens-reset:
+      - '2026-08-05T16:46:13Z'
+      anthropic-ratelimit-output-tokens-limit:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-remaining:
+      - '2000000'
+      anthropic-ratelimit-output-tokens-reset:
+      - '2026-08-05T16:46:13Z'
+      anthropic-ratelimit-requests-limit:
+      - '20000'
+      anthropic-ratelimit-requests-remaining:
+      - '19999'
+      anthropic-ratelimit-requests-reset:
+      - '2026-08-05T16:46:12Z'
+      anthropic-ratelimit-tokens-limit:
+      - '12000000'
+      anthropic-ratelimit-tokens-remaining:
+      - '12000000'
+      anthropic-ratelimit-tokens-reset:
+      - '2026-08-05T16:46:13Z'
+      anthropic-workspace-id:
+      - wrkspc_01JyTJvEDCpFSbxEZKypJW9N
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a26746d218068268-IAD
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-security-policy:
+      - default-src 'none'; frame-ancestors 'none'
+      content-type:
+      - application/json
+      date:
+      - Wed, 05 Aug 2026 16:46:13 GMT
+      request-id:
+      - req_011CdjwWGveSnr1afHpcH1AT
+      server:
+      - cloudflare
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      traceresponse:
+      - 00-8709ba080529f7b91f5b62fba1ea1438-77db515a833ad968-01
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-robots-tag:
+      - none
+    status:
+      code: 200
+      message: OK
+version: 1

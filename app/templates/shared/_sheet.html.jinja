@@ -1,0 +1,66 @@
+{# Mobile bottom sheet component (slide-up drawer)
+
+Optional context:
+- button_class: str - CSS classes for trigger button
+- text: str - Button text (used with default target block)
+- items: dict[str, str] - Menu items as {label: url} (used with default list_content block)
+
+Blocks:
+- target - Custom trigger element (default: button with text and arrow)
+- content - Full sheet content wrapper
+- list_content - Menu list content (default: renders items as links)
+
+Events:
+- Listens for @close-sheet to close the sheet
+- Auto-closes on link clicks within the sheet
+#}
+{# djlint:off #}
+<div x-data="sheet()"
+     @keydown.escape.window="isOpen = false"
+     @close-sheet="isOpen = false"
+     @close-dropdown.window="isOpen = false">
+    <div @click="isOpen = !isOpen">
+        {% block target %}
+            <button class="{{ button_class }}">
+                {{ text }}
+                <span class="material-symbols-outlined text-lg transition -mr-1"
+                      :class="{ 'rotate-180': isOpen }">keyboard_arrow_down</span>
+            </button>
+        {% endblock target %}
+    </div>
+    <div x-ref="backdrop"
+         x-show="isOpen"
+         x-cloak
+         x-transition.opacity
+         @click="isOpen = false"
+         class="fixed inset-0 bg-black/50 z-40"
+         @touchmove.prevent></div>
+    <div x-ref="sheet"
+         x-show="isOpen"
+         x-cloak
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="translate-y-full"
+         x-transition:enter-end="translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="translate-y-0"
+         x-transition:leave-end="translate-y-full"
+         @click.self="isOpen = false"
+         @click.capture="if ($event.target.tagName === 'A' || $event.target.closest('a')) isOpen = false"
+         class="fixed left-0 right-0 z-50 transform"
+         :style="`bottom: ${keyboardHeight}px; --sheet-max-height: ${maxSheetHeight};`">
+        {% block content %}
+            <div class="sheet-card">
+                {% block list_content %}
+                    <ul>
+                        {% for label, url in items.items() %}
+                            <li>
+                                <a class="dropdown-item" href="{{ url }}">{{ label }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endblock list_content %}
+            </div>
+        {% endblock content %}
+    </div>
+</div>
+{# djlint:on #}

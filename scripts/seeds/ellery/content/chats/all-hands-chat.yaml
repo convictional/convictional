@@ -1,0 +1,152 @@
+key: all-hands-chat
+name: "All-Hands"
+group: all-hands
+members: [darren, maren, priya, leo, tessa, arjun, jordan, theo, emma, rhea, mateo]
+messages:
+  - key: all-hands-chat-msg-001
+    author: darren
+    at: !relative_day {offset: -21, hour: 8, minute: 2}
+    content: |
+      We closed. $16M Series A, Thornburgh Ventures leading, Lyndon Brace joining the board. Thank you all. Long email going out at 9 with the full note. For now: thank you, and let's keep our heads.
+    reactions:
+      party_popper: [maren, priya, leo, tessa, arjun, jordan, theo, emma, rhea, mateo]
+      heart: [maren, emma, rhea]
+      rocket: [priya, jordan, mateo]
+
+  - key: all-hands-chat-msg-002
+    author: tessa
+    at: !relative_day {offset: -21, hour: 8, minute: 7}
+    reply_to: all-hands-chat-msg-001
+    content: |
+      Two years of conviction finally showing up in the bank account. So proud of this team.
+
+  - key: all-hands-chat-msg-003
+    author: emma
+    at: !relative_day {offset: -21, hour: 8, minute: 14}
+    reply_to: all-hands-chat-msg-001
+    content: |
+      Four months in and I already feel lucky to be here. Congratulations everyone.
+
+  - key: all-hands-chat-msg-004
+    author: arjun
+    at: !relative_day {offset: -21, hour: 9, minute: 43}
+    content: |
+      Is the office snack budget now allowed to include the fancy pistachios? Asking for a team.
+    reactions:
+      tears_of_joy: [priya, theo, jordan, emma]
+      thumbs_up: [darren, maren]
+
+  - key: all-hands-chat-msg-005
+    author: darren
+    at: !relative_day {offset: -21, hour: 9, minute: 51}
+    reply_to: all-hands-chat-msg-004
+    content: |
+      The pistachios have been approved. We are a Series A company now.
+    reactions:
+      tears_of_joy: [arjun, theo, jordan, emma, rhea]
+
+  - key: all-hands-chat-msg-006
+    author: maren
+    at: !relative_day {offset: -18, hour: 10, minute: 15}
+    content: |
+      Quiet thank-you to Priya, Arjun, and Jordan for the board-prep pack — the security slides and the eval write-up were the single best-received pieces of the deck. Lyndon called them out by name.
+    reactions:
+      heart: [priya, arjun, jordan]
+      thumbs_up: [darren, tessa]
+
+  - key: all-hands-chat-msg-007
+    author: priya
+    at: !relative_day {offset: -14, hour: 14, minute: 22}
+    content: |
+      Heads-up — I'll be opening the SRE req this week. If anyone has a strong referral, send me a name. We want someone who has actually been paged at 3am, not someone who has read a book about it.
+    reactions:
+      thumbs_up: [darren, arjun, theo]
+      tears_of_joy: [jordan, mateo]
+
+  - key: all-hands-chat-msg-008
+    author: jordan
+    at: !relative_day {offset: -14, hour: 14, minute: 31}
+    reply_to: all-hands-chat-msg-007
+    content: |
+      Adding: if we need interview-loop panelists for the SRE role I'm happy to cover the "how do you reason about evals under incident pressure" angle.
+
+  - key: all-hands-chat-msg-009
+    author: priya
+    at: !relative_day {offset: -14, hour: 14, minute: 35}
+    reply_to: all-hands-chat-msg-008
+    content: |
+      Noted. I'll ping you when the first onsite lands.
+
+  - key: all-hands-chat-msg-010
+    author: tessa
+    at: !relative_day {offset: -9, hour: 17, minute: 8}
+    content: |
+      Small win — the Keating & Marsh pilot proposal went out for internal legal review on their side. Mateo nailed the exec demo. More to share in #gtm but wanted to share the moment here.
+    reactions:
+      rocket: [darren, priya, mateo, leo]
+      heart: [maren, emma]
+      party_popper: [jordan, rhea]
+
+  - key: all-hands-chat-msg-011
+    author: mateo
+    at: !relative_day {offset: -9, hour: 17, minute: 14}
+    reply_to: all-hands-chat-msg-010
+    content: |
+      Credit to Maren for the legal answers mid-demo. That was the moment the partner leaned forward.
+    reactions:
+      heart: [maren]
+
+  - key: all-hands-chat-msg-012
+    author: darren
+    at: !relative_day {offset: -5, hour: 11, minute: 30}
+    content: |
+      Save the date — first post-raise all-hands this Thursday at 10am ET. 45 minutes. I'll walk through the raise, the next four weeks, the hires, and then open Q&A. Bring the hard questions. That's the point.
+    reactions:
+      thumbs_up: [maren, priya, leo, tessa, arjun, emma, rhea]
+      eyes: [jordan, theo, mateo]
+
+  - key: all-hands-chat-msg-013
+    author: rhea
+    at: !relative_day {offset: -5, hour: 11, minute: 44}
+    reply_to: all-hands-chat-msg-012
+    content: |
+      Could we get a short written recap after, for folks who will be in customer calls at that time?
+
+  - key: all-hands-chat-msg-014
+    author: darren
+    at: !relative_day {offset: -5, hour: 11, minute: 47}
+    reply_to: all-hands-chat-msg-013
+    content: |
+      Yes — will post the talking-points doc and a short summary after. Good ask.
+    reactions:
+      thumbs_up: [rhea, emma, maren]
+
+  - key: all-hands-chat-msg-015
+    author: emma
+    at: !relative_day {offset: -3, hour: 15, minute: 20}
+    content: |
+      Heads-up: I'm in customer interview #4 tomorrow at 2pm, so expect me to be quiet in chats from 2 to 3:30. Findings will be in the research doc by Thursday.
+    reactions:
+      eyes: [leo, maren, darren]
+
+  - key: all-hands-chat-msg-016
+    author: leo
+    at: !relative_day {offset: -2, hour: 9, minute: 55}
+    reply_to: all-hands-chat-msg-015
+    content: |
+      Appreciate you running these, Emma. They're the single most useful input I'm getting right now.
+
+  - key: all-hands-chat-msg-017
+    author: darren
+    at: !relative_day {offset: -1, hour: 8, minute: 40}
+    content: |
+      Thursday reminder — all-hands tomorrow 10am ET. The doc with the narrative is in #documents. Skim it if you want, or come fresh. Either is fine.
+
+  - key: all-hands-chat-msg-018
+    author: theo
+    at: !relative_day {offset: -1, hour: 8, minute: 52}
+    reply_to: all-hands-chat-msg-017
+    content: |
+      Reading it now. Appreciate the "what's hard" section being near the top.
+    reactions:
+      heart: [darren, maren]
