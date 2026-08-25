@@ -2,7 +2,13 @@
 name = "convictional"
 version = "0.0.1"
 description = ""
-authors = [{ name = "Ben Crouse", email = "ben.crouse@convictional.com" }]
+authors = [
+    { name = "Convictional", email = "decide@convictional.com" },
+    { name = "Ben Crouse", email = "bencrouse@gmail.com" },
+    { name = "Jake Beresford", email = "hello@jakeberesford.com" },
+    { name = "Thomas Gorham", email = "tgiv014@gmail.com" },
+    { name = "Nick Wehner", email = "Nicholas.wehner@gmail.com" },
+]
 requires-python = ">=3.13,<3.14"
 readme = "README.md"
 dependencies = [
