@@ -7,6 +7,7 @@ authors = [
     { name = "Ben Crouse", email = "bencrouse@gmail.com" },
     { name = "Jake Beresford", email = "hello@jakeberesford.com" },
     { name = "Thomas Gorham", email = "tgiv014@gmail.com" },
+    { name = "Prentice Bjerkseth", email = "prenticebjerk@gmail.com" },
     { name = "Nick Wehner", email = "Nicholas.wehner@gmail.com" },
 ]
 requires-python = ">=3.13,<3.14"
