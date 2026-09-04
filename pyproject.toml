@@ -32,7 +32,7 @@ dependencies = [
     "google-cloud-storage>=3.13.0,<4",
     "tortoise-orm[asyncpg]>=0.25.1,<0.26",
     "aerich>=0.9.3,<0.11",
-    "instructor<1.15.5",
+    "instructor<1.16.1",
     "tiktoken>=0.13.0,<0.15",
     "types-protobuf>=7.34.1.20260518,<8",
     "bs4>=0.0.2,<0.0.3",
