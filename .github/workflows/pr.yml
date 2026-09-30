@@ -17,7 +17,7 @@ jobs:
       contents: read
       pull-requests: read
     outputs:
-      should_run: ${{ steps.filter.outputs.app }}
+      should_run: ${{ github.actor == 'dependabot[bot]' || steps.filter.outputs.app }}
     steps:
       # fetch-depth: 0 (full history) is required on merge_group events:
       # dorny/paths-filter falls back to local git there, and the comparison
@@ -27,7 +27,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-          token: ${{ secrets.GITHUB_TOKEN }}
 
   linting:
     needs: changes
