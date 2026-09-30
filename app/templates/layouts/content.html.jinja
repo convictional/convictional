@@ -1,5 +1,5 @@
 {% set included_blocks = request.headers.get('Convictional-Include-Block', 'content') %}
-{% if 'header' in included_blocks %}
+{% if "header" in included_blocks %}
     {% block header %}
     {% endblock header %}
 {% endif %}

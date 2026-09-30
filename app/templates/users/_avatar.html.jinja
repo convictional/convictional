@@ -29,7 +29,9 @@ Optional context:
                          @error="imgError = true"
                          src="{{ user_picture }}"
                          alt="{{ user.display_name }}" />
-                    <span x-show="imgError" class="uppercase" title="{{ user.display_name }}">{{ user.display_name|first }}</span>
+                    <span x-show="imgError"
+                          class="uppercase"
+                          title="{{ user.display_name }}">{{ user.display_name|first }}</span>
                 {% elif user %}
                     <span class="uppercase" title="{{ user.display_name }}">{{ user.display_name|first }}</span>
                 {% endif %}

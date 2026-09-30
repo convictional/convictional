@@ -140,9 +140,9 @@
                 </template>
                 <div class="flex gap-2 mt-3 md:mt-4 md:justify-center">
                     <template x-if="!isIOS && canInstall">
-                        <button @click="install()" class="btn btn-primary btn-sm">Install now</button>
+                        <button type="button" @click="install()" class="btn btn-primary btn-sm">Install now</button>
                     </template>
-                    <button @click="dismiss()" class="btn btn-ghost btn-sm">
+                    <button type="button" @click="dismiss()" class="btn btn-ghost btn-sm">
                         <span x-text="isIOS ? 'Got it' : 'Not now'"></span>
                     </button>
                 </div>
