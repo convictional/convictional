@@ -27,6 +27,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   linting:
     needs: changes
