@@ -112,7 +112,7 @@
     "hast-util-to-html": "^9.0.5",
     "htmx-ext-json-enc": "~2.0.3",
     "htmx-ext-preload": "^2.1.2",
-    "isomorphic-dompurify": "^3.22.0",
+    "isomorphic-dompurify": "^4.3.0",
     "lib0": "^0.2.117",
     "linkifyjs": "^4.3.3",
     "mdast-util-directive": "^3.1.0",
