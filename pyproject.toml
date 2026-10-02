@@ -14,7 +14,7 @@ requires-python = ">=3.13,<3.14"
 readme = "README.md"
 dependencies = [
     "fastapi>=0.140.13",
-    "uvicorn>=0.52.0,<0.53",
+    "uvicorn>=0.52.0,<0.55",
     "gunicorn>=26.0.0,<27",
     "pydantic==2.13.5",
     "pydantic-settings>=2.14.2,<3",
